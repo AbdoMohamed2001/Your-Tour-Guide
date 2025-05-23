@@ -1,0 +1,154 @@
+{
+  "WELCOMETO"			:"WELCOME TO",
+  "TOURGUIDE"			:"Your Tour Guide",
+  "APP"       			:"APP",
+  "LOGIN"    			:"LOGIN",
+  "SIGNUP"   			:"SIGNUP",
+
+
+  "loggedInSuccessfully"     :"logged in successfully",
+  "WELCOME"		:"WELCOME",
+  "LoginNowToDiscoverEgypt":"Login now to discover Egypt",
+  "Email":"Email",
+  "EnterCorrectEmail":"Enter correct email",
+  "Password":"Password",
+  "EnterCorrectPassword":"Enter correct password",
+  "Login":"Login",
+  "ForgetPassword":"Forget password?",
+  "UserName":"User name",
+  "EnterCorrectUserName":"Enter correct user name",
+  "PasswordMustBeAtLeast8Characters":"Password must be at least 8 characters",
+  "ConfirmPassword":"Confirm password",
+  "passwordNotMatched":"Password not matched",
+  "SignUp":"Sign Up",
+  "AlreadyHaveAccount":"Already have account",
+  "SignIn":"Sign In",
+  "ChooseWhatToSearchFor":"Choose what to search for",
+  "Explore":"Explore",
+  "moreAboutEgypt":"More About Egypt",
+  "TravelPlaces":"Travel Places",
+  "ViewAll":"View All ",
+  "bestPlaces":"Best \n Places",
+  "AllCities":"Cities",
+  "ToursAndTrips":"Tours \n And Trips",
+  "UpcomingEvents":"Upcoming \n Events",
+  "StartSearchNow !":"Start Search Now",
+  "name":"Name",
+  "NoResultsReturned":"No Results Returned",
+
+  "EditProfile":"Edit Profile",
+  "SignOut":"Sign out",
+  "HowToGo": "How to go",
+  "pressBackAgain": "Press Back Again To Exit",
+
+
+
+
+
+
+  "bestPlacesCollection" : "bestPlaces",
+  "placesCollection": "places",
+  "citiesCollection": "cities",
+
+
+  "Places" : "Places",
+"AllPlaces" : "Places",
+  "cityName": "cityName",
+
+
+"Hotels" : "Hotels",
+
+"Restaurants" : "Restaurants",
+"restaurantsCollection" : "restaurants",
+"AllRestaurants" : "Restaurants",
+
+  "Malls" : "Malls",
+  "mallsCollection" : "malls",
+  "AllMalls" : "Malls",
+  "AllHotels" : "Hotels",
+
+  "Cafes" : "Cafes",
+  "cafesCollection" : "cafes",
+  "AllCafes" : "Malls",
+
+  "Mosques" : "Mosques",
+  "mosquesCollection" : "mosques",
+  "AllMosques" : "Mosques",
+
+  "Churches" : "Churches",
+  "churchesCollection" : "churches",
+  "AllChurches" : "Churches",
+
+  "Cinemas" : "Cinemas",
+  "cinemasCollection" : "cinemas",
+  "AllCinemas" : "Cinemas",
+
+  "From" : "From",
+  "To" : "To",
+
+  "Tickets": "Tickets",
+
+  "FOREIGNERS" : "FOREIGNERS",
+  "Adult": "Adult",
+  "Student": "Student",
+  "EGYPTIANS": "EGYPTIANS",
+  "Description" : "Description",
+  "Gallery": "Gallery",
+  "nearly": "Nearly in this governorate",
+  "metro": "Nearest Metro station :",
+  "Features": "Features",
+  "WebSite": "Website",
+  "Contact": "Contact",
+  "AllBestPlaces": "Best Places",
+  "AllTours" : "Tours",
+  "Duration" : "Duration",
+  "Price" : "Price",
+  "TourType" : "Tour Type",
+  "PickFrom" : "Pick from",
+  "tourItinerary" : "Tour Itinerary",
+  "inclusions" : "Inclusions",
+  "exclusions" : "Exclusions",
+  "tourAvailability" : "Tour Availability",
+  "tourOrganizer" : "Tour Organizer : ",
+  "showMore" : "Show more ",
+  "showLess" : "  Show less ",
+  "tours" : "Tours",
+  "dayTour" : "Day Tour",
+  "tourPackage": "Tour Package",
+  "egyptiansTrip": "Egyptians Trip",
+  "nileCruise": "Nile Cruise",
+  "search" : "Search",
+  "cities" : "Cities",
+  "searchFor" : "Choose what to search for",
+  "startSearch" : "Start Search Now !",
+  "Favourite" : "Favourite",
+  "AddedToFavourite" : "Added To Favourite",
+  "FailedToAddToFavourite" : "Failed to add to favourite",
+  "RemovedFromFavourite" : "Removed From Favourite",
+  "UpcomingEventsAppbar":"Upcoming Events",
+  "FullMenu":"Full Menu",
+  "services" : "Services",
+  "openingHours" : "Opening \n Hours",
+  "rooms" : "Rooms",
+  "avgPrice" : "Average Price :",
+  "contains" : "Contains : ",
+  "sortBy" : "Sort by : ",
+  "stars" : "Stars",
+  "rate" : "Rate",
+  "toursToPlace" : "Tours to this place",
+  "transport" : "Transport",
+  "films" : "Films",
+  "genre" : "Movie Genre : ",
+  "length" : "Length : ",
+  "cast" : "Movie Cast ",
+  "city" : "City",
+  "bed": "Bed :",
+  "about": "Overview",
+  "noInternet": "'Your Device is offline. Your Tour Guide App requires internet connection to start'"
+
+
+
+
+
+
+}

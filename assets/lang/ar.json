@@ -1,0 +1,129 @@
+{
+  "WELCOMETO"			:"اهلا بك في ",
+  "TOURGUIDE"			:"Your Tour Guide",
+  "APP"       			:"برنامج",
+  "LOGIN"    			:"تسجيل دخول",
+  "SIGNUP"   			:"انشاء حساب",
+
+
+  "loggedInSuccessfully"     :"تم تسجيل الدخول بنجاح",
+  "WELCOME"		:"اهلا",
+  "LoginNowToDiscoverEgypt":"انشاء حساب لاكتشاف المزيد عن مصر",
+  "Email":"البريد الاكتروني",
+  "EnterCorrectEmail":"قم بادخال بريد الكتروني صحيح",
+  "Password":"كلمة المرور",
+  "EnterCorrectPassword":"قم بادخال كلمة مرور صحيحه",
+  "Login":"سجل دخول",
+  "ForgetPassword":"نسيت كلمة السر ؟",
+  "UserName":"اسم المستخدم",
+  "EnterCorrectUserName":"",
+  "PasswordMustBeAtLeast8Characters":"كلمة المرور يجب ان تتكون من 8 احرف علي الاقل",
+  "ConfirmPassword":"تأكيد كلمة المرور",
+  "passwordNotMatched":"كلمة المرور غير متطابقة",
+  "SignUp":"انشاء حساب",
+  "AlreadyHaveAccount":"لديك حساب بالفعل ؟",
+  "SignIn":"تسحيل دخول",
+  "ChooseWhatToSearchFor":"اختر ما تبحث عنه",
+  "Explore":"اكتشف",
+  "moreAboutEgypt":"المزيد عن مصر",
+  "TravelPlaces":"اكتشف الاماكن",
+  "ViewAll":"عرض الكل ",
+  "bestPlaces":"افضل \n الاماكن",
+  "AllCities":"كل المدن",
+  "ToursAndTrips":"الرحلات \n السياحيه",
+  "UpcomingEvents":"الاحداث \n القادمه",
+  "StartSearchNow !":"ابدأ البحث",
+  "name":"",
+  "NoResultsReturned":"",
+
+  "EditProfile":"تعديل الملف الشخصي",
+  "SignOut":"تسجيل الخروج",
+
+
+  "bestPlacesCollection" : "bestPlaces",
+  "placesCollection": "places",
+  "citiesCollection": "cities",
+  "Places" : "الاماكن",
+  "AllPlaces" : "جميع الاماكن",
+
+  "cityName": "cityNameArabic",
+
+  "Hotels" : "الفنادق",
+
+
+  "Restaurants" : "المطاعم",
+  "restaurantsCollection" : "restaurants",
+  "AllRestaurants" : "جميع المطاعم",
+
+
+  "Malls" : "المولات",
+  "mallsCollection" : "malls",
+  "AllMalls" : "جميع المولات",
+  "AllHotels" : "جميع الفنادق",
+
+  "Cafes" : "المقاهي",
+  "cafesCollection" : "cafes",
+  "AllCafes" : "جميع المقاهي",
+
+  "Mosques" : "المساجد",
+  "mosquesCollection" : "mosques",
+  "AllMosques" : "جميع المساجد",
+
+  "Churches" : "الكنائس",
+  "churchesCollection" : "churches",
+  "AllChurches" : "جميع الكنائس",
+
+  "Cinemas" : "السينيمات",
+  "cinemasCollection" : "cinemas",
+  "AllCinemas" : "جميع السينيمات",
+
+  "From" : "من",
+  "To" : "الي",
+
+  "Tickets": "التذاكر",
+  "FOREIGNERS" : "الاجانب",
+  "Adult": "البالغين",
+  "Student": "الطلاب",
+  "EGYPTIANS": "المصريين",
+  "Description" : "الوصف",
+  "Gallery": "معرض الصور",
+  "HowToGo": "كيفية الوصول للمكان",
+  "nearly": "قريب من المكان",
+  "metro": "اقرب محطة مترو :",
+  "Features": "الممزيات",
+  "WebSite": "الموقع",
+  "Contact": "التواصل",
+  "AllBestPlaces": "افضل الاماكن",
+  "AllTours" : "جميع الرحلات",
+  "Duration" : "المده",
+  "Price" : "السعر",
+  "TourType" : "نوع الرحله",
+  "PickFrom" : "البدء من ",
+  "tourItinerary" : "خط الرحله",
+  "inclusions" : "مشتملات الرحله",
+  "exclusions" : "الاستثنائات",
+  "tourAvailability" : "توافر الرحله",
+  "tourOrganizer" : "منظم الرحله : ",
+  "showMore" : " عرض المزيد ",
+  "showLess" : "  عرض اقل ",
+  "tours" : "الرحلات",
+  "dayTour" : "رحلات يوم واحد",
+  "tourPackage": "برامج رحلات",
+  "egyptiansTrip": "رحلات للمصريين",
+  "nileCruise": "رحلات نيليه",
+  "search" : "ابحث ",
+  "cities" : "المدن",
+  "searchFor" : "اختر ما تريد البحث عنه ",
+  "startSearch" : "ابدأ البحث الان ",
+  "Favourite" : "المفضله",
+  "AddedToFavourite" : "اضاف للمفضله",
+  "FailedToAddToFavourite" : "فشل في الاضافه",
+  "RemovedFromFavourite" : "مسح من المفضله",
+  "UpcomingEventsAppbar":"الاحداث القادمه",
+  "FullMenu":"قائمة الطعام"
+
+
+
+
+
+}

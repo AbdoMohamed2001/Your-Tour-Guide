@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">YourTourGuide</string>
+    <string name="facebook_app_id">744675804206032</string>
+    <string name="facebook_client_token">14a415ceec07001be8d4a02c6b0b1811</string>
+    <string name="fb_login_protocol_scheme">fb6b8ab79a2fe458d11212896753ceff0a</string>
+
+</resources>
+
+
