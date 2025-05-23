@@ -1,11 +1,12 @@
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:your_tour_guide/add_field_to_all_documents_function.dart';
 import 'package:your_tour_guide/app_locale.dart';
+import 'package:your_tour_guide/core/data/repos/places_repo.dart';
 import 'package:your_tour_guide/core/services/cacheHelper.dart';
 import 'package:your_tour_guide/cubits/home/home_cubit.dart';
 import 'package:your_tour_guide/generated/l10n.dart';
-import 'package:your_tour_guide/screens/homePage/main_view.dart';
-import 'package:your_tour_guide/screens/homePage/welcome_view.dart';
+import 'package:your_tour_guide/features/nav_bar/presentation/views/main_view.dart';
+import 'package:your_tour_guide/features/splash/presentation/views/welcome_view.dart';
 import 'package:your_tour_guide/simple_bloc_observer.dart';
 import 'package:your_tour_guide/theme_class.dart';
 import 'package:device_preview/device_preview.dart';
@@ -16,6 +17,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
+import 'core/services/get_it_services_locator.dart';
 import 'firebase_options.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 
@@ -25,7 +27,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-
+  setupGetIt();
   runApp(
     DevicePreview(
       // enabled: !kReleaseMode,
@@ -45,7 +47,7 @@ class MyApp extends StatelessWidget {
         SystemUiOverlayStyle(statusBarColor: Colors.transparent));
     Bloc.observer = SimpleBlocObserver();
     return BlocProvider(
-      create: (context) => HomeCubit()
+      create: (context) => HomeCubit(getIt.get<PlacesRepo>())
         ..getSavedTheme()
         ..getSavedLanguage(),
       child: StreamProvider<InternetConnectionStatus>(

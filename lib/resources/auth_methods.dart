@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:your_tour_guide/components.dart';
 import 'package:your_tour_guide/resources/storage_methods.dart';
-import 'package:your_tour_guide/screens/homePage/main_view.dart';
+import 'package:your_tour_guide/features/nav_bar/presentation/views/main_view.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';

@@ -4,7 +4,7 @@ import 'package:your_tour_guide/features/auth/presentation/views/login_view.dart
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../../features/auth/presentation/views/register_view.dart';
+import '../../../auth/presentation/views/register_view.dart';
 
 class WelcomeView extends StatelessWidget {
   static String id = 'welcome';

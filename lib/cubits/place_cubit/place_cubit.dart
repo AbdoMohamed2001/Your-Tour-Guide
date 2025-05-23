@@ -3,7 +3,7 @@ import 'package:your_tour_guide/generated/l10n.dart';
 import 'package:your_tour_guide/models/cinema_model.dart';
 import 'package:your_tour_guide/models/mall_model.dart';
 import 'package:your_tour_guide/models/mosque_model.dart';
-import 'package:your_tour_guide/models/place_model.dart';
+import 'package:your_tour_guide/core/data/models/place_model.dart';
 import 'package:your_tour_guide/models/restaurant_model.dart';
 import 'package:your_tour_guide/models/tour_model.dart';
 import 'package:your_tour_guide/utils/utils.dart';
@@ -24,7 +24,7 @@ class PlaceCubit extends Cubit<PlaceState> {
   PlaceCubit() : super(PlaceInitial());
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  late var likedKey ;
+  late var likedKey;
   bool likedValue = false;
   final storage = FirebaseStorage.instance;
   final dataKey = new GlobalKey();
@@ -44,7 +44,7 @@ class PlaceCubit extends Cubit<PlaceState> {
   bool isNameSelected = true;
   bool isCitySelected = false;
 
-  void changeToName()  {
+  void changeToName() {
     isArabic() ? orderArabic = 'nameArabic' : order = 'name';
     isStarsSelected = false;
     isRateSelected = false;
@@ -53,7 +53,8 @@ class PlaceCubit extends Cubit<PlaceState> {
 
     emit(HotelChangeOrderBy());
   }
-  void changeToRate()  {
+
+  void changeToRate() {
     isArabic() ? orderArabic = 'rate' : order = 'rate';
     isStarsSelected = false;
     isRateSelected = true;
@@ -62,7 +63,8 @@ class PlaceCubit extends Cubit<PlaceState> {
 
     emit(HotelChangeOrderBy());
   }
-  void changeToStars()  {
+
+  void changeToStars() {
     isArabic() ? orderArabic = 'stars' : order = 'stars';
     isStarsSelected = true;
     isRateSelected = false;
@@ -71,7 +73,8 @@ class PlaceCubit extends Cubit<PlaceState> {
 
     emit(HotelChangeOrderBy());
   }
-  void changeToCity()  {
+
+  void changeToCity() {
     isArabic() ? orderArabic = 'cityNameArabic' : order = 'cityName';
     isStarsSelected = false;
     isRateSelected = false;
@@ -80,6 +83,7 @@ class PlaceCubit extends Cubit<PlaceState> {
 
     emit(HotelChangeOrderBy());
   }
+
   //-------------------Place Var------------------------------------
   bool isServicesNameSelected = true;
   bool isServicesRateSelected = false;
@@ -87,11 +91,12 @@ class PlaceCubit extends Cubit<PlaceState> {
 
   String servicesOrder = 'cityName';
   String servicesOrderArabic = 'cityNameArabic';
-  void changeServicesOrder(){
+  void changeServicesOrder() {
     isDescending = !isDescending;
     emit(HotelChangeOrder());
   }
-  void changeServicesToName()  {
+
+  void changeServicesToName() {
     isArabic() ? servicesOrderArabic = 'nameArabic' : servicesOrder = 'name';
     isServicesNameSelected = true;
     isServicesRateSelected = false;
@@ -99,22 +104,24 @@ class PlaceCubit extends Cubit<PlaceState> {
     emit(HotelChangeOrderBy());
     print('this is services order arabic $servicesOrderArabic');
   }
-  void changeServicesToRate()  {
+
+  void changeServicesToRate() {
     isArabic() ? servicesOrderArabic = 'rate' : servicesOrder = 'rate';
     isServicesNameSelected = false;
     isServicesRateSelected = true;
     isServiceCitySelected = false;
     emit(HotelChangeOrderBy());
   }
-  void changeServicesToCity()  {
-    isArabic() ? servicesOrderArabic = 'cityNameArabic' : servicesOrder = 'cityName';
+
+  void changeServicesToCity() {
+    isArabic()
+        ? servicesOrderArabic = 'cityNameArabic'
+        : servicesOrder = 'cityName';
     isServicesNameSelected = false;
     isServicesRateSelected = false;
     isServiceCitySelected = true;
     emit(HotelChangeOrderBy());
   }
-
-
 
   //-------------------Hotel Functions------------------------------------
   void canLaunchUrlFunction() async {
@@ -123,6 +130,7 @@ class PlaceCubit extends Cubit<PlaceState> {
       debugPrint('can lunch function activated');
     });
   }
+
   //------------------------------------------------------
   Future<void> makePhoneCall(String phoneNumber) async {
     final Uri launchUri = Uri(
@@ -140,28 +148,29 @@ class PlaceCubit extends Cubit<PlaceState> {
     bool? likedBool = preferences.getBool(likedKey);
     print('this is liked bool from SharedPref');
     print(likedBool);
-      likedBool == null ? print('null null null null null null null null ') :
-      this.likedValue = likedBool;
+    likedBool == null
+        ? print('null null null null null null null null ')
+        : this.likedValue = likedBool;
     print('restore ended');
     emit(PlaceRestorePersistedPref());
-
   }
+
   //--------------------------------------------------------
-  void changeState(){
+  void changeState() {
     emit(PlaceChangeState());
   }
+
   //--------------------------------------------------------
-  void changeLike(){
+  void changeLike() {
     likedValue = !likedValue;
     emit(PlaceChangeLiked());
   }
+
   //----------------------------------------------------------
-  void changeOrder(){
+  void changeOrder() {
     isDescending = !isDescending;
     emit(HotelChangeOrder());
   }
-
-
 
   //-------------------Favourite Functions------------------------------------
   Future<void> addTourToFavourite({
@@ -172,58 +181,57 @@ class PlaceCubit extends Cubit<PlaceState> {
     emit(PlaceAddedToFavouriteLoading());
     late var currentUser = _auth.currentUser;
     CollectionReference _collectionReference =
-    FirebaseFirestore.instance.collection('favouritePlaces');
+        FirebaseFirestore.instance.collection('favouritePlaces');
     return _collectionReference
         .doc(currentUser!.email)
         .collection('tours')
         .doc(docID)
         .set({
-      "booking"          : tourModel.booking,
-      'description'      : tourModel.description,
+      "booking": tourModel.booking,
+      'description': tourModel.description,
       'descriptionArabic': tourModel.descriptionArabic,
-      'docId'            : tourModel.docId,
-      'duration'         : tourModel.duration,
-      'durationArabic'   : tourModel.durationArabic,
-      'email'            : tourModel.email,
-      'exclusions'  :     tourModel.exclusions,
-      'exclusionsArabic'  :     tourModel.exclusionsArabic,
-      'imageUrl':          tourModel.imageUrl,
-      'images':            tourModel.images,
-      'inclusions'  :          tourModel.inclusions,
+      'docId': tourModel.docId,
+      'duration': tourModel.duration,
+      'durationArabic': tourModel.durationArabic,
+      'email': tourModel.email,
+      'exclusions': tourModel.exclusions,
+      'exclusionsArabic': tourModel.exclusionsArabic,
+      'imageUrl': tourModel.imageUrl,
+      'images': tourModel.images,
+      'inclusions': tourModel.inclusions,
       'inclusionsArabic': tourModel.inclusionsArabic,
       'name': tourModel.name,
       'nameArabic': tourModel.nameArabic,
       'phone': tourModel.phone,
       'pickupFrom': tourModel.pickupFrom,
       'pickupFromArabic ': tourModel.pickupFromArabic,
-      'startPrice'  : tourModel.startPrice,
-      'startPriceArabic'  : tourModel.startPriceArabic,
-      'tourAvailability'  : tourModel.tourAvailability,
-      'tourAvailabilityArabic'  : tourModel.tourAvailabilityArabic,
-      'tourItinerary'  : tourModel.tourItinerary,
-      'tourItineraryArabic'  : tourModel.tourItineraryArabic,
-      'tourLocation'  : tourModel.tourLocation,
-      'tourLocationArabic'  : tourModel.tourLocationArabic,
-      'tourType'  : tourModel.tourType,
-      'tourTypeArabic'  : tourModel.tourTypeArabic,
-      'tripOrganizer'  : tourModel.tripOrganizer,
-      'tripOrganizerArabic'  : tourModel.tripOrganizerArabic,
-      'tripOrganizerLogo'  : tourModel.tripOrganizerLogo,
-      'type'  : tourModel.type,
-      'website'  : tourModel.website,
-
+      'startPrice': tourModel.startPrice,
+      'startPriceArabic': tourModel.startPriceArabic,
+      'tourAvailability': tourModel.tourAvailability,
+      'tourAvailabilityArabic': tourModel.tourAvailabilityArabic,
+      'tourItinerary': tourModel.tourItinerary,
+      'tourItineraryArabic': tourModel.tourItineraryArabic,
+      'tourLocation': tourModel.tourLocation,
+      'tourLocationArabic': tourModel.tourLocationArabic,
+      'tourType': tourModel.tourType,
+      'tourTypeArabic': tourModel.tourTypeArabic,
+      'tripOrganizer': tourModel.tripOrganizer,
+      'tripOrganizerArabic': tourModel.tripOrganizerArabic,
+      'tripOrganizerLogo': tourModel.tripOrganizerLogo,
+      'type': tourModel.type,
+      'website': tourModel.website,
     }).then((value) {
       iconColor = Colors.red;
       showToast(msg: S.of(context).AddedToFavourite);
       emit(PlaceAddedToFavouriteSuccess());
       iconColor = Colors.red;
-    }  ).onError((error, stackTrace) {
+    }).onError((error, stackTrace) {
       showToast(msg: 'Failed to add to favourite');
       emit(PlaceAddedToFavouriteFailure(error.toString()));
       debugPrint(error.toString());
-
     });
   }
+
   //----------------------------------------------------------
   Future<void> addPlaceToFavourite({
     required PlaceModel placeModel,
@@ -233,7 +241,7 @@ class PlaceCubit extends Cubit<PlaceState> {
     emit(PlaceAddedToFavouriteLoading());
     late var currentUser = _auth.currentUser;
     CollectionReference _collectionReference =
-    FirebaseFirestore.instance.collection('favouritePlaces');
+        FirebaseFirestore.instance.collection('favouritePlaces');
     return _collectionReference
         .doc(currentUser!.email)
         .collection('places')
@@ -245,11 +253,11 @@ class PlaceCubit extends Cubit<PlaceState> {
       'cityNameArabic': placeModel.cityNameArabic,
       'description': placeModel.description,
       'descriptionArabic': placeModel.descriptionArabic,
-      'docId'  : placeModel.docId,
+      'docId': placeModel.docId,
       'imageUrl': placeModel.imageUrl,
       'images': placeModel.images,
-      'includeTour'  : placeModel.includeTour,
-      'isBest'  : placeModel.isBest,
+      'includeTour': placeModel.includeTour,
+      'isBest': placeModel.isBest,
       'mapUrl': placeModel.mapUrl,
       'metroImageUrl': placeModel.metroImageUrl,
       'name': placeModel.name,
@@ -259,21 +267,21 @@ class PlaceCubit extends Cubit<PlaceState> {
       'rate': placeModel.rate,
       'tickets': placeModel.tickets,
       'ticketsArabic': placeModel.ticketsArabic,
-      'tourDocId'  : placeModel.tourDocId,
-      'transport'  : placeModel.transport,
-      'transportArabic'  : placeModel.transportArabic,
+      'tourDocId': placeModel.tourDocId,
+      'transport': placeModel.transport,
+      'transportArabic': placeModel.transportArabic,
     }).then((value) {
       iconColor = Colors.red;
       showToast(msg: S.of(context).AddedToFavourite);
       emit(PlaceAddedToFavouriteSuccess());
       iconColor = Colors.red;
-    }  ).onError((error, stackTrace) {
+    }).onError((error, stackTrace) {
       showToast(msg: 'Failed to add to favourite');
       emit(PlaceAddedToFavouriteFailure(error.toString()));
       debugPrint(error.toString());
-
     });
   }
+
   //----------------------------------------------------------
   Future<void> addRestaurantToFavourite({
     required RestaurantModel restaurantModel,
@@ -284,7 +292,7 @@ class PlaceCubit extends Cubit<PlaceState> {
     emit(PlaceAddedToFavouriteLoading());
     late var currentUser = _auth.currentUser;
     CollectionReference _collectionReference =
-    FirebaseFirestore.instance.collection('favouritePlaces');
+        FirebaseFirestore.instance.collection('favouritePlaces');
     return _collectionReference
         .doc(currentUser!.email)
         .collection(collectionName)
@@ -294,7 +302,7 @@ class PlaceCubit extends Cubit<PlaceState> {
       "addressArabic": restaurantModel.addressArabic,
       'cityName': restaurantModel.cityName,
       'cityNameArabic': restaurantModel.cityNameArabic,
-      'docId'  : restaurantModel.docId,
+      'docId': restaurantModel.docId,
       'email': restaurantModel.email,
       'imageUrl': restaurantModel.imageUrl,
       'images': restaurantModel.images,
@@ -308,19 +316,18 @@ class PlaceCubit extends Cubit<PlaceState> {
       'openingHoursArabic': restaurantModel.openingHoursArabic,
       'phone': restaurantModel.phone,
       'rate': restaurantModel.rate,
-
     }).then((value) {
       iconColor = Colors.red;
       showToast(msg: S.of(context).AddedToFavourite);
       emit(PlaceAddedToFavouriteSuccess());
       iconColor = Colors.red;
-    }  ).onError((error, stackTrace) {
+    }).onError((error, stackTrace) {
       showToast(msg: 'Failed to add to favourite');
       emit(PlaceAddedToFavouriteFailure(error.toString()));
       debugPrint(error.toString());
-
     });
   }
+
   //----------------------------------------------------------
   Future<void> addMallToFavourite({
     required MallModel mallModel,
@@ -331,7 +338,7 @@ class PlaceCubit extends Cubit<PlaceState> {
     emit(PlaceAddedToFavouriteLoading());
     late var currentUser = _auth.currentUser;
     CollectionReference _collectionReference =
-    FirebaseFirestore.instance.collection('favouritePlaces');
+        FirebaseFirestore.instance.collection('favouritePlaces');
     return _collectionReference
         .doc(currentUser!.email)
         .collection(collectionName)
@@ -343,7 +350,7 @@ class PlaceCubit extends Cubit<PlaceState> {
       'cityNameArabic': mallModel.cityNameArabic,
       'description': mallModel.description,
       'descriptionArabic': mallModel.descriptionArabic,
-      'docId'  : mallModel.docId,
+      'docId': mallModel.docId,
       'imageUrl': mallModel.imageUrl,
       'images': mallModel.images,
       'mapUrl': mallModel.mapUrl,
@@ -352,19 +359,18 @@ class PlaceCubit extends Cubit<PlaceState> {
       'openingHours': mallModel.openingHours,
       'openingHoursArabic': mallModel.openingHoursArabic,
       'rate': mallModel.rate,
-
     }).then((value) {
       iconColor = Colors.red;
       showToast(msg: S.of(context).AddedToFavourite);
       emit(PlaceAddedToFavouriteSuccess());
       iconColor = Colors.red;
-    }  ).onError((error, stackTrace) {
+    }).onError((error, stackTrace) {
       showToast(msg: 'Failed to add to favourite');
       emit(PlaceAddedToFavouriteFailure(error.toString()));
       debugPrint(error.toString());
-
     });
   }
+
   //--------------------------------------------------------
   Future<void> addMosqueToFavourite({
     required MosqueModel mosqueModel,
@@ -375,7 +381,7 @@ class PlaceCubit extends Cubit<PlaceState> {
     emit(PlaceAddedToFavouriteLoading());
     late var currentUser = _auth.currentUser;
     CollectionReference _collectionReference =
-    FirebaseFirestore.instance.collection('favouritePlaces');
+        FirebaseFirestore.instance.collection('favouritePlaces');
     return _collectionReference
         .doc(currentUser!.email)
         .collection(collectionName)
@@ -387,7 +393,7 @@ class PlaceCubit extends Cubit<PlaceState> {
       'cityNameArabic': mosqueModel.cityNameArabic,
       'description': mosqueModel.description,
       'descriptionArabic': mosqueModel.descriptionArabic,
-      'docId'  : mosqueModel.docId,
+      'docId': mosqueModel.docId,
       'imageUrl': mosqueModel.imageUrl,
       'images': mosqueModel.images,
       'mapUrl': mosqueModel.mapUrl,
@@ -396,17 +402,15 @@ class PlaceCubit extends Cubit<PlaceState> {
       'openingHours': mosqueModel.openingHours,
       'openingHoursArabic': mosqueModel.openingHoursArabic,
       'rate': mosqueModel.rate,
-
     }).then((value) {
       iconColor = Colors.red;
       showToast(msg: S.of(context).AddedToFavourite);
       emit(PlaceAddedToFavouriteSuccess());
       iconColor = Colors.red;
-    }  ).onError((error, stackTrace) {
+    }).onError((error, stackTrace) {
       showToast(msg: 'Failed to add to favourite');
       emit(PlaceAddedToFavouriteFailure(error.toString()));
       debugPrint(error.toString());
-
     });
   }
 
@@ -419,7 +423,7 @@ class PlaceCubit extends Cubit<PlaceState> {
     emit(PlaceAddedToFavouriteLoading());
     late var currentUser = _auth.currentUser;
     CollectionReference _collectionReference =
-    FirebaseFirestore.instance.collection('favouritePlaces');
+        FirebaseFirestore.instance.collection('favouritePlaces');
     return _collectionReference
         .doc(currentUser!.email)
         .collection('cinemas')
@@ -449,13 +453,13 @@ class PlaceCubit extends Cubit<PlaceState> {
       showToast(msg: S.of(context).AddedToFavourite);
       emit(PlaceAddedToFavouriteSuccess());
       iconColor = Colors.red;
-    }  ).onError((error, stackTrace) {
+    }).onError((error, stackTrace) {
       showToast(msg: 'Failed to add to favourite');
       emit(PlaceAddedToFavouriteFailure(error.toString()));
       debugPrint(error.toString());
-
     });
   }
+
   //
   //----------------------------------------------------------
   Future<void> addHotelToFavourite({
@@ -466,7 +470,7 @@ class PlaceCubit extends Cubit<PlaceState> {
     emit(PlaceAddedToFavouriteLoading());
     late var currentUser = _auth.currentUser;
     CollectionReference _collectionReference =
-    FirebaseFirestore.instance.collection('favouritePlaces');
+        FirebaseFirestore.instance.collection('favouritePlaces');
     return _collectionReference
         .doc(currentUser!.email)
         .collection('hotels')
@@ -482,7 +486,7 @@ class PlaceCubit extends Cubit<PlaceState> {
       'cityNameArabic': hotelModel.cityNameArabic,
       'distanceTo': hotelModel.distanceTo,
       'distanceToArabic': hotelModel.distanceToArabic,
-      'docId'  : hotelModel.docId,
+      'docId': hotelModel.docId,
       "email": hotelModel.email,
       "features": hotelModel.features,
       "featuresArabic": hotelModel.featuresArabic,
@@ -504,17 +508,15 @@ class PlaceCubit extends Cubit<PlaceState> {
       'socialMedia': hotelModel.socialMedia,
       'stars': hotelModel.stars,
       'webSite': hotelModel.webSite,
-
     }).then((value) {
       iconColor = Colors.red;
       showToast(msg: S.of(context).AddedToFavourite);
       emit(PlaceAddedToFavouriteSuccess());
       iconColor = Colors.red;
-    }  ).onError((error, stackTrace) {
+    }).onError((error, stackTrace) {
       showToast(msg: 'Failed to add to favourite');
       emit(PlaceAddedToFavouriteFailure(error.toString()));
       debugPrint(error.toString());
-
     });
   }
 
@@ -527,14 +529,14 @@ class PlaceCubit extends Cubit<PlaceState> {
     emit(PlaceDeleteFromFavouriteLoading());
     late var currentUser = _auth.currentUser;
     CollectionReference _collectionReference =
-    FirebaseFirestore.instance.collection('favouritePlaces');
+        FirebaseFirestore.instance.collection('favouritePlaces');
     return _collectionReference
         .doc(currentUser!.email)
         .collection('places')
         .doc(docID)
         .delete()
         .then((value) {
-      showToast(msg:S.of(context).RemovedFromFavourite);
+      showToast(msg: S.of(context).RemovedFromFavourite);
       iconColor = Colors.white;
       emit(PlaceDeleteFromFavouriteSuccess());
       iconColor = Colors.white;
@@ -544,5 +546,4 @@ class PlaceCubit extends Cubit<PlaceState> {
     });
   }
 //--------------------------------------------------------
-
 }

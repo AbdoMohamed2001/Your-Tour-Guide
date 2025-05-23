@@ -1,22 +1,45 @@
+import 'package:your_tour_guide/core/data/repos/places_repo.dart';
+import 'package:your_tour_guide/core/domain/entities/place_entity.dart';
 import 'package:your_tour_guide/core/services/cacheHelper.dart';
-import 'package:your_tour_guide/screens/bottomNavScreens/favourite/all_favourite.dart';
-import 'package:your_tour_guide/screens/bottomNavScreens/home_screen_nav_bar.dart';
-import 'package:your_tour_guide/screens/bottomNavScreens/profile/profile_view.dart';
-import 'package:your_tour_guide/screens/bottomNavScreens/search_view.dart';
+import 'package:your_tour_guide/features/nav_bar/presentation/views/home_view.dart';
+import 'package:your_tour_guide/features/nav_bar/presentation/views/search_view.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import '../../features/nav_bar/presentation/views/favourite/all_favourite.dart';
+import '../../features/nav_bar/presentation/views/profile/profile_view.dart';
 
 part 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
-  HomeCubit() : super(HomeInitial());
+  HomeCubit(this.placeRepo) : super(HomeInitial());
+
   static HomeCubit get(context) => BlocProvider.of(context);
+  final PlacesRepo placeRepo;
+
+//-----------------------Get Featured Places ----------------------------------------------
+  List<PlaceEntity> featuredPlaces = [];
+  getFeaturedPlaces() async {
+    emit(HomeGetFeaturedPlacesLoading());
+    var result = await placeRepo.getFeaturedPlaces();
+    result.fold(
+      (failure) {
+        emit(HomeGetFeaturedPlacesFailure(message: failure.message));
+      },
+      (places) {
+        featuredPlaces = places;
+        emit(HomeGetFeaturedPlacesSuccess(places: places));
+      },
+    );
+  }
+
 //---------------------------------------------------------------------
+
   Locale? locale;
+
   void getSavedLanguage() {
     final cachedLanguageCode = CacheData.getCachedLanguage();
     locale = Locale(cachedLanguageCode);
@@ -31,6 +54,7 @@ class HomeCubit extends Cubit<HomeState> {
 
   //---------------------------------------------------------------------
   int currentIndex = 0;
+
   void changeIndex(index) {
     currentIndex = index;
     emit(HomeChangeIndexState());
@@ -41,15 +65,10 @@ class HomeCubit extends Cubit<HomeState> {
 
   Future<void> changeThemeMode(bool isDarkk) async {
     isDark = isDarkk;
-    debugPrint('this is old isDark value before change $isDark');
     isDark = !isDark!;
-    debugPrint('this is new isDark value before change $isDark');
-
     bool savedValue = isDark!;
     isDark = savedValue;
     await CacheData.cacheTheme(savedValue);
-    print('this is saved value in shared pref : $savedValue');
-    print('This is isDark value after changed $isDark');
     emit(HomeChangeTheme());
   }
 
@@ -84,8 +103,7 @@ class HomeCubit extends Cubit<HomeState> {
   static String collectionName = '';
   static String? collectionNameAfter;
   final List<Widget> pages = [
-    HomeNavBarView(
-      currentIndex: 0,
+    HomeView(
       documentId: '',
     ),
     SearchView(),
@@ -130,6 +148,7 @@ class HomeCubit extends Cubit<HomeState> {
     // S.current.cities,
     // S.current.Restaurants,
   ];
+
   void changeCollectionName(int index) {
     collectionName = searchAbout[index];
     collectionNameAfter = collectionName;

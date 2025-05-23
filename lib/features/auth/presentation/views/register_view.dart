@@ -1,7 +1,7 @@
 import 'package:your_tour_guide/components.dart';
 import 'package:your_tour_guide/constants.dart';
 import 'package:your_tour_guide/generated/l10n.dart';
-import 'package:your_tour_guide/screens/homePage/main_view.dart';
+import 'package:your_tour_guide/features/nav_bar/presentation/views/main_view.dart';
 import 'package:your_tour_guide/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

@@ -1,7 +1,7 @@
 import 'package:your_tour_guide/models/cinema_model.dart';
 import 'package:your_tour_guide/models/hotel_model.dart';
 import 'package:your_tour_guide/models/mall_model.dart';
-import 'package:your_tour_guide/models/place_model.dart';
+import 'package:your_tour_guide/core/data/models/place_model.dart';
 import 'package:your_tour_guide/models/restaurant_model.dart';
 import 'package:your_tour_guide/models/tour_model.dart';
 import 'package:your_tour_guide/screens/places/place_screen_new.dart';
@@ -17,11 +17,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import '../../servicesProvider/malls, mosques and churchs/mall_screen.dart';
+import '../../../../../screens/servicesProvider/malls, mosques and churchs/mall_screen.dart';
 
-
-class FavouriteScreen extends StatelessWidget {
-  const FavouriteScreen({
+class FavouriteView extends StatelessWidget {
+  const FavouriteView({
     Key? key,
     required this.collectionName,
     required this.appBarText,
@@ -61,21 +60,17 @@ class FavouriteScreen extends StatelessWidget {
                   child: Text('data is null'),
                 ),
               );
-            }
-            else if (!snapshot.hasData) {
+            } else if (!snapshot.hasData) {
               return Text('no data');
-            }
-            else if (snapshot.hasError) {
+            } else if (snapshot.hasError) {
               return Text('Something went wrong');
-            }
-            else if (snapshot.connectionState == ConnectionState.waiting) {
+            } else if (snapshot.connectionState == ConnectionState.waiting) {
               return Center(
                 child: CircularProgressIndicator(
                   color: Colors.orange,
                 ),
               );
-            }
-            else if (snapshot.hasData) {
+            } else if (snapshot.hasData) {
               //-------------------------------------------------------------------------
               if (collectionName == 'places') {
                 List<PlaceModel> placeListt = [];
@@ -93,7 +88,7 @@ class FavouriteScreen extends StatelessWidget {
                 }
               }
               //-------------------------------------------------------------------------
-              else if(collectionName == 'hotels'){
+              else if (collectionName == 'hotels') {
                 List<HotelModel> hotelListt = [];
                 for (int i = 0; i < snapshot.data!.docs.length; i++) {
                   hotelListt.add(HotelModel.fromJson(snapshot.data!.docs[i]));
@@ -101,15 +96,19 @@ class FavouriteScreen extends StatelessWidget {
                 }
               }
               //-------------------------------------------------------------------------
-              else if(collectionName == 'restaurants' || collectionName == 'cafes'){
+              else if (collectionName == 'restaurants' ||
+                  collectionName == 'cafes') {
                 List<RestaurantModel> restaurantsListt = [];
                 for (int i = 0; i < snapshot.data!.docs.length; i++) {
-                  restaurantsListt.add(RestaurantModel.fromJson(snapshot.data!.docs[i]));
+                  restaurantsListt
+                      .add(RestaurantModel.fromJson(snapshot.data!.docs[i]));
                   restaurantsList = restaurantsListt;
                 }
               }
               //-------------------------------------------------------------------------
-              else if(collectionName == 'malls' || collectionName == 'mosques' || collectionName == 'churches'){
+              else if (collectionName == 'malls' ||
+                  collectionName == 'mosques' ||
+                  collectionName == 'churches') {
                 List<MallModel> mallListt = [];
                 for (int i = 0; i < snapshot.data!.docs.length; i++) {
                   mallListt.add(MallModel.fromJson(snapshot.data!.docs[i]));
@@ -117,10 +116,11 @@ class FavouriteScreen extends StatelessWidget {
                 }
               }
               //-------------------------------------------------------------------------
-              else if(collectionName == 'cinemas'){
+              else if (collectionName == 'cinemas') {
                 List<CinemaModel> cinemasListt = [];
                 for (int i = 0; i < snapshot.data!.docs.length; i++) {
-                  cinemasListt.add(CinemaModel.fromJson(snapshot.data!.docs[i]));
+                  cinemasListt
+                      .add(CinemaModel.fromJson(snapshot.data!.docs[i]));
                   cinemaList = cinemasListt;
                 }
               }
@@ -129,55 +129,56 @@ class FavouriteScreen extends StatelessWidget {
                 itemBuilder: (context, int index) => BuildFavouriteItem(
                   pushedPage: collectionName == 'places'
                       ? PlaceScreenNew(
-                    docID: allDocs[index].id,
-                    placeModel: placeList![index],
-                  )
+                          docID: allDocs[index].id,
+                          placeModel: placeList![index],
+                        )
                       :
-                  //-----------------------------------------------------------------
-                  collectionName == 'tours'
-                      ? TourScreenNeew(
-                    docID: allDocs[index].id,
-                    placeModel: tourList![index],
-                  )
-                      :
-                  //-----------------------------------------------------------------
-                  collectionName == 'hotels'
-                      ? HotelScreen(
-                    docID: allDocs[index].id,
-                    hotelModel: hotelList![index],
-                  )
-                      :
-                  //-----------------------------------------------------------------
-                  collectionName == 'TourGuides'
-                      ? TourGuideScreen(
-                    tourGuideData: allDocs,
-                    currentIndex: index,
-                  )
-                      :
-                  //-----------------------------------------------------------------
-                  collectionName == 'restaurants' ||
-                      collectionName == 'cafes'
-                      ? RestaurantScreen(
-                    collectionName: collectionName,
-                     docID: allDocs[index].id,
-                    restaurantModel: restaurantsList![index],
-                  )
-                      :
-                  //-----------------------------------------------------------------
-                  collectionName == 'malls' ||
-                      collectionName == 'mosques' ||
-                      collectionName == 'churches'
-                      ? MallNewScreen(
-                    docID: allDocs[index].id,
-                    collectionName: collectionName,
-                    mallModel: mallList![index],
-                  )
-                      :
-                  //-----------------------------------------------------------------
-                  CinemaScreen(
-                    cinemaModel: cinemaList![index],
-                    docID: allDocs[index].id,
-                  ),
+                      //-----------------------------------------------------------------
+                      collectionName == 'tours'
+                          ? TourScreenNeew(
+                              docID: allDocs[index].id,
+                              placeModel: tourList![index],
+                            )
+                          :
+                          //-----------------------------------------------------------------
+                          collectionName == 'hotels'
+                              ? HotelScreen(
+                                  docID: allDocs[index].id,
+                                  hotelModel: hotelList![index],
+                                )
+                              :
+                              //-----------------------------------------------------------------
+                              collectionName == 'TourGuides'
+                                  ? TourGuideScreen(
+                                      tourGuideData: allDocs,
+                                      currentIndex: index,
+                                    )
+                                  :
+                                  //-----------------------------------------------------------------
+                                  collectionName == 'restaurants' ||
+                                          collectionName == 'cafes'
+                                      ? RestaurantScreen(
+                                          collectionName: collectionName,
+                                          docID: allDocs[index].id,
+                                          restaurantModel:
+                                              restaurantsList![index],
+                                        )
+                                      :
+                                      //-----------------------------------------------------------------
+                                      collectionName == 'malls' ||
+                                              collectionName == 'mosques' ||
+                                              collectionName == 'churches'
+                                          ? MallNewScreen(
+                                              docID: allDocs[index].id,
+                                              collectionName: collectionName,
+                                              mallModel: mallList![index],
+                                            )
+                                          :
+                                          //-----------------------------------------------------------------
+                                          CinemaScreen(
+                                              cinemaModel: cinemaList![index],
+                                              docID: allDocs[index].id,
+                                            ),
                   allDocs: allDocs,
                   index: index,
                 ),
@@ -236,17 +237,17 @@ class BuildFavouriteItem extends StatelessWidget {
               ),
               Positioned(
                 top: 145,
-
-                left: isArabic() ? null: 15,
-                right: isArabic() ? 15: null,
+                left: isArabic() ? null : 15,
+                right: isArabic() ? 15 : null,
                 child: BorderedText(
                   strokeColor: Colors.black,
                   strokeWidth: 2,
                   strokeCap: StrokeCap.butt,
                   strokeJoin: StrokeJoin.bevel,
                   child: Text(
-                    isArabic() ? allDocs![index]['nameArabic']:
-                    '${allDocs?[index]['name']}',
+                    isArabic()
+                        ? allDocs![index]['nameArabic']
+                        : '${allDocs?[index]['name']}',
                     maxLines: 2,
                     style: TextStyle(
                       fontSize: 25,
@@ -263,4 +264,3 @@ class BuildFavouriteItem extends StatelessWidget {
     );
   }
 }
-

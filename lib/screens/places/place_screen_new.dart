@@ -2,7 +2,7 @@ import 'package:your_tour_guide/core/services/cacheHelper.dart';
 import 'package:your_tour_guide/constants.dart';
 import 'package:your_tour_guide/cubits/place_cubit/place_cubit.dart';
 import 'package:your_tour_guide/generated/l10n.dart';
-import 'package:your_tour_guide/models/place_model.dart';
+import 'package:your_tour_guide/core/data/models/place_model.dart';
 import 'package:your_tour_guide/models/tour_model.dart';
 import 'package:your_tour_guide/screens/all_screen.dart';
 import 'package:your_tour_guide/screens/servicesProvider/hotels/all_hotels_screen.dart';

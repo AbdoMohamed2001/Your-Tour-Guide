@@ -1,6 +1,6 @@
 import 'package:your_tour_guide/models/cinema_model.dart';
 import 'package:your_tour_guide/models/mall_model.dart';
-import 'package:your_tour_guide/models/place_model.dart';
+import 'package:your_tour_guide/core/data/models/place_model.dart';
 import 'package:your_tour_guide/models/restaurant_model.dart';
 import 'package:your_tour_guide/screens/places/place_screen_new.dart';
 import 'package:your_tour_guide/screens/servicesProvider/cinemas/cinema_screen.dart';
@@ -13,7 +13,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import '../../utils/utils.dart';
-
 
 class AllPlaces extends StatelessWidget {
   AllPlaces({
@@ -30,7 +29,7 @@ class AllPlaces extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     CollectionReference collectionReference =
-    FirebaseFirestore.instance.collection(collectionName);
+        FirebaseFirestore.instance.collection(collectionName);
     List<PlaceModel>? placeList;
     List<RestaurantModel>? restaurantsList;
     List<MallModel>? mallList;
@@ -41,8 +40,9 @@ class AllPlaces extends StatelessWidget {
         leading: CustomAppBarIconButton(),
       ),
       body: FutureBuilder<QuerySnapshot>(
-          future:
-          collectionReference.where("isBest" , isEqualTo: isBest && true ).get(),
+          future: collectionReference
+              .where("isBest", isEqualTo: isBest && true)
+              .get(),
           builder: (context, snapshot) {
             final List<QueryDocumentSnapshot>? allDocs = snapshot.data?.docs;
             if (allDocs == null) {
@@ -51,8 +51,7 @@ class AllPlaces extends StatelessWidget {
                   color: Colors.orange,
                 ),
               );
-            }
-            else if (snapshot.connectionState == ConnectionState.done) {
+            } else if (snapshot.connectionState == ConnectionState.done) {
               print('this is collectionName $collectionName');
               //------------------------------------------------------------------------
               if (collectionName == 'places') {
@@ -60,7 +59,6 @@ class AllPlaces extends StatelessWidget {
                 for (int i = 0; i < snapshot.data!.docs.length; i++) {
                   placeListt.add(PlaceModel.fromJson(snapshot.data!.docs[i]));
                   placeList = placeListt;
-
                 }
               }
               //-------------------------------------------------------------------------
@@ -76,9 +74,12 @@ class AllPlaces extends StatelessWidget {
                 }
               }
               //-------------------------------------------------------------------------
-              else if (collectionName == 'malls' || collectionName =='mallsArabic'      ||
-                  collectionName == 'mosques'    ||    collectionName =='mosquesArabic' ||
-                  collectionName == 'churches'   ||    collectionName =='churchesArabic') {
+              else if (collectionName == 'malls' ||
+                  collectionName == 'mallsArabic' ||
+                  collectionName == 'mosques' ||
+                  collectionName == 'mosquesArabic' ||
+                  collectionName == 'churches' ||
+                  collectionName == 'churchesArabic') {
                 List<MallModel> mallListt = [];
                 for (int i = 0; i < snapshot.data!.docs.length; i++) {
                   mallListt.add(MallModel.fromJson(snapshot.data!.docs[i]));
@@ -86,7 +87,8 @@ class AllPlaces extends StatelessWidget {
                 }
               }
               //-------------------------------------------------------------------------
-              else if (collectionName == 'cinemas'|| collectionName =='cinemasArabic') {
+              else if (collectionName == 'cinemas' ||
+                  collectionName == 'cinemasArabic') {
                 List<CinemaModel> cinemasListt = [];
                 for (int i = 0; i < snapshot.data!.docs.length; i++) {
                   cinemasListt
@@ -98,47 +100,51 @@ class AllPlaces extends StatelessWidget {
               return ListView.separated(
                 itemBuilder: (context, index) => BuildAllItem(
                   imageUrl: allDocs[index]['imageUrl'],
-                  itemNameOnFireBase: isArabic()? allDocs[index]['nameArabic']:allDocs[index]['name'],
+                  itemNameOnFireBase: isArabic()
+                      ? allDocs[index]['nameArabic']
+                      : allDocs[index]['name'],
                   index: index,
                   allDocs: allDocs,
                   pushedPage: collectionName == 'places'
                       ? PlaceScreenNew(
-                    docID: allDocs[index].id,
-                    placeModel: placeList![index],
-
-                  )
+                          docID: allDocs[index].id,
+                          placeModel: placeList![index],
+                        )
                       :
-                  //-----------------------------------------------------------------
-                  collectionName == 'TourGuides'
-                      ? TourGuideScreen(
-                    tourGuideData: allDocs,
-                    currentIndex: index,
-                  )
-                      :
-                  //-----------------------------------------------------------------
-                  collectionName == 'restaurants' ||
-                      collectionName == 'cafes'
-                      ? RestaurantScreen(
-                    docID: allDocs[index].id,
-                    restaurantModel: restaurantsList![index],
-                    collectionName: collectionName,
-                  )
-                      :
-                  //-----------------------------------------------------------------
-                  collectionName == 'malls' || collectionName =='mallsArabic'      ||
-                      collectionName == 'mosques'    ||    collectionName =='mosquesArabic' ||
-                      collectionName == 'churches'   ||    collectionName =='churchesArabic'
-                      ? MallNewScreen(
-                    collectionName: collectionName,
-                    docID: allDocs[index].id,
-                    mallModel: mallList![index],
-                  )
-                      :
-                  //-----------------------------------------------------------------
-                  CinemaScreen(
-                    cinemaModel: cinemaList![index],
-                    docID: allDocs[index].id,
-                  ),
+                      //-----------------------------------------------------------------
+                      collectionName == 'TourGuides'
+                          ? TourGuideScreen(
+                              tourGuideData: allDocs,
+                              currentIndex: index,
+                            )
+                          :
+                          //-----------------------------------------------------------------
+                          collectionName == 'restaurants' ||
+                                  collectionName == 'cafes'
+                              ? RestaurantScreen(
+                                  docID: allDocs[index].id,
+                                  restaurantModel: restaurantsList![index],
+                                  collectionName: collectionName,
+                                )
+                              :
+                              //-----------------------------------------------------------------
+                              collectionName == 'malls' ||
+                                      collectionName == 'mallsArabic' ||
+                                      collectionName == 'mosques' ||
+                                      collectionName == 'mosquesArabic' ||
+                                      collectionName == 'churches' ||
+                                      collectionName == 'churchesArabic'
+                                  ? MallNewScreen(
+                                      collectionName: collectionName,
+                                      docID: allDocs[index].id,
+                                      mallModel: mallList![index],
+                                    )
+                                  :
+                                  //-----------------------------------------------------------------
+                                  CinemaScreen(
+                                      cinemaModel: cinemaList![index],
+                                      docID: allDocs[index].id,
+                                    ),
                 ),
                 // itemCount: placeList.length,
                 itemCount: snapshot.data!.docs.length,

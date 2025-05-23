@@ -4,7 +4,7 @@ import 'package:your_tour_guide/cubits/place_cubit/place_cubit.dart';
 import 'package:your_tour_guide/models/cinema_model.dart';
 import 'package:your_tour_guide/models/mall_model.dart';
 import 'package:your_tour_guide/models/mosque_model.dart';
-import 'package:your_tour_guide/models/place_model.dart';
+import 'package:your_tour_guide/core/data/models/place_model.dart';
 import 'package:your_tour_guide/models/restaurant_model.dart';
 import 'package:your_tour_guide/screens/places/place_screen_new.dart';
 import 'package:your_tour_guide/screens/servicesProvider/cinemas/cinema_screen.dart';

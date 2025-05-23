@@ -1,16 +1,14 @@
 import 'package:your_tour_guide/cubits/home/home_cubit.dart';
 import 'package:your_tour_guide/generated/l10n.dart';
-import 'package:your_tour_guide/screens/bottomNavScreens/profile/edit_profile_view.dart';
-import 'package:your_tour_guide/screens/homePage/welcome_view.dart';
-import 'package:your_tour_guide/screens/pofile_image_view.dart';
-import 'package:your_tour_guide/widgets/custom_app_bar.dart';
+import 'package:your_tour_guide/features/splash/presentation/views/welcome_view.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../../../constants.dart';
-import '../../../utils/utils.dart';
+import '../../../../../constants.dart';
+import '../../../../../utils/utils.dart';
+import 'edit_profile_view.dart';
 
 class ProfileView extends StatelessWidget {
   static String id = '  ProfileView';

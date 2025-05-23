@@ -1,6 +1,6 @@
 import 'package:your_tour_guide/constants.dart';
 import 'package:your_tour_guide/generated/l10n.dart';
-import 'package:your_tour_guide/models/place_model.dart';
+import 'package:your_tour_guide/core/data/models/place_model.dart';
 import 'package:your_tour_guide/photo_single_view.dart';
 import 'package:your_tour_guide/utils/utils.dart';
 import 'package:your_tour_guide/widgets/head_text.dart';
@@ -25,13 +25,15 @@ class HowToGoWidget extends StatelessWidget {
           HeadText(text: S.of(context).HowToGo),
           kSizedBox,
           HeadText(text: S.current.metro),
-          SizedBox(height: 5,),
+          SizedBox(
+            height: 5,
+          ),
           Text(
-              isArabic() ? placeModel.transportArabic!['metro']:
-              placeModel.transport!['metro'],
+            isArabic()
+                ? placeModel.transportArabic!['metro']
+                : placeModel.transport!['metro'],
             style: TextStyle(fontSize: 16),
           ),
-
         ],
       ),
     );
