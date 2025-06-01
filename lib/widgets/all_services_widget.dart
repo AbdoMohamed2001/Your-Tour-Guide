@@ -3,20 +3,18 @@ import 'package:your_tour_guide/cubits/home/home_cubit.dart';
 import 'package:your_tour_guide/widgets/deafult_cached_network_image.dart';
 import 'package:your_tour_guide/widgets/location_widget.dart';
 import 'package:bordered_text/bordered_text.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 import '../utils/utils.dart';
 
-class AllServicesWidget extends StatelessWidget {
+class AllFeaturesGridView extends StatelessWidget {
   final List<QueryDocumentSnapshot>? allDocs;
   final int index;
   final Widget pushedPage;
   final String itemNameOnFireBase;
   final String imageUrl;
-  AllServicesWidget({
+  AllFeaturesGridView({
     Key? key,
     required this.index,
     @required this.allDocs,
@@ -45,7 +43,10 @@ class AllServicesWidget extends StatelessWidget {
                 ),
                 Stack(
                   children: [
-                    DefaultCachedNetworkImage(imageUrl: imageUrl, imageHeight: 220,),
+                    DefaultCachedNetworkImage(
+                      imageUrl: imageUrl,
+                      imageHeight: 220,
+                    ),
                     // CachedNetworkImage(
                     //   imageUrl: imageUrl,
                     //   width: double.infinity,
@@ -103,19 +104,19 @@ class AllServicesWidget extends StatelessWidget {
                     Positioned(
                       top: 165,
                       right: isArabic() ? 12 : null,
-                      left:  isArabic() ? null : 12,
+                      left: isArabic() ? null : 12,
                       child: BorderedText(
                         strokeWidth: 4,
-                        strokeColor: HomeCubit.get(context).isDark! ? Colors.black
-                            :Colors.white,
-                        child:
-                        Text(
-                          isArabic() ? allDocs![index]['nameArabic'] :
-                          allDocs![index]['name'],
+                        strokeColor: HomeCubit.get(context).isDark!
+                            ? Colors.black
+                            : Colors.white,
+                        child: Text(
+                          isArabic()
+                              ? allDocs![index]['nameArabic']
+                              : allDocs![index]['name'],
                           style: TextStyle(
                             fontSize: 24,
                             fontWeight: FontWeight.bold,
-
                           ),
                         ),
                       ),
@@ -123,19 +124,19 @@ class AllServicesWidget extends StatelessWidget {
                     Positioned(
                       top: 165,
                       right: isArabic() ? 360 : null,
-                      left:  isArabic() ? null : 360,
+                      left: isArabic() ? null : 360,
                       child: BorderedText(
                         strokeWidth: 4,
-                        strokeColor: HomeCubit.get(context).isDark! ? Colors.black
-                            :Colors.white,
-                        child:
-                        Text(
-                          isArabic() ? allDocs![index]['rate'].toString() :
-                          allDocs![index]['name'],
+                        strokeColor: HomeCubit.get(context).isDark!
+                            ? Colors.black
+                            : Colors.white,
+                        child: Text(
+                          isArabic()
+                              ? allDocs![index]['rate'].toString()
+                              : allDocs![index]['name'],
                           style: TextStyle(
                             fontSize: 24,
                             fontWeight: FontWeight.bold,
-
                           ),
                         ),
                       ),
@@ -151,17 +152,17 @@ class AllServicesWidget extends StatelessWidget {
                   children: [
                     Text(
                       // textAlign: TextAlign.center,
-                      isArabic() ?
-                      '${allDocs![index]['cityNameArabic']}'
-                          :'${allDocs![index]['cityName']}',
+                      isArabic()
+                          ? '${allDocs![index]['cityNameArabic']}'
+                          : '${allDocs![index]['cityName']}',
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-
-                    RateWidget(rate: allDocs![index]['rate'],
-                    starIconIncluded: false,
+                    RateWidget(
+                      rate: allDocs![index]['rate'],
+                      starIconIncluded: false,
                     ),
                   ],
                 ),
@@ -169,17 +170,16 @@ class AllServicesWidget extends StatelessWidget {
                 //address
                 isArabic()
                     ? Align(
-                  alignment: Alignment.centerRight,
-                      child: Text(
-                  allDocs![index]['addressArabic'],
-                ),
-                    )
+                        alignment: Alignment.centerRight,
+                        child: Text(
+                          allDocs![index]['addressArabic'],
+                        ),
+                      )
                     : Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(allDocs![index]['address'])),
+                        alignment: Alignment.centerLeft,
+                        child: Text(allDocs![index]['address'])),
                 kSizedBox,
                 //-------------------------------------------------------------
-
               ],
             ),
           ),
@@ -188,4 +188,3 @@ class AllServicesWidget extends StatelessWidget {
     );
   }
 }
-

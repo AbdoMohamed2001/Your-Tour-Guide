@@ -3,7 +3,7 @@ import 'package:your_tour_guide/cubits/home/home_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class ServiceProviderItem extends StatelessWidget {
+class FeaturesGridViewItem extends StatelessWidget {
   final double? width;
   final double? height;
   final Color boxDecorationColor;
@@ -11,7 +11,7 @@ class ServiceProviderItem extends StatelessWidget {
   final void Function()? onPressed;
   final String fileName;
 
-  ServiceProviderItem({
+  FeaturesGridViewItem({
     Key? key,
     this.height,
     this.width,

@@ -1,9 +1,9 @@
-import 'package:your_tour_guide/models/service_provider_model.dart';
+import 'package:your_tour_guide/models/features_contianer_entity.dart';
 import 'package:your_tour_guide/widgets/services_provider_item.dart';
 import 'package:flutter/material.dart';
 
-class ServicesWidget extends StatelessWidget {
-  const ServicesWidget({
+class FeaturesGridView extends StatelessWidget {
+  const FeaturesGridView({
     super.key,
   });
 
@@ -20,18 +20,18 @@ class ServicesWidget extends StatelessWidget {
         childAspectRatio: 0.65 / .40,
       ),
       itemBuilder: (context, index) {
-        return ServiceProviderItem(
-          fileName: getServicesList(context)[index].fileName,
+        return FeaturesGridViewItem(
+          fileName: getFeaturesList(context)[index].fileName,
           onPressed: () {
             Navigator.push(context, MaterialPageRoute(builder: (context) {
-              return getServicesList(context)[index].pushedPage;
+              return getFeaturesList(context)[index].pushedPage;
             }));
           },
-          boxDecorationColor: getServicesList(context)[index].containerColor,
-          text: getServicesList(context)[index].name,
+          boxDecorationColor: getFeaturesList(context)[index].containerColor,
+          text: getFeaturesList(context)[index].name,
         );
       },
-      itemCount: getServicesList(context).length,
+      itemCount: getFeaturesList(context).length,
     );
   }
 }

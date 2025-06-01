@@ -36,7 +36,7 @@ class HomeCubit extends Cubit<HomeState> {
     );
   }
 
-//---------------------------------------------------------------------
+//---------------------------- language -----------------------------------------
 
   Locale? locale;
 
@@ -52,7 +52,7 @@ class HomeCubit extends Cubit<HomeState> {
     emit(ChangeLocaleState(locale: Locale(languageCode)));
   }
 
-  //---------------------------------------------------------------------
+  //----------------------------- BottomNavBar ----------------------------------------
   int currentIndex = 0;
 
   void changeIndex(index) {
@@ -60,9 +60,8 @@ class HomeCubit extends Cubit<HomeState> {
     emit(HomeChangeIndexState());
   }
 
-  //---------------------------------------------------------------------
+  //------------------------------ Theme ---------------------------------------
   bool? isDark;
-
   Future<void> changeThemeMode(bool isDarkk) async {
     isDark = isDarkk;
     isDark = !isDark!;
@@ -103,9 +102,7 @@ class HomeCubit extends Cubit<HomeState> {
   static String collectionName = '';
   static String? collectionNameAfter;
   final List<Widget> pages = [
-    HomeView(
-      documentId: '',
-    ),
+    HomeView(),
     SearchView(),
     AllFavouriteView(),
     ProfileView(),

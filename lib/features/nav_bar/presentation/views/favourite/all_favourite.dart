@@ -12,21 +12,24 @@ class AllFavouriteView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-        title: S.of(context).Favourite ,
+        title: S.of(context).Favourite,
         leading: IconButton(
-          onPressed: (){
+          onPressed: () {
             HomeCubit.get(context).changeIndex(0);
           },
-          icon:  isArabic()? RotatedBox(
-            quarterTurns: 2,
-            child: Icon(
-              Icons.arrow_back_ios_new_outlined,
-              color: Theme.of(context).primaryColorDark,
-            ),
-          ) :Icon(
-            Icons.arrow_back_ios_new_outlined,
-            color: Theme.of(context).primaryColorDark,
-          ),        ),
+          icon: isArabic()
+              ? RotatedBox(
+                  quarterTurns: 2,
+                  child: Icon(
+                    Icons.arrow_back_ios_new_outlined,
+                    color: Theme.of(context).primaryColorDark,
+                  ),
+                )
+              : Icon(
+                  Icons.arrow_back_ios_new_outlined,
+                  color: Theme.of(context).primaryColorDark,
+                ),
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10.0),
@@ -37,15 +40,10 @@ class AllFavouriteView extends StatelessWidget {
             crossAxisSpacing: 10,
             mainAxisSpacing: 10,
           ),
-          itemBuilder: (context, index) =>
-              BuildFavouriteWidget(index: index),
-          itemCount: BuildFavouriteWidget.listOfItemModel.length,
+          itemBuilder: (context, index) => BuildFavouriteWidget(index: index),
+          itemCount: BuildFavouriteWidget.listOfServicesContainerEntity.length,
         ),
       ),
     );
   }
 }
-
-
-
-

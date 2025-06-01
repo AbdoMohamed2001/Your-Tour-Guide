@@ -7,14 +7,14 @@ import '../screens/tours/all_tours.dart';
 import '../screens/upcomingEvents/all_upcoming.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class ServicesProviderEntity {
+class FeaturesContainerEntity {
   final String name;
   final String fileName;
   final Color containerColor;
   final Widget pushedPage;
   final IconData icon;
 
-  ServicesProviderEntity({
+  FeaturesContainerEntity({
     required this.name,
     required this.containerColor,
     required this.pushedPage,
@@ -23,10 +23,10 @@ class ServicesProviderEntity {
   });
 }
 
-List<ServicesProviderEntity> getServicesList(BuildContext context) {
+List<FeaturesContainerEntity> getFeaturesList(BuildContext context) {
   return [
     //BestPlaces
-    ServicesProviderEntity(
+    FeaturesContainerEntity(
       // containerColor: Color(0xff4d5667),
       // containerColor: Color(0xff19131b),
       name: S.of(context).bestPlaces,
@@ -41,7 +41,7 @@ List<ServicesProviderEntity> getServicesList(BuildContext context) {
       fileName: 'bestPlace',
     ),
     //AllCities
-    ServicesProviderEntity(
+    FeaturesContainerEntity(
       // name: 'AllCities',
       name: S.of(context).AllCities,
       containerColor: Color(0xff613208),
@@ -50,7 +50,7 @@ List<ServicesProviderEntity> getServicesList(BuildContext context) {
       fileName: 'allCities',
     ),
     //Tours
-    ServicesProviderEntity(
+    FeaturesContainerEntity(
       // name: 'ToursAndTrips',
       name: S.of(context).ToursAndTrips,
       containerColor: Color(0xff00478F),
@@ -62,7 +62,7 @@ List<ServicesProviderEntity> getServicesList(BuildContext context) {
       fileName: 'tour',
     ),
     //UpcomingEvent
-    ServicesProviderEntity(
+    FeaturesContainerEntity(
       // name: 'UpcomingEvents',
       name: S.of(context).UpcomingEvents,
       containerColor: Color(0xffd89d27),

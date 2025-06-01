@@ -20,10 +20,8 @@ import 'package:bordered_text/bordered_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 import '../utils/utils.dart';
-import '../widgets/all_services_widget.dart';
 
 class AllScreen extends StatelessWidget {
   AllScreen({
@@ -39,7 +37,6 @@ class AllScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var screenWidth = MediaQuery.of(context).size.width;
     var screenHeight = MediaQuery.of(context).size.height;
     CollectionReference collectionReference =
         FirebaseFirestore.instance.collection(collectionName);
@@ -238,7 +235,7 @@ class AllScreen extends StatelessWidget {
   }
 }
 
-//AllServicesWidget(
+//AllFeaturesGridView(
 //                   imageUrl: allDocs[index]['imageUrl'],
 //                   itemNameOnFireBase: isArabic()? allDocs[index]['nameArabic']:allDocs[index]['name'],
 //                   index: index,
@@ -309,7 +306,6 @@ class BuildAllServicesGridItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var screenWidth = MediaQuery.of(context).size.width;
     var screenHeight = MediaQuery.of(context).size.height;
     return GestureDetector(
       onTap: () {
