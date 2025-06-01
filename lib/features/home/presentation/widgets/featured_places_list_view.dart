@@ -1,5 +1,5 @@
 import 'package:your_tour_guide/core/domain/entities/place_entity.dart';
-import 'package:your_tour_guide/features/home/presentation/widgets/build_travel_place_item.dart';
+import 'package:your_tour_guide/features/home/presentation/widgets/featured_place_item.dart';
 import 'package:flutter/material.dart';
 
 class FeaturedPlacesListView extends StatelessWidget {

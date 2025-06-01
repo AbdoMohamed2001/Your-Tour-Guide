@@ -4,7 +4,6 @@ import 'package:your_tour_guide/cubits/place_cubit/place_cubit.dart';
 import 'package:your_tour_guide/generated/l10n.dart';
 import 'package:your_tour_guide/models/hotel_model.dart';
 import 'package:your_tour_guide/screens/servicesProvider/hotels/hotel_screen.dart';
-import 'package:your_tour_guide/screens/servicesProvider/hotels/widgets/feature_item.dart';
 import 'package:your_tour_guide/widgets/custom_app_bar.dart';
 import 'package:your_tour_guide/widgets/deafult_cached_network_image.dart';
 import 'package:bordered_text/bordered_text.dart';
@@ -86,7 +85,7 @@ class AllHotels extends StatelessWidget {
                           cubit: hotelCubit,
                         ),
                         SizedBox(
-                          height: screenHeight*0.01,
+                          height: screenHeight * 0.01,
                         ),
                         GridView.builder(
                           shrinkWrap: true,
@@ -94,7 +93,7 @@ class AllHotels extends StatelessWidget {
                           gridDelegate:
                               SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2,
-                            mainAxisExtent: screenHeight*0.562,
+                            mainAxisExtent: screenHeight * 0.562,
                             mainAxisSpacing: 6,
                           ),
                           itemBuilder: (_, index) => BuildHotelGridItem(
@@ -164,7 +163,7 @@ class BuildHotelGridItem extends StatelessWidget {
                 children: [
                   DefaultCachedNetworkImage(
                     imageUrl: hotelModel.imageUrl!,
-                    imageHeight: screenHeight*0.42,
+                    imageHeight: screenHeight * 0.42,
                     // imageHeight: 260,
                   ),
                   Positioned(
@@ -235,7 +234,9 @@ class BuildHotelGridItem extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: screenHeight*0.02,),
+            SizedBox(
+              height: screenHeight * 0.02,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
@@ -243,20 +244,19 @@ class BuildHotelGridItem extends StatelessWidget {
                   index: 0,
                   hotelModel: hotelModel,
                   height: 75,
-                  width: screenWidth /9,
+                  width: screenWidth / 9,
                 ),
                 BuildFeatureGridItem(
                   index: 1,
                   hotelModel: hotelModel,
                   height: 75,
-                  width: screenWidth /9,
-
+                  width: screenWidth / 9,
                 ),
                 BuildFeatureGridItem(
                   index: 2,
                   hotelModel: hotelModel,
                   height: 75,
-                  width: screenWidth /9,
+                  width: screenWidth / 9,
                 ),
               ],
             ),
@@ -443,8 +443,6 @@ class BuildHotelGridItem extends StatelessWidget {
 //     );
 //   }
 // }
-
-
 
 //                        // ListView.separated(
 //                         //   shrinkWrap: true,

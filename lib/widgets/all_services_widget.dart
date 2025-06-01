@@ -47,60 +47,6 @@ class AllFeaturesGridView extends StatelessWidget {
                       imageUrl: imageUrl,
                       imageHeight: 220,
                     ),
-                    // CachedNetworkImage(
-                    //   imageUrl: imageUrl,
-                    //   width: double.infinity,
-                    //   height: 200,
-                    //   fit: BoxFit.cover,
-                    //   placeholder: (context, url) =>
-                    //       Center(
-                    //           child: Container(
-                    //               color: Colors.grey,
-                    //               width: double.infinity,
-                    //             height: 200,
-                    //             child: CircularProgressIndicator(
-                    //               color: Colors.orange,
-                    //             ),
-                    //           ),
-                    //
-                    //       ),
-                    //   errorWidget: (context, url, error) => Center(
-                    //     child: Container(
-                    //       color: Colors.grey,
-                    //       width: double.infinity,
-                    //       height: 200,
-                    //       child: CircularProgressIndicator(
-                    //         color: Colors.orange,
-                    //       ),
-                    //     ),
-                    //
-                    //   ),
-                    // ),
-                    // Image(
-                    //   image: NetworkImage('${imageUrl}',
-                    //   ),
-                    //   width: double.infinity,
-                    //   height: 200,
-                    //   fit: BoxFit.cover,
-                    //   loadingBuilder: (context, child, loadingProgress) {
-                    //     if (loadingProgress == null) {
-                    //       return child;
-                    //     } else {
-                    //       return Center(
-                    //         child: Container(
-                    //           width: double.infinity,
-                    //           height: 200,
-                    //           child: Center(
-                    //             child: CircularProgressIndicator(
-                    //               color: Colors.orange,
-                    //             ),
-                    //           ),
-                    //         ),
-                    //       );
-                    //     }
-                    //   },
-                    //
-                    // ),
                     Positioned(
                       top: 165,
                       right: isArabic() ? 12 : null,

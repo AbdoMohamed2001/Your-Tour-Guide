@@ -11,12 +11,14 @@ class FeaturesContainerEntity {
   final Color containerColor;
   final Widget pushedPage;
   final String collectionName;
+  final String appBarTitle;
   FeaturesContainerEntity({
     required this.name,
     required this.containerColor,
     required this.pushedPage,
     required this.fileName,
     required this.collectionName,
+    required this.appBarTitle,
   });
 }
 
@@ -34,34 +36,39 @@ List<FeaturesContainerEntity> getFeaturesList(BuildContext context) {
       // ),
       fileName: 'bestPlace',
       collectionName: 'places',
+      appBarTitle: S.of(context).AllBestPlaces,
     ),
     //AllCities
     FeaturesContainerEntity(
-        // name: 'AllCities',
-        name: S.of(context).AllCities,
-        containerColor: Color(0xff613208),
-        pushedPage: AllCities(),
-        fileName: 'allCities',
-        collectionName: 'cities'),
+      // name: 'AllCities',
+      name: S.of(context).AllCities,
+      containerColor: Color(0xff613208),
+      pushedPage: AllCities(),
+      fileName: 'allCities',
+      collectionName: 'cities',
+      appBarTitle: S.of(context).AllCities,
+    ),
     //Tours
     FeaturesContainerEntity(
       // name: 'ToursAndTrips',
-      name: S.of(context).ToursAndTrips,
-      containerColor: Color(0xff00478F),
-
       // containerColor: Color(0xffD18700),
       // containerColor: Color(0xff613207),
+      name: S.of(context).ToursAndTrips,
+      containerColor: Color(0xff00478F),
       pushedPage: AllTours(),
       fileName: 'tour',
       collectionName: 'Tours',
+      appBarTitle: S.of(context).AllTours,
     ),
     //UpcomingEvent
     FeaturesContainerEntity(
-        // name: 'UpcomingEvents',
-        name: S.of(context).UpcomingEvents,
-        containerColor: Color(0xffd89d27),
-        pushedPage: AllUpcoming(),
-        fileName: 'event',
-        collectionName: 'Events'),
+      // name: 'UpcomingEvents',
+      name: S.of(context).UpcomingEvents,
+      containerColor: Color(0xffd89d27),
+      pushedPage: AllUpcoming(),
+      fileName: 'event',
+      collectionName: 'Events',
+      appBarTitle: S.of(context).UpcomingEventsAppbar,
+    ),
   ];
 }

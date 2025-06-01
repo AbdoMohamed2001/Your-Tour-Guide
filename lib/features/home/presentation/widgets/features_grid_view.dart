@@ -1,4 +1,4 @@
-import 'package:your_tour_guide/features/home/presentation/views/feature_details_view.dart';
+import 'package:your_tour_guide/features/feature_details/presentation/views/feature_details_view.dart';
 import 'package:your_tour_guide/models/features_contianer_entity.dart';
 import 'package:your_tour_guide/features/home/presentation/widgets/features_grid_view_item.dart';
 import 'package:flutter/material.dart';
@@ -23,6 +23,8 @@ class FeaturesGridView extends StatelessWidget {
       itemBuilder: (context, index) {
         return FeaturesGridViewItem(
           fileName: getFeaturesList(context)[index].fileName,
+          boxDecorationColor: getFeaturesList(context)[index].containerColor,
+          text: getFeaturesList(context)[index].name,
           onPressed: () {
             Navigator.push(
               context,
@@ -31,13 +33,12 @@ class FeaturesGridView extends StatelessWidget {
                   return FeatureDetailsView(
                     collectionName:
                         getFeaturesList(context)[index].collectionName,
+                    appBarTitle: getFeaturesList(context)[index].appBarTitle,
                   );
                 },
               ),
             );
           },
-          boxDecorationColor: getFeaturesList(context)[index].containerColor,
-          text: getFeaturesList(context)[index].name,
         );
       },
       itemCount: getFeaturesList(context).length,
