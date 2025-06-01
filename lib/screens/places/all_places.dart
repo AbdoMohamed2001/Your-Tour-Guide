@@ -52,7 +52,6 @@ class AllPlaces extends StatelessWidget {
                 ),
               );
             } else if (snapshot.connectionState == ConnectionState.done) {
-              print('this is collectionName $collectionName');
               //------------------------------------------------------------------------
               if (collectionName == 'places') {
                 List<PlaceModel> placeListt = [];

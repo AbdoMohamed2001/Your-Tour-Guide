@@ -45,31 +45,6 @@ class BuildAllItem extends StatelessWidget {
             child: Stack(
               children: [
                 DefaultCachedNetworkImage(imageUrl: imageUrl, imageHeight: 200),
-                // Image(
-                //   image: NetworkImage('${imageUrl}',
-                //   ),
-                //   width: double.infinity,
-                //   height: 200,
-                //   fit: BoxFit.cover,
-                //   loadingBuilder: (context, child, loadingProgress) {
-                //     if (loadingProgress == null) {
-                //       return child;
-                //     } else {
-                //       return Center(
-                //         child: Container(
-                //           width: double.infinity,
-                //           height: 200,
-                //           child: Center(
-                //             child: CircularProgressIndicator(
-                //               color: Colors.orange,
-                //             ),
-                //           ),
-                //         ),
-                //       );
-                //     }
-                //   },
-                //
-                // ),
                 Positioned(
                   top: 145,
                   child: Padding(
@@ -100,4 +75,3 @@ class BuildAllItem extends StatelessWidget {
     );
   }
 }
-

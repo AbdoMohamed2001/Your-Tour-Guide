@@ -35,8 +35,6 @@ class PlacesRepoImpl implements PlacesRepo {
       log('there is error in getBestSellingProducts in products repo impl $e');
       return left(ServerFailure(message: 'There is error while getting data!'));
     }
-    // TODO: implement getFeaturedPlaces
-    throw UnimplementedError();
   }
 
   @override
