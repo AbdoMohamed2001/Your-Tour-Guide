@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class FeaturesGridViewItem extends StatelessWidget {
-  final double? width;
-  final double? height;
   final Color boxDecorationColor;
   final String text;
   final void Function()? onPressed;
@@ -13,8 +11,6 @@ class FeaturesGridViewItem extends StatelessWidget {
 
   FeaturesGridViewItem({
     Key? key,
-    this.height,
-    this.width,
     required this.onPressed,
     required this.boxDecorationColor,
     required this.text,
