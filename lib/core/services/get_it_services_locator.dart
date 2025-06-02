@@ -1,5 +1,7 @@
 import 'package:get_it/get_it.dart';
+import 'package:your_tour_guide/core/data/repos/features_repo.dart';
 import 'package:your_tour_guide/core/data/repos/places_repo.dart';
+import 'package:your_tour_guide/core/domain/repos/feature_repo_impl.dart';
 import 'package:your_tour_guide/core/domain/repos/places_repo_impl.dart';
 
 import 'database_services.dart';
@@ -12,6 +14,9 @@ void setupGetIt() {
   getIt.registerSingleton<FirebaseAuthService>(FirebaseAuthService());
   getIt.registerSingleton<DatabaseServices>(FireStoreServices());
   getIt.registerSingleton<PlacesRepo>(PlacesRepoImpl(
+    getIt<DatabaseServices>(),
+  ));
+  getIt.registerSingleton<FeaturesRepo>(FeatureRepoImpl(
     getIt<DatabaseServices>(),
   ));
   // getIt.registerSingleton<AuthRepo>(AuthRepoImpl(
