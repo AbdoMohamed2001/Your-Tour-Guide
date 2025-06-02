@@ -1,22 +1,50 @@
 import 'package:bordered_text/bordered_text.dart';
 import 'package:flutter/material.dart';
-import 'package:your_tour_guide/core/domain/entities/feature_entity.dart';
+import 'package:your_tour_guide/features/feature_details/presentation/views/all_cities_view.dart';
 
-import '../../../../constants.dart';
-import '../../../../utils/utils.dart';
-import '../../../../widgets/deafult_cached_network_image.dart';
+import '../../constants.dart';
+import '../../utils/utils.dart';
+import '../../widgets/deafult_cached_network_image.dart';
 
-class FeatureDetailsListViewItem extends StatelessWidget {
-  const FeatureDetailsListViewItem({
+class DefaultListView extends StatelessWidget {
+  const DefaultListView({super.key, required this.list, this.collectionName});
+
+  final List<dynamic> list;
+  final String? collectionName;
+  @override
+  Widget build(BuildContext context) {
+    return ListView.separated(
+      separatorBuilder: (context, index) => SizedBox(height: 20),
+      itemBuilder: (_, i) => DefaultListViewItem(
+        entity: list[i],
+        list: list,
+      ),
+      itemCount: list.length,
+    );
+  }
+}
+
+class DefaultListViewItem extends StatelessWidget {
+  const DefaultListViewItem({
     super.key,
-    required this.featureEntity,
+    required this.list,
+    required this.entity,
   });
 
-  final FeatureEntity featureEntity;
+  final List<dynamic> list;
+  final entity;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (_) => AllCitiesView(
+              city: entity,
+            ),
+          ),
+        );
         // Navigator.push(context, MaterialPageRoute(builder: (context) {
         //   return pushedPage;
         // }));
@@ -39,7 +67,7 @@ class FeatureDetailsListViewItem extends StatelessWidget {
             child: Stack(
               children: [
                 DefaultCachedNetworkImage(
-                    imageUrl: featureEntity.imageUrl, imageHeight: 200),
+                    imageUrl: entity.imageUrl, imageHeight: 200),
                 Positioned(
                   top: 145,
                   child: Padding(
@@ -51,9 +79,7 @@ class FeatureDetailsListViewItem extends StatelessWidget {
                       strokeJoin: StrokeJoin.bevel,
                       child: Text(
                         textAlign: TextAlign.center,
-                        isArabic()
-                            ? featureEntity.nameArabic
-                            : featureEntity.name,
+                        isArabic() ? entity.nameArabic : entity.name,
                         style: TextStyle(
                           fontSize: 25,
                           fontWeight: FontWeight.bold,

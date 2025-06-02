@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../core/domain/entities/feature_entity.dart';
-import '../cubits/feature_cubit.dart';
+import '../../../../../core/domain/entities/feature_entity.dart';
+import '../../cubits/feature_cubit.dart';
 import 'feature_details_list_view.dart';
 
 class FeatureDetailsListViewBuilder extends StatelessWidget {
   const FeatureDetailsListViewBuilder({
     super.key,
+    required this.collectionName,
   });
-
+  final String collectionName;
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<FeatureCubit, FeatureState>(
@@ -22,6 +23,7 @@ class FeatureDetailsListViewBuilder extends StatelessWidget {
           return const Center(child: Text('Failed to load featured places'));
         } else {
           return FeatureDetailsListView(
+            collectionName: collectionName,
             features: features,
           );
         }

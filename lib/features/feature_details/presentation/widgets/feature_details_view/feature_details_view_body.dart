@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../cubits/feature_cubit.dart';
+import '../../cubits/feature_cubit.dart';
 import 'feature_details_list_view_builder.dart';
 
 class FeatureDetailsViewBody extends StatefulWidget {
@@ -39,6 +39,6 @@ class _FeatureDetailsViewBodyState extends State<FeatureDetailsViewBody> {
 
   @override
   Widget build(BuildContext context) {
-    return FeatureDetailsListViewBuilder();
+    return FeatureDetailsListViewBuilder(collectionName: widget.collectionName);
   }
 }

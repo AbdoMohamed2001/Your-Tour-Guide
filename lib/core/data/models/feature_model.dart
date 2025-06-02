@@ -21,6 +21,9 @@ class FeatureModel {
 
   FeatureEntity toEntity() {
     return FeatureEntity(
-        name: name, nameArabic: nameArabic, imageUrl: imageUrl);
+      name: name,
+      nameArabic: nameArabic,
+      imageUrl: imageUrl,
+    );
   }
 }
