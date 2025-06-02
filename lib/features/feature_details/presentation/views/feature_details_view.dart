@@ -10,15 +10,17 @@ class FeatureDetailsView extends StatelessWidget {
   const FeatureDetailsView({
     super.key,
     required this.collectionName,
+    required this.appBarTitle,
   });
 
   final String collectionName;
-
+  final String appBarTitle;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-        title: '',
+        title: appBarTitle,
+        leading: CustomAppBarIconButton(),
       ),
       body: BlocProvider(
         create: (context) => FeatureCubit(getIt.get<FeaturesRepo>()),

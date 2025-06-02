@@ -21,7 +21,7 @@ class _FeatureDetailsViewBodyState extends State<FeatureDetailsViewBody> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    var query;
+    Map<String, dynamic>? query;
     if (widget.collectionName == 'places') {
       query = {
         'where': 'isBest',

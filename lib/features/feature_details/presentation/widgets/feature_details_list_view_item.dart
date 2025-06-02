@@ -1,19 +1,18 @@
 import 'package:bordered_text/bordered_text.dart';
 import 'package:flutter/material.dart';
+import 'package:your_tour_guide/core/domain/entities/feature_entity.dart';
 
 import '../../../../constants.dart';
+import '../../../../utils/utils.dart';
 import '../../../../widgets/deafult_cached_network_image.dart';
 
 class FeatureDetailsListViewItem extends StatelessWidget {
   const FeatureDetailsListViewItem({
     super.key,
-    required this.name,
-    required this.imageUrl,
+    required this.featureEntity,
   });
 
-  final String name;
-  final String imageUrl;
-
+  final FeatureEntity featureEntity;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -39,7 +38,8 @@ class FeatureDetailsListViewItem extends StatelessWidget {
             ),
             child: Stack(
               children: [
-                DefaultCachedNetworkImage(imageUrl: imageUrl, imageHeight: 200),
+                DefaultCachedNetworkImage(
+                    imageUrl: featureEntity.imageUrl, imageHeight: 200),
                 Positioned(
                   top: 145,
                   child: Padding(
@@ -51,7 +51,9 @@ class FeatureDetailsListViewItem extends StatelessWidget {
                       strokeJoin: StrokeJoin.bevel,
                       child: Text(
                         textAlign: TextAlign.center,
-                        '$name',
+                        isArabic()
+                            ? featureEntity.nameArabic
+                            : featureEntity.name,
                         style: TextStyle(
                           fontSize: 25,
                           fontWeight: FontWeight.bold,

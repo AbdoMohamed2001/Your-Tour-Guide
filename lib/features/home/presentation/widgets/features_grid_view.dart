@@ -23,6 +23,8 @@ class FeaturesGridView extends StatelessWidget {
       itemBuilder: (context, index) {
         return FeaturesGridViewItem(
           fileName: getFeaturesList(context)[index].fileName,
+          boxDecorationColor: getFeaturesList(context)[index].containerColor,
+          text: getFeaturesList(context)[index].name,
           onPressed: () {
             Navigator.push(
               context,
@@ -31,13 +33,12 @@ class FeaturesGridView extends StatelessWidget {
                   return FeatureDetailsView(
                     collectionName:
                         getFeaturesList(context)[index].collectionName,
+                    appBarTitle: getFeaturesList(context)[index].appBarTitle,
                   );
                 },
               ),
             );
           },
-          boxDecorationColor: getFeaturesList(context)[index].containerColor,
-          text: getFeaturesList(context)[index].name,
         );
       },
       itemCount: getFeaturesList(context).length,

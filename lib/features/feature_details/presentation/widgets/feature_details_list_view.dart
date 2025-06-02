@@ -16,8 +16,7 @@ class FeatureDetailsListView extends StatelessWidget {
     return ListView.separated(
       separatorBuilder: (context, index) => SizedBox(height: 20),
       itemBuilder: (_, i) => FeatureDetailsListViewItem(
-        imageUrl: features[i].imageUrl,
-        name: features[i].name,
+        featureEntity: features[i],
       ),
       itemCount: features.length,
     );
