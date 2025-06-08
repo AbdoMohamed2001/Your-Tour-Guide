@@ -19,15 +19,7 @@
 ## 📱 App Features
 
 - Explore places like:
-  - 🏨 Hotels
-  - ☕ Cafes
-  - 🍽 Restaurants
-  - 🏛 Religious Places
-  - 🛍 Malls
-  - 🎬 Cinemas
-  - 🧭 Tours
-  - 📅 Upcoming Events
-
+  - 🏨 Hotels - ☕ Cafes - 🍽 Restaurants - 🏛 Religious Places - 🛍 Malls - 🎬 Cinemas - 🧭 Tours - 📅 Upcoming Events
 - 🌟 Favorite places and services
 - 🌐 Search across the entire app
 - 🌓 Theme switch (light/dark)
@@ -38,8 +30,7 @@
 ## 🔍 Feature Details
 
 ### 🗺 Places
-- Description, Address, Rating, Image Gallery
-- Opening Hours, Ticket Prices, Nearby Services
+- Description, Address, Rating, Image Gallery, Opening Hours, Ticket Prices, Nearby Services
 
 ### 🏨 Hotels
 - Stars, Features, Rooms, Contact Info, and more
@@ -49,15 +40,6 @@
 
 ### 🧭 Tours
 - Price, Duration, Dates, Inclusions/Exclusions
-
----
-
-## 🔐 Authentication
-
-Sign up or log in to access personalized features like:
-- Save favorites
-- Track your activity
-- Customize your experience
 
 ---
 
