@@ -1,5 +1,4 @@
 import 'package:your_tour_guide/features/places/data/repos/places_repo.dart';
-import 'package:your_tour_guide/core/services/cacheHelper.dart';
 import 'package:your_tour_guide/constants.dart';
 import 'package:your_tour_guide/cubits/place_cubit/place_cubit.dart';
 import 'package:your_tour_guide/generated/l10n.dart';
@@ -17,7 +16,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
 import '../../core/services/get_it_services_locator.dart';
 import '../../core/utils/functions/is_arabic.dart';
 import '../../core/utils/widgets/location_widget.dart';
@@ -111,37 +109,9 @@ class PlaceScreenNew extends StatelessWidget {
               child: Column(
                 children: [
                   CustomPlaceImage(
-                    imageUrl: placeModel.imageUrl,
-                    name: isArabic() ? placeModel.nameArabic : placeModel.name,
-                    cityName: isArabic()
-                        ? placeModel.cityNameArabic
-                        : placeModel.cityName,
-                    containerImage: placeModel.images[0],
-                    cubitLikedValue: placeCubit.likedValue,
-                    favouriteFunction: () {
-                      placeCubit.changeLike();
-                      if (placeCubit.likedValue == true) {
-                        CacheData.setData(
-                            key: placeCubit.likedKey,
-                            value: placeCubit.likedValue);
-                        placeCubit.addPlaceToFavourite(
-                          placeModel: placeModel,
-                          docID: docID,
-                          context: context,
-                        );
-                      } else {
-                        CacheData.setData(
-                            key: placeCubit.likedKey,
-                            value: placeCubit.likedValue);
-                        placeCubit.deleteFromFavourite(
-                          context: context,
-                          docID: docID,
-                        );
-                      }
-                    },
                     cubitDataKeyCurrentContext:
                         placeCubit.dataKey.currentContext,
-                    images: placeModel.images,
+                    entity: placeModel,
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10.0),

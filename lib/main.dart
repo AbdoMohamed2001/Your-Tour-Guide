@@ -1,5 +1,4 @@
 import 'package:internet_connection_checker/internet_connection_checker.dart';
-import 'package:your_tour_guide/add_field_to_all_documents_function.dart';
 import 'package:your_tour_guide/app_locale.dart';
 import 'package:your_tour_guide/features/places/data/repos/places_repo.dart';
 import 'package:your_tour_guide/core/services/cacheHelper.dart';
@@ -16,11 +15,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'core/services/get_it_services_locator.dart';
+import 'core/services/shared_prefs_services.dart';
 import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await CacheData.cacheInit();
+  await Prefs.init();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );

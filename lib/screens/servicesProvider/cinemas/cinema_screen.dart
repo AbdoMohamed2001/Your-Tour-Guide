@@ -1,5 +1,4 @@
 // ignore_for_file: missing_required_param
-import 'package:your_tour_guide/core/services/cacheHelper.dart';
 import 'package:your_tour_guide/constants.dart';
 import 'package:your_tour_guide/core/utils/functions/is_arabic.dart';
 import 'package:your_tour_guide/core/utils/widgets/contact_widget.dart';
@@ -49,41 +48,9 @@ class CinemaScreen extends StatelessWidget {
                     //------------------------------------------------------------------------
                     //Image
                     CustomPlaceImage(
-                      imageUrl: cinemaModel.imageUrl,
-                      name: isArabic()
-                          ? cinemaModel.nameArabic
-                          : cinemaModel.name,
-                      cityName: isArabic()
-                          ? cinemaModel.cityNameArabic
-                          : cinemaModel.cityName,
-                      containerImage: cinemaModel.images.isEmpty
-                          ? ''
-                          : cinemaModel.images[0],
-                      cubitLikedValue: cinemaCubit.likedValue,
-                      favouriteFunction: () {
-                        cinemaCubit.changeLike();
-                        if (cinemaCubit.likedValue == true) {
-                          CacheData.setData(
-                              key: cinemaCubit.likedKey,
-                              value: cinemaCubit.likedValue);
-                          cinemaCubit.addCinemaToFavourite(
-                            cinemaModel: cinemaModel,
-                            docID: docID,
-                            context: context,
-                          );
-                        } else {
-                          CacheData.setData(
-                              key: cinemaCubit.likedKey,
-                              value: cinemaCubit.likedValue);
-                          cinemaCubit.deleteFromFavourite(
-                            context: context,
-                            docID: docID,
-                          );
-                        }
-                      },
                       cubitDataKeyCurrentContext:
                           cinemaCubit.dataKey.currentContext,
-                      images: cinemaModel.images,
+                      entity: cinemaModel,
                     ),
                     kSizedBox,
                     //------------------------------------------------------------------------

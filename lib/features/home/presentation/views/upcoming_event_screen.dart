@@ -41,25 +41,18 @@ class UpcomingEventScreen extends StatelessWidget {
                   children: [
                     //-------------------------------------------------
                     //Image
-                    CustomPlaceImage(
-                      imageUrl: model.imageUrl,
-                      name: isArabic() ? model.nameArabic : model.name,
-                      cityName: '',
-                      containerImage: model.imageUrl,
-                      cubitLikedValue: placeCubit.likedValue,
-                      favouriteFunction: () {},
-                      cubitDataKeyCurrentContext:
-                          placeCubit.dataKey.currentContext,
-                      images: [],
-                    ),
-                    // CustomImageWithoutEndImage(
-                    //   dataKey: dataKey,
-                    //   imagesLength: widget.upcomingEventData.length.toString(),
-                    //   fontSize: 18,
-                    //   imageUrl: upcomingEvent['imageUrl'],
-                    //   itemName: upcomingEvent['name'],
-                    //   itemLocation: upcomingEvent['location'],
+                    // CustomPlaceImage(
+                    //   imageUrl: model.imageUrl,
+                    //   name: isArabic() ? model.nameArabic : model.name,
+                    //   cityName: '',
+                    //   containerImage: model.imageUrl,
+                    //   cubitLikedValue: placeCubit.likedValue,
+                    //   favouriteFunction: () {},
+                    //   cubitDataKeyCurrentContext:
+                    //       placeCubit.dataKey.currentContext,
+                    //   images: [],
                     // ),
+
                     kSizedBox,
                     //-------------------------------------------------
                     //Date

@@ -1,5 +1,4 @@
 // ignore_for_file: missing_required_param
-import 'package:your_tour_guide/core/services/cacheHelper.dart';
 import 'package:your_tour_guide/constants.dart';
 import 'package:your_tour_guide/core/utils/functions/is_arabic.dart';
 import 'package:your_tour_guide/core/utils/widgets/contact_widget.dart';
@@ -45,37 +44,9 @@ class HotelScreen extends StatelessWidget {
                 children: [
                   //image
                   CustomPlaceImage(
-                    imageUrl: hotelModel.imageUrl,
-                    name: isArabic() ? hotelModel.nameArabic : hotelModel.name,
-                    cityName: isArabic()
-                        ? hotelModel.cityNameArabic
-                        : hotelModel.cityName,
-                    containerImage: hotelModel.images[0],
-                    cubitLikedValue: hotelCubit.likedValue,
-                    favouriteFunction: () {
-                      hotelCubit.changeLike();
-                      if (hotelCubit.likedValue == true) {
-                        CacheData.setData(
-                            key: hotelCubit.likedKey,
-                            value: hotelCubit.likedValue);
-                        hotelCubit.addHotelToFavourite(
-                          hotelModel: hotelModel,
-                          docID: docID,
-                          context: context,
-                        );
-                      } else {
-                        CacheData.setData(
-                            key: hotelCubit.likedKey,
-                            value: hotelCubit.likedValue);
-                        hotelCubit.deleteFromFavourite(
-                          context: context,
-                          docID: docID,
-                        );
-                      }
-                    },
                     cubitDataKeyCurrentContext:
                         hotelCubit.dataKey.currentContext,
-                    images: hotelModel.images,
+                    entity: hotelModel,
                   ),
                   Column(
                     children: [

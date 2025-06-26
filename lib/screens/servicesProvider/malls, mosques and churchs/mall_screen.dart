@@ -1,6 +1,5 @@
 // ignore_for_file: missing_required_param
 
-import 'package:your_tour_guide/core/services/cacheHelper.dart';
 import 'package:your_tour_guide/constants.dart';
 import 'package:your_tour_guide/core/utils/functions/is_arabic.dart';
 import 'package:your_tour_guide/core/utils/widgets/location_widget.dart';
@@ -58,38 +57,9 @@ class MallNewScreen extends StatelessWidget {
               child: Column(
                 children: [
                   CustomPlaceImage(
-                    imageUrl: mallModel.imageUrl,
-                    name: isArabic() ? mallModel.nameArabic : mallModel.name,
-                    cityName: isArabic()
-                        ? mallModel.cityNameArabic
-                        : mallModel.cityName,
-                    containerImage: mallModel.images[0],
-                    cubitLikedValue: mallCubit.likedValue,
-                    favouriteFunction: () {
-                      mallCubit.changeLike();
-                      if (mallCubit.likedValue == true) {
-                        CacheData.setData(
-                            key: mallCubit.likedKey,
-                            value: mallCubit.likedValue);
-                        mallCubit.addMallToFavourite(
-                          collectionName: collectionName,
-                          mallModel: mallModel,
-                          docID: docID,
-                          context: context,
-                        );
-                      } else {
-                        CacheData.setData(
-                            key: mallCubit.likedKey,
-                            value: mallCubit.likedValue);
-                        mallCubit.deleteFromFavourite(
-                          context: context,
-                          docID: docID,
-                        );
-                      }
-                    },
                     cubitDataKeyCurrentContext:
                         mallCubit.dataKey.currentContext,
-                    images: mallModel.images,
+                    entity: mallModel,
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10.0),

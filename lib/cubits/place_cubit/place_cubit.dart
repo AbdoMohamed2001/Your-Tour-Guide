@@ -55,7 +55,7 @@ class PlaceCubit extends Cubit<PlaceState> {
   Color iconColor = Colors.white;
   Color isRatedColor = Colors.black;
 
-  //-------------------Hotel var-----------------------------------------
+  //-------------------Hotel variables -----------------------------------------
   bool hasCallSupport = false;
   Future<void>? launched;
   String phone = '';
@@ -66,7 +66,7 @@ class PlaceCubit extends Cubit<PlaceState> {
   bool isRateSelected = false;
   bool isNameSelected = true;
   bool isCitySelected = false;
-
+//--------------------------- Sort By -----------------------------
   void changeToName() {
     isArabic() ? orderArabic = 'nameArabic' : order = 'name';
     isStarsSelected = false;
@@ -168,15 +168,10 @@ class PlaceCubit extends Cubit<PlaceState> {
 
   //--------------------------------------------------------
   void restorePersistedPref() async {
-    print('restore started');
     var preferences = await SharedPreferences.getInstance();
     bool? likedBool = preferences.getBool(likedKey);
-    print('this is liked bool from SharedPref');
     print(likedBool);
-    likedBool == null
-        ? print('null null null null null null null null ')
-        : this.likedValue = likedBool;
-    print('restore ended');
+    likedBool == null ? print('null') : this.likedValue = likedBool;
     emit(PlaceRestorePersistedPref());
   }
 
@@ -268,7 +263,7 @@ class PlaceCubit extends Cubit<PlaceState> {
     CollectionReference _collectionReference =
         FirebaseFirestore.instance.collection('favouritePlaces');
     return _collectionReference
-        .doc(currentUser!.email)
+        .doc(currentUser!.uid)
         .collection('places')
         .doc(docID)
         .set({

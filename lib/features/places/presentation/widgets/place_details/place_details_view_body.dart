@@ -11,8 +11,6 @@ import 'package:your_tour_guide/models/tour_model.dart';
 import 'package:your_tour_guide/tour_screen_neew.dart';
 import 'package:your_tour_guide/core/utils/widgets/default_read_more.dart';
 import 'package:your_tour_guide/core/utils/widgets/head_text.dart';
-
-import '../../../../../core/services/cacheHelper.dart';
 import '../../../../../core/utils/widgets/place/custom_place_image.dart';
 import '../../../../../core/utils/widgets/place/gallery_widget.dart'
     show GalleryWidget;
@@ -36,34 +34,8 @@ class PlaceDetailsViewBody extends StatelessWidget {
           child: Column(
             children: [
               CustomPlaceImage(
-                imageUrl: placeEntity.imageUrl,
-                name: isArabic() ? placeEntity.nameArabic : placeEntity.name,
-                cityName: isArabic()
-                    ? placeEntity.cityNameArabic
-                    : placeEntity.cityName,
-                containerImage: placeEntity.images[0],
-                cubitLikedValue: placeCubit.likedValue,
-                favouriteFunction: () {
-                  placeCubit.changeLike();
-                  if (placeCubit.likedValue == true) {
-                    CacheData.setData(
-                        key: placeCubit.likedKey, value: placeCubit.likedValue);
-                    // placeCubit.addPlaceToFavourite(
-                    //   placeModel: placeEntity,
-                    //   docID: docID,
-                    //   context: context,
-                    // );
-                  } else {
-                    CacheData.setData(
-                        key: placeCubit.likedKey, value: placeCubit.likedValue);
-                    placeCubit.deleteFromFavourite(
-                      context: context,
-                      docID: placeEntity.docId,
-                    );
-                  }
-                },
+                entity: placeEntity,
                 cubitDataKeyCurrentContext: placeCubit.dataKey.currentContext,
-                images: placeEntity.images,
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10.0),

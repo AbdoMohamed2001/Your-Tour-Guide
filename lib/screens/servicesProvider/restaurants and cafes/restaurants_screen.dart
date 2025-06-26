@@ -1,6 +1,5 @@
 // ignore_for_file: missing_required_param
 
-import 'package:your_tour_guide/core/services/cacheHelper.dart';
 import 'package:your_tour_guide/constants.dart';
 import 'package:your_tour_guide/core/utils/functions/is_arabic.dart';
 import 'package:your_tour_guide/core/utils/widgets/contact_widget.dart';
@@ -45,40 +44,9 @@ class RestaurantScreen extends StatelessWidget {
               child: Column(
                 children: [
                   CustomPlaceImage(
-                    imageUrl: restaurantModel.imageUrl,
-                    name: isArabic()
-                        ? restaurantModel.nameArabic
-                        : restaurantModel.name,
-                    cityName: isArabic()
-                        ? restaurantModel.cityNameArabic
-                        : restaurantModel.cityName,
-                    containerImage: restaurantModel.images[0],
-                    cubitLikedValue: restaurantCubit.likedValue,
-                    favouriteFunction: () {
-                      restaurantCubit.changeLike();
-                      if (restaurantCubit.likedValue == true) {
-                        CacheData.setData(
-                            key: restaurantCubit.likedKey,
-                            value: restaurantCubit.likedValue);
-                        restaurantCubit.addRestaurantToFavourite(
-                          collectionName: collectionName,
-                          restaurantModel: restaurantModel,
-                          docID: docID,
-                          context: context,
-                        );
-                      } else {
-                        CacheData.setData(
-                            key: restaurantCubit.likedKey,
-                            value: restaurantCubit.likedValue);
-                        restaurantCubit.deleteFromFavourite(
-                          context: context,
-                          docID: docID,
-                        );
-                      }
-                    },
                     cubitDataKeyCurrentContext:
                         restaurantCubit.dataKey.currentContext,
-                    images: restaurantModel.images,
+                    entity: restaurantModel,
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10.0),

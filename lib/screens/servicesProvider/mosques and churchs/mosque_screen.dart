@@ -1,5 +1,4 @@
 // ignore_for_file: missing_required_param
-import 'package:your_tour_guide/core/services/cacheHelper.dart';
 import 'package:your_tour_guide/constants.dart';
 import 'package:your_tour_guide/core/utils/functions/is_arabic.dart';
 import 'package:your_tour_guide/core/utils/widgets/location_widget.dart';
@@ -42,39 +41,9 @@ class MosqueScreen extends StatelessWidget {
               child: Column(
                 children: [
                   CustomPlaceImage(
-                    imageUrl: mosqueModel.imageUrl,
-                    name:
-                        isArabic() ? mosqueModel.nameArabic : mosqueModel.name,
-                    cityName: isArabic()
-                        ? mosqueModel.cityNameArabic
-                        : mosqueModel.cityName,
-                    containerImage: mosqueModel.images[0],
-                    cubitLikedValue: mosqueCubit.likedValue,
-                    favouriteFunction: () {
-                      mosqueCubit.changeLike();
-                      if (mosqueCubit.likedValue == true) {
-                        CacheData.setData(
-                            key: mosqueCubit.likedKey,
-                            value: mosqueCubit.likedValue);
-                        mosqueCubit.addMosqueToFavourite(
-                          collectionName: collectionName,
-                          mosqueModel: mosqueModel,
-                          docID: docID,
-                          context: context,
-                        );
-                      } else {
-                        CacheData.setData(
-                            key: mosqueCubit.likedKey,
-                            value: mosqueCubit.likedValue);
-                        mosqueCubit.deleteFromFavourite(
-                          context: context,
-                          docID: docID,
-                        );
-                      }
-                    },
                     cubitDataKeyCurrentContext:
                         mosqueCubit.dataKey.currentContext,
-                    images: mosqueModel.images,
+                    entity: mosqueModel,
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10.0),

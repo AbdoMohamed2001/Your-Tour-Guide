@@ -108,6 +108,10 @@ class FirebaseAuthService {
     return FirebaseAuth.instance.currentUser != null;
   }
 
+  Future<void> signOut() async {
+    await FirebaseAuth.instance.signOut();
+  }
+
 //-------------------------Update-----------------------------
   Future<void> updateUserName({
     required String userId,

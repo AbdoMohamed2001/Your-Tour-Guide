@@ -23,9 +23,7 @@ class PlaceDetailsView extends StatelessWidget {
 
     return Scaffold(
       body: BlocProvider(
-        create: (context) => PlaceCubit(getIt<PlacesRepo>())
-          ..likedKey = placeEntity.docId
-          ..restorePersistedPref(),
+        create: (context) => PlaceCubit(getIt<PlacesRepo>()),
         child: PlaceDetailsViewBody(placeEntity: placeEntity),
       ),
     );

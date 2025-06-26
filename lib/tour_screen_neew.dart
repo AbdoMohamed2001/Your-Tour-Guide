@@ -1,4 +1,3 @@
-import 'package:your_tour_guide/core/services/cacheHelper.dart';
 import 'package:your_tour_guide/constants.dart';
 import 'package:your_tour_guide/cubits/place_cubit/place_cubit.dart';
 import 'package:your_tour_guide/generated/l10n.dart';
@@ -50,39 +49,9 @@ class TourScreenNeew extends StatelessWidget {
                               placeModel.name.length >= 25
                           ? 19
                           : 24,
-                      imageUrl: placeModel.imageUrl,
-                      name:
-                          isArabic() ? placeModel.nameArabic : placeModel.name,
-                      cityName: '',
-                      // cityName: isArabic()
-                      //     ? placeModel.tourLocationArabic
-                      //     : placeModel.tourLocation,
-                      containerImage: placeModel.images[0],
-                      cubitLikedValue: placeCubit.likedValue,
-                      favouriteFunction: () {
-                        placeCubit.changeLike();
-                        if (placeCubit.likedValue == true) {
-                          CacheData.setData(
-                              key: placeCubit.likedKey,
-                              value: placeCubit.likedValue);
-                          placeCubit.addTourToFavourite(
-                            tourModel: placeModel,
-                            docID: docID,
-                            context: context,
-                          );
-                        } else {
-                          CacheData.setData(
-                              key: placeCubit.likedKey,
-                              value: placeCubit.likedValue);
-                          placeCubit.deleteFromFavourite(
-                            context: context,
-                            docID: docID,
-                          );
-                        }
-                      },
+                      entity: placeModel,
                       cubitDataKeyCurrentContext:
                           placeCubit.dataKey.currentContext,
-                      images: placeModel.images,
                     ),
                     kSizedBox,
                     //-------------------------------------------------------------------
