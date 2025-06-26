@@ -1,5 +1,5 @@
+import 'package:your_tour_guide/core/utils/functions/is_arabic.dart';
 import 'package:your_tour_guide/models/hotel_model.dart';
-import 'package:your_tour_guide/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -15,8 +15,8 @@ class BuildFeatureItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var features = isArabic()
-        ? hotelModel.featuresArabic![index]
-        : hotelModel.features![index];
+        ? hotelModel.featuresArabic[index]
+        : hotelModel.features[index];
     return Container(
       width: MediaQuery.of(context).size.width * .20,
       // height: MediaQuery.of(context).size.height * .142,
@@ -33,166 +33,167 @@ class BuildFeatureItem extends StatelessWidget {
                   : features.contains('rest') || features.contains('مطعم')
                       ? featureContainer(icon: Icons.restaurant_rounded)
 
-                          //=====================================================================
-                          : features.contains('smoking') ||
-                                  features.contains('مدخنين')
-                              ? featureContainer(icon: Icons.smoking_rooms)
+                      //=====================================================================
+                      : features.contains('smoking') ||
+                              features.contains('مدخنين')
+                          ? featureContainer(icon: Icons.smoking_rooms)
+                          //----------------------------------------------------------------
+                          : features.contains('cribs') ||
+                                  features.contains('أسرة أطفال')
+                              ? featureContainer(icon: Icons.crib)
                               //----------------------------------------------------------------
-              : features.contains('cribs') ||
-              features.contains('أسرة أطفال')
-              ? featureContainer(icon: Icons.crib)
-          //----------------------------------------------------------------
-              : features.contains('sauna') ||
-              features.contains('ساونا')
-              ? featureContainer(icon: Icons.flare)
-          //----------------------------------------------------------------
-
-                              : features.contains('pet') ||
-                                      features.contains('حيوان')
-                                  ? featureContainer(icon: Icons.pets)
+                              : features.contains('sauna') ||
+                                      features.contains('ساونا')
+                                  ? featureContainer(icon: Icons.flare)
                                   //----------------------------------------------------------------
-                                  : features.contains('air') ||
-                                          features.contains('هوا')
-                                      ? featureContainer(icon: Icons.air)
-                                      :
+
+                                  : features.contains('pet') ||
+                                          features.contains('حيوان')
+                                      ? featureContainer(icon: Icons.pets)
                                       //----------------------------------------------------------------
-                                      features.contains('air cond') ||
-                                              features.contains('تكيي')
+                                      : features.contains('air') ||
+                                              features.contains('هوا')
                                           ? featureContainer(icon: Icons.air)
                                           :
                                           //----------------------------------------------------------------
-                                          features.contains('BBQ') ||
-                                                  features.contains('شواء')
+                                          features.contains('air cond') ||
+                                                  features.contains('تكيي')
                                               ? featureContainer(
-                                                  icon: Icons.outdoor_grill)
+                                                  icon: Icons.air)
                                               :
                                               //----------------------------------------------------------------
-                                              features.contains('spa') ||
-                                                      features.contains('سبا')
+                                              features.contains('BBQ') ||
+                                                      features.contains('شواء')
                                                   ? featureContainer(
-                                                      icon: Icons.spa)
+                                                      icon: Icons.outdoor_grill)
                                                   :
                                                   //----------------------------------------------------------------
-                                                  features.contains('bath') ||
+                                                  features.contains('spa') ||
                                                           features
-                                                              .contains('حوض')
+                                                              .contains('سبا')
                                                       ? featureContainer(
-                                                          icon: Icons.bathtub)
+                                                          icon: Icons.spa)
                                                       :
                                                       //----------------------------------------------------------------
-                                                      features.contains('airport') ||
+                                                      features.contains('bath') ||
                                                               features.contains(
-                                                                  'مطار')
+                                                                  'حوض')
                                                           ? featureContainer(
-                                                              icon: Icons
-                                                                  .local_airport)
+                                                              icon:
+                                                                  Icons.bathtub)
                                                           :
                                                           //----------------------------------------------------------------
                                                           features.contains(
-                                                                      'meet') ||
-                                                                  features.contains(
-                                                                      'جتماع')
+                                                                      'airport') ||
+                                                                  features
+                                                                      .contains(
+                                                                          'مطار')
                                                               ? featureContainer(
                                                                   icon: Icons
-                                                                      .meeting_room)
+                                                                      .local_airport)
                                                               :
                                                               //----------------------------------------------------------------
                                                               features.contains(
-                                                                          'xercise') ||
+                                                                          'meet') ||
                                                                       features.contains(
-                                                                          'تمرين')
+                                                                          'جتماع')
                                                                   ? featureContainer(
                                                                       icon: Icons
-                                                                          .fitness_center)
+                                                                          .meeting_room)
                                                                   :
                                                                   //----------------------------------------------------------------
-                                                                  features.contains('sea') ||
-                                                                          features.contains('شاط') ||features.contains('beach')
-                                                                      ? featureContainer(icon: Icons.beach_access)
+                                                                  features.contains('xercise') ||
+                                                                          features
+                                                                              .contains('تمرين')
+                                                                      ? featureContainer(icon: Icons.fitness_center)
+                                                                      :
+                                                                      //----------------------------------------------------------------
+                                                                      features.contains('sea') || features.contains('شاط') || features.contains('beach')
+                                                                          ? featureContainer(icon: Icons.beach_access)
 
-                                                                      //-----------------------------------------------------------------
-                                                                      : features.contains('housekeeping') || features.contains('تنظيف يومية')
-                                                                      ? featureContainer(icon: Icons.cleaning_services)
+                                                                          //-----------------------------------------------------------------
+                                                                          : features.contains('housekeeping') || features.contains('تنظيف يومية')
+                                                                              ? featureContainer(icon: Icons.cleaning_services)
 
-                                                                  //-----------------------------------------------------------------
-                                                                      : features.contains('banquet') || features.contains('ولائم')
-                                                                          ? featureContainer(icon: Icons.brunch_dining)
+                                                                              //-----------------------------------------------------------------
+                                                                              : features.contains('banquet') || features.contains('ولائم')
+                                                                                  ? featureContainer(icon: Icons.brunch_dining)
 
-                                                                          //----------------------------------------------------------------
-                                                                          : features.contains('yoga') || features.contains('يوجا')
-                                                                              ? featureContainer(icon: Icons.self_improvement)
-                                                                              //----------------------------------------------------------------
-                                                                              : features.contains('sun') || features.contains('مشمس')
-                                                                                  ? featureContainer(icon: Icons.sunny)
                                                                                   //----------------------------------------------------------------
-                                                                                  : features.contains('city') || features.contains('مدين')
-                                                                                      ? featureContainer(icon: Icons.location_city)
-
+                                                                                  : features.contains('yoga') || features.contains('يوجا')
+                                                                                      ? featureContainer(icon: Icons.self_improvement)
                                                                                       //----------------------------------------------------------------
-                                                                                      : features.contains('balcony') || features.contains('شرفة')
-                                                                                          ? featureContainer(icon: Icons.balcony)
-
+                                                                                      : features.contains('sun') || features.contains('مشمس')
+                                                                                          ? featureContainer(icon: Icons.sunny)
                                                                                           //----------------------------------------------------------------
-                                                                                          : features.contains('par') || features.contains('موقف')
-                                                                                              ? featureContainer(icon: Icons.local_parking)
+                                                                                          : features.contains('city') || features.contains('مدين')
+                                                                                              ? featureContainer(icon: Icons.location_city)
+
                                                                                               //----------------------------------------------------------------
-                                                                                              : features.contains('gard') || features.contains('حديق')
-                                                                                                  ? featureContainer(icon: Icons.yard)
+                                                                                              : features.contains('balcony') || features.contains('شرفة')
+                                                                                                  ? featureContainer(icon: Icons.balcony)
+
                                                                                                   //----------------------------------------------------------------
-                                                                                                  : features.contains('reakfast') || features.contains('فطور') ||features.contains('فطار')
-                                                                                                      ? featureContainer(icon: Icons.free_breakfast)
+                                                                                                  : features.contains('par') || features.contains('موقف')
+                                                                                                      ? featureContainer(icon: Icons.local_parking)
                                                                                                       //----------------------------------------------------------------
-                                                                                                      : features.contains('urrency') || features.contains('عمل')
-                                                                                                          ? featureContainer(icon: Icons.price_change)
+                                                                                                      : features.contains('gard') || features.contains('حديق')
+                                                                                                          ? featureContainer(icon: Icons.yard)
                                                                                                           //----------------------------------------------------------------
-                                                                                                          : features.contains('roof') || features.contains('سطح')
-                                                                                                              ? featureContainer(icon: Icons.roofing)
+                                                                                                          : features.contains('reakfast') || features.contains('فطور') || features.contains('فطار')
+                                                                                                              ? featureContainer(icon: Icons.free_breakfast)
                                                                                                               //----------------------------------------------------------------
-                                                                                                              : features.contains('enting cars') || features.contains('سيارات')
-                                                                                                                  ? featureContainer(icon: Icons.directions_car_filled_sharp)
+                                                                                                              : features.contains('urrency') || features.contains('عمل')
+                                                                                                                  ? featureContainer(icon: Icons.price_change)
                                                                                                                   //----------------------------------------------------------------
-                                                                                                                  : features.contains('garage') || features.contains('مرأب')
-                                                                                                                      ? featureContainer(icon: Icons.garage)
+                                                                                                                  : features.contains('roof') || features.contains('سطح')
+                                                                                                                      ? featureContainer(icon: Icons.roofing)
                                                                                                                       //----------------------------------------------------------------
-                                                                                                                      : features.contains('ealth') || features.contains('صحي')
-                                                                                                                          ? featureContainer(icon: Icons.health_and_safety)
+                                                                                                                      : features.contains('enting cars') || features.contains('سيارات')
+                                                                                                                          ? featureContainer(icon: Icons.directions_car_filled_sharp)
                                                                                                                           //----------------------------------------------------------------
-                                                                                                                          : features.contains('ance') || features.contains('رقص  ')
-                                                                                                                              ? featureContainer(icon: Icons.nightlife)
+                                                                                                                          : features.contains('garage') || features.contains('مرأب')
+                                                                                                                              ? featureContainer(icon: Icons.garage)
                                                                                                                               //----------------------------------------------------------------
-
-                                                                                                                              : features.contains('coffee') || features.contains('قهوه')
-                                                                                                                                  ? featureContainer(icon: FontAwesomeIcons.coffee)
+                                                                                                                              : features.contains('ealth') || features.contains('صحي')
+                                                                                                                                  ? featureContainer(icon: Icons.health_and_safety)
                                                                                                                                   //----------------------------------------------------------------
-                                                                                                                                  : features.contains('child') || features.contains('طفل') ||features.contains('طفال')
-                                                                                                                                      ? featureContainer(
-                                                                                                                                          icon: FontAwesomeIcons.child,
-                                                                                                                                        )
+                                                                                                                                  : features.contains('ance') || features.contains('رقص  ')
+                                                                                                                                      ? featureContainer(icon: Icons.nightlife)
                                                                                                                                       //----------------------------------------------------------------
-                                                                                                                                      : features.contains('accom') ||features.contains('إقامة')
-                                                                                                                                          ? featureContainer(icon: FontAwesomeIcons.home)
+
+                                                                                                                                      : features.contains('coffee') || features.contains('قهوه')
+                                                                                                                                          ? featureContainer(icon: FontAwesomeIcons.coffee)
                                                                                                                                           //----------------------------------------------------------------
-                                                                                                                                          : features.contains('bar') || features.contains('بار')
-                                                                                                                                              ? featureContainer(icon: Icons.local_bar)
-
+                                                                                                                                          : features.contains('child') || features.contains('طفل') || features.contains('طفال')
+                                                                                                                                              ? featureContainer(
+                                                                                                                                                  icon: FontAwesomeIcons.child,
+                                                                                                                                                )
                                                                                                                                               //----------------------------------------------------------------
-                                                                                                                                              : features.contains('city')
-                                                                                                                                                  ? featureContainer(icon: Icons.location_city)
+                                                                                                                                              : features.contains('accom') || features.contains('إقامة')
+                                                                                                                                                  ? featureContainer(icon: FontAwesomeIcons.home)
                                                                                                                                                   //----------------------------------------------------------------
-                                                                                                                                                  : features.contains('casino') || features.contains('كاسين')
-                                                                                                                                                      ? featureContainer(icon: Icons.casino)
-                                                                                                                                                      //----------------------------------------------------------------
-                                                                                                                                                      : features.contains('fitness') || features.contains('لياق')
-                                                                                                                                                          ? featureContainer(icon: Icons.fitness_center)
-                                                                                                                                                          //----------------------------------------------------------------
-                                                                                                                                                          : features.contains('clean') || features.contains('تنظيف')
-                                                                                                                                                              ? featureContainer(icon: Icons.dry_cleaning)
-                                                                  //----------------------------------------------------------------
-                                                                      : features.contains('room') || features.contains('غرف')
-                                                                      ? featureContainer(icon: Icons.room_service)
+                                                                                                                                                  : features.contains('bar') || features.contains('بار')
+                                                                                                                                                      ? featureContainer(icon: Icons.local_bar)
 
+                                                                                                                                                      //----------------------------------------------------------------
+                                                                                                                                                      : features.contains('city')
+                                                                                                                                                          ? featureContainer(icon: Icons.location_city)
+                                                                                                                                                          //----------------------------------------------------------------
+                                                                                                                                                          : features.contains('casino') || features.contains('كاسين')
+                                                                                                                                                              ? featureContainer(icon: Icons.casino)
                                                                                                                                                               //----------------------------------------------------------------
-                                                                                                                                                              : featureContainer(icon: FontAwesomeIcons.star),
+                                                                                                                                                              : features.contains('fitness') || features.contains('لياق')
+                                                                                                                                                                  ? featureContainer(icon: Icons.fitness_center)
+                                                                                                                                                                  //----------------------------------------------------------------
+                                                                                                                                                                  : features.contains('clean') || features.contains('تنظيف')
+                                                                                                                                                                      ? featureContainer(icon: Icons.dry_cleaning)
+                                                                                                                                                                      //----------------------------------------------------------------
+                                                                                                                                                                      : features.contains('room') || features.contains('غرف')
+                                                                                                                                                                          ? featureContainer(icon: Icons.room_service)
+
+                                                                                                                                                                          //----------------------------------------------------------------
+                                                                                                                                                                          : featureContainer(icon: FontAwesomeIcons.star),
           SizedBox(
             height: 10,
           ),
@@ -210,11 +211,6 @@ class BuildFeatureItem extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
 
 class featureContainer extends StatelessWidget {
   const featureContainer({
@@ -239,4 +235,3 @@ class featureContainer extends StatelessWidget {
         ));
   }
 }
-

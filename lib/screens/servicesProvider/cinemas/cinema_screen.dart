@@ -1,19 +1,21 @@
 // ignore_for_file: missing_required_param
 import 'package:your_tour_guide/core/services/cacheHelper.dart';
 import 'package:your_tour_guide/constants.dart';
+import 'package:your_tour_guide/core/utils/functions/is_arabic.dart';
+import 'package:your_tour_guide/core/utils/widgets/contact_widget.dart';
+import 'package:your_tour_guide/core/utils/widgets/location_widget.dart';
 import 'package:your_tour_guide/cubits/home/home_cubit.dart';
 import 'package:your_tour_guide/cubits/place_cubit/place_cubit.dart';
 import 'package:your_tour_guide/models/cinema_model.dart';
 import 'package:your_tour_guide/screens/servicesProvider/cinemas/film_screen.dart';
-import 'package:your_tour_guide/utils/utils.dart';
-import 'package:your_tour_guide/widgets/head_text.dart';
-import 'package:your_tour_guide/widgets/hotel/contact_widget.dart';
-import 'package:your_tour_guide/widgets/location_widget.dart';
-import 'package:your_tour_guide/widgets/none_app_bar.dart';
-import 'package:your_tour_guide/widgets/place/custom_place_image.dart';
+import 'package:your_tour_guide/core/utils/widgets/head_text.dart';
+import 'package:your_tour_guide/core/utils/widgets/none_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../core/utils/widgets/place/custom_place_image.dart';
+import '../../../features/places/data/repos/places_repo.dart';
+import '../../../core/services/get_it_services_locator.dart';
 import '../../../generated/l10n.dart';
 
 class CinemaScreen extends StatelessWidget {
@@ -29,7 +31,7 @@ class CinemaScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => PlaceCubit()
+      create: (context) => PlaceCubit(getIt<PlacesRepo>())
         ..likedKey = docID
         ..restorePersistedPref(),
       child: Scaffold(
@@ -47,7 +49,6 @@ class CinemaScreen extends StatelessWidget {
                     //------------------------------------------------------------------------
                     //Image
                     CustomPlaceImage(
-                      docID: docID,
                       imageUrl: cinemaModel.imageUrl,
                       name: isArabic()
                           ? cinemaModel.nameArabic
@@ -55,9 +56,9 @@ class CinemaScreen extends StatelessWidget {
                       cityName: isArabic()
                           ? cinemaModel.cityNameArabic
                           : cinemaModel.cityName,
-                      containerImage: cinemaModel.images!.isEmpty
+                      containerImage: cinemaModel.images.isEmpty
                           ? ''
-                          : cinemaModel.images![0],
+                          : cinemaModel.images[0],
                       cubitLikedValue: cinemaCubit.likedValue,
                       favouriteFunction: () {
                         cinemaCubit.changeLike();
@@ -82,7 +83,7 @@ class CinemaScreen extends StatelessWidget {
                       },
                       cubitDataKeyCurrentContext:
                           cinemaCubit.dataKey.currentContext,
-                      images: cinemaModel.images!,
+                      images: cinemaModel.images,
                     ),
                     kSizedBox,
                     //------------------------------------------------------------------------
@@ -91,7 +92,6 @@ class CinemaScreen extends StatelessWidget {
                       address: isArabic()
                           ? cinemaModel.addressArabic
                           : cinemaModel.address,
-                      englishAddress: cinemaModel.address,
                       mapUrl: cinemaModel.mapUrl,
                       rate: cinemaModel.rate,
                     ),
@@ -110,7 +110,7 @@ class CinemaScreen extends StatelessWidget {
                         separatorBuilder: (_, index) => SizedBox(
                           width: 4,
                         ),
-                        itemCount: cinemaModel.films!.length,
+                        itemCount: cinemaModel.films.length,
                       ),
                     ),
                     kSizedBox,
@@ -160,7 +160,7 @@ class FilmWidget extends StatelessWidget {
             Column(
               children: [
                 Image.network(
-                  cinemaModel.films![index]['imageUrl'],
+                  cinemaModel.films[index]['imageUrl'],
                   width: double.infinity,
                   height: 190,
                   fit: BoxFit.cover,
@@ -170,10 +170,9 @@ class FilmWidget extends StatelessWidget {
                 ),
                 Text(
                   isArabic()
-                      ? cinemaModel.filmsArabic![index]['name']
+                      ? cinemaModel.filmsArabic[index]['name']
                           .replaceAll('_b', '\n')
-                      : cinemaModel.films![index]['name']
-                          .replaceAll('_b', '\n'),
+                      : cinemaModel.films[index]['name'].replaceAll('_b', '\n'),
                   textAlign: TextAlign.center,
 
                   // 'Oppenheimer'
@@ -192,8 +191,8 @@ class FilmWidget extends StatelessWidget {
                     children: [
                       Text(
                         isArabic()
-                            ? cinemaModel.filmsArabic![index]['price']
-                            : cinemaModel.films![index]['price'],
+                            ? cinemaModel.filmsArabic[index]['price']
+                            : cinemaModel.films[index]['price'],
                       ),
                       Row(
                         children: [
@@ -204,7 +203,7 @@ class FilmWidget extends StatelessWidget {
                               color: Colors.orange,
                             ),
                           ),
-                          Text('${cinemaModel.films![index]['rate']}/10'),
+                          Text('${cinemaModel.films[index]['rate']}/10'),
                         ],
                       ),
                     ],

@@ -1,12 +1,12 @@
-import 'package:your_tour_guide/components.dart';
 import 'package:your_tour_guide/constants.dart';
+import 'package:your_tour_guide/core/utils/functions/show_snack_bar.dart';
 import 'package:your_tour_guide/generated/l10n.dart';
 import 'package:your_tour_guide/features/nav_bar/presentation/views/main_view.dart';
-import 'package:your_tour_guide/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import '../../../../core/utils/widgets/custom_text_field.dart';
 import '../cubits/auth_cubit/auth_cubit.dart';
 import '../widgets/social_buttons.dart';
 

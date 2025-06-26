@@ -1,5 +1,5 @@
-import 'package:your_tour_guide/core/data/repos/places_repo.dart';
-import 'package:your_tour_guide/core/domain/entities/place_entity.dart';
+import 'package:your_tour_guide/features/places/data/repos/places_repo.dart';
+import 'package:your_tour_guide/features/places/domian/entities/place_entity.dart';
 import 'package:your_tour_guide/core/services/cacheHelper.dart';
 import 'package:your_tour_guide/features/nav_bar/presentation/views/home_view.dart';
 import 'package:your_tour_guide/features/nav_bar/presentation/views/search_view.dart';

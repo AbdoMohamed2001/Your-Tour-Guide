@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:your_tour_guide/core/data/repos/features_repo.dart';
 import 'package:your_tour_guide/core/services/get_it_services_locator.dart';
-import 'package:your_tour_guide/widgets/custom_app_bar.dart';
+import '../../../../core/utils/widgets/custom_app_bar.dart';
 import '../cubits/feature_cubit.dart';
 import '../widgets/feature_details_view/feature_details_view_body.dart';
 

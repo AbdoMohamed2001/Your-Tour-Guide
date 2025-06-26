@@ -1,12 +1,14 @@
 import 'dart:developer';
 
-import 'package:your_tour_guide/components.dart';
+import 'package:your_tour_guide/core/utils/functions/show_toast.dart';
 import 'package:your_tour_guide/resources/storage_methods.dart';
 import 'package:your_tour_guide/features/nav_bar/presentation/views/main_view.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
+import '../core/utils/functions/show_snack_bar.dart';
 
 class AuthMethods {
   final FirebaseAuth _auth = FirebaseAuth.instance;

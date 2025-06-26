@@ -4,8 +4,6 @@ import 'package:your_tour_guide/core/services/cacheHelper.dart';
 import 'package:your_tour_guide/constants.dart';
 import 'package:your_tour_guide/resources/auth_methods.dart';
 import 'package:your_tour_guide/screens/best_places/photo_view_page.dart';
-import 'package:your_tour_guide/widgets/opening_hours_item.dart';
-import 'package:your_tour_guide/widgets/tickets_item.dart';
 import 'package:bordered_text/bordered_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -14,6 +12,9 @@ import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+
+import '../../core/utils/widgets/opening_hours_item.dart';
+import '../../core/utils/widgets/tickets_item.dart';
 
 class BestPlaceScreen extends StatefulWidget {
   BestPlaceScreen(

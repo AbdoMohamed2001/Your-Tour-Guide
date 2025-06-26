@@ -1,8 +1,9 @@
-import 'package:your_tour_guide/widgets/custom_app_bar.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
+
+import '../../core/utils/widgets/custom_app_bar.dart';
 
 class PhotoViewPage extends StatelessWidget {
   final List<dynamic> photos;

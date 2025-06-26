@@ -1,4 +1,5 @@
-import 'package:your_tour_guide/components.dart';
+import 'package:your_tour_guide/core/utils/functions/show_snack_bar.dart';
+import 'package:your_tour_guide/core/utils/functions/show_toast.dart';
 import 'package:your_tour_guide/features/nav_bar/presentation/views/main_view.dart';
 import 'package:your_tour_guide/features/auth/presentation/widgets/login_body.dart';
 import 'package:flutter/material.dart';

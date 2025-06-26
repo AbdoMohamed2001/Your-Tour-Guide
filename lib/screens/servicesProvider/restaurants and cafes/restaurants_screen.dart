@@ -2,22 +2,21 @@
 
 import 'package:your_tour_guide/core/services/cacheHelper.dart';
 import 'package:your_tour_guide/constants.dart';
+import 'package:your_tour_guide/core/utils/functions/is_arabic.dart';
+import 'package:your_tour_guide/core/utils/widgets/contact_widget.dart';
+import 'package:your_tour_guide/core/utils/widgets/location_widget.dart';
+import 'package:your_tour_guide/core/utils/widgets/opening_hours_item.dart';
+import 'package:your_tour_guide/core/utils/widgets/place/custom_place_image.dart';
+import 'package:your_tour_guide/core/utils/widgets/place/gallery_widget.dart';
 import 'package:your_tour_guide/cubits/place_cubit/place_cubit.dart';
 import 'package:your_tour_guide/generated/l10n.dart';
 import 'package:your_tour_guide/models/restaurant_model.dart';
-import 'package:your_tour_guide/screens/best_places/photo_view_page.dart';
-import 'package:your_tour_guide/utils/utils.dart';
-import 'package:your_tour_guide/widgets/head_text.dart';
-import 'package:your_tour_guide/widgets/hotel/contact_widget.dart';
-import 'package:your_tour_guide/widgets/location_widget.dart';
-import 'package:your_tour_guide/widgets/none_app_bar.dart';
-import 'package:your_tour_guide/widgets/opening_hours_item.dart';
-import 'package:your_tour_guide/widgets/place/custom_place_image.dart';
-import 'package:your_tour_guide/widgets/place/gallery_widget.dart';
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:your_tour_guide/core/utils/widgets/head_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:url_launcher/url_launcher.dart';
+
+import '../../../features/places/data/repos/places_repo.dart';
+import '../../../core/services/get_it_services_locator.dart';
 
 class RestaurantScreen extends StatelessWidget {
   RestaurantScreen({
@@ -26,7 +25,7 @@ class RestaurantScreen extends StatelessWidget {
     required this.docID,
     required this.collectionName,
   }) : super(key: key);
-  static String id = 'RestaurantScreen';
+  static final String id = 'RestaurantScreen';
 
   final RestaurantModel restaurantModel;
   final docID;
@@ -34,7 +33,7 @@ class RestaurantScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => PlaceCubit()
+      create: (context) => PlaceCubit(getIt<PlacesRepo>())
         ..likedKey = docID
         ..restorePersistedPref()
         ..canLaunchUrlFunction(),
@@ -46,7 +45,6 @@ class RestaurantScreen extends StatelessWidget {
               child: Column(
                 children: [
                   CustomPlaceImage(
-                    docID: docID,
                     imageUrl: restaurantModel.imageUrl,
                     name: isArabic()
                         ? restaurantModel.nameArabic
@@ -54,7 +52,7 @@ class RestaurantScreen extends StatelessWidget {
                     cityName: isArabic()
                         ? restaurantModel.cityNameArabic
                         : restaurantModel.cityName,
-                    containerImage: restaurantModel.images![0],
+                    containerImage: restaurantModel.images[0],
                     cubitLikedValue: restaurantCubit.likedValue,
                     favouriteFunction: () {
                       restaurantCubit.changeLike();
@@ -80,7 +78,7 @@ class RestaurantScreen extends StatelessWidget {
                     },
                     cubitDataKeyCurrentContext:
                         restaurantCubit.dataKey.currentContext,
-                    images: restaurantModel.images!,
+                    images: restaurantModel.images,
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10.0),
@@ -93,7 +91,6 @@ class RestaurantScreen extends StatelessWidget {
                           address: isArabic()
                               ? restaurantModel.addressArabic
                               : restaurantModel.address,
-                          englishAddress: restaurantModel.address,
                           mapUrl: restaurantModel.mapUrl,
                           rate: restaurantModel.rate,
                         ),
@@ -101,11 +98,11 @@ class RestaurantScreen extends StatelessWidget {
                         //Opening hours
                         BuildOpeningHoursItem(
                           openFrom: isArabic()
-                              ? restaurantModel.openingHoursArabic!['from']
-                              : restaurantModel.openingHours!['from'],
+                              ? restaurantModel.openingHoursArabic['from']
+                              : restaurantModel.openingHours['from'],
                           openTo: isArabic()
-                              ? restaurantModel.openingHoursArabic!['to']
-                              : restaurantModel.openingHours!['to'],
+                              ? restaurantModel.openingHoursArabic['to']
+                              : restaurantModel.openingHours['to'],
                         ),
                         kSizedBox,
                         //----------------------------------------------------

@@ -1,23 +1,23 @@
 // ignore_for_file: missing_required_param
 import 'package:your_tour_guide/core/services/cacheHelper.dart';
 import 'package:your_tour_guide/constants.dart';
+import 'package:your_tour_guide/core/utils/functions/is_arabic.dart';
+import 'package:your_tour_guide/core/utils/widgets/contact_widget.dart';
+import 'package:your_tour_guide/core/utils/widgets/hotel/room_widget.dart';
+import 'package:your_tour_guide/core/utils/widgets/location_widget.dart';
+import 'package:your_tour_guide/core/utils/widgets/place/custom_place_image.dart';
+import 'package:your_tour_guide/core/utils/widgets/place/gallery_widget.dart';
 import 'package:your_tour_guide/cubits/place_cubit/place_cubit.dart';
 import 'package:your_tour_guide/generated/l10n.dart';
 import 'package:your_tour_guide/models/hotel_model.dart';
 import 'package:your_tour_guide/screens/servicesProvider/hotels/widgets/feature_item.dart';
-import 'package:your_tour_guide/utils/utils.dart';
-import 'package:your_tour_guide/widgets/default_read_more.dart';
-import 'package:your_tour_guide/widgets/head_text.dart';
-import 'package:your_tour_guide/widgets/hotel/contact_widget.dart';
-import 'package:your_tour_guide/widgets/hotel/room_widget.dart';
-import 'package:your_tour_guide/widgets/location_widget.dart';
-import 'package:your_tour_guide/widgets/none_app_bar.dart';
-import 'package:your_tour_guide/widgets/place/custom_place_image.dart';
-import 'package:your_tour_guide/widgets/place/gallery_widget.dart';
+import 'package:your_tour_guide/core/utils/widgets/default_read_more.dart';
+import 'package:your_tour_guide/core/utils/widgets/head_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:readmore/readmore.dart';
-import 'package:url_launcher/url_launcher.dart';
+
+import '../../../features/places/data/repos/places_repo.dart';
+import '../../../core/services/get_it_services_locator.dart';
 
 class HotelScreen extends StatelessWidget {
   HotelScreen({
@@ -25,14 +25,14 @@ class HotelScreen extends StatelessWidget {
     required this.hotelModel,
     required this.docID,
   }) : super(key: key);
-  static String id = 'hotelScreen';
+  static final String id = 'hotelScreen';
   final HotelModel hotelModel;
   final docID;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => PlaceCubit()
+      create: (context) => PlaceCubit(getIt<PlacesRepo>())
         ..likedKey = docID
         ..restorePersistedPref()
         ..canLaunchUrlFunction(),
@@ -45,13 +45,12 @@ class HotelScreen extends StatelessWidget {
                 children: [
                   //image
                   CustomPlaceImage(
-                    docID: docID,
                     imageUrl: hotelModel.imageUrl,
                     name: isArabic() ? hotelModel.nameArabic : hotelModel.name,
                     cityName: isArabic()
                         ? hotelModel.cityNameArabic
                         : hotelModel.cityName,
-                    containerImage: hotelModel.images![0],
+                    containerImage: hotelModel.images[0],
                     cubitLikedValue: hotelCubit.likedValue,
                     favouriteFunction: () {
                       hotelCubit.changeLike();
@@ -76,7 +75,7 @@ class HotelScreen extends StatelessWidget {
                     },
                     cubitDataKeyCurrentContext:
                         hotelCubit.dataKey.currentContext,
-                    images: hotelModel.images!,
+                    images: hotelModel.images,
                   ),
                   Column(
                     children: [
@@ -93,7 +92,6 @@ class HotelScreen extends StatelessWidget {
                               address: isArabic()
                                   ? hotelModel.addressArabic
                                   : hotelModel.address,
-                              englishAddress: hotelModel.address,
                               mapUrl: hotelModel.mapUrl,
                               rate: hotelModel.rate,
                             ),
@@ -103,8 +101,8 @@ class HotelScreen extends StatelessWidget {
                             // HeadText(text: S.of(context).about),
                             DefaultReadMoreWidget(
                               text: isArabic()
-                                  ? hotelModel.aboutArabic!
-                                  : hotelModel.about!,
+                                  ? hotelModel.aboutArabic
+                                  : hotelModel.about,
                             ),
                             kSizedBox,
                             //-------------------------------------------------------------------------
@@ -157,7 +155,7 @@ class HotelScreen extends StatelessWidget {
                                 separatorBuilder: (context, index) => SizedBox(
                                   width: 5,
                                 ),
-                                itemCount: hotelModel.features!.length,
+                                itemCount: hotelModel.features.length,
                               ),
                             ),
                             //booking
@@ -189,8 +187,8 @@ class HotelScreen extends StatelessWidget {
                             //Rooms
                             HeadText(text: S.of(context).rooms),
                             kSizedBox,
-                            hotelModel.roomsArabic!.length == 0 &&
-                                    hotelModel.rooms!.length == 0
+                            hotelModel.roomsArabic.length == 0 &&
+                                    hotelModel.rooms.length == 0
                                 ? Container(
                                     width: 0,
                                     height: 0,

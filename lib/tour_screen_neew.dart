@@ -3,17 +3,19 @@ import 'package:your_tour_guide/constants.dart';
 import 'package:your_tour_guide/cubits/place_cubit/place_cubit.dart';
 import 'package:your_tour_guide/generated/l10n.dart';
 import 'package:your_tour_guide/models/tour_model.dart';
-import 'package:your_tour_guide/widgets/default_read_more.dart';
-import 'package:your_tour_guide/widgets/head_text.dart';
-import 'package:your_tour_guide/widgets/hotel/contact_widget.dart';
-import 'package:your_tour_guide/widgets/inclusions_widget_tour.dart';
-import 'package:your_tour_guide/widgets/none_app_bar.dart';
-import 'package:your_tour_guide/widgets/place/custom_place_image.dart';
-import 'package:your_tour_guide/widgets/place/gallery_widget.dart';
+import 'package:your_tour_guide/core/utils/widgets/default_read_more.dart';
+import 'package:your_tour_guide/core/utils/widgets/head_text.dart';
+import 'package:your_tour_guide/core/utils/widgets/inclusions_widget_tour.dart';
+import 'package:your_tour_guide/core/utils/widgets/none_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../../utils/utils.dart';
+import 'core/utils/functions/is_arabic.dart';
+import 'core/utils/widgets/contact_widget.dart';
+import 'core/utils/widgets/place/custom_place_image.dart';
+import 'core/utils/widgets/place/gallery_widget.dart';
+import 'features/places/data/repos/places_repo.dart';
+import 'core/services/get_it_services_locator.dart';
 
 class TourScreenNeew extends StatelessWidget {
   TourScreenNeew({
@@ -28,7 +30,7 @@ class TourScreenNeew extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => PlaceCubit()
+      create: (context) => PlaceCubit(getIt<PlacesRepo>())
         ..likedKey = docID
         ..restorePersistedPref(),
       child: Scaffold(
@@ -44,11 +46,10 @@ class TourScreenNeew extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     CustomPlaceImage(
-                      fontSize: placeModel.nameArabic!.length >= 25 ||
-                              placeModel.name!.length >= 25
+                      fontSize: placeModel.nameArabic.length >= 25 ||
+                              placeModel.name.length >= 25
                           ? 19
                           : 24,
-                      docID: docID,
                       imageUrl: placeModel.imageUrl,
                       name:
                           isArabic() ? placeModel.nameArabic : placeModel.name,
@@ -56,7 +57,7 @@ class TourScreenNeew extends StatelessWidget {
                       // cityName: isArabic()
                       //     ? placeModel.tourLocationArabic
                       //     : placeModel.tourLocation,
-                      containerImage: placeModel.images![0],
+                      containerImage: placeModel.images[0],
                       cubitLikedValue: placeCubit.likedValue,
                       favouriteFunction: () {
                         placeCubit.changeLike();
@@ -81,7 +82,7 @@ class TourScreenNeew extends StatelessWidget {
                       },
                       cubitDataKeyCurrentContext:
                           placeCubit.dataKey.currentContext,
-                      images: placeModel.images!,
+                      images: placeModel.images,
                     ),
                     kSizedBox,
                     //-------------------------------------------------------------------
@@ -97,19 +98,19 @@ class TourScreenNeew extends StatelessWidget {
                             children: [
                               BuildTourRow(
                                 head: S.of(context).Price,
-                                text: placeModel.startPrice!,
+                                text: placeModel.startPrice,
                               ),
                               BuildTourRow(
                                 head: S.of(context).Duration,
                                 text: isArabic()
-                                    ? placeModel.durationArabic!
-                                    : placeModel.duration!,
+                                    ? placeModel.durationArabic
+                                    : placeModel.duration,
                               ),
                               BuildTourRow(
                                 head: S.of(context).tourAvailability,
                                 text: isArabic()
-                                    ? placeModel.tourAvailabilityArabic!
-                                    : placeModel.tourAvailability!,
+                                    ? placeModel.tourAvailabilityArabic
+                                    : placeModel.tourAvailability,
                               ),
                               // BuildTourRow(
                               //   head: S.of(context).TourType,
@@ -120,8 +121,8 @@ class TourScreenNeew extends StatelessWidget {
                               BuildTourRow(
                                 head: S.of(context).PickFrom,
                                 text: isArabic()
-                                    ? placeModel.pickupFromArabic!
-                                    : placeModel.pickupFrom!,
+                                    ? placeModel.pickupFromArabic
+                                    : placeModel.pickupFrom,
                               ),
                             ],
                           ),
@@ -135,8 +136,8 @@ class TourScreenNeew extends StatelessWidget {
                               kSmallSizedBox,
                               Text(
                                 isArabic()
-                                    ? placeModel.tourLocationArabic!
-                                    : placeModel.tourLocation!,
+                                    ? placeModel.tourLocationArabic
+                                    : placeModel.tourLocation,
                               ),
                             ],
                           ),
@@ -155,7 +156,7 @@ class TourScreenNeew extends StatelessWidget {
                                 placeModel: placeModel,
                                 index: index,
                               ),
-                              itemCount: placeModel.tourItinerary!.length,
+                              itemCount: placeModel.tourItinerary.length,
                               separatorBuilder: (_, index) => Container(
                                 alignment: Alignment.center,
                                 width: 40,
@@ -172,8 +173,8 @@ class TourScreenNeew extends StatelessWidget {
                           kSmallSizedBox,
                           DefaultReadMoreWidget(
                             text: isArabic()
-                                ? placeModel.descriptionArabic!
-                                : placeModel.description!,
+                                ? placeModel.descriptionArabic
+                                : placeModel.description,
                           ),
                           kSizedBox,
                           //-------------------------------------------------------------------
@@ -195,7 +196,7 @@ class TourScreenNeew extends StatelessWidget {
                             separatorBuilder: (_, index) => SizedBox(
                               height: 10,
                             ),
-                            itemCount: placeModel.inclusions!.length,
+                            itemCount: placeModel.inclusions.length,
                           ),
                           kSizedBox,
                           //-------------------------------------------------------------------
@@ -217,7 +218,7 @@ class TourScreenNeew extends StatelessWidget {
                             separatorBuilder: (_, index) => SizedBox(
                               height: 10,
                             ),
-                            itemCount: placeModel.exclusions!.length,
+                            itemCount: placeModel.exclusions.length,
                           ),
                           kSizedBox,
                           //-------------------------------------------------------------------
@@ -241,7 +242,7 @@ class TourScreenNeew extends StatelessWidget {
                                   ),
                                 ),
                                 child: Image.network(
-                                  placeModel.tripOrganizerLogo!,
+                                  placeModel.tripOrganizerLogo,
                                   fit: BoxFit.contain,
                                 ),
                               ),
@@ -251,9 +252,9 @@ class TourScreenNeew extends StatelessWidget {
                               Text(
                                 textAlign: TextAlign.center,
                                 isArabic()
-                                    ? placeModel.tripOrganizerArabic!
+                                    ? placeModel.tripOrganizerArabic
                                         .replaceAll('_b', '\n')
-                                    : placeModel.tripOrganizer!
+                                    : placeModel.tripOrganizer
                                         .replaceAll('_b', '\n'),
                               ),
                               SizedBox(
@@ -283,7 +284,7 @@ class TourScreenNeew extends StatelessWidget {
                           kSizedBox,
                           GestureDetector(
                             onTap: () async {
-                              var url = Uri.parse(placeModel.booking!);
+                              var url = Uri.parse(placeModel.booking);
                               if (await canLaunchUrl(
                                 url,
                               )) {
@@ -369,16 +370,16 @@ class BuildItineraryWidget extends StatelessWidget {
       children: [
         CircleAvatar(
           backgroundImage:
-              NetworkImage(placeModel.tourItinerary![index]['imageUrl']),
+              NetworkImage(placeModel.tourItinerary[index]['imageUrl']),
           radius: 50,
         ),
         SizedBox(
           width: 5,
         ),
         Text(isArabic()
-            ? placeModel.tourItinerary![index]['nameArabic']
+            ? placeModel.tourItinerary[index]['nameArabic']
                 .replaceAll('_b', '\n')
-            : placeModel.tourItinerary![index]['name'].replaceAll('_b', '\n')),
+            : placeModel.tourItinerary[index]['name'].replaceAll('_b', '\n')),
         SizedBox(
           width: 5,
         ),

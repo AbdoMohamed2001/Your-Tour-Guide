@@ -1,13 +1,11 @@
+import 'package:your_tour_guide/core/utils/functions/is_arabic.dart';
+import 'package:your_tour_guide/core/utils/widgets/custom_app_bar.dart';
+import 'package:your_tour_guide/core/utils/widgets/default_cached_network_image.dart';
+import 'package:your_tour_guide/core/utils/widgets/facalities_item.dart';
 import 'package:your_tour_guide/generated/l10n.dart';
 import 'package:your_tour_guide/models/hotel_model.dart';
-import 'package:your_tour_guide/widgets/custom_app_bar.dart';
-import 'package:your_tour_guide/widgets/deafult_cached_network_image.dart';
-import 'package:your_tour_guide/widgets/facalities_item.dart';
-import 'package:your_tour_guide/widgets/place/custom_place_image.dart';
 import 'package:bordered_text/bordered_text.dart';
 import 'package:flutter/material.dart';
-
-import '../../../utils/utils.dart';
 
 class RoomScreen extends StatelessWidget {
   const RoomScreen({
@@ -24,7 +22,6 @@ class RoomScreen extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar(),
       body: SingleChildScrollView(
-
         child: Container(
           width: double.infinity,
           decoration: BoxDecoration(
@@ -41,17 +38,17 @@ class RoomScreen extends StatelessWidget {
                 children: [
                   DefaultCachedNetworkImage(
                     imageUrl: isArabic()
-                        ? hotelModel.roomsArabic![index]['imageUrl']
-                        : hotelModel.rooms![index]['imageUrl'],
+                        ? hotelModel.roomsArabic[index]['imageUrl']
+                        : hotelModel.rooms[index]['imageUrl'],
                     imageHeight: 250,
                   ),
                   Positioned(
                     //38
-                    bottom: hotelModel.roomsArabic![index]['name']
+                    bottom: hotelModel.roomsArabic[index]['name']
                                     .toString()
                                     .length >
                                 35 ||
-                            hotelModel.rooms![index]['name'].toString().length >
+                            hotelModel.rooms[index]['name'].toString().length >
                                 35
                         ? 10
                         : 10,
@@ -61,16 +58,16 @@ class RoomScreen extends StatelessWidget {
                       strokeColor: Colors.black,
                       child: Text(
                         isArabic()
-                            ? hotelModel.roomsArabic![index]['name']
-                            : hotelModel.rooms![index]['name'],
+                            ? hotelModel.roomsArabic[index]['name']
+                            : hotelModel.rooms[index]['name'],
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
-                          fontSize: hotelModel.roomsArabic![index]['name']
+                          fontSize: hotelModel.roomsArabic[index]['name']
                                           .toString()
                                           .length >
                                       35 ||
-                                  hotelModel.rooms![index]['name']
+                                  hotelModel.rooms[index]['name']
                                           .toString()
                                           .length >
                                       35
@@ -92,18 +89,16 @@ class RoomScreen extends StatelessWidget {
                 child: GridView.builder(
                   physics: NeverScrollableScrollPhysics(),
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 4,
+                    crossAxisCount: 4,
                     mainAxisSpacing: 5,
                     crossAxisSpacing: 0,
                   ),
-                  itemBuilder: (_, indexx) =>BuildFacilitiesItem(index: indexx, hotelModel: hotelModel),
-                    itemCount: isArabic()
-                        ? hotelModel.roomFacilitiesArabic!.length
-                        : hotelModel.roomFacilities!.length,
+                  itemBuilder: (_, indexx) => BuildFacilitiesItem(
+                      index: indexx, hotelModel: hotelModel),
+                  itemCount: isArabic()
+                      ? hotelModel.roomFacilitiesArabic.length
+                      : hotelModel.roomFacilities.length,
                 ),
-
-
-
 
                 // ListView.separated(
                 //   shrinkWrap: true,
@@ -141,12 +136,12 @@ class RoomScreen extends StatelessWidget {
                         SizedBox(
                           width: 5,
                         ),
-                        hotelModel.roomsArabic![index]['noOfPeople'] == 1
+                        hotelModel.roomsArabic[index]['noOfPeople'] == 1
                             ? Icon(
                                 Icons.person,
                                 size: 32,
                               )
-                            : hotelModel.roomsArabic![index]['noOfPeople'] == 3
+                            : hotelModel.roomsArabic[index]['noOfPeople'] == 3
                                 ? Row(
                                     children: [
                                       Icon(
@@ -159,7 +154,7 @@ class RoomScreen extends StatelessWidget {
                                       ),
                                     ],
                                   )
-                                : hotelModel.roomsArabic![index]['noOfPeople'] ==
+                                : hotelModel.roomsArabic[index]['noOfPeople'] ==
                                         4
                                     ? Row(
                                         children: [
@@ -184,14 +179,14 @@ class RoomScreen extends StatelessWidget {
                         ),
                         isArabic()
                             ? Text(
-                                hotelModel.roomsArabic![index]['bed']
+                                hotelModel.roomsArabic[index]['bed']
                                     .replaceAll('_b', '\n'),
                                 style: TextStyle(
                                   fontSize: 24,
                                 ),
                               )
                             : Text(
-                                hotelModel.rooms![index]['bed']
+                                hotelModel.rooms[index]['bed']
                                     .replaceAll('_b', '\n'),
                                 style: TextStyle(
                                   fontSize: 24,
@@ -201,7 +196,7 @@ class RoomScreen extends StatelessWidget {
                         SizedBox(
                           width: 5,
                         ),
-                        hotelModel.roomsArabic![index]['bed']
+                        hotelModel.roomsArabic[index]['bed']
                                 .toString()
                                 .contains('_b')
                             ? Column(
@@ -222,7 +217,7 @@ class RoomScreen extends StatelessWidget {
                                   )
                                 ],
                               )
-                            : hotelModel.roomsArabic![index]['bed']
+                            : hotelModel.roomsArabic[index]['bed']
                                     .toString()
                                     .contains('2')
                                 ? Column(

@@ -1,36 +1,31 @@
 import 'package:your_tour_guide/constants.dart';
-import 'package:your_tour_guide/core/data/models/place_model.dart';
-import 'package:your_tour_guide/core/domain/entities/place_entity.dart';
-import 'package:your_tour_guide/utils/utils.dart';
+import 'package:your_tour_guide/core/utils/functions/is_arabic.dart';
+import 'package:your_tour_guide/features/places/domian/entities/place_entity.dart';
+import 'package:your_tour_guide/features/places/presentation/views/place_details_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:arabic_numbers/arabic_numbers.dart';
-
-import '../../../../screens/places/place_screen_new.dart';
+import 'package:your_tour_guide/core/utils/widgets/default_cached_network_image.dart';
 
 class FeaturedPlaceItem extends StatelessWidget {
   const FeaturedPlaceItem({
     super.key,
-    required this.index,
     required this.placeEntity,
   });
 
-  final int index;
   final PlaceEntity placeEntity;
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
     final arabicNumber = ArabicNumbers();
-    List<PlaceModel>? placeList;
     return Row(
       children: [
         GestureDetector(
           onTap: () {
             Navigator.push(context, MaterialPageRoute(builder: (context) {
-              return PlaceScreenNew(
-                docID: placeEntity.docId,
-                placeModel: placeList![index],
+              return PlaceDetailsView(
+                placeEntity: placeEntity,
               );
             }));
           },
@@ -51,13 +46,10 @@ class FeaturedPlaceItem extends StatelessWidget {
                 //---------------------------------------------------------------------
                 ClipRRect(
                   borderRadius: BorderRadius.circular(10),
-                  child: Image(
-                    image: NetworkImage(
-                      placeEntity.imageUrl!,
-                    ),
-                    fit: BoxFit.cover,
-                    height: 100,
-                    width: 250,
+                  child: DefaultCachedNetworkImage(
+                    imageUrl: placeEntity.imageUrl,
+                    imageHeight: 100,
+                    imageWidth: 250,
                   ),
                 ),
                 kSizedBox,
@@ -68,9 +60,7 @@ class FeaturedPlaceItem extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        isArabic()
-                            ? placeEntity.nameArabic!
-                            : placeEntity.name!,
+                        isArabic() ? placeEntity.nameArabic : placeEntity.name,
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
@@ -84,7 +74,7 @@ class FeaturedPlaceItem extends StatelessWidget {
                           RatingBar(
                               ignoreGestures: true,
                               itemSize: 16,
-                              initialRating: placeEntity.rate!.toDouble(),
+                              initialRating: placeEntity.rate.toDouble(),
                               allowHalfRating: true,
                               ratingWidget: RatingWidget(
                                 full: Icon(
@@ -106,8 +96,8 @@ class FeaturedPlaceItem extends StatelessWidget {
                           ),
                           isArabic()
                               ? Text(
-                                  '(${arabicNumber.convert(placeEntity.rate!.toString())})')
-                              : Text('(${placeEntity.rate!.toString()})'),
+                                  '(${arabicNumber.convert(placeEntity.rate.toString())})')
+                              : Text('(${placeEntity.rate.toString()})'),
                         ],
                       ),
                       SizedBox(

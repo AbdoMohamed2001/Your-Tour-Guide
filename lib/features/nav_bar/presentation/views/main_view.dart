@@ -1,4 +1,4 @@
-import 'package:your_tour_guide/components.dart';
+import 'package:your_tour_guide/core/utils/functions/show_toast.dart';
 import 'package:your_tour_guide/cubits/home/home_cubit.dart';
 import 'package:your_tour_guide/screens/no_internet.dart';
 import 'package:flutter/material.dart';

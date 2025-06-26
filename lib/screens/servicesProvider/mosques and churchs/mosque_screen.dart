@@ -1,19 +1,20 @@
 // ignore_for_file: missing_required_param
 import 'package:your_tour_guide/core/services/cacheHelper.dart';
 import 'package:your_tour_guide/constants.dart';
+import 'package:your_tour_guide/core/utils/functions/is_arabic.dart';
+import 'package:your_tour_guide/core/utils/widgets/location_widget.dart';
+import 'package:your_tour_guide/core/utils/widgets/opening_hours_item.dart';
+import 'package:your_tour_guide/core/utils/widgets/place/custom_place_image.dart';
+import 'package:your_tour_guide/core/utils/widgets/place/gallery_widget.dart';
 import 'package:your_tour_guide/cubits/place_cubit/place_cubit.dart';
 import 'package:your_tour_guide/generated/l10n.dart';
 import 'package:your_tour_guide/models/mosque_model.dart';
-import 'package:your_tour_guide/utils/utils.dart';
-import 'package:your_tour_guide/widgets/default_read_more.dart';
-import 'package:your_tour_guide/widgets/head_text.dart';
-import 'package:your_tour_guide/widgets/location_widget.dart';
-import 'package:your_tour_guide/widgets/none_app_bar.dart';
-import 'package:your_tour_guide/widgets/opening_hours_item.dart';
-import 'package:your_tour_guide/widgets/place/custom_place_image.dart';
+import 'package:your_tour_guide/core/utils/widgets/default_read_more.dart';
+import 'package:your_tour_guide/core/utils/widgets/head_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../widgets/place/gallery_widget.dart';
+import '../../../features/places/data/repos/places_repo.dart';
+import '../../../core/services/get_it_services_locator.dart';
 
 class MosqueScreen extends StatelessWidget {
   MosqueScreen({
@@ -30,7 +31,7 @@ class MosqueScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => PlaceCubit()
+      create: (context) => PlaceCubit(getIt<PlacesRepo>())
         ..likedKey = docID
         ..restorePersistedPref(),
       child: Scaffold(
@@ -41,14 +42,13 @@ class MosqueScreen extends StatelessWidget {
               child: Column(
                 children: [
                   CustomPlaceImage(
-                    docID: docID,
                     imageUrl: mosqueModel.imageUrl,
                     name:
                         isArabic() ? mosqueModel.nameArabic : mosqueModel.name,
                     cityName: isArabic()
                         ? mosqueModel.cityNameArabic
                         : mosqueModel.cityName,
-                    containerImage: mosqueModel.images![0],
+                    containerImage: mosqueModel.images[0],
                     cubitLikedValue: mosqueCubit.likedValue,
                     favouriteFunction: () {
                       mosqueCubit.changeLike();
@@ -74,7 +74,7 @@ class MosqueScreen extends StatelessWidget {
                     },
                     cubitDataKeyCurrentContext:
                         mosqueCubit.dataKey.currentContext,
-                    images: mosqueModel.images!,
+                    images: mosqueModel.images,
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10.0),
@@ -89,7 +89,6 @@ class MosqueScreen extends StatelessWidget {
                           address: isArabic()
                               ? mosqueModel.addressArabic
                               : mosqueModel.address,
-                          englishAddress: mosqueModel.address,
                           mapUrl: mosqueModel.mapUrl,
                           rate: mosqueModel.rate,
                         ),
@@ -100,11 +99,11 @@ class MosqueScreen extends StatelessWidget {
                         //Opening hours
                         BuildOpeningHoursItem(
                           openFrom: isArabic()
-                              ? mosqueModel.openingHoursArabic!['from']
-                              : mosqueModel.openingHours!['from'],
+                              ? mosqueModel.openingHoursArabic['from']
+                              : mosqueModel.openingHours['from'],
                           openTo: isArabic()
-                              ? mosqueModel.openingHoursArabic!['to']
-                              : mosqueModel.openingHours!['to'],
+                              ? mosqueModel.openingHoursArabic['to']
+                              : mosqueModel.openingHours['to'],
                         ),
                         kSizedBox,
                         //-------------------------------------------------------------------
@@ -125,8 +124,8 @@ class MosqueScreen extends StatelessWidget {
                           padding: const EdgeInsets.symmetric(horizontal: 8.0),
                           child: DefaultReadMoreWidget(
                             text: isArabic()
-                                ? mosqueModel.descriptionArabic!
-                                : mosqueModel.description!,
+                                ? mosqueModel.descriptionArabic
+                                : mosqueModel.description,
                           ),
                         ),
                         kSizedBox,

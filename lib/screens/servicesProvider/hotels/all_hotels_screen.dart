@@ -1,20 +1,22 @@
 import 'package:your_tour_guide/constants.dart';
+import 'package:your_tour_guide/core/utils/functions/is_arabic.dart';
 import 'package:your_tour_guide/cubits/home/home_cubit.dart';
 import 'package:your_tour_guide/cubits/place_cubit/place_cubit.dart';
 import 'package:your_tour_guide/generated/l10n.dart';
 import 'package:your_tour_guide/models/hotel_model.dart';
 import 'package:your_tour_guide/screens/servicesProvider/hotels/hotel_screen.dart';
-import 'package:your_tour_guide/widgets/custom_app_bar.dart';
-import 'package:your_tour_guide/widgets/deafult_cached_network_image.dart';
+import 'package:your_tour_guide/core/utils/widgets/default_cached_network_image.dart';
 import 'package:bordered_text/bordered_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
+import '../../../core/utils/widgets/custom_app_bar.dart';
+import '../../../features/places/data/repos/places_repo.dart';
+import '../../../core/services/get_it_services_locator.dart';
 import '../../../feature_grid_item.dart';
-import '../../../utils/utils.dart';
-import '../../../widgets/sort_by_widget.dart';
+import '../../../core/utils/widgets/sort_by_widget.dart';
 
 class AllHotels extends StatelessWidget {
   static String id = 'allHotels';
@@ -27,14 +29,13 @@ class AllHotels extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var screenWidth = MediaQuery.of(context).size.width;
     var screenHeight = MediaQuery.of(context).size.height;
     CollectionReference hotels =
         FirebaseFirestore.instance.collection('hotels');
     List<HotelModel>? hotelList;
 
     return BlocProvider(
-      create: (context) => PlaceCubit(),
+      create: (context) => PlaceCubit(getIt<PlacesRepo>()),
       child: BlocBuilder<PlaceCubit, PlaceState>(
         builder: (context, state) {
           var hotelCubit = PlaceCubit.get(context);
@@ -162,7 +163,7 @@ class BuildHotelGridItem extends StatelessWidget {
               child: Stack(
                 children: [
                   DefaultCachedNetworkImage(
-                    imageUrl: hotelModel.imageUrl!,
+                    imageUrl: hotelModel.imageUrl,
                     imageHeight: screenHeight * 0.42,
                     // imageHeight: 260,
                   ),
@@ -177,7 +178,7 @@ class BuildHotelGridItem extends StatelessWidget {
                           ? Colors.black
                           : Colors.white,
                       child: Text(
-                        isArabic() ? hotelModel.nameArabic! : hotelModel.name!,
+                        isArabic() ? hotelModel.nameArabic : hotelModel.name,
                         style: TextStyle(
                           fontSize: 12.5,
                           fontWeight: FontWeight.bold,
@@ -197,8 +198,8 @@ class BuildHotelGridItem extends StatelessWidget {
                           : Colors.white,
                       child: Text(
                         isArabic()
-                            ? hotelModel.cityNameArabic!
-                            : hotelModel.cityName!,
+                            ? hotelModel.cityNameArabic
+                            : hotelModel.cityName,
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.bold,
@@ -216,7 +217,7 @@ class BuildHotelGridItem extends StatelessWidget {
                             isArabic() ? TextDirection.rtl : TextDirection.ltr,
                         ignoreGestures: true,
                         itemSize: 24,
-                        initialRating: hotelModel.stars!.toDouble(),
+                        initialRating: hotelModel.stars.toDouble(),
                         allowHalfRating: true,
                         ratingWidget: RatingWidget(
                           full: Icon(

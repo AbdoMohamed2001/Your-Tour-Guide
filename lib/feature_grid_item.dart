@@ -1,7 +1,8 @@
 import 'package:your_tour_guide/models/hotel_model.dart';
-import 'package:your_tour_guide/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import 'core/utils/functions/is_arabic.dart';
 
 class BuildFeatureGridItem extends StatelessWidget {
   const BuildFeatureGridItem({
@@ -19,11 +20,10 @@ class BuildFeatureGridItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var screenWidth = MediaQuery.of(context).size.width;
     var screenHeight = MediaQuery.of(context).size.height;
     var features = isArabic()
-        ? hotelModel.featuresArabic![index]
-        : hotelModel.features![index];
+        ? hotelModel.featuresArabic[index]
+        : hotelModel.features[index];
     return Container(
       height: screenHeight*0.12,
       // color: Colors.red,
@@ -227,7 +227,6 @@ class featureGridContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var screenWidth = MediaQuery.of(context).size.width;
     var screenHeight = MediaQuery.of(context).size.height;
     return Container(
         decoration: BoxDecoration(

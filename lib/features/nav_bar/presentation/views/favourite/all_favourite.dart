@@ -1,9 +1,10 @@
 import 'package:your_tour_guide/cubits/home/home_cubit.dart';
 import 'package:your_tour_guide/generated/l10n.dart';
-import 'package:your_tour_guide/utils/utils.dart';
-import 'package:your_tour_guide/widgets/custom_app_bar.dart';
-import 'package:your_tour_guide/widgets/favourite_widget.dart';
+import 'package:your_tour_guide/core/utils/widgets/favourite_widget.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../../core/utils/functions/is_arabic.dart';
+import '../../../../../core/utils/widgets/custom_app_bar.dart';
 
 class AllFavouriteView extends StatelessWidget {
   const AllFavouriteView({Key? key}) : super(key: key);

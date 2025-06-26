@@ -1,12 +1,14 @@
-import 'package:your_tour_guide/components.dart';
+import 'package:your_tour_guide/core/utils/functions/is_arabic.dart';
+import 'package:your_tour_guide/core/utils/functions/show_toast.dart';
+import 'package:your_tour_guide/features/places/data/repos/places_repo.dart';
+import 'package:your_tour_guide/features/places/domian/entities/place_entity.dart';
 import 'package:your_tour_guide/generated/l10n.dart';
 import 'package:your_tour_guide/models/cinema_model.dart';
 import 'package:your_tour_guide/models/mall_model.dart';
 import 'package:your_tour_guide/models/mosque_model.dart';
-import 'package:your_tour_guide/core/data/models/place_model.dart';
+import 'package:your_tour_guide/features/places/data/models/place_model.dart';
 import 'package:your_tour_guide/models/restaurant_model.dart';
 import 'package:your_tour_guide/models/tour_model.dart';
-import 'package:your_tour_guide/utils/utils.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -21,7 +23,27 @@ part 'place_state.dart';
 
 class PlaceCubit extends Cubit<PlaceState> {
   static PlaceCubit get(context) => BlocProvider.of(context);
-  PlaceCubit() : super(PlaceInitial());
+
+  PlaceCubit(this.placesRepo) : super(PlaceInitial());
+
+  final PlacesRepo placesRepo;
+
+  List<PlaceEntity> places = [];
+  List<PlaceEntity> bestPlaces = [];
+
+  void getBestPlaces() async {
+    emit(PlacesGetLoading());
+    var result = await placesRepo.getFeaturedPlaces();
+    result.fold(
+      (fail) {
+        emit(PlacesGetFailure(message: fail.message));
+      },
+      (places) {
+        bestPlaces = places;
+        emit(PlacesGetSuccess(places: bestPlaces));
+      },
+    );
+  }
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
   late var likedKey;
@@ -32,6 +54,7 @@ class PlaceCubit extends Cubit<PlaceState> {
   bool isRated = false;
   Color iconColor = Colors.white;
   Color isRatedColor = Colors.black;
+
   //-------------------Hotel var-----------------------------------------
   bool hasCallSupport = false;
   Future<void>? launched;
@@ -91,6 +114,7 @@ class PlaceCubit extends Cubit<PlaceState> {
 
   String servicesOrder = 'cityName';
   String servicesOrderArabic = 'cityNameArabic';
+
   void changeServicesOrder() {
     isDescending = !isDescending;
     emit(HotelChangeOrder());
@@ -139,6 +163,7 @@ class PlaceCubit extends Cubit<PlaceState> {
     );
     await launchUrl(launchUri);
   }
+
   //--------------------------------------------------------
 
   //--------------------------------------------------------

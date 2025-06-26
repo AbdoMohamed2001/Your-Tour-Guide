@@ -4,10 +4,9 @@ import 'package:your_tour_guide/features/splash/presentation/views/welcome_view.
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 import '../../../../../constants.dart';
-import '../../../../../utils/utils.dart';
+import '../../../../../core/utils/functions/is_arabic.dart';
 import 'edit_profile_view.dart';
 
 class ProfileView extends StatelessWidget {

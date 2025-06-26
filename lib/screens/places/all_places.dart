@@ -1,18 +1,18 @@
 import 'package:your_tour_guide/models/cinema_model.dart';
 import 'package:your_tour_guide/models/mall_model.dart';
-import 'package:your_tour_guide/core/data/models/place_model.dart';
+import 'package:your_tour_guide/features/places/data/models/place_model.dart';
 import 'package:your_tour_guide/models/restaurant_model.dart';
 import 'package:your_tour_guide/screens/places/place_screen_new.dart';
 import 'package:your_tour_guide/screens/servicesProvider/cinemas/cinema_screen.dart';
 import 'package:your_tour_guide/screens/servicesProvider/malls,%20mosques%20and%20churchs/mall_screen.dart';
 import 'package:your_tour_guide/screens/servicesProvider/restaurants%20and%20cafes/restaurants_screen.dart';
 import 'package:your_tour_guide/screens/servicesProvider/tourGuides/tour_guides.dart';
-import 'package:your_tour_guide/widgets/custom_app_bar.dart';
-import 'package:your_tour_guide/widgets/list_view_all_item.dart';
+import 'package:your_tour_guide/core/utils/widgets/list_view_all_item.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-import '../../utils/utils.dart';
+import '../../core/utils/functions/is_arabic.dart';
+import '../../core/utils/widgets/custom_app_bar.dart';
 
 class AllPlaces extends StatelessWidget {
   AllPlaces({

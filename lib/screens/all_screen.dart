@@ -4,7 +4,7 @@ import 'package:your_tour_guide/cubits/place_cubit/place_cubit.dart';
 import 'package:your_tour_guide/models/cinema_model.dart';
 import 'package:your_tour_guide/models/mall_model.dart';
 import 'package:your_tour_guide/models/mosque_model.dart';
-import 'package:your_tour_guide/core/data/models/place_model.dart';
+import 'package:your_tour_guide/features/places/data/models/place_model.dart';
 import 'package:your_tour_guide/models/restaurant_model.dart';
 import 'package:your_tour_guide/screens/places/place_screen_new.dart';
 import 'package:your_tour_guide/screens/servicesProvider/cinemas/cinema_screen.dart';
@@ -12,16 +12,18 @@ import 'package:your_tour_guide/screens/servicesProvider/malls,%20mosques%20and%
 import 'package:your_tour_guide/screens/servicesProvider/mosques%20and%20churchs/mosque_screen.dart';
 import 'package:your_tour_guide/screens/servicesProvider/restaurants%20and%20cafes/restaurants_screen.dart';
 import 'package:your_tour_guide/screens/servicesProvider/tourGuides/tour_guides.dart';
-import 'package:your_tour_guide/widgets/custom_app_bar.dart';
-import 'package:your_tour_guide/widgets/deafult_cached_network_image.dart';
-import 'package:your_tour_guide/widgets/location_widget.dart';
-import 'package:your_tour_guide/widgets/place_sort_by.dart';
+import 'package:your_tour_guide/core/utils/widgets/default_cached_network_image.dart';
 import 'package:bordered_text/bordered_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../utils/utils.dart';
+import '../core/utils/functions/is_arabic.dart';
+import '../core/utils/widgets/custom_app_bar.dart';
+import '../core/utils/widgets/place_sort_by.dart';
+import '../core/utils/widgets/rate_widget.dart';
+import '../features/places/data/repos/places_repo.dart';
+import '../core/services/get_it_services_locator.dart';
 
 class AllScreen extends StatelessWidget {
   AllScreen({
@@ -51,7 +53,7 @@ class AllScreen extends StatelessWidget {
         leading: CustomAppBarIconButton(),
       ),
       body: BlocProvider(
-        create: (context) => PlaceCubit(),
+        create: (context) => PlaceCubit(getIt<PlacesRepo>()),
         child: BlocBuilder<PlaceCubit, PlaceState>(
           builder: (context, state) {
             var cubit = PlaceCubit.get(context);

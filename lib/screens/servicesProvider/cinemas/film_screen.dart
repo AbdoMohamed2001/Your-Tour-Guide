@@ -1,12 +1,11 @@
 import 'package:your_tour_guide/constants.dart';
+import 'package:your_tour_guide/core/utils/functions/is_arabic.dart';
 import 'package:your_tour_guide/cubits/home/home_cubit.dart';
 import 'package:your_tour_guide/generated/l10n.dart';
-import 'package:your_tour_guide/utils/utils.dart';
-import 'package:your_tour_guide/widgets/head_text.dart';
-import 'package:your_tour_guide/widgets/none_app_bar.dart';
+import 'package:your_tour_guide/core/utils/widgets/head_text.dart';
+import 'package:your_tour_guide/core/utils/widgets/none_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
 
 import '../../../models/cinema_model.dart';
 
@@ -31,23 +30,25 @@ class FilmScreen extends StatelessWidget {
             Stack(
               children: [
                 Image.network(
-                  cinemaModel.films![index]['imageUrl'],
+                  cinemaModel.films[index]['imageUrl'],
                   height: 500,
                   width: double.infinity,
                   fit: BoxFit.cover,
                 ),
-            IconButton(
-          onPressed: () async {
-            Navigator.pop(context,true);
-
-          },
-          icon:  Icon(
-            isArabic()?FontAwesomeIcons.chevronRight
-                :FontAwesomeIcons.chevronLeft,
-            color: HomeCubit.get(context).isDark! ? Colors.white : Colors.black,
-            size: 40,
-          ),
-        ),
+                IconButton(
+                  onPressed: () async {
+                    Navigator.pop(context, true);
+                  },
+                  icon: Icon(
+                    isArabic()
+                        ? FontAwesomeIcons.chevronRight
+                        : FontAwesomeIcons.chevronLeft,
+                    color: HomeCubit.get(context).isDark!
+                        ? Colors.white
+                        : Colors.black,
+                    size: 40,
+                  ),
+                ),
               ],
             ),
             SizedBox(
@@ -66,8 +67,8 @@ class FilmScreen extends StatelessWidget {
                     children: [
                       Text(
                         isArabic()
-                            ? cinemaModel.filmsArabic![index]['name']
-                            : cinemaModel.films![index]['name'],
+                            ? cinemaModel.filmsArabic[index]['name']
+                            : cinemaModel.films[index]['name'],
                         style: TextStyle(fontSize: 26),
                       ),
                       Row(
@@ -80,7 +81,7 @@ class FilmScreen extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            '${cinemaModel.films![index]['rate']}/10',
+                            '${cinemaModel.films[index]['rate']}/10',
                             style: TextStyle(
                               fontSize: 18,
                             ),
@@ -98,32 +99,30 @@ class FilmScreen extends StatelessWidget {
                     children: [
                       Row(
                         children: [
-                          Text(S.of(context).genre,
-                          style: TextStyle(fontSize: 16),
+                          Text(
+                            S.of(context).genre,
+                            style: TextStyle(fontSize: 16),
                           ),
                           SizedBox(
                             width: 4,
                           ),
                           Text(
                             'كوميدي',
-                            style: TextStyle(color: Colors.orange,
-                            fontSize: 16
-                            ),
+                            style:
+                                TextStyle(color: Colors.orange, fontSize: 16),
                           ),
                         ],
                       ),
                       Row(
                         children: [
-                          Text(S.of(context).length,
-                            style: TextStyle(
-                                fontSize: 16
-                            ),
+                          Text(
+                            S.of(context).length,
+                            style: TextStyle(fontSize: 16),
                           ),
                           Text(
                             '2h',
-                            style: TextStyle(color: Colors.orange,
-                            fontSize: 16
-                            ),
+                            style:
+                                TextStyle(color: Colors.orange, fontSize: 16),
                           ),
                         ],
                       ),
@@ -144,9 +143,11 @@ class FilmScreen extends StatelessWidget {
                   //Description
                   Text(
                     isArabic()
-                        ? cinemaModel.filmsArabic![index]['description']
-                        : cinemaModel.films![index]['description'],
-                    style: TextStyle(fontSize: 16,),
+                        ? cinemaModel.filmsArabic[index]['description']
+                        : cinemaModel.films[index]['description'],
+                    style: TextStyle(
+                      fontSize: 16,
+                    ),
                   ),
                   SizedBox(
                     height: 10,
@@ -154,15 +155,15 @@ class FilmScreen extends StatelessWidget {
                   HeadText(text: S.of(context).cast),
                   SizedBox(
                     height: 40,
-
                     child: ListView.separated(
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (_, indexx) => Text(
-                        isArabic()?
-                          cinemaModel.filmsArabic![index]['cast'][indexx]
-                          :cinemaModel.films![index]['cast'][indexx],
-                      style: TextStyle(fontSize: 17,
-                      ),
+                        isArabic()
+                            ? cinemaModel.filmsArabic[index]['cast'][indexx]
+                            : cinemaModel.films[index]['cast'][indexx],
+                        style: TextStyle(
+                          fontSize: 17,
+                        ),
                       ),
                       separatorBuilder: (_, indexx) => Text("  -  "),
                       itemCount: 4,

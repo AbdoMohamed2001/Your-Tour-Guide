@@ -2,10 +2,10 @@ import 'package:your_tour_guide/constants.dart';
 import 'package:your_tour_guide/features/auth/presentation/widgets/social_buttons.dart';
 import 'package:your_tour_guide/generated/l10n.dart';
 import 'package:your_tour_guide/features/auth/presentation/views/forget_password.dart';
-import 'package:your_tour_guide/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
+import '../../../../core/utils/widgets/custom_text_field.dart';
 import '../cubits/auth_cubit/auth_cubit.dart';
 import '../views/register_view.dart';
 

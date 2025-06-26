@@ -19,7 +19,6 @@ class FeatureDetailsViewBody extends StatefulWidget {
 class _FeatureDetailsViewBodyState extends State<FeatureDetailsViewBody> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     Map<String, dynamic>? query;
     if (widget.collectionName == 'places') {

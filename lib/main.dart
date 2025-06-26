@@ -1,7 +1,7 @@
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:your_tour_guide/add_field_to_all_documents_function.dart';
 import 'package:your_tour_guide/app_locale.dart';
-import 'package:your_tour_guide/core/data/repos/places_repo.dart';
+import 'package:your_tour_guide/features/places/data/repos/places_repo.dart';
 import 'package:your_tour_guide/core/services/cacheHelper.dart';
 import 'package:your_tour_guide/cubits/home/home_cubit.dart';
 import 'package:your_tour_guide/features/splash/presentation/views/splash_view.dart';

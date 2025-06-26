@@ -1,4 +1,4 @@
-import 'package:your_tour_guide/core/domain/entities/place_entity.dart';
+import 'package:your_tour_guide/features/places/domian/entities/place_entity.dart';
 import 'package:your_tour_guide/features/home/presentation/widgets/featured_place_item.dart';
 import 'package:flutter/material.dart';
 
@@ -14,10 +14,8 @@ class FeaturedPlacesListView extends StatelessWidget {
     return SizedBox(
       height: 190,
       child: ListView.separated(
-        shrinkWrap: true,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) => FeaturedPlaceItem(
-          index: index,
           placeEntity: places[index],
         ),
         separatorBuilder: (context, index) => SizedBox(

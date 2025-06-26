@@ -46,7 +46,7 @@ class FeaturesGridViewItem extends StatelessWidget {
                   ),
                 ),
                 child: SvgPicture.asset(
-                  'assets/icons/$fileName.svg',
+                  fileName,
                   fit: BoxFit.cover,
                   colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn),
                   width: 50,

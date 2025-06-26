@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../generated/l10n.dart';
-import 'city_entity.dart';
+import '../../cities/domain/entities/city_entity.dart';
 
 class CityServicesEntity {
   final String image, title, collectionName, cityName;

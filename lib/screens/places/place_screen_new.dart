@@ -1,30 +1,31 @@
+import 'package:your_tour_guide/features/places/data/repos/places_repo.dart';
 import 'package:your_tour_guide/core/services/cacheHelper.dart';
 import 'package:your_tour_guide/constants.dart';
 import 'package:your_tour_guide/cubits/place_cubit/place_cubit.dart';
 import 'package:your_tour_guide/generated/l10n.dart';
-import 'package:your_tour_guide/core/data/models/place_model.dart';
+import 'package:your_tour_guide/features/places/data/models/place_model.dart';
 import 'package:your_tour_guide/models/tour_model.dart';
 import 'package:your_tour_guide/screens/all_screen.dart';
 import 'package:your_tour_guide/screens/servicesProvider/hotels/all_hotels_screen.dart';
 import 'package:your_tour_guide/tour_screen_neew.dart';
-import 'package:your_tour_guide/widgets/default_read_more.dart';
-import 'package:your_tour_guide/widgets/head_text.dart';
-import 'package:your_tour_guide/widgets/location_widget.dart';
-import 'package:your_tour_guide/widgets/nearly_item.dart';
-import 'package:your_tour_guide/widgets/opening_hours_item.dart';
-import 'package:your_tour_guide/widgets/place/custom_place_image.dart';
-import 'package:your_tour_guide/widgets/place/gallery_widget.dart';
-import 'package:your_tour_guide/widgets/place/how_to_go_widget.dart';
-import 'package:your_tour_guide/widgets/tickets_widget.dart';
+import 'package:your_tour_guide/core/utils/widgets/default_read_more.dart';
+import 'package:your_tour_guide/core/utils/widgets/head_text.dart';
+import 'package:your_tour_guide/core/utils/widgets/tickets_widget.dart';
 import 'package:bordered_text/bordered_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../../utils/utils.dart';
+import '../../core/services/get_it_services_locator.dart';
+import '../../core/utils/functions/is_arabic.dart';
+import '../../core/utils/widgets/location_widget.dart';
+import '../../core/utils/widgets/nearly_item.dart';
+import '../../core/utils/widgets/opening_hours_item.dart';
+import '../../core/utils/widgets/place/custom_place_image.dart';
+import '../../core/utils/widgets/place/gallery_widget.dart';
+import '../../core/utils/widgets/place/how_to_go_widget.dart';
 
 class PlaceScreenNew extends StatelessWidget {
   PlaceScreenNew({
@@ -48,7 +49,7 @@ class PlaceScreenNew extends StatelessWidget {
         iconName: FontAwesomeIcons.hotel,
         iconColor: Color(0xff613207),
         containerName: S.current.Hotels,
-        pushedPage: AllHotels(cityName: placeModel.cityName!),
+        pushedPage: AllHotels(cityName: placeModel.cityName),
       ),
       //Restaurants
       NearlyPlaceModel(
@@ -59,7 +60,7 @@ class PlaceScreenNew extends StatelessWidget {
         pushedPage: AllScreen(
           collectionName: 'restaurants',
           appBarText: S.current.AllRestaurants,
-          cityName: placeModel.cityName!,
+          cityName: placeModel.cityName,
         ),
       ),
       //Cafes
@@ -71,7 +72,7 @@ class PlaceScreenNew extends StatelessWidget {
         pushedPage: AllScreen(
           collectionName: 'cafes',
           appBarText: S.current.AllCafes,
-          cityName: placeModel.cityName!,
+          cityName: placeModel.cityName,
         ),
       ),
       // //Cinemas
@@ -83,14 +84,14 @@ class PlaceScreenNew extends StatelessWidget {
         pushedPage: AllScreen(
           collectionName: 'cinemas',
           appBarText: S.current.AllCinemas,
-          cityName: placeModel.cityName!,
+          cityName: placeModel.cityName,
         ),
       ),
     ];
     CollectionReference tour = FirebaseFirestore.instance.collection('tours');
     List<TourModel>? tourList;
     return BlocProvider(
-      create: (context) => PlaceCubit()
+      create: (context) => PlaceCubit(getIt<PlacesRepo>())
         ..likedKey = docID
         ..restorePersistedPref(),
       child: Scaffold(
@@ -110,13 +111,12 @@ class PlaceScreenNew extends StatelessWidget {
               child: Column(
                 children: [
                   CustomPlaceImage(
-                    docID: docID,
                     imageUrl: placeModel.imageUrl,
                     name: isArabic() ? placeModel.nameArabic : placeModel.name,
                     cityName: isArabic()
                         ? placeModel.cityNameArabic
                         : placeModel.cityName,
-                    containerImage: placeModel.images![0],
+                    containerImage: placeModel.images[0],
                     cubitLikedValue: placeCubit.likedValue,
                     favouriteFunction: () {
                       placeCubit.changeLike();
@@ -141,7 +141,7 @@ class PlaceScreenNew extends StatelessWidget {
                     },
                     cubitDataKeyCurrentContext:
                         placeCubit.dataKey.currentContext,
-                    images: placeModel.images!,
+                    images: placeModel.images,
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10.0),
@@ -155,7 +155,6 @@ class PlaceScreenNew extends StatelessWidget {
                           address: isArabic()
                               ? placeModel.addressArabic
                               : placeModel.address,
-                          englishAddress: placeModel.address,
                           mapUrl: placeModel.mapUrl,
                           rate: placeModel.rate,
                         ),
@@ -165,11 +164,11 @@ class PlaceScreenNew extends StatelessWidget {
                         // ignore: missing_required_param
                         BuildOpeningHoursItem(
                           openFrom: isArabic()
-                              ? placeModel.openingHoursArabic!['from']
-                              : placeModel.openingHours!['from'],
+                              ? placeModel.openingHoursArabic['from']
+                              : placeModel.openingHours['from'],
                           openTo: isArabic()
-                              ? placeModel.openingHoursArabic!['to']
-                              : placeModel.openingHours!['to'],
+                              ? placeModel.openingHoursArabic['to']
+                              : placeModel.openingHours['to'],
                         ),
                         SizedBox(
                           height: 20,
@@ -191,8 +190,8 @@ class PlaceScreenNew extends StatelessWidget {
                           padding: const EdgeInsets.symmetric(horizontal: 8.0),
                           child: DefaultReadMoreWidget(
                             text: isArabic()
-                                ? placeModel.descriptionArabic!
-                                : placeModel.description!,
+                                ? placeModel.descriptionArabic
+                                : placeModel.description,
                           ),
                         ),
                         kSizedBox,
@@ -209,8 +208,8 @@ class PlaceScreenNew extends StatelessWidget {
 
                         //-------------------------------------------------------------------
                         //Metro
-                        placeModel.transport!['metro'] == '' ||
-                                placeModel.transportArabic!['metro'] == ''
+                        placeModel.transport['metro'] == '' ||
+                                placeModel.transportArabic['metro'] == ''
                             ? Container(
                                 width: 0,
                                 height: 0,
@@ -219,9 +218,9 @@ class PlaceScreenNew extends StatelessWidget {
                         //-------------------------------------------------------------------
                         //Transport
                         kSizedBox,
-                        placeModel.transport!['transport'].length == 0 ||
+                        placeModel.transport['transport'].length == 0 ||
                                 placeModel
-                                        .transportArabic!['transport'].length ==
+                                        .transportArabic['transport'].length ==
                                     0
                             ? Container(
                                 width: 0,
@@ -240,9 +239,9 @@ class PlaceScreenNew extends StatelessWidget {
                                       shrinkWrap: true,
                                       itemBuilder: (_, index) => Text(
                                         isArabic()
-                                            ? placeModel.transportArabic![
+                                            ? placeModel.transportArabic[
                                                 'transport'][index]
-                                            : placeModel.transport!['transport']
+                                            : placeModel.transport['transport']
                                                 [index],
                                       ),
                                       separatorBuilder: (_, index) => SizedBox(
@@ -250,10 +249,10 @@ class PlaceScreenNew extends StatelessWidget {
                                       ),
                                       itemCount: isArabic()
                                           ? placeModel
-                                              .transportArabic!['transport']
+                                              .transportArabic['transport']
                                               .length
                                           : placeModel
-                                              .transport!['transport'].length,
+                                              .transport['transport'].length,
                                     ),
                                     kSizedBox,
                                   ],
@@ -337,8 +336,8 @@ class PlaceScreenNew extends StatelessWidget {
                                                         TourScreenNeew(
                                                           placeModel:
                                                               tourList![index],
-                                                          docID: allDocs![index]
-                                                              .id,
+                                                          docID:
+                                                              allDocs[index].id,
                                                         )));
                                           },
                                           child: Padding(
@@ -376,7 +375,7 @@ class PlaceScreenNew extends StatelessWidget {
                                                     height: 150,
                                                     fit: BoxFit.cover,
                                                     image: NetworkImage(
-                                                        allDocs![index]
+                                                        allDocs[index]
                                                             ['imageUrl']),
                                                   ), //Done
                                                   //Pyramids

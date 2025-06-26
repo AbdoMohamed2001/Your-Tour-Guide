@@ -1,6 +1,7 @@
-import 'package:your_tour_guide/components.dart';
+import 'package:your_tour_guide/core/utils/functions/pick_image.dart';
+import 'package:your_tour_guide/core/utils/functions/show_snack_bar.dart';
+import 'package:your_tour_guide/core/utils/functions/show_toast.dart';
 import 'package:your_tour_guide/resources/storage_methods.dart';
-import 'package:your_tour_guide/utils/utils.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';

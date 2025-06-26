@@ -1,12 +1,10 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:bordered_text/bordered_text.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:your_tour_guide/constants.dart';
 import 'package:your_tour_guide/models/event_model.dart';
-import 'package:your_tour_guide/utils/utils.dart';
 
+import 'core/utils/functions/is_arabic.dart';
 
 //------------------------------------------------------------------------------------
 class CustomImageWithoutEndImage extends StatefulWidget {
@@ -28,7 +26,7 @@ class CustomImageWithoutEndImage extends StatefulWidget {
   final double fontSize;
   final String imagesLength;
   final Function? addToFavourite;
-  final GlobalKey dataKey ;
+  final GlobalKey dataKey;
 
   @override
   State<CustomImageWithoutEndImage> createState() =>
@@ -134,22 +132,6 @@ class _CustomImageWithoutEndImageState
 }
 
 //--------------------------------------------------------------------------------
-void showSnackBar(BuildContext context, String text) {
-  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-    content: Text(text),
-  ));
-}
-
-void showToast({required String msg}) {
-  Fluttertoast.showToast(
-      msg: msg,
-      toastLength: Toast.LENGTH_SHORT,
-      gravity: ToastGravity.SNACKBAR,
-      timeInSecForIosWeb: 1,
-      backgroundColor: Colors.orange[300],
-      textColor: Colors.white,
-      fontSize: 14.0);
-}
 
 //-------------------------------------------------------------
 class BuildAllItemNew extends StatelessWidget {
@@ -253,6 +235,7 @@ class BuildAllItemNew extends StatelessWidget {
     );
   }
 }
+
 //---------------------------------------------
 class BuildMallItem extends StatelessWidget {
   BuildMallItem({
@@ -338,6 +321,7 @@ class BuildMallItem extends StatelessWidget {
     );
   }
 }
+
 //---------------------------------------------
 class BuildAllOptionsNew extends StatelessWidget {
   BuildAllOptionsNew({
@@ -441,6 +425,7 @@ class BuildAllOptionsNew extends StatelessWidget {
     );
   }
 }
+
 //-------------------------------------------------------
 class BuildAllUpcomingEvents extends StatelessWidget {
   BuildAllUpcomingEvents({
@@ -476,7 +461,7 @@ class BuildAllUpcomingEvents extends StatelessWidget {
             children: [
               Image(
                 image: NetworkImage(
-                  model.imageUrl!,
+                  model.imageUrl,
                 ),
                 loadingBuilder: (context, child, loadingProgress) {
                   if (loadingProgress == null) {
@@ -501,16 +486,15 @@ class BuildAllUpcomingEvents extends StatelessWidget {
               ),
               Positioned(
                 top: 140,
-                left: isArabic() ? null :15,
-                right: isArabic() ? 15 :null,
+                left: isArabic() ? null : 15,
+                right: isArabic() ? 15 : null,
                 child: BorderedText(
                   strokeColor: Colors.black,
                   strokeWidth: 2,
                   strokeCap: StrokeCap.butt,
                   strokeJoin: StrokeJoin.bevel,
                   child: Text(
-                    isArabic() ? model.nameArabic!:
-                    model.name!,
+                    isArabic() ? model.nameArabic : model.name,
                     maxLines: 2,
                     style: TextStyle(
                       fontSize: 20,
@@ -522,16 +506,15 @@ class BuildAllUpcomingEvents extends StatelessWidget {
               ), //Done
               Positioned(
                 top: 170,
-                left: isArabic() ? null :15,
-                right: isArabic() ? 15 :null,
+                left: isArabic() ? null : 15,
+                right: isArabic() ? 15 : null,
                 child: BorderedText(
                   strokeColor: Colors.black,
                   strokeWidth: 2,
                   strokeCap: StrokeCap.butt,
                   strokeJoin: StrokeJoin.bevel,
                   child: Text(
-                    isArabic() ? model.locationArabic!:
-                    model.location!,
+                    isArabic() ? model.locationArabic : model.location,
                     style: TextStyle(
                       fontSize: 20,
                       color: Colors.white,
@@ -546,6 +529,7 @@ class BuildAllUpcomingEvents extends StatelessWidget {
     );
   }
 }
+
 //-------------------------------------------------------
 class DetailScreen extends StatelessWidget {
   DetailScreen({

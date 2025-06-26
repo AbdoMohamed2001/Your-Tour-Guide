@@ -1,8 +1,9 @@
-import 'package:your_tour_guide/widgets/custom_app_bar.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
+
+import 'core/utils/widgets/custom_app_bar.dart';
 
 class PhotoSingleViewPage extends StatelessWidget {
   final String imageUrl;
@@ -25,7 +26,7 @@ class PhotoSingleViewPage extends StatelessWidget {
         backgroundDecoration: BoxDecoration(
           color: Theme.of(context).scaffoldBackgroundColor,
         ),
-        customSize: Size(screenWidth,screenHeight),
+        customSize: Size(screenWidth, screenHeight),
         itemCount: 1,
         builder: (context, index) => PhotoViewGalleryPageOptions.customChild(
           child: CachedNetworkImage(
@@ -38,7 +39,6 @@ class PhotoSingleViewPage extends StatelessWidget {
             ),
           ),
           minScale: PhotoViewComputedScale.contained,
-
           heroAttributes: PhotoViewHeroAttributes(tag: imageUrl),
         ),
         pageController: PageController(initialPage: 0),
