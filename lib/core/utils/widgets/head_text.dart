@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:your_tour_guide/core/utils/text_styles.dart';
 
 class HeadText extends StatelessWidget {
   const HeadText({
@@ -10,10 +11,7 @@ class HeadText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: TextStyle(
-        fontWeight: FontWeight.bold,
-        fontSize: 20,
-      ),
+      style: TextStyles.bold18,
     );
   }
 }

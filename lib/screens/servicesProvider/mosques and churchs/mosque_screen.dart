@@ -66,7 +66,7 @@ class MosqueScreen extends StatelessWidget {
                         ),
                         //-------------------------------------------------------------------------
                         //Opening hours
-                        BuildOpeningHoursItem(
+                        OpeningHoursWidget(
                           openFrom: isArabic()
                               ? mosqueModel.openingHoursArabic['from']
                               : mosqueModel.openingHours['from'],

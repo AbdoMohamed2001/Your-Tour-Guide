@@ -64,7 +64,7 @@ class RestaurantScreen extends StatelessWidget {
                         ),
                         //-----------------------------------------------------------------
                         //Opening hours
-                        BuildOpeningHoursItem(
+                        OpeningHoursWidget(
                           openFrom: isArabic()
                               ? restaurantModel.openingHoursArabic['from']
                               : restaurantModel.openingHours['from'],

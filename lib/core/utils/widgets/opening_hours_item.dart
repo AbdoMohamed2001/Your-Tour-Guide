@@ -1,16 +1,18 @@
 import 'package:your_tour_guide/cubits/home/home_cubit.dart';
+import 'package:your_tour_guide/generated/assets.dart';
 import 'package:your_tour_guide/generated/l10n.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import '../functions/is_arabic.dart';
+import '../text_styles.dart';
 
-class BuildOpeningHoursItem extends StatelessWidget {
-  const BuildOpeningHoursItem({
+class OpeningHoursWidget extends StatelessWidget {
+  const OpeningHoursWidget({
     super.key,
     required this.openFrom,
     required this.openTo,
-    @required this.place,
+    this.place,
   });
 
   final String openFrom;
@@ -26,32 +28,26 @@ class BuildOpeningHoursItem extends StatelessWidget {
             Image.asset(
               HomeCubit.get(context).isDark!
                   ? isArabic()
-                      ? 'assets/images/openDarkArabic.png'
-                      : 'assets/images/openDarkEnglish.png'
+                      ? Assets.imagesOpenDarkArabic
+                      : Assets.imagesOpenDarkEnglish
                   : isArabic()
-                      ? 'assets/images/openLightArabic.png'
-                      : 'assets/images/openLightEnglish.png',
+                      ? Assets.imagesOpenLightArabic
+                      : Assets.imagesOpenLightEnglish,
               width: 90,
               height: 90,
             ),
             Positioned(
-              top: 13,
+              top: isArabic() ? 20 : 13,
               right: isArabic() ? 20 : 0,
               left: isArabic() ? 0 : 16,
               child: Text(
                 S.of(context).openingHours,
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16,
-                  // color: Colors.white,
-                ),
+                style: TextStyles.bold16,
               ),
             ),
           ],
         ),
-        SizedBox(
-          width: 20,
-        ),
+        SizedBox(width: 20),
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -59,36 +55,24 @@ class BuildOpeningHoursItem extends StatelessWidget {
               children: [
                 Text(
                   S.of(context).From,
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: TextStyles.bold18,
                 ),
                 Text(
                   openFrom,
-                  style: TextStyle(
-                    fontSize: 18,
-                  ),
+                  style: TextStyles.regular18,
                 ),
               ],
             ),
-            SizedBox(
-              width: 30,
-            ),
+            SizedBox(width: 30),
             Column(
               children: [
                 Text(
                   S.of(context).To,
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: TextStyles.bold18,
                 ),
                 Text(
                   openTo,
-                  style: TextStyle(
-                    fontSize: 18,
-                  ),
+                  style: TextStyles.regular18,
                 ),
               ],
             ),

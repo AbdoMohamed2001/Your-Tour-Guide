@@ -43,19 +43,6 @@ class DefaultListViewItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
-      // onTap: () {
-      //   Navigator.push(
-      //     context,
-      //     MaterialPageRoute(
-      //       builder: (_) => AllCitiesView(
-      //         city: entity,
-      //       ),
-      //     ),
-      //   );
-      //   // Navigator.push(context, MaterialPageRoute(builder: (context) {
-      //   //   return pushedPage;
-      //   // }));
-      // },
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
         child: ClipRRect(

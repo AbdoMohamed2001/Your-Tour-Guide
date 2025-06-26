@@ -82,7 +82,7 @@ class MallNewScreen extends StatelessWidget {
                         ),
                         //-------------------------------------------------------------------------
                         //Opening hours
-                        BuildOpeningHoursItem(
+                        OpeningHoursWidget(
                           openFrom: isArabic()
                               ? mallModel.openingHoursArabic['from']
                               : mallModel.openingHours['from'],

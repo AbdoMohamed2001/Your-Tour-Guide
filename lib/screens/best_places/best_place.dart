@@ -283,7 +283,7 @@ class _BestPlaceScreenState extends State<BestPlaceScreen> {
               kSizedBox,
               //----------------------------------------------------------------
               //Opening hours
-              BuildOpeningHoursItem(
+              OpeningHoursWidget(
                 place: place,
                 openFrom: place['openingHours']['from'],
                 openTo: place['openingHours']['to'],

@@ -87,7 +87,7 @@ class StoreScreen extends StatelessWidget {
                   // ),
                   kSizedBox,
                   //Opening Hours
-                  BuildOpeningHoursItem(
+                  OpeningHoursWidget(
                     openFrom: isArabic()
                         ? mallModel.openingHoursArabic['from']
                         : mallModel.openingHours['from'],

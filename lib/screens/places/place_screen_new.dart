@@ -23,7 +23,6 @@ import '../../core/utils/widgets/nearly_item.dart';
 import '../../core/utils/widgets/opening_hours_item.dart';
 import '../../core/utils/widgets/place/custom_place_image.dart';
 import '../../core/utils/widgets/place/gallery_widget.dart';
-import '../../core/utils/widgets/place/how_to_go_widget.dart';
 
 class PlaceScreenNew extends StatelessWidget {
   PlaceScreenNew({
@@ -132,7 +131,7 @@ class PlaceScreenNew extends StatelessWidget {
                         //Opening hours
                         kSizedBox,
                         // ignore: missing_required_param
-                        BuildOpeningHoursItem(
+                        OpeningHoursWidget(
                           openFrom: isArabic()
                               ? placeModel.openingHoursArabic['from']
                               : placeModel.openingHours['from'],
@@ -184,7 +183,8 @@ class PlaceScreenNew extends StatelessWidget {
                                 width: 0,
                                 height: 0,
                               )
-                            : HowToGoWidget(placeModel: placeModel),
+                            : Container(),
+                        // : HowToGoWidget(placeModel: placeModel),
                         //-------------------------------------------------------------------
                         //Transport
                         kSizedBox,
