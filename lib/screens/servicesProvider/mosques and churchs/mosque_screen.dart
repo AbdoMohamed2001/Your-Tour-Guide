@@ -5,7 +5,6 @@ import 'package:your_tour_guide/core/utils/widgets/location_widget.dart';
 import 'package:your_tour_guide/core/utils/widgets/opening_hours_item.dart';
 import 'package:your_tour_guide/core/utils/widgets/place/custom_place_image.dart';
 import 'package:your_tour_guide/core/utils/widgets/place/gallery_widget.dart';
-import 'package:your_tour_guide/cubits/place_cubit/place_cubit.dart';
 import 'package:your_tour_guide/generated/l10n.dart';
 import 'package:your_tour_guide/models/mosque_model.dart';
 import 'package:your_tour_guide/core/utils/widgets/default_read_more.dart';
@@ -14,6 +13,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../features/places/data/repos/places_repo.dart';
 import '../../../core/services/get_it_services_locator.dart';
+import '../../../features/places/presentation/cubit/place_cubit/place_cubit.dart';
 
 class MosqueScreen extends StatelessWidget {
   MosqueScreen({

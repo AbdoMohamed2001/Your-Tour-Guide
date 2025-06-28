@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:your_tour_guide/features/cities/domain/entities/city_services_entity.dart';
 import 'package:your_tour_guide/features/nav_bar/presentation/views/home_view.dart';
 
-void navigateToCityService(
-    CityServicesEntity cityServicesEntity, BuildContext context) {
-  switch (cityServicesEntity.collectionRef) {
+void navigateToCityService(String collectionRef, BuildContext context) {
+  switch (collectionRef) {
     case 'places':
       Navigator.push(
           context,

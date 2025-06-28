@@ -1,5 +1,5 @@
+import 'package:your_tour_guide/features/places/presentation/views/all_places_view.dart';
 import 'package:your_tour_guide/generated/l10n.dart';
-import 'package:your_tour_guide/screens/all_screen.dart';
 import 'package:your_tour_guide/core/utils/widgets/head_text.dart';
 import 'package:flutter/material.dart';
 
@@ -20,11 +20,7 @@ class ExplorePlacesWidget extends StatelessWidget {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => AllScreen(
-                    collectionName: 'places',
-                    appBarText: S.of(context).AllPlaces,
-                    cityName: '',
-                  ),
+                  builder: (context) => AllPlacesView(),
                 ));
           },
           child: Container(

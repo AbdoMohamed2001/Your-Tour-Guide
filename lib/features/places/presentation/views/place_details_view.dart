@@ -1,5 +1,4 @@
 import 'package:your_tour_guide/features/places/data/repos/places_repo.dart';
-import 'package:your_tour_guide/cubits/place_cubit/place_cubit.dart';
 import 'package:your_tour_guide/features/places/domian/entities/place_entity.dart';
 import 'package:your_tour_guide/features/places/presentation/widgets/place_details/place_details_view_body.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/services/get_it_services_locator.dart';
+import '../cubit/place_cubit/place_cubit.dart';
 
 class PlaceDetailsView extends StatelessWidget {
   PlaceDetailsView({

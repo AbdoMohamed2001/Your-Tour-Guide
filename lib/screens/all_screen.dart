@@ -1,6 +1,5 @@
 import 'package:your_tour_guide/constants.dart';
 import 'package:your_tour_guide/cubits/home/home_cubit.dart';
-import 'package:your_tour_guide/cubits/place_cubit/place_cubit.dart';
 import 'package:your_tour_guide/models/cinema_model.dart';
 import 'package:your_tour_guide/models/mall_model.dart';
 import 'package:your_tour_guide/models/mosque_model.dart';
@@ -24,6 +23,7 @@ import '../core/utils/widgets/place_sort_by.dart';
 import '../core/utils/widgets/rate_widget.dart';
 import '../features/places/data/repos/places_repo.dart';
 import '../core/services/get_it_services_locator.dart';
+import '../features/places/presentation/cubit/place_cubit/place_cubit.dart';
 
 class AllScreen extends StatelessWidget {
   AllScreen({

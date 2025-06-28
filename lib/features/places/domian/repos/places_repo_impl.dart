@@ -20,6 +20,7 @@ class PlacesRepoImpl implements PlacesRepo {
     try {
       var data = await databaseServices.getData(
         path: BackEndEndPoints.placesCollection,
+        whereFieldValue: true,
         query: {
           'where': 'isBest',
           'orderBy': 'rate',
@@ -32,14 +33,30 @@ class PlacesRepoImpl implements PlacesRepo {
           placeModels.map((model) => model.toEntity()).toList();
       return right(places);
     } catch (e) {
-      log('there is error in getBestSellingProducts in products repo impl $e');
+      log('there is error in getFeaturedPlaces in places repo impl $e');
       return left(ServerFailure(message: 'There is error while getting data!'));
     }
   }
 
   @override
-  Future<Either<Failure, List<PlaceEntity>>> getPlaces() {
-    // TODO: implement getPlaces
-    throw UnimplementedError();
+  Future<Either<Failure, List<PlaceEntity>>> getPlaces(
+      {String? cityName}) async {
+    try {
+      var data = await databaseServices.getData(
+        path: BackEndEndPoints.placesCollection,
+        whereFieldValue: cityName,
+        query: {
+          'where': 'cityName',
+        },
+      ) as List<Map<String, dynamic>>;
+      List<PlaceModel> placeModels =
+          data.map((e) => PlaceModel.fromJson(e)).toList();
+      List<PlaceEntity> places =
+          placeModels.map((model) => model.toEntity()).toList();
+      return right(places);
+    } catch (e) {
+      log('there is error in getAllPlaces in places repo impl $e');
+      return left(ServerFailure(message: 'There is error while getting data!'));
+    }
   }
 }

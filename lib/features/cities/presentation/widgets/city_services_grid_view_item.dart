@@ -21,7 +21,7 @@ class CityServicesGridViewItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        navigateToCityService(cityServicesEntity, context);
+        navigateToCityService(cityServicesEntity.collectionRef, context);
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),

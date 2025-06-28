@@ -4,7 +4,6 @@ import 'package:your_tour_guide/core/utils/functions/is_arabic.dart';
 import 'package:your_tour_guide/core/utils/widgets/contact_widget.dart';
 import 'package:your_tour_guide/core/utils/widgets/location_widget.dart';
 import 'package:your_tour_guide/cubits/home/home_cubit.dart';
-import 'package:your_tour_guide/cubits/place_cubit/place_cubit.dart';
 import 'package:your_tour_guide/models/cinema_model.dart';
 import 'package:your_tour_guide/screens/servicesProvider/cinemas/film_screen.dart';
 import 'package:your_tour_guide/core/utils/widgets/head_text.dart';
@@ -15,6 +14,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../core/utils/widgets/place/custom_place_image.dart';
 import '../../../features/places/data/repos/places_repo.dart';
 import '../../../core/services/get_it_services_locator.dart';
+import '../../../features/places/presentation/cubit/place_cubit/place_cubit.dart';
 import '../../../generated/l10n.dart';
 
 class CinemaScreen extends StatelessWidget {

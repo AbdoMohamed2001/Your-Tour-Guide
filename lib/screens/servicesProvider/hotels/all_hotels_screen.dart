@@ -1,7 +1,6 @@
 import 'package:your_tour_guide/constants.dart';
 import 'package:your_tour_guide/core/utils/functions/is_arabic.dart';
 import 'package:your_tour_guide/cubits/home/home_cubit.dart';
-import 'package:your_tour_guide/cubits/place_cubit/place_cubit.dart';
 import 'package:your_tour_guide/generated/l10n.dart';
 import 'package:your_tour_guide/models/hotel_model.dart';
 import 'package:your_tour_guide/screens/servicesProvider/hotels/hotel_screen.dart';
@@ -17,6 +16,7 @@ import '../../../features/places/data/repos/places_repo.dart';
 import '../../../core/services/get_it_services_locator.dart';
 import '../../../feature_grid_item.dart';
 import '../../../core/utils/widgets/sort_by_widget.dart';
+import '../../../features/places/presentation/cubit/place_cubit/place_cubit.dart';
 
 class AllHotels extends StatelessWidget {
   static String id = 'allHotels';

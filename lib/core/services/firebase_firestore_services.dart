@@ -28,6 +28,7 @@ class FireStoreServices extends DatabaseServices {
     Map<String, dynamic>? query,
     String? subPath,
     String? subRecordId,
+    dynamic whereFieldValue,
   }) async {
     if (recordId != null && subPath == null) {
       var docData = await firestore.collection(path).doc(recordId).get();
@@ -59,9 +60,8 @@ class FireStoreServices extends DatabaseServices {
             var endBefore = query['endBefore'];
             data = data.endBefore(endBefore);
           }
-          if (query['where'] != null) {
-            var whereField = query['where'];
-            data = data.where(whereField, isEqualTo: true);
+          if (query['where'] != null && whereFieldValue != null) {
+            data = data.where(query['where'], isEqualTo: whereFieldValue);
           }
         }
         QuerySnapshot<Map<String, dynamic>> result = await data.get();

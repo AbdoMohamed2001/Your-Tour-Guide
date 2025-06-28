@@ -1,5 +1,4 @@
 import 'package:your_tour_guide/constants.dart';
-import 'package:your_tour_guide/cubits/place_cubit/place_cubit.dart';
 import 'package:your_tour_guide/generated/l10n.dart';
 import 'package:your_tour_guide/models/tour_model.dart';
 import 'package:your_tour_guide/core/utils/widgets/default_read_more.dart';
@@ -15,6 +14,7 @@ import 'core/utils/widgets/place/custom_place_image.dart';
 import 'core/utils/widgets/place/gallery_widget.dart';
 import 'features/places/data/repos/places_repo.dart';
 import 'core/services/get_it_services_locator.dart';
+import 'features/places/presentation/cubit/place_cubit/place_cubit.dart';
 
 class TourScreenNeew extends StatelessWidget {
   TourScreenNeew({

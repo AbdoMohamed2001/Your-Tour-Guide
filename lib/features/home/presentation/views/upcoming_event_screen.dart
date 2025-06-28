@@ -1,7 +1,5 @@
 import 'package:your_tour_guide/constants.dart';
-import 'package:your_tour_guide/core/utils/widgets/place/custom_place_image.dart';
 import 'package:your_tour_guide/features/places/data/repos/places_repo.dart';
-import 'package:your_tour_guide/cubits/place_cubit/place_cubit.dart';
 import 'package:your_tour_guide/models/event_model.dart';
 import 'package:your_tour_guide/core/utils/widgets/none_app_bar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -10,8 +8,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../core/services/get_it_services_locator.dart';
-import '../../../../core/utils/functions/is_arabic.dart';
 import '../../../../core/utils/widgets/contact_widget.dart';
+import '../../../places/presentation/cubit/place_cubit/place_cubit.dart';
 
 class UpcomingEventScreen extends StatelessWidget {
   UpcomingEventScreen({

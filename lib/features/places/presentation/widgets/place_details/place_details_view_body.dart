@@ -16,9 +16,9 @@ import '../../../../../core/utils/widgets/place/custom_place_image.dart';
 import '../../../../../core/utils/widgets/place/gallery_widget.dart'
     show GalleryWidget;
 import '../../../../../core/utils/widgets/place/how_to_go_widget.dart';
-import '../../../../../cubits/place_cubit/place_cubit.dart';
 import '../../../../../core/utils/widgets/tickets_widget.dart';
 import '../../../domian/entities/place_entity.dart';
+import '../../cubit/place_cubit/place_cubit.dart';
 import 'nearly_services_list_view.dart';
 
 class PlaceDetailsViewBody extends StatelessWidget {

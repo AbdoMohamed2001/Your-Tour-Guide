@@ -1,6 +1,5 @@
 import 'package:your_tour_guide/features/places/data/repos/places_repo.dart';
 import 'package:your_tour_guide/constants.dart';
-import 'package:your_tour_guide/cubits/place_cubit/place_cubit.dart';
 import 'package:your_tour_guide/generated/l10n.dart';
 import 'package:your_tour_guide/features/places/data/models/place_model.dart';
 import 'package:your_tour_guide/models/tour_model.dart';
@@ -23,6 +22,7 @@ import '../../core/utils/widgets/nearly_item.dart';
 import '../../core/utils/widgets/opening_hours_item.dart';
 import '../../core/utils/widgets/place/custom_place_image.dart';
 import '../../core/utils/widgets/place/gallery_widget.dart';
+import '../../features/places/presentation/cubit/place_cubit/place_cubit.dart';
 
 class PlaceScreenNew extends StatelessWidget {
   PlaceScreenNew({

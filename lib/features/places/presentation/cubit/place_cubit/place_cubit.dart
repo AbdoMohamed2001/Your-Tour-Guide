@@ -17,7 +17,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../models/hotel_model.dart';
+import '../../../../../models/hotel_model.dart';
 
 part 'place_state.dart';
 
@@ -28,7 +28,7 @@ class PlaceCubit extends Cubit<PlaceState> {
 
   final PlacesRepo placesRepo;
 
-  List<PlaceEntity> places = [];
+  List<PlaceEntity> allPlaces = [];
   List<PlaceEntity> bestPlaces = [];
 
   void getBestPlaces() async {
@@ -41,6 +41,20 @@ class PlaceCubit extends Cubit<PlaceState> {
       (places) {
         bestPlaces = places;
         emit(PlacesGetSuccess(places: bestPlaces));
+      },
+    );
+  }
+
+  void getPlaces({String? cityName}) async {
+    emit(PlacesGetLoading());
+    var result = await placesRepo.getPlaces(cityName: cityName);
+    result.fold(
+      (fail) {
+        emit(PlacesGetFailure(message: fail.message));
+      },
+      (places) {
+        allPlaces = places;
+        emit(PlacesGetSuccess(places: allPlaces));
       },
     );
   }

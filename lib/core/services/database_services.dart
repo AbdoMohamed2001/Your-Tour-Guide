@@ -36,6 +36,7 @@ abstract class DatabaseServices {
     Map<String, dynamic>? query,
     String? subPath,
     String? subRecordId,
+    dynamic whereFieldValue,
   });
 
   Future<void> updateData({
