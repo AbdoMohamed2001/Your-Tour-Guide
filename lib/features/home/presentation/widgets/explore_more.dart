@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:your_tour_guide/generated/l10n.dart';
-
 import '../../../../core/utils/text_styles.dart';
 import '../../../../cubits/home/home_cubit.dart';
 
@@ -58,14 +57,91 @@ class ExploreMore extends StatelessWidget {
         ),
         // More about Egypt
         Text(
-          // 'moreAboutEgypt',
           S.of(context).moreAboutEgypt,
-          style: TextStyle(
-            fontSize: 28,
-            fontWeight: FontWeight.bold,
-          ),
+          style: TextStyles.bold28,
         ),
       ],
     );
   }
 }
+
+//Function to add field to all docs
+
+//          onLongPress: () {
+//             addFieldToAllDocuments(
+//               collectionPath: 'cities',
+//               fieldName: 'services',
+//               fieldValue: [
+//                 //Places
+//                 {
+//                   "name": 'Places',
+//                   "nameArabic": 'الأماكن',
+//                   "imageUrl": '',
+//                   "collectionRef": "places",
+//                 },
+//                 //Hotels
+//                 {
+//                   "name": 'Hotels',
+//                   "nameArabic": 'الفنادق',
+//                   "imageUrl": '',
+//                   "collectionRef": 'hotels',
+//                 },
+//                 //Restaurants
+//                 {
+//                   "name": 'Restaurants',
+//                   "nameArabic": 'المطاعم',
+//                   "imageUrl": '',
+//                   "collectionRef": "restaurants",
+//                 },
+//                 //Cafes
+//                 {
+//                   "name": 'Cafes',
+//                   "nameArabic": 'المقاهى',
+//                   "imageUrl": '',
+//                   "collectionRef": 'cafes',
+//                 },
+//                 //Malls
+//                 {
+//                   "name": 'Malls',
+//                   "nameArabic": 'المولات',
+//                   "imageUrl": '',
+//                   "collectionRef": 'malls',
+//                 },
+//                 //Cinemas
+//                 {
+//                   "name": 'Cinemas',
+//                   "nameArabic": 'السينيمات',
+//                   "imageUrl": '',
+//                   "collectionRef": 'cinemas',
+//                 },
+//                 //Mosques
+//                 {
+//                   "name": 'Mosques',
+//                   "nameArabic": 'المساجد',
+//                   "imageUrl": '',
+//                   "collectionRef": "mosques",
+//                 },
+//                 //Churchs
+//                 {
+//                   "name": 'Churchs',
+//                   "nameArabic": 'الكنائس',
+//                   "imageUrl": '',
+//                   "collectionRef": 'churchs',
+//                 },
+//                 //TourGuides
+//                 {
+//                   "name": 'Tour Guides',
+//                   "nameArabic": 'المرشدين السياحين',
+//                   "imageUrl": '',
+//                   "collectionRef": "tourGuides",
+//                 },
+//                 //Tour Companies
+//                 {
+//                   "name": 'Tour Companies',
+//                   "nameArabic": 'شركات السياحة',
+//                   "imageUrl": '',
+//                   "collectionRef": "tourCompanies",
+//                 },
+//               ],
+//             );
+//           },

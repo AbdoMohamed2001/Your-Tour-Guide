@@ -25,7 +25,8 @@ class CityRepoImpl extends CityRepo {
       List<CityEntity> cities =
           cityModels.map((model) => model.toEntity()).toList();
       return right(cities);
-    } catch (e) {
+    } catch (e, stack) {
+      log('StackTrace:\n$stack');
       log('there is error in get cities in city repo impl $e');
       return left(ServerFailure(message: 'There is error while getting data!'));
     }

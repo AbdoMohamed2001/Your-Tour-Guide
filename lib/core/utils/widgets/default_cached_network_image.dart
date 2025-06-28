@@ -5,17 +5,17 @@ class DefaultCachedNetworkImage extends StatelessWidget {
   const DefaultCachedNetworkImage({
     super.key,
     required this.imageUrl,
-    required this.imageHeight,
+    this.imageHeight,
     this.imageWidth,
   });
 
-  final String? imageUrl;
+  final String imageUrl;
   final double? imageHeight;
   final double? imageWidth;
   @override
   Widget build(BuildContext context) {
     return CachedNetworkImage(
-      imageUrl: imageUrl!,
+      imageUrl: imageUrl,
       width: imageWidth ?? double.infinity,
       height: imageHeight,
       fit: BoxFit.cover,
@@ -23,7 +23,7 @@ class DefaultCachedNetworkImage extends StatelessWidget {
         child: Container(
           color: Color(0xffFFCD1),
           width: double.infinity,
-          height: imageHeight,
+          // height: imageHeight,
           child: Center(
             child: CircularProgressIndicator(
               color: Colors.orange,
