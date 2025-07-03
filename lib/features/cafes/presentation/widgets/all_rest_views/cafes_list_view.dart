@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:your_tour_guide/constants.dart';
 import 'package:your_tour_guide/features/cafes/domain/entities/cafe_entity.dart';
-import 'package:your_tour_guide/features/cafes/presentation/widgets/all_rest_views/restaurants_grid_item.dart';
+import 'package:your_tour_guide/features/cafes/presentation/widgets/all_rest_views/cafe_grid_item.dart';
 
 class CafesListView extends StatelessWidget {
   const CafesListView({
