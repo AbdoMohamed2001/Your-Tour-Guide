@@ -4,5 +4,6 @@ abstract class BackEndEndPoints {
   static const citiesCollection = 'cities';
   static const hotelsCollection = 'hotels';
   static const restaurantsCollection = 'restaurants';
+  static const cafesCollection = 'cafes';
   static const favouritesCollection = 'favourites';
 }

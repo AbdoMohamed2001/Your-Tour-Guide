@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:your_tour_guide/features/cafes/presentation/views/all_cafes_views.dart';
 import 'package:your_tour_guide/features/hotels/presentation/views/all_hotels_view.dart';
 import 'package:your_tour_guide/features/nav_bar/presentation/views/home_view.dart';
 import 'package:your_tour_guide/features/restaurants/presentation/views/all_rests_views.dart';
 
-void navigateToCityService(String collectionRef, BuildContext context) {
+void navigateToServiceScreen(String collectionRef, BuildContext context) {
   switch (collectionRef) {
     case 'places':
       Navigator.push(
@@ -27,7 +28,7 @@ void navigateToCityService(String collectionRef, BuildContext context) {
       Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (_) => HomeView(),
+            builder: (_) => AllCafesView(cityName: ''),
           ));
     case 'malls':
       Navigator.push(

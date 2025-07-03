@@ -3,8 +3,8 @@ import 'dart:ui';
 import 'package:bordered_text/bordered_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:your_tour_guide/core/utils/functions/check_city_services_collection_name.dart';
 
+import '../../../../core/utils/functions/navigate_to_services_screen.dart';
 import '../../../../core/utils/text_styles.dart';
 import '../../../../models/services_container_entity.dart';
 
@@ -20,7 +20,7 @@ class ServicesGridViewItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        navigateToCityService(
+        navigateToServiceScreen(
             getServicesContainerList(context)[index].collectionName, context);
       },
       // onTap: () {

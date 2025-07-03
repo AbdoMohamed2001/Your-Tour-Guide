@@ -5,7 +5,6 @@ import 'package:your_tour_guide/features/restaurants/data/models/restaurant_mode
 import 'package:your_tour_guide/screens/places/place_screen_new.dart';
 import 'package:your_tour_guide/screens/servicesProvider/cinemas/cinema_screen.dart';
 import 'package:your_tour_guide/screens/servicesProvider/malls,%20mosques%20and%20churchs/mall_screen.dart';
-import 'package:your_tour_guide/screens/servicesProvider/restaurants%20and%20cafes/restaurants_screen.dart';
 import 'package:your_tour_guide/screens/servicesProvider/tourGuides/tour_guides.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +28,6 @@ class AllServicesView extends StatelessWidget {
     CollectionReference collectionReference =
         FirebaseFirestore.instance.collection(collectionName);
     List<PlaceModel>? placeList;
-    List<RestaurantModel>? restaurantsList;
     List<MallModel>? mallList;
     List<CinemaModel>? cinemaList;
     return Scaffold(
@@ -69,7 +67,6 @@ class AllServicesView extends StatelessWidget {
                 for (int i = 0; i < snapshot.data!.docs.length; i++) {
                   restaurantsListt
                       .add(RestaurantModel.fromJson(snapshot.data!.docs[i]));
-                  restaurantsList = restaurantsListt;
                   print('data added to list $collectionName');
                 }
               }
@@ -117,29 +114,29 @@ class AllServicesView extends StatelessWidget {
                           :
 
                           //-----------------------------------------------------------------
-                          collectionName == 'restaurants' ||
-                                  collectionName == 'cafes'
-                              ? RestaurantScreen(
-                                  docID: allDocs[index].id,
-                                  restaurantModel: restaurantsList![index],
+                          // collectionName == 'restaurants' ||
+                          //         collectionName == 'cafes'
+                          //     ? RestaurantScreen(
+                          //         docID: allDocs[index].id,
+                          //         restaurantModel: restaurantsList![index],
+                          //         collectionName: collectionName,
+                          //       )
+                          //     :
+                          //-----------------------------------------------------------------
+                          collectionName == 'malls' ||
+                                  collectionName == 'mosques' ||
+                                  collectionName == 'churchs'
+                              ? MallNewScreen(
                                   collectionName: collectionName,
+                                  docID: allDocs[index].id,
+                                  mallModel: mallList![index],
                                 )
                               :
                               //-----------------------------------------------------------------
-                              collectionName == 'malls' ||
-                                      collectionName == 'mosques' ||
-                                      collectionName == 'churchs'
-                                  ? MallNewScreen(
-                                      collectionName: collectionName,
-                                      docID: allDocs[index].id,
-                                      mallModel: mallList![index],
-                                    )
-                                  :
-                                  //-----------------------------------------------------------------
-                                  CinemaScreen(
-                                      cinemaModel: cinemaList![index],
-                                      docID: allDocs[index].id,
-                                    ),
+                              CinemaScreen(
+                                  cinemaModel: cinemaList![index],
+                                  docID: allDocs[index].id,
+                                ),
                 ),
                 // itemCount: placeList.length,
                 itemCount: snapshot.data!.docs.length,

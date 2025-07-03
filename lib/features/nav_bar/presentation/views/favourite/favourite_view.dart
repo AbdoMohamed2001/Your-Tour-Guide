@@ -6,7 +6,6 @@ import 'package:your_tour_guide/features/restaurants/data/models/restaurant_mode
 import 'package:your_tour_guide/models/tour_model.dart';
 import 'package:your_tour_guide/screens/places/place_screen_new.dart';
 import 'package:your_tour_guide/screens/servicesProvider/cinemas/cinema_screen.dart';
-import 'package:your_tour_guide/screens/servicesProvider/restaurants%20and%20cafes/restaurants_screen.dart';
 import 'package:your_tour_guide/screens/servicesProvider/tourGuides/tour_guides.dart';
 import 'package:your_tour_guide/tour_screen_neew.dart';
 import 'package:bordered_text/bordered_text.dart';
@@ -30,7 +29,6 @@ class FavouriteView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<PlaceModel>? placeList;
-    List<RestaurantModel>? restaurantsList;
     List<MallModel>? mallList;
     List<CinemaModel>? cinemaList;
     List<TourModel>? tourList;
@@ -99,7 +97,6 @@ class FavouriteView extends StatelessWidget {
                 for (int i = 0; i < snapshot.data!.docs.length; i++) {
                   restaurantsListt
                       .add(RestaurantModel.fromJson(snapshot.data!.docs[i]));
-                  restaurantsList = restaurantsListt;
                 }
               }
               //-------------------------------------------------------------------------
@@ -146,29 +143,29 @@ class FavouriteView extends StatelessWidget {
                                 )
                               :
                               //-----------------------------------------------------------------
-                              collectionName == 'restaurants' ||
-                                      collectionName == 'cafes'
-                                  ? RestaurantScreen(
-                                      collectionName: collectionName,
+                              // collectionName == 'restaurants' ||
+                              //         collectionName == 'cafes'
+                              //     ? RestaurantScreen(
+                              //         collectionName: collectionName,
+                              //         docID: allDocs[index].id,
+                              //         restaurantModel: restaurantsList![index],
+                              //       )
+                              //     :
+                              //-----------------------------------------------------------------
+                              collectionName == 'malls' ||
+                                      collectionName == 'mosques' ||
+                                      collectionName == 'churches'
+                                  ? MallNewScreen(
                                       docID: allDocs[index].id,
-                                      restaurantModel: restaurantsList![index],
+                                      collectionName: collectionName,
+                                      mallModel: mallList![index],
                                     )
                                   :
                                   //-----------------------------------------------------------------
-                                  collectionName == 'malls' ||
-                                          collectionName == 'mosques' ||
-                                          collectionName == 'churches'
-                                      ? MallNewScreen(
-                                          docID: allDocs[index].id,
-                                          collectionName: collectionName,
-                                          mallModel: mallList![index],
-                                        )
-                                      :
-                                      //-----------------------------------------------------------------
-                                      CinemaScreen(
-                                          cinemaModel: cinemaList![index],
-                                          docID: allDocs[index].id,
-                                        ),
+                                  CinemaScreen(
+                                      cinemaModel: cinemaList![index],
+                                      docID: allDocs[index].id,
+                                    ),
                   allDocs: allDocs,
                   index: index,
                 ),

@@ -1,5 +1,7 @@
 import 'package:get_it/get_it.dart';
 import 'package:your_tour_guide/core/data/repos/features_repo.dart';
+import 'package:your_tour_guide/features/cafes/data/repos/cafe_repo.dart';
+import 'package:your_tour_guide/features/cafes/domain/repos/cafe_repo_impl.dart';
 import 'package:your_tour_guide/features/favourite/data/data_sources/local_data_source.dart';
 import 'package:your_tour_guide/features/favourite/data/data_sources/remote_data_source.dart';
 import 'package:your_tour_guide/features/favourite/data/repos/favourite_repo.dart';
@@ -33,6 +35,7 @@ void setupGetIt() {
   //Repos
   getIt
       .registerSingleton<PlacesRepo>(PlacesRepoImpl(getIt<DatabaseServices>()));
+  getIt.registerSingleton<CafeRepo>(CafeRepoImpl(getIt<DatabaseServices>()));
   getIt
       .registerSingleton<HotelsRepo>(HotelsRepoImpl(getIt<DatabaseServices>()));
   getIt.registerSingleton<RestaurantRepo>(

@@ -1,7 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:your_tour_guide/features/hotels/data/repos/hotels_repo.dart';
 import 'package:your_tour_guide/features/hotels/domain/entities/hotel_entity.dart';
-
 import 'package:flutter/material.dart';
 import 'package:your_tour_guide/features/hotels/presentation/cubit/hotel_cubit.dart';
 
