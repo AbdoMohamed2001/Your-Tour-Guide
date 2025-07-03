@@ -22,7 +22,6 @@ class HomeViewBody extends StatefulWidget {
 class _HomeViewBodyState extends State<HomeViewBody> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     context.read<HomeCubit>().getFeaturedPlaces();
   }

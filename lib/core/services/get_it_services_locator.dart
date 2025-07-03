@@ -9,9 +9,11 @@ import 'package:your_tour_guide/features/hotels/domain/repos/hotels_repo_impl.da
 import 'package:your_tour_guide/features/places/data/repos/places_repo.dart';
 import 'package:your_tour_guide/core/domain/repos/feature_repo_impl.dart';
 import 'package:your_tour_guide/features/places/domian/repos/places_repo_impl.dart';
+import 'package:your_tour_guide/features/restaurants/data/repos/restaurant_repo.dart';
 
 import '../../features/cities/data/repos/city_repo.dart';
 import '../../features/cities/domain/repos/city_repo_impl.dart';
+import '../../features/restaurants/domain/repos/rest_repo_impl.dart';
 import 'database_services.dart';
 import 'firebase_auth_services.dart';
 import 'firebase_firestore_services.dart';
@@ -33,6 +35,8 @@ void setupGetIt() {
       .registerSingleton<PlacesRepo>(PlacesRepoImpl(getIt<DatabaseServices>()));
   getIt
       .registerSingleton<HotelsRepo>(HotelsRepoImpl(getIt<DatabaseServices>()));
+  getIt.registerSingleton<RestaurantRepo>(
+      RestaurantsRepoImpl(getIt<DatabaseServices>()));
   getIt.registerSingleton<CityRepo>(CityRepoImpl(getIt<DatabaseServices>()));
   getIt.registerSingleton<FeaturesRepo>(
     FeatureRepoImpl(getIt<DatabaseServices>()),

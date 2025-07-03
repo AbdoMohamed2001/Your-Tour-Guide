@@ -2,7 +2,7 @@ import 'package:your_tour_guide/models/cinema_model.dart';
 import 'package:your_tour_guide/features/hotels/data/models/hotel_model.dart';
 import 'package:your_tour_guide/models/mall_model.dart';
 import 'package:your_tour_guide/features/places/data/models/place_model.dart';
-import 'package:your_tour_guide/models/restaurant_model.dart';
+import 'package:your_tour_guide/features/restaurants/data/models/restaurant_model.dart';
 import 'package:your_tour_guide/models/tour_model.dart';
 import 'package:your_tour_guide/screens/places/place_screen_new.dart';
 import 'package:your_tour_guide/screens/servicesProvider/cinemas/cinema_screen.dart';

@@ -7,7 +7,7 @@ import 'package:your_tour_guide/models/cinema_model.dart';
 import 'package:your_tour_guide/models/mall_model.dart';
 import 'package:your_tour_guide/models/mosque_model.dart';
 import 'package:your_tour_guide/features/places/data/models/place_model.dart';
-import 'package:your_tour_guide/models/restaurant_model.dart';
+import 'package:your_tour_guide/features/restaurants/data/models/restaurant_model.dart';
 import 'package:your_tour_guide/models/tour_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
