@@ -5,7 +5,6 @@ import 'package:your_tour_guide/features/places/domian/entities/place_entity.dar
 import 'package:your_tour_guide/generated/l10n.dart';
 import 'package:your_tour_guide/models/cinema_model.dart';
 import 'package:your_tour_guide/models/mall_model.dart';
-import 'package:your_tour_guide/models/mosque_model.dart';
 import 'package:your_tour_guide/features/places/data/models/place_model.dart';
 import 'package:your_tour_guide/features/restaurants/data/models/restaurant_model.dart';
 import 'package:your_tour_guide/models/tour_model.dart';
@@ -393,49 +392,6 @@ class PlaceCubit extends Cubit<PlaceState> {
       'openingHours': mallModel.openingHours,
       'openingHoursArabic': mallModel.openingHoursArabic,
       'rate': mallModel.rate,
-    }).then((value) {
-      iconColor = Colors.red;
-      showToast(msg: S.of(context).AddedToFavourite);
-      emit(PlaceAddedToFavouriteSuccess());
-      iconColor = Colors.red;
-    }).onError((error, stackTrace) {
-      showToast(msg: 'Failed to add to favourite');
-      emit(PlaceAddedToFavouriteFailure(error.toString()));
-      debugPrint(error.toString());
-    });
-  }
-
-  //--------------------------------------------------------
-  Future<void> addMosqueToFavourite({
-    required MosqueModel mosqueModel,
-    required var docID,
-    required BuildContext context,
-    required String collectionName,
-  }) async {
-    emit(PlaceAddedToFavouriteLoading());
-    late var currentUser = _auth.currentUser;
-    CollectionReference _collectionReference =
-        FirebaseFirestore.instance.collection('favouritePlaces');
-    return _collectionReference
-        .doc(currentUser!.email)
-        .collection(collectionName)
-        .doc(docID)
-        .set({
-      "address": mosqueModel.address,
-      "addressArabic": mosqueModel.addressArabic,
-      'cityName': mosqueModel.cityName,
-      'cityNameArabic': mosqueModel.cityNameArabic,
-      'description': mosqueModel.description,
-      'descriptionArabic': mosqueModel.descriptionArabic,
-      'docId': mosqueModel.docId,
-      'imageUrl': mosqueModel.imageUrl,
-      'images': mosqueModel.images,
-      'mapUrl': mosqueModel.mapUrl,
-      'name': mosqueModel.name,
-      'nameArabic': mosqueModel.nameArabic,
-      'openingHours': mosqueModel.openingHours,
-      'openingHoursArabic': mosqueModel.openingHoursArabic,
-      'rate': mosqueModel.rate,
     }).then((value) {
       iconColor = Colors.red;
       showToast(msg: S.of(context).AddedToFavourite);

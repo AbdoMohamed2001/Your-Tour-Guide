@@ -8,6 +8,8 @@ import 'package:your_tour_guide/features/favourite/data/repos/favourite_repo.dar
 import 'package:your_tour_guide/features/favourite/domain/repos/favourite_repo_impl.dart';
 import 'package:your_tour_guide/features/hotels/data/repos/hotels_repo.dart';
 import 'package:your_tour_guide/features/hotels/domain/repos/hotels_repo_impl.dart';
+import 'package:your_tour_guide/features/mosques/data/repos/mosque_repo.dart';
+import 'package:your_tour_guide/features/mosques/domain/repos/mosque_repo_impl.dart';
 import 'package:your_tour_guide/features/places/data/repos/places_repo.dart';
 import 'package:your_tour_guide/core/domain/repos/feature_repo_impl.dart';
 import 'package:your_tour_guide/features/places/domian/repos/places_repo_impl.dart';
@@ -38,6 +40,8 @@ void setupGetIt() {
   getIt.registerSingleton<CafeRepo>(CafeRepoImpl(getIt<DatabaseServices>()));
   getIt
       .registerSingleton<HotelsRepo>(HotelsRepoImpl(getIt<DatabaseServices>()));
+  getIt
+      .registerSingleton<MosqueRepo>(MosqueRepoImpl(getIt<DatabaseServices>()));
   getIt.registerSingleton<RestaurantRepo>(
       RestaurantsRepoImpl(getIt<DatabaseServices>()));
   getIt.registerSingleton<CityRepo>(CityRepoImpl(getIt<DatabaseServices>()));

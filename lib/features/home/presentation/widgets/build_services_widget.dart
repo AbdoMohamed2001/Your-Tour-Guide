@@ -1,8 +1,8 @@
 import 'dart:ui';
 
+import 'package:your_tour_guide/features/nav_bar/presentation/views/home_view.dart';
 import 'package:your_tour_guide/generated/l10n.dart';
 import 'package:your_tour_guide/models/services_container_entity.dart';
-import 'package:your_tour_guide/screens/all_screen.dart';
 import 'package:bordered_text/bordered_text.dart';
 import 'package:flutter/material.dart';
 
@@ -72,16 +72,11 @@ class BuildFeaturesGridView extends StatelessWidget {
         Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => listOfServicesContainerEntity[index]
-                          .collectionName ==
-                      'hotels'
-                  ? AllHotelsView(cityName: '')
-                  : AllScreen(
-                      collectionName:
-                          listOfServicesContainerEntity[index].collectionName,
-                      appBarText: listOfServicesContainerEntity[index].name,
-                      cityName: '',
-                    ),
+              builder: (context) =>
+                  listOfServicesContainerEntity[index].collectionName ==
+                          'hotels'
+                      ? AllHotelsView(cityName: '')
+                      : HomeView(),
             ));
       },
       child: Stack(

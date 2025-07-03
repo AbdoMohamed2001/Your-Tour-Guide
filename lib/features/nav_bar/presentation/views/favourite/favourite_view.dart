@@ -1,10 +1,10 @@
+import 'package:your_tour_guide/features/nav_bar/presentation/views/home_view.dart';
 import 'package:your_tour_guide/models/cinema_model.dart';
 import 'package:your_tour_guide/features/hotels/data/models/hotel_model.dart';
 import 'package:your_tour_guide/models/mall_model.dart';
 import 'package:your_tour_guide/features/places/data/models/place_model.dart';
 import 'package:your_tour_guide/features/restaurants/data/models/restaurant_model.dart';
 import 'package:your_tour_guide/models/tour_model.dart';
-import 'package:your_tour_guide/screens/places/place_screen_new.dart';
 import 'package:your_tour_guide/screens/servicesProvider/cinemas/cinema_screen.dart';
 import 'package:your_tour_guide/screens/servicesProvider/tourGuides/tour_guides.dart';
 import 'package:your_tour_guide/tour_screen_neew.dart';
@@ -28,7 +28,6 @@ class FavouriteView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<PlaceModel>? placeList;
     List<MallModel>? mallList;
     List<CinemaModel>? cinemaList;
     List<TourModel>? tourList;
@@ -72,7 +71,6 @@ class FavouriteView extends StatelessWidget {
                 List<PlaceModel> placeListt = [];
                 for (int i = 0; i < snapshot.data!.docs.length; i++) {
                   placeListt.add(PlaceModel.fromJson(snapshot.data!.docs[i]));
-                  placeList = placeListt;
                 }
               }
               //-------------------------------------------------------------------------
@@ -122,10 +120,7 @@ class FavouriteView extends StatelessWidget {
                 shrinkWrap: true,
                 itemBuilder: (context, int index) => BuildFavouriteItem(
                   pushedPage: collectionName == 'places'
-                      ? PlaceScreenNew(
-                          docID: allDocs[index].id,
-                          placeModel: placeList![index],
-                        )
+                      ? HomeView()
                       :
                       //-----------------------------------------------------------------
                       collectionName == 'tours'

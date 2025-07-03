@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:your_tour_guide/features/nav_bar/presentation/views/home_view.dart';
 
 import '../../../../generated/l10n.dart';
-import '../../../../screens/all_screen.dart';
 import '../../../hotels/presentation/views/all_hotels_view.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -36,11 +36,7 @@ List<NearlyPlaceEntity> nearlyList = [
     iconName: FontAwesomeIcons.utensils,
     iconColor: Colors.black,
     containerName: S.current.Restaurants,
-    pushedPage: AllScreen(
-      collectionName: 'restaurants',
-      appBarText: S.current.AllRestaurants,
-      cityName: '',
-    ),
+    pushedPage: HomeView(),
   ),
   //Cafes
   NearlyPlaceEntity(
@@ -48,11 +44,7 @@ List<NearlyPlaceEntity> nearlyList = [
     iconName: FontAwesomeIcons.mugHot,
     iconColor: Colors.black,
     containerName: S.current.Cafes,
-    pushedPage: AllScreen(
-      collectionName: 'cafes',
-      appBarText: S.current.AllCafes,
-      cityName: '',
-    ),
+    pushedPage: HomeView(),
   ),
   // //Cinemas
   NearlyPlaceEntity(
@@ -60,10 +52,6 @@ List<NearlyPlaceEntity> nearlyList = [
     iconName: FontAwesomeIcons.film,
     iconColor: Colors.black,
     containerName: S.current.Cinemas,
-    pushedPage: AllScreen(
-      collectionName: 'cinemas',
-      appBarText: S.current.AllCinemas,
-      cityName: '',
-    ),
+    pushedPage: HomeView(),
   ),
 ];
