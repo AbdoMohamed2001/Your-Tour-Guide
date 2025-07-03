@@ -1,6 +1,6 @@
-import 'package:your_tour_guide/models/hotel_model.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:your_tour_guide/features/hotels/domain/entities/hotel_entity.dart';
 
 import '../functions/is_arabic.dart';
 
@@ -8,16 +8,16 @@ class BuildFacilitiesItem extends StatelessWidget {
   const BuildFacilitiesItem({
     Key? key,
     required this.index,
-    required this.hotelModel,
+    required this.hotelEntity,
   }) : super(key: key);
   final int index;
-  final HotelModel hotelModel;
+  final HotelEntity hotelEntity;
 
   @override
   Widget build(BuildContext context) {
     var features = isArabic()
-        ? hotelModel.roomFacilitiesArabic[index]
-        : hotelModel.roomFacilities[index];
+        ? hotelEntity.roomFacilitiesArabic[index]
+        : hotelEntity.roomFacilities[index];
     return Container(
       width: MediaQuery.of(context).size.width * .010,
       height: MediaQuery.of(context).size.height * .145,

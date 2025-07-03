@@ -91,7 +91,7 @@ class MosqueScreen extends StatelessWidget {
                         kSizedBox,
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                          child: DefaultReadMoreWidget(
+                          child: ReadMoreWidget(
                             text: isArabic()
                                 ? mosqueModel.descriptionArabic
                                 : mosqueModel.description,
@@ -102,8 +102,7 @@ class MosqueScreen extends StatelessWidget {
                         //Images
 
                         GalleryWidget(
-                          model: mosqueModel,
-                          cubit: mosqueCubit,
+                          entity: mosqueModel,
                         ),
                         kSizedBox,
                         //-------------------------------------------------------------------------

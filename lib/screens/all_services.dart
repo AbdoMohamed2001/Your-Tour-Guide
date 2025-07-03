@@ -1,11 +1,9 @@
 import 'package:your_tour_guide/models/cinema_model.dart';
-import 'package:your_tour_guide/models/hotel_model.dart';
 import 'package:your_tour_guide/models/mall_model.dart';
 import 'package:your_tour_guide/features/places/data/models/place_model.dart';
 import 'package:your_tour_guide/models/restaurant_model.dart';
 import 'package:your_tour_guide/screens/places/place_screen_new.dart';
 import 'package:your_tour_guide/screens/servicesProvider/cinemas/cinema_screen.dart';
-import 'package:your_tour_guide/screens/servicesProvider/hotels/hotel_screen.dart';
 import 'package:your_tour_guide/screens/servicesProvider/malls,%20mosques%20and%20churchs/mall_screen.dart';
 import 'package:your_tour_guide/screens/servicesProvider/restaurants%20and%20cafes/restaurants_screen.dart';
 import 'package:your_tour_guide/screens/servicesProvider/tourGuides/tour_guides.dart';
@@ -34,7 +32,6 @@ class AllServicesView extends StatelessWidget {
     List<RestaurantModel>? restaurantsList;
     List<MallModel>? mallList;
     List<CinemaModel>? cinemaList;
-    List<HotelModel>? hotelList;
     return Scaffold(
       appBar: CustomAppBar(
         title: appBarText,
@@ -64,14 +61,7 @@ class AllServicesView extends StatelessWidget {
               //------------------------------------------------------------------------
               else if (collectionName == 'tours') {
               }
-              //-------------------------------------------------------------------------
-              else if (collectionName == 'hotels') {
-                List<HotelModel> hotelListt = [];
-                for (int i = 0; i < snapshot.data!.docs.length; i++) {
-                  hotelListt.add(HotelModel.fromJson(snapshot.data!.docs[i]));
-                  hotelList = hotelListt;
-                }
-              }
+
               //-------------------------------------------------------------------------
               else if (collectionName == 'restaurants' ||
                   collectionName == 'cafes') {
@@ -125,37 +115,31 @@ class AllServicesView extends StatelessWidget {
                               currentIndex: index,
                             )
                           :
+
                           //-----------------------------------------------------------------
-                          collectionName == 'hotels'
-                              ? HotelScreen(
+                          collectionName == 'restaurants' ||
+                                  collectionName == 'cafes'
+                              ? RestaurantScreen(
                                   docID: allDocs[index].id,
-                                  hotelModel: hotelList![index],
+                                  restaurantModel: restaurantsList![index],
+                                  collectionName: collectionName,
                                 )
                               :
                               //-----------------------------------------------------------------
-                              collectionName == 'restaurants' ||
-                                      collectionName == 'cafes'
-                                  ? RestaurantScreen(
-                                      docID: allDocs[index].id,
-                                      restaurantModel: restaurantsList![index],
+                              collectionName == 'malls' ||
+                                      collectionName == 'mosques' ||
+                                      collectionName == 'churchs'
+                                  ? MallNewScreen(
                                       collectionName: collectionName,
+                                      docID: allDocs[index].id,
+                                      mallModel: mallList![index],
                                     )
                                   :
                                   //-----------------------------------------------------------------
-                                  collectionName == 'malls' ||
-                                          collectionName == 'mosques' ||
-                                          collectionName == 'churchs'
-                                      ? MallNewScreen(
-                                          collectionName: collectionName,
-                                          docID: allDocs[index].id,
-                                          mallModel: mallList![index],
-                                        )
-                                      :
-                                      //-----------------------------------------------------------------
-                                      CinemaScreen(
-                                          cinemaModel: cinemaList![index],
-                                          docID: allDocs[index].id,
-                                        ),
+                                  CinemaScreen(
+                                      cinemaModel: cinemaList![index],
+                                      docID: allDocs[index].id,
+                                    ),
                 ),
                 // itemCount: placeList.length,
                 itemCount: snapshot.data!.docs.length,

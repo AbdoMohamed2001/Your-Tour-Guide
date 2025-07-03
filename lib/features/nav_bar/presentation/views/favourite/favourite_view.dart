@@ -1,12 +1,11 @@
 import 'package:your_tour_guide/models/cinema_model.dart';
-import 'package:your_tour_guide/models/hotel_model.dart';
+import 'package:your_tour_guide/features/hotels/data/models/hotel_model.dart';
 import 'package:your_tour_guide/models/mall_model.dart';
 import 'package:your_tour_guide/features/places/data/models/place_model.dart';
 import 'package:your_tour_guide/models/restaurant_model.dart';
 import 'package:your_tour_guide/models/tour_model.dart';
 import 'package:your_tour_guide/screens/places/place_screen_new.dart';
 import 'package:your_tour_guide/screens/servicesProvider/cinemas/cinema_screen.dart';
-import 'package:your_tour_guide/screens/servicesProvider/hotels/hotel_screen.dart';
 import 'package:your_tour_guide/screens/servicesProvider/restaurants%20and%20cafes/restaurants_screen.dart';
 import 'package:your_tour_guide/screens/servicesProvider/tourGuides/tour_guides.dart';
 import 'package:your_tour_guide/tour_screen_neew.dart';
@@ -34,7 +33,6 @@ class FavouriteView extends StatelessWidget {
     List<RestaurantModel>? restaurantsList;
     List<MallModel>? mallList;
     List<CinemaModel>? cinemaList;
-    List<HotelModel>? hotelList;
     List<TourModel>? tourList;
 
     final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -92,7 +90,6 @@ class FavouriteView extends StatelessWidget {
                 List<HotelModel> hotelListt = [];
                 for (int i = 0; i < snapshot.data!.docs.length; i++) {
                   hotelListt.add(HotelModel.fromJson(snapshot.data!.docs[i]));
-                  hotelList = hotelListt;
                 }
               }
               //-------------------------------------------------------------------------
@@ -140,45 +137,38 @@ class FavouriteView extends StatelessWidget {
                               placeModel: tourList![index],
                             )
                           :
+
                           //-----------------------------------------------------------------
-                          collectionName == 'hotels'
-                              ? HotelScreen(
-                                  docID: allDocs[index].id,
-                                  hotelModel: hotelList![index],
+                          collectionName == 'TourGuides'
+                              ? TourGuideScreen(
+                                  tourGuideData: allDocs,
+                                  currentIndex: index,
                                 )
                               :
                               //-----------------------------------------------------------------
-                              collectionName == 'TourGuides'
-                                  ? TourGuideScreen(
-                                      tourGuideData: allDocs,
-                                      currentIndex: index,
+                              collectionName == 'restaurants' ||
+                                      collectionName == 'cafes'
+                                  ? RestaurantScreen(
+                                      collectionName: collectionName,
+                                      docID: allDocs[index].id,
+                                      restaurantModel: restaurantsList![index],
                                     )
                                   :
                                   //-----------------------------------------------------------------
-                                  collectionName == 'restaurants' ||
-                                          collectionName == 'cafes'
-                                      ? RestaurantScreen(
-                                          collectionName: collectionName,
+                                  collectionName == 'malls' ||
+                                          collectionName == 'mosques' ||
+                                          collectionName == 'churches'
+                                      ? MallNewScreen(
                                           docID: allDocs[index].id,
-                                          restaurantModel:
-                                              restaurantsList![index],
+                                          collectionName: collectionName,
+                                          mallModel: mallList![index],
                                         )
                                       :
                                       //-----------------------------------------------------------------
-                                      collectionName == 'malls' ||
-                                              collectionName == 'mosques' ||
-                                              collectionName == 'churches'
-                                          ? MallNewScreen(
-                                              docID: allDocs[index].id,
-                                              collectionName: collectionName,
-                                              mallModel: mallList![index],
-                                            )
-                                          :
-                                          //-----------------------------------------------------------------
-                                          CinemaScreen(
-                                              cinemaModel: cinemaList![index],
-                                              docID: allDocs[index].id,
-                                            ),
+                                      CinemaScreen(
+                                          cinemaModel: cinemaList![index],
+                                          docID: allDocs[index].id,
+                                        ),
                   allDocs: allDocs,
                   index: index,
                 ),

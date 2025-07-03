@@ -1,3 +1,4 @@
+import 'package:your_tour_guide/core/utils/text_styles.dart';
 import 'package:your_tour_guide/generated/l10n.dart';
 import 'package:your_tour_guide/screens/best_places/photo_view_page.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -8,39 +9,30 @@ import '../../../../constants.dart';
 class GalleryWidget extends StatelessWidget {
   const GalleryWidget({
     super.key,
-    required this.cubit,
-    required this.model,
+    required this.entity,
+    this.GridKey,
   });
 
-  final cubit;
-  final model;
-
+  final entity;
+  final Key? GridKey;
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         //Text
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-          child: Text(
-            S.of(context).Gallery,
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 22,
-            ),
-          ),
+        Text(
+          S.of(context).Gallery,
+          style: TextStyles.bold22,
         ),
         kSizedBox,
         Container(
           height: 300,
           child: GridView.builder(
-            key: cubit.dataKey,
-            shrinkWrap: true,
+            key: GridKey,
             padding: const EdgeInsets.all(1),
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 3,
-            ),
+            gridDelegate:
+                SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
             itemBuilder: (context, index) {
               return Container(
                 padding: const EdgeInsets.all(0.5),
@@ -49,13 +41,13 @@ class GalleryWidget extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                       builder: (_) =>
-                          PhotoViewPage(photos: model.images!, index: index),
+                          PhotoViewPage(photos: entity.images, index: index),
                     ),
                   ),
                   child: Hero(
-                    tag: model.images![index],
+                    tag: entity.images[index],
                     child: CachedNetworkImage(
-                      imageUrl: model.images![index],
+                      imageUrl: entity.images![index],
                       fit: BoxFit.cover,
                       placeholder: (context, url) =>
                           Container(color: Colors.grey),
@@ -67,10 +59,9 @@ class GalleryWidget extends StatelessWidget {
                 ),
               );
             },
-            itemCount: model.images!.length,
+            itemCount: entity.images!.length,
           ),
         ),
-        kSizedBox,
       ],
     );
   }

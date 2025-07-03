@@ -148,13 +148,11 @@ class RestaurantScreen extends StatelessWidget {
                         //contact
                         HeadText(text: S.of(context).Contact),
                         //Contact website and phone number
-                        ContactWidget(
-                            model: restaurantModel, cubit: restaurantCubit),
+                        ContactWidget(entity: restaurantModel),
                         kSizedBox,
                         //------------------------------------------------------------------------
                         GalleryWidget(
-                          cubit: restaurantCubit,
-                          model: restaurantModel,
+                          entity: restaurantModel,
                         ),
                         kSizedBox,
                       ],

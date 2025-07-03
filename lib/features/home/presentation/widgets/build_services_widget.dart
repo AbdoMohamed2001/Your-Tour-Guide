@@ -3,9 +3,10 @@ import 'dart:ui';
 import 'package:your_tour_guide/generated/l10n.dart';
 import 'package:your_tour_guide/models/services_container_entity.dart';
 import 'package:your_tour_guide/screens/all_screen.dart';
-import 'package:your_tour_guide/screens/servicesProvider/hotels/all_hotels_screen.dart';
 import 'package:bordered_text/bordered_text.dart';
 import 'package:flutter/material.dart';
+
+import '../../../hotels/presentation/views/all_hotels_view.dart';
 
 class BuildFeaturesGridView extends StatelessWidget {
   const BuildFeaturesGridView({
@@ -74,7 +75,7 @@ class BuildFeaturesGridView extends StatelessWidget {
               builder: (context) => listOfServicesContainerEntity[index]
                           .collectionName ==
                       'hotels'
-                  ? AllHotels(cityName: '')
+                  ? AllHotelsView(cityName: '')
                   : AllScreen(
                       collectionName:
                           listOfServicesContainerEntity[index].collectionName,

@@ -82,7 +82,7 @@ class CinemaScreen extends StatelessWidget {
                     ),
                     kSizedBox,
                     //-------------------------------------------------------------------------
-                    ContactWidget(model: cinemaModel, cubit: cinemaCubit),
+                    ContactWidget(entity: cinemaModel),
                     kSizedBox,
                   ],
                 ),

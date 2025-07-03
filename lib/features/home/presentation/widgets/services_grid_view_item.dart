@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import '../../../../core/utils/text_styles.dart';
 import '../../../../models/services_container_entity.dart';
 import '../../../../screens/all_screen.dart';
-import '../../../../screens/servicesProvider/hotels/all_hotels_screen.dart';
+import '../../../hotels/presentation/views/all_hotels_view.dart';
 
 class ServicesGridViewItem extends StatelessWidget {
   const ServicesGridViewItem({
@@ -27,7 +27,7 @@ class ServicesGridViewItem extends StatelessWidget {
               builder: (context) => getServicesContainerList(context)[index]
                           .collectionName ==
                       'hotels'
-                  ? AllHotels(cityName: '')
+                  ? AllHotelsView(cityName: '')
                   : AllScreen(
                       collectionName: getServicesContainerList(context)[index]
                           .collectionName,

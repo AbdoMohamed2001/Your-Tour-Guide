@@ -75,7 +75,7 @@ class PlaceDetailsViewBody extends StatelessWidget {
                     //Description and rate
                     HeadText(text: S.of(context).Description),
                     kSizedBox,
-                    DefaultReadMoreWidget(
+                    ReadMoreWidget(
                       text: isArabic()
                           ? placeEntity.descriptionArabic
                           : placeEntity.description,
@@ -102,7 +102,7 @@ class PlaceDetailsViewBody extends StatelessWidget {
                         : TransportWidget(placeEntity: placeEntity),
                     //-------------------------------------------------------------------
                     //Gallery
-                    GalleryWidget(cubit: placeCubit, model: placeEntity),
+                    GalleryWidget(entity: placeEntity),
                     //-------------------------------------------------------------------
                     //Nearly
                     HeadText(text: S.of(context).nearly),

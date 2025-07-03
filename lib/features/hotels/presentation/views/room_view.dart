@@ -2,19 +2,19 @@ import 'package:your_tour_guide/core/utils/functions/is_arabic.dart';
 import 'package:your_tour_guide/core/utils/widgets/custom_app_bar.dart';
 import 'package:your_tour_guide/core/utils/widgets/default_cached_network_image.dart';
 import 'package:your_tour_guide/core/utils/widgets/facalities_item.dart';
+import 'package:your_tour_guide/features/hotels/domain/entities/hotel_entity.dart';
 import 'package:your_tour_guide/generated/l10n.dart';
-import 'package:your_tour_guide/models/hotel_model.dart';
 import 'package:bordered_text/bordered_text.dart';
 import 'package:flutter/material.dart';
 
 class RoomScreen extends StatelessWidget {
   const RoomScreen({
     Key? key,
-    required this.hotelModel,
+    required this.hotelEntity,
     required this.index,
   }) : super(key: key);
 
-  final HotelModel hotelModel;
+  final HotelEntity hotelEntity;
   final int index;
 
   @override
@@ -38,18 +38,14 @@ class RoomScreen extends StatelessWidget {
                 children: [
                   DefaultCachedNetworkImage(
                     imageUrl: isArabic()
-                        ? hotelModel.roomsArabic[index]['imageUrl']
-                        : hotelModel.rooms[index]['imageUrl'],
+                        ? hotelEntity.roomsArabic[index].imageUrl
+                        : hotelEntity.rooms[index].imageUrl,
                     imageHeight: 250,
                   ),
                   Positioned(
                     //38
-                    bottom: hotelModel.roomsArabic[index]['name']
-                                    .toString()
-                                    .length >
-                                35 ||
-                            hotelModel.rooms[index]['name'].toString().length >
-                                35
+                    bottom: hotelEntity.roomsArabic[index].name.length > 35 ||
+                            hotelEntity.rooms[index].name.length > 35
                         ? 10
                         : 10,
                     right: isArabic() ? 12 : null,
@@ -58,21 +54,16 @@ class RoomScreen extends StatelessWidget {
                       strokeColor: Colors.black,
                       child: Text(
                         isArabic()
-                            ? hotelModel.roomsArabic[index]['name']
-                            : hotelModel.rooms[index]['name'],
+                            ? hotelEntity.roomsArabic[index].name
+                            : hotelEntity.rooms[index].name,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
-                          fontSize: hotelModel.roomsArabic[index]['name']
-                                          .toString()
-                                          .length >
-                                      35 ||
-                                  hotelModel.rooms[index]['name']
-                                          .toString()
-                                          .length >
-                                      35
-                              ? 16
-                              : 22,
+                          fontSize:
+                              hotelEntity.roomsArabic[index].name.length > 35 ||
+                                      hotelEntity.rooms[index].name.length > 35
+                                  ? 16
+                                  : 22,
                         ),
                       ),
                     ),
@@ -93,25 +84,12 @@ class RoomScreen extends StatelessWidget {
                     mainAxisSpacing: 5,
                     crossAxisSpacing: 0,
                   ),
-                  itemBuilder: (_, indexx) => BuildFacilitiesItem(
-                      index: indexx, hotelModel: hotelModel),
+                  itemBuilder: (_, index) => BuildFacilitiesItem(
+                      index: index, hotelEntity: hotelEntity),
                   itemCount: isArabic()
-                      ? hotelModel.roomFacilitiesArabic.length
-                      : hotelModel.roomFacilities.length,
+                      ? hotelEntity.roomFacilitiesArabic.length
+                      : hotelEntity.roomFacilities.length,
                 ),
-
-                // ListView.separated(
-                //   shrinkWrap: true,
-                //   scrollDirection: Axis.horizontal,
-                //   itemBuilder: (_, indexx) =>
-                //       BuildFacilitiesItem(index: indexx, hotelModel: hotelModel),
-                //   separatorBuilder: (_, indexx) => SizedBox(
-                //     width: 8,
-                //   ),
-                //   itemCount: isArabic()
-                //       ? hotelModel.roomFacilitiesArabic!.length
-                //       : hotelModel.roomFacilities!.length,
-                // ),
               ),
               //---------------------------------------
               Padding(
@@ -136,12 +114,12 @@ class RoomScreen extends StatelessWidget {
                         SizedBox(
                           width: 5,
                         ),
-                        hotelModel.roomsArabic[index]['noOfPeople'] == 1
+                        hotelEntity.roomsArabic[index].noOfPeople == 1
                             ? Icon(
                                 Icons.person,
                                 size: 32,
                               )
-                            : hotelModel.roomsArabic[index]['noOfPeople'] == 3
+                            : hotelEntity.roomsArabic[index].noOfPeople == 3
                                 ? Row(
                                     children: [
                                       Icon(
@@ -154,8 +132,7 @@ class RoomScreen extends StatelessWidget {
                                       ),
                                     ],
                                   )
-                                : hotelModel.roomsArabic[index]['noOfPeople'] ==
-                                        4
+                                : hotelEntity.roomsArabic[index].noOfPeople == 4
                                     ? Row(
                                         children: [
                                           Icon(Icons.people_rounded),
@@ -179,14 +156,14 @@ class RoomScreen extends StatelessWidget {
                         ),
                         isArabic()
                             ? Text(
-                                hotelModel.roomsArabic[index]['bed']
+                                hotelEntity.roomsArabic[index].bed
                                     .replaceAll('_b', '\n'),
                                 style: TextStyle(
                                   fontSize: 24,
                                 ),
                               )
                             : Text(
-                                hotelModel.rooms[index]['bed']
+                                hotelEntity.rooms[index].bed
                                     .replaceAll('_b', '\n'),
                                 style: TextStyle(
                                   fontSize: 24,
@@ -196,9 +173,7 @@ class RoomScreen extends StatelessWidget {
                         SizedBox(
                           width: 5,
                         ),
-                        hotelModel.roomsArabic[index]['bed']
-                                .toString()
-                                .contains('_b')
+                        hotelEntity.roomsArabic[index].bed.contains('_b')
                             ? Column(
                                 children: [
                                   SizedBox(
@@ -217,9 +192,7 @@ class RoomScreen extends StatelessWidget {
                                   )
                                 ],
                               )
-                            : hotelModel.roomsArabic[index]['bed']
-                                    .toString()
-                                    .contains('2')
+                            : hotelEntity.roomsArabic[index].bed.contains('2')
                                 ? Column(
                                     children: [
                                       SizedBox(
@@ -254,7 +227,7 @@ class RoomScreen extends StatelessWidget {
                       ],
                     ),
                     //                  Text(S.of(context).avgPrice),
-                    //                   Text(hotelModel.roomsArabic![index]['averagePrice']),
+                    //                   Text(hotelEntity.roomsArabic![index]['averagePrice']),
                   ],
                 ),
               ),
@@ -271,8 +244,8 @@ class RoomScreen extends StatelessWidget {
 //
 //
 //                   Text(
-//                     isArabic()? hotelModel.roomFacilitiesArabic![indexx]:
-//                     hotelModel.roomFacilities![indexx],
+//                     isArabic()? hotelEntity.roomFacilitiesArabic![indexx]:
+//                     hotelEntity.roomFacilities![indexx],
 //                     style: TextStyle(color: Colors.orange,
 //                     fontSize: 20,
 //                     ),

@@ -30,7 +30,6 @@ class UpcomingEventScreen extends StatelessWidget {
         appBar: NoneAppBar(),
         body: BlocBuilder<PlaceCubit, PlaceState>(
           builder: (context, state) {
-            var placeCubit = PlaceCubit.get(context);
             return SingleChildScrollView(
               child: Padding(
                 padding: const EdgeInsets.only(top: 10.0, right: 10, left: 10),
@@ -162,7 +161,7 @@ class UpcomingEventScreen extends StatelessWidget {
                     kSizedBox,
                     //-------------------------------------------------
                     //contact
-                    ContactWidget(model: model, cubit: placeCubit),
+                    ContactWidget(entity: model),
                     // const Text(
                     //   'Contact',
                     //   style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),

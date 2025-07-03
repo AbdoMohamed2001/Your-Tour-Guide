@@ -17,7 +17,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../../../../models/hotel_model.dart';
+import '../../../../hotels/data/models/hotel_model.dart';
 
 part 'place_state.dart';
 

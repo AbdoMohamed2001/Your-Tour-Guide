@@ -4,7 +4,7 @@ import 'package:your_tour_guide/generated/l10n.dart';
 import 'package:your_tour_guide/features/places/data/models/place_model.dart';
 import 'package:your_tour_guide/models/tour_model.dart';
 import 'package:your_tour_guide/screens/all_screen.dart';
-import 'package:your_tour_guide/screens/servicesProvider/hotels/all_hotels_screen.dart';
+import 'package:your_tour_guide/features/hotels/presentation/views/all_hotels_view.dart';
 import 'package:your_tour_guide/tour_screen_neew.dart';
 import 'package:your_tour_guide/core/utils/widgets/default_read_more.dart';
 import 'package:your_tour_guide/core/utils/widgets/head_text.dart';
@@ -46,7 +46,7 @@ class PlaceScreenNew extends StatelessWidget {
         iconName: FontAwesomeIcons.hotel,
         iconColor: Color(0xff613207),
         containerName: S.current.Hotels,
-        pushedPage: AllHotels(cityName: placeModel.cityName),
+        pushedPage: AllHotelsView(cityName: placeModel.cityName),
       ),
       //Restaurants
       NearlyPlaceModel(
@@ -157,7 +157,7 @@ class PlaceScreenNew extends StatelessWidget {
                         kSizedBox,
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                          child: DefaultReadMoreWidget(
+                          child: ReadMoreWidget(
                             text: isArabic()
                                 ? placeModel.descriptionArabic
                                 : placeModel.description,
@@ -230,7 +230,7 @@ class PlaceScreenNew extends StatelessWidget {
                               ),
                         //-------------------------------------------------------------------
                         //Gallery
-                        GalleryWidget(cubit: placeCubit, model: placeModel),
+                        GalleryWidget(entity: placeModel),
                         //-------------------------------------------------------------------
                         //Nearly
                         HeadText(text: S.of(context).nearly),

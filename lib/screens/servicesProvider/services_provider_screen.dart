@@ -1,4 +1,3 @@
-import 'package:your_tour_guide/screens/servicesProvider/hotels/all_hotels_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -17,12 +16,13 @@ class _ServicesProviderState extends State<ServicesProvider> {
       appBar: AppBar(
         elevation: 0,
         leading: IconButton(
-          onPressed: (){
+          onPressed: () {
             Navigator.pop(context);
           },
-          icon: Icon(Icons.arrow_back_ios_new_rounded,),
-
-        color: Colors.black,
+          icon: Icon(
+            Icons.arrow_back_ios_new_rounded,
+          ),
+          color: Colors.black,
         ),
         systemOverlayStyle: const SystemUiOverlayStyle(
           statusBarIconBrightness: Brightness.dark,
@@ -32,9 +32,9 @@ class _ServicesProviderState extends State<ServicesProvider> {
       body: Column(
         children: [
           GestureDetector(
-            onTap: (){
-              Navigator.pushNamed(context, AllHotels.id);
-            },
+            // onTap: () {
+            //   Navigator.pushNamed(context, AllHotels.id);
+            // },
             child: Container(
               width: double.infinity,
               height: 100,
@@ -42,18 +42,21 @@ class _ServicesProviderState extends State<ServicesProvider> {
                 color: Colors.black38,
               ),
               child: Center(
-                child: Text('Hotels',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 25,
-                ),
+                child: Text(
+                  'Hotels',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 25,
+                  ),
                 ),
               ),
             ),
           ),
-          SizedBox(height: 30,),
+          SizedBox(
+            height: 30,
+          ),
           GestureDetector(
-            onTap: (){
+            onTap: () {
               // Navigator.push(context, MosqueScreen.id);
             },
             child: Container(
@@ -63,7 +66,8 @@ class _ServicesProviderState extends State<ServicesProvider> {
                 color: Colors.black38,
               ),
               child: Center(
-                child: Text('Mosques',
+                child: Text(
+                  'Mosques',
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 25,
@@ -72,12 +76,11 @@ class _ServicesProviderState extends State<ServicesProvider> {
               ),
             ),
           ),
-          SizedBox(height: 30,),
+          SizedBox(
+            height: 30,
+          ),
           GestureDetector(
-            onTap: (){
-
-            },
-
+            onTap: () {},
             child: Container(
               width: double.infinity,
               height: 100,
@@ -85,7 +88,8 @@ class _ServicesProviderState extends State<ServicesProvider> {
                 color: Colors.black38,
               ),
               child: Center(
-                child: Text('Cinemas',
+                child: Text(
+                  'Cinemas',
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 25,
@@ -94,9 +98,11 @@ class _ServicesProviderState extends State<ServicesProvider> {
               ),
             ),
           ),
-          SizedBox(height: 30,),
+          SizedBox(
+            height: 30,
+          ),
           GestureDetector(
-            onTap: (){},
+            onTap: () {},
             child: Container(
               width: double.infinity,
               height: 100,
@@ -104,7 +110,8 @@ class _ServicesProviderState extends State<ServicesProvider> {
                 color: Colors.black38,
               ),
               child: Center(
-                child: Text('Malls',
+                child: Text(
+                  'Malls',
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 25,
@@ -113,7 +120,9 @@ class _ServicesProviderState extends State<ServicesProvider> {
               ),
             ),
           ),
-          SizedBox(height: 30,),
+          SizedBox(
+            height: 30,
+          ),
           Container(
             width: double.infinity,
             height: 100,
@@ -121,7 +130,8 @@ class _ServicesProviderState extends State<ServicesProvider> {
               color: Colors.black38,
             ),
             child: Center(
-              child: Text('Tourism Companies',
+              child: Text(
+                'Tourism Companies',
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 25,

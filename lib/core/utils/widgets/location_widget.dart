@@ -80,7 +80,6 @@ class LocationWidget extends StatelessWidget {
           thickness: 1,
           color: Colors.grey[300],
         ),
-        kSizedBox,
       ],
     );
   }

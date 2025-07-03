@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../generated/l10n.dart';
 import '../../../../screens/all_screen.dart';
-import '../../../../screens/servicesProvider/hotels/all_hotels_screen.dart';
+import '../../../hotels/presentation/views/all_hotels_view.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class NearlyPlaceEntity {
@@ -28,7 +28,7 @@ List<NearlyPlaceEntity> nearlyList = [
     iconName: FontAwesomeIcons.hotel,
     iconColor: Color(0xff613207),
     containerName: S.current.Hotels,
-    pushedPage: AllHotels(cityName: ''),
+    pushedPage: AllHotelsView(cityName: ''),
   ),
   //Restaurants
   NearlyPlaceEntity(

@@ -1,5 +1,5 @@
 import 'package:your_tour_guide/core/utils/functions/is_arabic.dart';
-import 'package:your_tour_guide/models/hotel_model.dart';
+import 'package:your_tour_guide/features/hotels/data/models/hotel_model.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 

@@ -107,7 +107,7 @@ class MallNewScreen extends StatelessWidget {
                         kSizedBox,
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                          child: DefaultReadMoreWidget(
+                          child: ReadMoreWidget(
                             text: isArabic()
                                 ? mallModel.descriptionArabic
                                 : mallModel.description,
@@ -184,58 +184,8 @@ class MallNewScreen extends StatelessWidget {
                         //Images
 
                         GalleryWidget(
-                          model: mallModel,
-                          cubit: mallCubit,
+                          entity: mallModel,
                         ),
-                        // Padding(
-                        //   padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                        //   child: Text(
-                        //     'Images',
-                        //     style: TextStyle(
-                        //       fontWeight: FontWeight.bold,
-                        //       fontSize: 22,
-                        //     ),
-                        //   ),
-                        // ),
-                        // kSizedBox,
-                        // GridView.builder(
-                        //   key: mallCubit.dataKey,
-                        //   shrinkWrap: true,
-                        //   physics: const BouncingScrollPhysics(
-                        //     parent: AlwaysScrollableScrollPhysics(),
-                        //   ),
-                        //   padding: const EdgeInsets.all(1),
-                        //   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        //     crossAxisCount: 3,
-                        //   ),
-                        //   itemBuilder: (context, index) {
-                        //     return Container(
-                        //       padding: const EdgeInsets.all(0.5),
-                        //       child: InkWell(
-                        //         onTap: () => Navigator.push(
-                        //           context,
-                        //           MaterialPageRoute(
-                        //             builder: (_) => PhotoViewPage(
-                        //                 photos: mallModel.images!, index: index),
-                        //           ),
-                        //         ),
-                        //         child: Hero(
-                        //           tag: mallModel.images![index],
-                        //           child: CachedNetworkImage(
-                        //             imageUrl: mallModel.images![index],
-                        //             fit: BoxFit.cover,
-                        //             placeholder: (context, url) =>
-                        //                 Container(color: Colors.grey),
-                        //             errorWidget: (context, url, error) => Container(
-                        //               color: Colors.red.shade400,
-                        //             ),
-                        //           ),
-                        //         ),
-                        //       ),
-                        //     );
-                        //   },
-                        //   itemCount: mallModel.images!.length,
-                        // ),
                         kSizedBox,
                         //-------------------------------------------------------------------------
                       ],

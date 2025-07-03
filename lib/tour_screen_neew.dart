@@ -140,7 +140,7 @@ class TourScreenNeew extends StatelessWidget {
                           //Description and rate
                           HeadText(text: S.of(context).Description),
                           kSmallSizedBox,
-                          DefaultReadMoreWidget(
+                          ReadMoreWidget(
                             text: isArabic()
                                 ? placeModel.descriptionArabic
                                 : placeModel.description,
@@ -243,11 +243,11 @@ class TourScreenNeew extends StatelessWidget {
                             ),
                           ),
                           kSmallSizedBox,
-                          ContactWidget(model: placeModel, cubit: placeCubit),
+                          ContactWidget(entity: placeModel),
                           kSizedBox,
                           //-------------------------------------------------------------------
                           //Gallery
-                          GalleryWidget(cubit: placeCubit, model: placeModel),
+                          GalleryWidget(entity: placeModel),
                           //-------------------------------------------------------------------
                           //Booking
                           kSizedBox,
