@@ -6,5 +6,8 @@ abstract class BackEndEndPoints {
   static const restaurantsCollection = 'restaurants';
   static const cafesCollection = 'cafes';
   static const mosquesCollection = 'mosques';
+  static const churchesCollection = 'churchs';
+  static const mallsCollection = 'malls';
+  static const cinemasCollection = 'cinemas';
   static const favouritesCollection = 'favourites';
 }

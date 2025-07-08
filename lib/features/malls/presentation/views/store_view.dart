@@ -2,20 +2,21 @@ import 'package:your_tour_guide/constants.dart';
 import 'package:your_tour_guide/core/utils/functions/is_arabic.dart';
 import 'package:your_tour_guide/core/utils/widgets/opening_hours_item.dart';
 import 'package:your_tour_guide/cubits/home/home_cubit.dart';
-import 'package:your_tour_guide/models/mall_model.dart';
 import 'package:your_tour_guide/core/utils/widgets/default_cached_network_image.dart';
 import 'package:your_tour_guide/core/utils/widgets/head_text.dart';
 import 'package:your_tour_guide/core/utils/widgets/none_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../../domain/entities/mall_entity.dart';
+
 class StoreScreen extends StatelessWidget {
   const StoreScreen({
     Key? key,
-    required this.mallModel,
+    required this.mallEntity,
     required this.index,
   }) : super(key: key);
-  final MallModel mallModel;
+  final MallEntity mallEntity;
   final int index;
 
   @override
@@ -68,8 +69,8 @@ class StoreScreen extends StatelessWidget {
                   //   children: [
                   //     Text(
                   //       isArabic()
-                  //           ? mallModel.storeArabic![index]['name']
-                  //           : mallModel.store![index]['name'],
+                  //           ? mallEntity.storeArabic![index]['name']
+                  //           : mallEntity.store![index]['name'],
                   //       style: TextStyle(fontSize: 26),
                   //     ),
                   //     Row(
@@ -89,11 +90,11 @@ class StoreScreen extends StatelessWidget {
                   //Opening Hours
                   OpeningHoursWidget(
                     openFrom: isArabic()
-                        ? mallModel.openingHoursArabic['from']
-                        : mallModel.openingHours['from'],
+                        ? mallEntity.openingHoursArabic['from']
+                        : mallEntity.openingHours['from'],
                     openTo: isArabic()
-                        ? mallModel.openingHoursArabic['to']
-                        : mallModel.openingHours['to'],
+                        ? mallEntity.openingHoursArabic['to']
+                        : mallEntity.openingHours['to'],
                   ),
                   kSizedBox,
                   Divider(
@@ -104,8 +105,8 @@ class StoreScreen extends StatelessWidget {
                   //Mobile
                   // Text(
                   //   isArabic()
-                  //       ? mallModel.storeArabic![index]['mobile']
-                  //       : mallModel.store![index]['mobile'],
+                  //       ? mallEntity.storeArabic![index]['mobile']
+                  //       : mallEntity.store![index]['mobile'],
                   //   style: TextStyle(fontSize: 16,),
                   // ),
                   kSizedBox,

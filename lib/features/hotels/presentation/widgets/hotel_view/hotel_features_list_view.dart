@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:your_tour_guide/feature_grid_item.dart';
+import 'package:your_tour_guide/features/hotels/presentation/widgets/hotel_feature_grid_item.dart';
 
 import '../../../../../core/utils/functions/is_arabic.dart';
 import '../../../domain/entities/hotel_entity.dart';

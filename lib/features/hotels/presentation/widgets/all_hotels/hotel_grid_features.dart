@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/functions/is_arabic.dart';
-import '../../../../../feature_grid_item.dart';
+import '../hotel_feature_grid_item.dart';
 import '../../../domain/entities/hotel_entity.dart';
 
 class HotelGridFeatures extends StatelessWidget {

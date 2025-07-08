@@ -1,4 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:your_tour_guide/features/cinemas/domain/entities/cinema_entity.dart';
 
 class CinemaModel {
   final String address;
@@ -43,35 +43,6 @@ class CinemaModel {
     required this.website,
   });
 
-  List<CinemaModel> dataListFromSnapshot(QuerySnapshot querySnapshot) {
-    return querySnapshot.docs.map((snapshot) {
-      final Map<String, dynamic> dataMap =
-          snapshot.data() as Map<String, dynamic>;
-      return CinemaModel(
-        address: dataMap['address'],
-        addressArabic: dataMap['addressArabic'],
-        cityName: dataMap['cityName'],
-        cityNameArabic: dataMap['cityNameArabic'],
-        imageUrl: dataMap['imageUrl'],
-        images: dataMap['images'],
-        mapUrl: dataMap['mapUrl'],
-        name: dataMap['name'],
-        nameArabic: dataMap['nameArabic'],
-        openingHours: dataMap['openingHours'],
-        openingHoursArabic: dataMap['openingHoursArabic'],
-        phone: dataMap['phone'],
-        rate: dataMap['rate'],
-        tickets: dataMap['tickets'],
-        ticketsArabic: dataMap['ticketsArabic'],
-        website: dataMap['website'],
-        docId: dataMap['docId'],
-        films: dataMap['films'],
-        filmsArabic: dataMap['filmsArabic'],
-      );
-    }).toList();
-  }
-
-//-------------------------------------------------------------
   factory CinemaModel.fromJson(doc) {
     return CinemaModel(
       address: doc['address'],
@@ -93,6 +64,30 @@ class CinemaModel {
       docId: doc['docId'],
       films: doc['films'],
       filmsArabic: doc['filmsArabic'],
+    );
+  }
+
+  CinemaEntity toEntity() {
+    return CinemaEntity(
+      address: address,
+      addressArabic: addressArabic,
+      cityName: cityName,
+      cityNameArabic: cityNameArabic,
+      docId: docId,
+      films: films,
+      filmsArabic: filmsArabic,
+      imageUrl: imageUrl,
+      images: images,
+      mapUrl: mapUrl,
+      name: name,
+      nameArabic: nameArabic,
+      openingHours: openingHours,
+      openingHoursArabic: openingHoursArabic,
+      phone: phone,
+      rate: rate,
+      tickets: tickets,
+      ticketsArabic: ticketsArabic,
+      website: website,
     );
   }
 }

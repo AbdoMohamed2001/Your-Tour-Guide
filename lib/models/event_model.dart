@@ -1,7 +1,6 @@
-import 'package:your_tour_guide/models/models.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class EventModel implements Model {
+class EventModel {
   final String about;
   final String aboutArabic;
   final String docId;

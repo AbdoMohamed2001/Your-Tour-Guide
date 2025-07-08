@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'core/utils/functions/hotelFeaturesIconMap.dart';
+import '../../../../core/utils/functions/hotelFeaturesIconMap.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import 'features/hotels/presentation/widgets/all_hotels/hotel_features_grid_container.dart';
+import 'all_hotels/hotel_features_grid_container.dart';
 
 class HotelFeatureGridItem extends StatelessWidget {
   const HotelFeatureGridItem({

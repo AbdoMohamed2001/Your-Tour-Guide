@@ -1,22 +1,21 @@
 import 'package:your_tour_guide/constants.dart';
 import 'package:your_tour_guide/core/utils/functions/is_arabic.dart';
 import 'package:your_tour_guide/cubits/home/home_cubit.dart';
+import 'package:your_tour_guide/features/cinemas/domain/entities/cinema_entity.dart';
 import 'package:your_tour_guide/generated/l10n.dart';
 import 'package:your_tour_guide/core/utils/widgets/head_text.dart';
 import 'package:your_tour_guide/core/utils/widgets/none_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../../../models/cinema_model.dart';
-
-class FilmScreen extends StatelessWidget {
-  const FilmScreen({
+class MovieView extends StatelessWidget {
+  const MovieView({
     Key? key,
-    required this.cinemaModel,
+    required this.cinemaEntity,
     required this.index,
   }) : super(key: key);
 
-  final CinemaModel cinemaModel;
+  final CinemaEntity cinemaEntity;
   final int index;
 
   @override
@@ -30,7 +29,7 @@ class FilmScreen extends StatelessWidget {
             Stack(
               children: [
                 Image.network(
-                  cinemaModel.films[index]['imageUrl'],
+                  cinemaEntity.films[index]['imageUrl'],
                   height: 500,
                   width: double.infinity,
                   fit: BoxFit.cover,
@@ -67,8 +66,8 @@ class FilmScreen extends StatelessWidget {
                     children: [
                       Text(
                         isArabic()
-                            ? cinemaModel.filmsArabic[index]['name']
-                            : cinemaModel.films[index]['name'],
+                            ? cinemaEntity.filmsArabic[index]['name']
+                            : cinemaEntity.films[index]['name'],
                         style: TextStyle(fontSize: 26),
                       ),
                       Row(
@@ -81,7 +80,7 @@ class FilmScreen extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            '${cinemaModel.films[index]['rate']}/10',
+                            '${cinemaEntity.films[index]['rate']}/10',
                             style: TextStyle(
                               fontSize: 18,
                             ),
@@ -129,8 +128,8 @@ class FilmScreen extends StatelessWidget {
                     ],
                   ),
                   // isArabic() ? Text(
-                  //     'تصنيف العمل : ${cinemaModel.filmsArabic![index]['category']}')
-                  // :Text('تصنيف العمل : ${cinemaModel.films![index]['category']}')
+                  //     'تصنيف العمل : ${cinemaEntity.filmsArabic![index]['category']}')
+                  // :Text('تصنيف العمل : ${cinemaEntity.films![index]['category']}')
                   // ,
                   SizedBox(
                     height: 10,
@@ -143,8 +142,8 @@ class FilmScreen extends StatelessWidget {
                   //Description
                   Text(
                     isArabic()
-                        ? cinemaModel.filmsArabic[index]['description']
-                        : cinemaModel.films[index]['description'],
+                        ? cinemaEntity.filmsArabic[index]['description']
+                        : cinemaEntity.films[index]['description'],
                     style: TextStyle(
                       fontSize: 16,
                     ),
@@ -159,8 +158,8 @@ class FilmScreen extends StatelessWidget {
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (_, indexx) => Text(
                         isArabic()
-                            ? cinemaModel.filmsArabic[index]['cast'][indexx]
-                            : cinemaModel.films[index]['cast'][indexx],
+                            ? cinemaEntity.filmsArabic[index]['cast'][indexx]
+                            : cinemaEntity.films[index]['cast'][indexx],
                         style: TextStyle(
                           fontSize: 17,
                         ),
@@ -180,7 +179,7 @@ class FilmScreen extends StatelessWidget {
                   //   ),
                   //       itemBuilder: (_,indexx){
                   //     return Container(
-                  //       child: Text(cinemaModel.filmsArabic![index]['cast'][indexx]),
+                  //       child: Text(cinemaEntity.filmsArabic![index]['cast'][indexx]),
                   //     );
                   //   },
                   //     itemCount: 4,

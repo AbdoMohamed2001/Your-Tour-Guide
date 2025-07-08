@@ -1,34 +1,24 @@
-// ignore_for_file: missing_required_param
-
-import 'package:your_tour_guide/constants.dart';
-import 'package:your_tour_guide/core/utils/functions/is_arabic.dart';
-import 'package:your_tour_guide/core/utils/widgets/location_widget.dart';
-import 'package:your_tour_guide/core/utils/widgets/opening_hours_item.dart';
-import 'package:your_tour_guide/core/utils/widgets/place/custom_place_image.dart';
-import 'package:your_tour_guide/core/utils/widgets/place/gallery_widget.dart';
-import 'package:your_tour_guide/generated/l10n.dart';
-import 'package:your_tour_guide/models/mall_model.dart';
-import 'package:your_tour_guide/screens/servicesProvider/malls,%20mosques%20and%20churchs/store_screen.dart';
-import 'package:your_tour_guide/core/utils/widgets/default_read_more.dart';
-import 'package:your_tour_guide/core/utils/widgets/head_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:your_tour_guide/features/malls/domain/entities/mall_entity.dart';
+import 'package:your_tour_guide/features/malls/presentation/cubit/mall_cubit.dart';
+import '../../../../../constants.dart';
+import '../../../../../core/utils/functions/is_arabic.dart';
+import '../../../../../core/utils/widgets/default_read_more.dart';
+import '../../../../../core/utils/widgets/head_text.dart';
+import '../../../../../core/utils/widgets/location_widget.dart';
+import '../../../../../core/utils/widgets/opening_hours_item.dart';
+import '../../../../../core/utils/widgets/place/custom_place_image.dart';
+import '../../../../../core/utils/widgets/place/gallery_widget.dart';
+import '../../../../../generated/l10n.dart';
 
-import '../../../features/places/data/repos/places_repo.dart';
-import '../../../core/services/get_it_services_locator.dart';
-import '../../../features/places/presentation/cubit/place_cubit/place_cubit.dart';
+class MallDetailsViewBody extends StatelessWidget {
+  const MallDetailsViewBody({
+    super.key,
+    required this.mallEntity,
+  });
 
-class MallNewScreen extends StatelessWidget {
-  MallNewScreen({
-    Key? key,
-    required this.mallModel,
-    required this.docID,
-    required this.collectionName,
-  }) : super(key: key);
-
-  final MallModel mallModel;
-  final docID;
-  final String collectionName;
+  final MallEntity mallEntity;
 
   @override
   Widget build(BuildContext context) {
@@ -44,74 +34,56 @@ class MallNewScreen extends StatelessWidget {
       'https://assets.stickpng.com/images/5a1d30914ac6b00ff574e2a4.png',
       'https://upload.wikimedia.org/wikipedia/sco/thumb/d/d2/Pizza_Hut_logo.svg/2177px-Pizza_Hut_logo.svg.png',
     ];
-    return BlocProvider(
-      create: (context) => PlaceCubit(getIt<PlacesRepo>())
-        ..likedKey = docID
-        ..restorePersistedPref()
-        ..canLaunchUrlFunction(),
-      child: Scaffold(
-        body: BlocBuilder<PlaceCubit, PlaceState>(
-          builder: (context, state) {
-            var mallCubit = PlaceCubit.get(context);
-            return SingleChildScrollView(
-              child: Column(
+    return BlocBuilder<MallCubit, MallState>(
+      builder: (context, state) {
+        return SingleChildScrollView(
+          child: Column(
+            children: [
+              //image
+              CustomPlaceImage(
+                cubitDataKeyCurrentContext: GlobalKey(),
+                entity: mallEntity,
+              ),
+              Column(
                 children: [
-                  CustomPlaceImage(
-                    cubitDataKeyCurrentContext:
-                        mallCubit.dataKey.currentContext,
-                    entity: mallModel,
-                  ),
+                  //-------------------------------------------------------------------------
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        //------------------------------------------------------------------------
                         kSizedBox,
-                        //------------------------------------------------------------------------
-                        //location and googleMaps
+                        //-------------------------------------------------------------------------
+                        //Location and google map
                         LocationWidget(
                           address: isArabic()
-                              ? mallModel.addressArabic
-                              : mallModel.address,
-                          mapUrl: mallModel.mapUrl,
-                          rate: mallModel.rate,
+                              ? mallEntity.addressArabic
+                              : mallEntity.address,
+                          mapUrl: mallEntity.mapUrl,
+                          rate: mallEntity.rate,
                         ),
-                        SizedBox(
-                          height: 15,
-                        ),
+                        kSizedBox,
                         //-------------------------------------------------------------------------
                         //Opening hours
                         OpeningHoursWidget(
                           openFrom: isArabic()
-                              ? mallModel.openingHoursArabic['from']
-                              : mallModel.openingHours['from'],
+                              ? mallEntity.openingHoursArabic['from']
+                              : mallEntity.openingHours['from'],
                           openTo: isArabic()
-                              ? mallModel.openingHoursArabic['to']
-                              : mallModel.openingHours['to'],
+                              ? mallEntity.openingHoursArabic['to']
+                              : mallEntity.openingHours['to'],
                         ),
                         kSizedBox,
-                        //-------------------------------------------------------------------
+                        //-------------------------------------------------------------------------
                         //Description and rate
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              HeadText(
-                                text: S.of(context).Description,
-                              ),
-                            ],
-                          ),
+                        HeadText(
+                          text: S.of(context).Description,
                         ),
                         kSizedBox,
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                          child: ReadMoreWidget(
-                            text: isArabic()
-                                ? mallModel.descriptionArabic
-                                : mallModel.description,
-                          ),
+                        ReadMoreWidget(
+                          text: isArabic()
+                              ? mallEntity.descriptionArabic
+                              : mallEntity.description,
                         ),
                         kSizedBox,
                         //-------------------------------------------------------------------
@@ -124,14 +96,14 @@ class MallNewScreen extends StatelessWidget {
                             scrollDirection: Axis.horizontal,
                             itemBuilder: (_, indexx) => GestureDetector(
                               onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (_) => StoreScreen(
-                                        mallModel: mallModel,
-                                        index: indexx,
-                                      ),
-                                    ));
+                                // Navigator.push(
+                                //     context,
+                                //     MaterialPageRoute(
+                                //       builder: (_) => StoreScreen(
+                                //         mallModel: mallModel,
+                                //         index: indexx,
+                                //       ),
+                                //     ));
                               },
                               child: Container(
                                 child: Column(
@@ -182,21 +154,19 @@ class MallNewScreen extends StatelessWidget {
 
                         //-------------------------------------------------------------------------
                         //Images
-
-                        GalleryWidget(
-                          entity: mallModel,
-                        ),
-                        kSizedBox,
                         //-------------------------------------------------------------------------
+                        //Gallery
+                        GalleryWidget(entity: mallEntity),
+                        kSizedBox,
                       ],
                     ),
                   ),
                 ],
               ),
-            );
-          },
-        ),
-      ),
+            ],
+          ),
+        );
+      },
     );
   }
 }

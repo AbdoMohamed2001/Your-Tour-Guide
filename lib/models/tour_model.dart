@@ -1,7 +1,6 @@
-import 'package:your_tour_guide/models/models.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class TourModel implements Model {
+class TourModel {
   final String description;
   final String descriptionArabic;
   final String duration;

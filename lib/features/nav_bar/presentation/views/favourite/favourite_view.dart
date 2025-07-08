@@ -1,11 +1,9 @@
 import 'package:your_tour_guide/features/nav_bar/presentation/views/home_view.dart';
-import 'package:your_tour_guide/models/cinema_model.dart';
+import 'package:your_tour_guide/features/cinemas/data/models/cinema_model.dart';
 import 'package:your_tour_guide/features/hotels/data/models/hotel_model.dart';
-import 'package:your_tour_guide/models/mall_model.dart';
 import 'package:your_tour_guide/features/places/data/models/place_model.dart';
 import 'package:your_tour_guide/features/restaurants/data/models/restaurant_model.dart';
 import 'package:your_tour_guide/models/tour_model.dart';
-import 'package:your_tour_guide/screens/servicesProvider/cinemas/cinema_screen.dart';
 import 'package:your_tour_guide/screens/servicesProvider/tourGuides/tour_guides.dart';
 import 'package:your_tour_guide/tour_screen_neew.dart';
 import 'package:bordered_text/bordered_text.dart';
@@ -15,7 +13,6 @@ import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/functions/is_arabic.dart';
 import '../../../../../core/utils/widgets/custom_app_bar.dart';
-import '../../../../../screens/servicesProvider/malls, mosques and churchs/mall_screen.dart';
 
 class FavouriteView extends StatelessWidget {
   const FavouriteView({
@@ -28,8 +25,6 @@ class FavouriteView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<MallModel>? mallList;
-    List<CinemaModel>? cinemaList;
     List<TourModel>? tourList;
 
     final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -97,23 +92,13 @@ class FavouriteView extends StatelessWidget {
                       .add(RestaurantModel.fromJson(snapshot.data!.docs[i]));
                 }
               }
-              //-------------------------------------------------------------------------
-              else if (collectionName == 'malls' ||
-                  collectionName == 'mosques' ||
-                  collectionName == 'churches') {
-                List<MallModel> mallListt = [];
-                for (int i = 0; i < snapshot.data!.docs.length; i++) {
-                  mallListt.add(MallModel.fromJson(snapshot.data!.docs[i]));
-                  mallList = mallListt;
-                }
-              }
+
               //-------------------------------------------------------------------------
               else if (collectionName == 'cinemas') {
                 List<CinemaModel> cinemasListt = [];
                 for (int i = 0; i < snapshot.data!.docs.length; i++) {
                   cinemasListt
                       .add(CinemaModel.fromJson(snapshot.data!.docs[i]));
-                  cinemaList = cinemasListt;
                 }
               }
               return ListView.separated(
@@ -147,20 +132,9 @@ class FavouriteView extends StatelessWidget {
                               //       )
                               //     :
                               //-----------------------------------------------------------------
-                              collectionName == 'malls' ||
-                                      collectionName == 'mosques' ||
-                                      collectionName == 'churches'
-                                  ? MallNewScreen(
-                                      docID: allDocs[index].id,
-                                      collectionName: collectionName,
-                                      mallModel: mallList![index],
-                                    )
-                                  :
-                                  //-----------------------------------------------------------------
-                                  CinemaScreen(
-                                      cinemaModel: cinemaList![index],
-                                      docID: allDocs[index].id,
-                                    ),
+
+                              //-----------------------------------------------------------------
+                              HomeView(),
                   allDocs: allDocs,
                   index: index,
                 ),

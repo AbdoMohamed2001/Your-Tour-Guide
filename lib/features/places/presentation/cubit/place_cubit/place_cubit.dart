@@ -3,8 +3,7 @@ import 'package:your_tour_guide/core/utils/functions/show_toast.dart';
 import 'package:your_tour_guide/features/places/data/repos/places_repo.dart';
 import 'package:your_tour_guide/features/places/domian/entities/place_entity.dart';
 import 'package:your_tour_guide/generated/l10n.dart';
-import 'package:your_tour_guide/models/cinema_model.dart';
-import 'package:your_tour_guide/models/mall_model.dart';
+import 'package:your_tour_guide/features/cinemas/data/models/cinema_model.dart';
 import 'package:your_tour_guide/features/places/data/models/place_model.dart';
 import 'package:your_tour_guide/features/restaurants/data/models/restaurant_model.dart';
 import 'package:your_tour_guide/models/tour_model.dart';
@@ -349,49 +348,6 @@ class PlaceCubit extends Cubit<PlaceState> {
       'openingHoursArabic': restaurantModel.openingHoursArabic,
       'phone': restaurantModel.phone,
       'rate': restaurantModel.rate,
-    }).then((value) {
-      iconColor = Colors.red;
-      showToast(msg: S.of(context).AddedToFavourite);
-      emit(PlaceAddedToFavouriteSuccess());
-      iconColor = Colors.red;
-    }).onError((error, stackTrace) {
-      showToast(msg: 'Failed to add to favourite');
-      emit(PlaceAddedToFavouriteFailure(error.toString()));
-      debugPrint(error.toString());
-    });
-  }
-
-  //----------------------------------------------------------
-  Future<void> addMallToFavourite({
-    required MallModel mallModel,
-    required var docID,
-    required BuildContext context,
-    required String collectionName,
-  }) async {
-    emit(PlaceAddedToFavouriteLoading());
-    late var currentUser = _auth.currentUser;
-    CollectionReference _collectionReference =
-        FirebaseFirestore.instance.collection('favouritePlaces');
-    return _collectionReference
-        .doc(currentUser!.email)
-        .collection(collectionName)
-        .doc(docID)
-        .set({
-      "address": mallModel.address,
-      "addressArabic": mallModel.addressArabic,
-      'cityName': mallModel.cityName,
-      'cityNameArabic': mallModel.cityNameArabic,
-      'description': mallModel.description,
-      'descriptionArabic': mallModel.descriptionArabic,
-      'docId': mallModel.docId,
-      'imageUrl': mallModel.imageUrl,
-      'images': mallModel.images,
-      'mapUrl': mallModel.mapUrl,
-      'name': mallModel.name,
-      'nameArabic': mallModel.nameArabic,
-      'openingHours': mallModel.openingHours,
-      'openingHoursArabic': mallModel.openingHoursArabic,
-      'rate': mallModel.rate,
     }).then((value) {
       iconColor = Colors.red;
       showToast(msg: S.of(context).AddedToFavourite);
