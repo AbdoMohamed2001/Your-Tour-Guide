@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 import '../../../constants.dart' show kHorizontalPadding;
-import '../../../cubits/home/home_cubit.dart';
+import '../../cubits/home/home_cubit.dart';
 import '../functions/is_arabic.dart';
 
 class CustomGridViewItem extends StatelessWidget {

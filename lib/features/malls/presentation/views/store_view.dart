@@ -1,13 +1,13 @@
 import 'package:your_tour_guide/constants.dart';
 import 'package:your_tour_guide/core/utils/functions/is_arabic.dart';
 import 'package:your_tour_guide/core/utils/widgets/opening_hours_item.dart';
-import 'package:your_tour_guide/cubits/home/home_cubit.dart';
 import 'package:your_tour_guide/core/utils/widgets/default_cached_network_image.dart';
 import 'package:your_tour_guide/core/utils/widgets/head_text.dart';
 import 'package:your_tour_guide/core/utils/widgets/none_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../../../../core/cubits/home/home_cubit.dart';
 import '../../domain/entities/mall_entity.dart';
 
 class StoreScreen extends StatelessWidget {

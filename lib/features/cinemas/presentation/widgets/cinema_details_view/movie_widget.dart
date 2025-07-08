@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:your_tour_guide/features/cinemas/presentation/views/movie_view.dart';
 
+import '../../../../../core/cubits/home/home_cubit.dart';
 import '../../../../../core/utils/functions/is_arabic.dart';
-import '../../../../../cubits/home/home_cubit.dart';
 import '../../../domain/entities/cinema_entity.dart';
 
 class MovieWidget extends StatelessWidget {

@@ -9,8 +9,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import '../../features/nav_bar/presentation/views/favourite/all_favourite.dart';
-import '../../features/nav_bar/presentation/views/profile/profile_view.dart';
+
+import '../../../features/nav_bar/presentation/views/favourite/all_favourite.dart';
+import '../../../features/nav_bar/presentation/views/profile/profile_view.dart';
 
 part 'home_state.dart';
 

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:your_tour_guide/generated/l10n.dart';
+import '../../../../core/cubits/home/home_cubit.dart';
 import '../../../../core/utils/text_styles.dart';
-import '../../../../cubits/home/home_cubit.dart';
 
 class ExploreMore extends StatelessWidget {
   const ExploreMore({

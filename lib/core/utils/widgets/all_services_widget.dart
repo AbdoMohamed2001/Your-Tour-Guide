@@ -1,10 +1,10 @@
 import 'package:your_tour_guide/constants.dart';
 import 'package:your_tour_guide/core/utils/widgets/rate_widget.dart';
-import 'package:your_tour_guide/cubits/home/home_cubit.dart';
 import 'package:bordered_text/bordered_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
+import '../../cubits/home/home_cubit.dart';
 import '../functions/is_arabic.dart';
 import 'default_cached_network_image.dart';
 

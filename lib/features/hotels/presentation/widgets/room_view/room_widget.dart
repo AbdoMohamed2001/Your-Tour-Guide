@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:your_tour_guide/core/utils/functions/is_arabic.dart';
 import 'package:your_tour_guide/features/hotels/domain/entities/hotel_entity.dart';
 
-import '../room_container.dart';
+import '../room_list_item.dart';
 
 class RoomListView extends StatelessWidget {
   const RoomListView({

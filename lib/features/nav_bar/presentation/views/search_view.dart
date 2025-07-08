@@ -1,10 +1,11 @@
 import 'package:your_tour_guide/constants.dart';
-import 'package:your_tour_guide/cubits/home/home_cubit.dart';
 import 'package:your_tour_guide/generated/l10n.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../core/cubits/home/home_cubit.dart';
 
 class SearchView extends StatelessWidget {
   const SearchView({

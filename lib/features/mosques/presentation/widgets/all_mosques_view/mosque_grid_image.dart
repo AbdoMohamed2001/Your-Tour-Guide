@@ -2,9 +2,9 @@ import 'package:bordered_text/bordered_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:your_tour_guide/features/mosques/domain/entities/mosque_entity.dart';
+import '../../../../../core/cubits/home/home_cubit.dart';
 import '../../../../../core/utils/functions/is_arabic.dart';
 import '../../../../../core/utils/text_styles.dart';
-import '../../../../../cubits/home/home_cubit.dart';
 
 class MosqueGridImage extends StatelessWidget {
   const MosqueGridImage({

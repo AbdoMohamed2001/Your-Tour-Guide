@@ -1,5 +1,4 @@
 import 'package:your_tour_guide/core/utils/functions/show_toast.dart';
-import 'package:your_tour_guide/cubits/home/home_cubit.dart';
 import 'package:your_tour_guide/screens/no_internet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -8,6 +7,8 @@ import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.da
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:provider/provider.dart';
+
+import '../../../../core/cubits/home/home_cubit.dart';
 
 class MainView extends StatelessWidget {
   static final String id = 'homeScreen';

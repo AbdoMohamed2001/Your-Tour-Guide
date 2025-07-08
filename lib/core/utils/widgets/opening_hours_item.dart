@@ -1,9 +1,9 @@
-import 'package:your_tour_guide/cubits/home/home_cubit.dart';
 import 'package:your_tour_guide/generated/assets.dart';
 import 'package:your_tour_guide/generated/l10n.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
+import '../../cubits/home/home_cubit.dart';
 import '../functions/is_arabic.dart';
 import '../text_styles.dart';
 

@@ -1,7 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:your_tour_guide/core/utils/functions/is_arabic.dart';
 import 'package:your_tour_guide/core/utils/text_styles.dart';
-import 'package:your_tour_guide/cubits/home/home_cubit.dart';
 import 'package:bordered_text/bordered_text.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -9,6 +8,7 @@ import 'package:your_tour_guide/features/favourite/presentation/cubit/favourtie_
 
 import '../../../../features/favourite/data/models/favourite_model.dart';
 import '../../../../features/favourite/data/repos/favourite_repo.dart';
+import '../../../cubits/home/home_cubit.dart';
 import '../../../services/get_it_services_locator.dart';
 import '../default_cached_network_image.dart';
 

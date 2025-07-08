@@ -2,8 +2,8 @@ import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:your_tour_guide/features/splash/presentation/views/welcome_view.dart';
 
+import '../../../../core/cubits/home/home_cubit.dart';
 import '../../../../core/services/firebase_auth_services.dart';
-import '../../../../cubits/home/home_cubit.dart';
 import '../../../nav_bar/presentation/views/main_view.dart';
 
 class SplashView extends StatelessWidget {

@@ -1,8 +1,8 @@
-import 'package:your_tour_guide/cubits/home/home_cubit.dart';
 import 'package:your_tour_guide/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../cubits/home/home_cubit.dart';
 import '../functions/is_arabic.dart';
 
 class ContactWidget extends StatelessWidget {

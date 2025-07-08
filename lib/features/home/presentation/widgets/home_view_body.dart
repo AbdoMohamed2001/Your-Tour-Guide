@@ -1,5 +1,4 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:your_tour_guide/cubits/home/home_cubit.dart';
 import 'package:your_tour_guide/features/home/presentation/widgets/featured_places_list_view_builder.dart';
 import 'package:your_tour_guide/features/home/presentation/widgets/services_grid_view.dart';
 import 'package:your_tour_guide/generated/l10n.dart';
@@ -8,6 +7,7 @@ import 'package:your_tour_guide/features/home/presentation/widgets/explore_place
 import 'package:your_tour_guide/features/home/presentation/widgets/features_grid_view.dart';
 import 'package:flutter/material.dart';
 import '../../../../constants.dart';
+import '../../../../core/cubits/home/home_cubit.dart';
 import 'explore_more.dart';
 
 class HomeViewBody extends StatefulWidget {
