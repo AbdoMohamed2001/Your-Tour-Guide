@@ -10,4 +10,18 @@ abstract class BackEndEndPoints {
   static const mallsCollection = 'malls';
   static const cinemasCollection = 'cinemas';
   static const favouritesCollection = 'favourites';
+  static const List<String> searchableCollections = [
+    'cinemas',
+    'cities',
+    'malls',
+    'churchs',
+    'mosques',
+    'places',
+    'hotels',
+    'restaurants',
+    'cafes',
+    'tourCompanies',
+    'tourGuides',
+    'tours',
+  ];
 }

@@ -96,6 +96,7 @@ class FireStoreServices extends DatabaseServices {
     required String query,
     required String path,
     required String searchField,
+    required int limit,
   }) async {
     //get all docs
     final QuerySnapshot<Map<String, dynamic>> snapshot = await firestore
@@ -106,25 +107,6 @@ class FireStoreServices extends DatabaseServices {
     List<Map<String, dynamic>> dataList =
         snapshot.docs.map((doc) => doc.data()).toList();
     return dataList;
-  }
-
-//-------------------------------------------------------------
-  @override
-  Future<Either<Failure, void>> addReview({
-    required String path,
-    required String recordId,
-    required Map<String, dynamic> review,
-  }) async {
-    //get all doc fields
-    try {
-      await firestore.collection(path).doc(recordId).update({
-        'reviews': FieldValue.arrayUnion([review]),
-      });
-    } catch (e) {
-      log('error in adding review in firestore services $e');
-      return left(Failure(message: 'error in adding review'));
-    }
-    return right(null);
   }
 
 //------------------------------------------------------------

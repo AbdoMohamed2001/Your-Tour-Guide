@@ -4,11 +4,12 @@ import 'package:google_fonts/google_fonts.dart';
 
 class ThemeClass {
   static ThemeData lightTheme = ThemeData(
+    progressIndicatorTheme: ProgressIndicatorThemeData(color: Colors.orange),
+    primarySwatch: Colors.orange,
     primaryColorDark: Colors.black,
     primaryColor: Colors.white,
     scaffoldBackgroundColor: Colors.white,
     canvasColor: Colors.white38,
-    colorScheme: ColorScheme.light(),
     appBarTheme: AppBarTheme(
       backgroundColor: Color(0xffFFFFFF),
       systemOverlayStyle: SystemUiOverlayStyle(
@@ -29,6 +30,8 @@ class ThemeClass {
   );
 
   static ThemeData darkTheme = ThemeData(
+    progressIndicatorTheme: ProgressIndicatorThemeData(color: Colors.orange),
+    primarySwatch: Colors.orange,
     primaryColorDark: Colors.white,
     primaryColor: Colors.black,
     canvasColor: Colors.white38,

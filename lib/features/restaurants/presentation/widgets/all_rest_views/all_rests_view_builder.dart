@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:your_tour_guide/features/hotels/presentation/widgets/all_hotels/all_hotels_list_view.dart';
 import 'package:your_tour_guide/features/restaurants/domain/entities/restaurant_entity.dart';
 import 'package:your_tour_guide/features/restaurants/presentation/cubit/restaurant_cubit.dart';
 
