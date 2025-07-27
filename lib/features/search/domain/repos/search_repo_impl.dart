@@ -1,7 +1,10 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:your_tour_guide/core/errors/exceptions.dart';
 import 'package:your_tour_guide/features/search/data/repos/search_repo.dart';
 import '../../../../core/errors/failure.dart';
+
 import '../../data/data_sources/search_remote_data_source.dart';
 import '../../domain/entities/search_result_entity.dart';
 import '../../domain/entities/search_params_entity.dart';
@@ -12,7 +15,22 @@ class SearchRepositoryImpl implements SearchRepo {
   SearchRepositoryImpl({
     required this.remoteDataSource,
   });
+  //-----------------------------------------------------------------------
+  @override
+  Future<Either<Failure, dynamic>> getEntityFromSearch(
+      SearchResultEntity search) async {
+    try {
+      final entity = await remoteDataSource.getEntityFromSearch(search);
+      return Right(entity);
+    } catch (e) {
+      log(e.toString());
+      return Left(ServerFailure(
+          message:
+              'There is an error while trying to convert to entity in search repo impl'));
+    }
+  }
 
+  //-----------------------------------------------------------------------
   @override
   Future<Either<Failure, List<SearchResultEntity>>> searchAcrossCollections(
     SearchParamsEntity params,
@@ -29,6 +47,8 @@ class SearchRepositoryImpl implements SearchRepo {
     }
   }
 
+  //-----------------------------------------------------------------------
+
   @override
   Future<Either<Failure, List<String>>> getSearchSuggestions(
     String query, {
@@ -44,4 +64,5 @@ class SearchRepositoryImpl implements SearchRepo {
       return Left(ServerFailure(message: 'Unexpected error occurred: $e'));
     }
   }
+//-----------------------------------------------------------------------
 }

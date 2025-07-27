@@ -27,6 +27,10 @@ class TextStyles {
     fontWeight: FontWeight.w700,
   );
 //Regular
+  static const TextStyle regular14 = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
+  );
   static const TextStyle regular16 = TextStyle(
     fontSize: 16,
     fontWeight: FontWeight.w500,

@@ -1,8 +1,14 @@
-import 'dart:developer';
-
 import 'package:your_tour_guide/core/errors/exceptions.dart';
 import 'package:your_tour_guide/core/services/database_services.dart';
 import 'package:your_tour_guide/core/utils/backend_endpoints.dart';
+import 'package:your_tour_guide/features/cafes/data/models/cafe_model.dart';
+import 'package:your_tour_guide/features/churchs/data/models/church_model.dart';
+import 'package:your_tour_guide/features/malls/data/models/mall_model.dart';
+import '../../../cinemas/data/models/cinema_model.dart';
+import '../../../hotels/data/models/hotel_model.dart';
+import '../../../places/data/models/place_model.dart';
+import '../../../restaurants/data/models/restaurant_model.dart';
+import '../../domain/entities/search_result_entity.dart';
 import '../models/search_result_model.dart';
 import '../../domain/entities/search_params_entity.dart';
 
@@ -11,6 +17,8 @@ abstract class SearchRemoteDataSource {
       SearchParamsEntity params);
 
   Future<List<String>> getSearchSuggestions(String query, {int limit = 10});
+
+  Future<dynamic> getEntityFromSearch(SearchResultEntity search);
 }
 
 class SearchRemoteDataSourceImpl implements SearchRemoteDataSource {
@@ -18,6 +26,45 @@ class SearchRemoteDataSourceImpl implements SearchRemoteDataSource {
 
   SearchRemoteDataSourceImpl({required this.databaseServices});
 
+//Returns Main Entity
+  Future<dynamic> getEntityFromSearch(SearchResultEntity search) async {
+    try {
+      //Data returns as Map<String,dynamic>
+      Map<String, dynamic> result = await databaseServices.getData(
+          path: search.collection, recordId: search.id);
+
+      return convertToEntity(search, result);
+    } catch (e) {
+      print('Error: $e');
+      return null;
+    }
+  }
+
+  dynamic convertToEntity(
+    SearchResultEntity search,
+    Map<String, dynamic> result,
+  ) {
+    switch (search.collection) {
+      case 'places':
+        return PlaceModel.fromJson(result).toEntity();
+      case 'cafes':
+        return CafeModel.fromJson(result).toEntity();
+      case 'churchs':
+        return ChurchModel.fromJson(result).toEntity();
+      case 'cinemas':
+        return CinemaModel.fromJson(result).toEntity();
+      case 'hotels':
+        return HotelModel.fromJson(result).toEntity();
+      case 'malls':
+        return MallModel.fromJson(result).toEntity();
+      case 'restaurants':
+        return RestaurantModel.fromJson(result).toEntity();
+      default:
+        throw UnsupportedError('Unsupported collection: ${search.collection}');
+    }
+  }
+
+  //-------------------------------------------------------------------
   //Search In Collection with specific field
   Future<List<SearchResultModel>> _searchByField({
     required String query,
@@ -31,7 +78,6 @@ class SearchRemoteDataSourceImpl implements SearchRemoteDataSource {
       List<SearchResultModel> searchResults = searchList
           .map((e) => SearchResultModel.fromJson(e, collection))
           .toList();
-      log(searchResults.toString());
       return searchResults;
     } catch (e) {
       print('Error searching field $field in collection $collection: $e');
@@ -152,6 +198,7 @@ class SearchRemoteDataSourceImpl implements SearchRemoteDataSource {
       throw CustomExceptions(message: 'Failed to get search suggestions: $e');
     }
   }
+
   //-------------------------------------------------------------------
 
   List<SearchResultModel> _removeDuplicates(List<SearchResultModel> results) {
@@ -200,5 +247,5 @@ class SearchRemoteDataSourceImpl implements SearchRemoteDataSource {
     return results;
   }
 
-  //-------------------------------------------------------------------
+//-------------------------------------------------------------------
 }

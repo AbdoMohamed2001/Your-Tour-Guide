@@ -6,6 +6,7 @@ import 'package:equatable/equatable.dart';
 
 import '../../../domain/entities/search_params_entity.dart';
 import '../../../domain/entities/search_result_entity.dart';
+import '../../../domain/use_cases/get_entity_from_search_usecase.dart';
 import '../../../domain/use_cases/get_search_suggestion_usecase.dart';
 import '../../../domain/use_cases/search_collections_usecase.dart';
 
@@ -14,82 +15,51 @@ part 'search_state.dart';
 class SearchCubit extends Cubit<SearchState> {
   final SearchAcrossCollectionsUseCase searchAcrossCollectionsUseCase;
   final GetSearchSuggestionsUseCase getSearchSuggestionsUseCase;
-  SearchCubit(
-      this.searchAcrossCollectionsUseCase, this.getSearchSuggestionsUseCase)
+  final GetEntityFromSearchUseCase getEntityFromSearch;
+
+  SearchCubit(this.searchAcrossCollectionsUseCase,
+      this.getSearchSuggestionsUseCase, this.getEntityFromSearch)
       : super(SearchInitial());
 
-  Timer? _debounceTimer;
-  String _currentQuery = '';
-  void searchWithDebounce(
-    String query, {
-    List<String>? specificCollections,
-    int? limit,
-    bool sortByRelevance = true,
-    Duration debounceTime = const Duration(milliseconds: 500),
-  }) {
-    _currentQuery = query;
-    _debounceTimer?.cancel();
-
-    if (query.trim().isEmpty) {
-      emit(SearchInitial());
-      return;
-    }
-
-    _debounceTimer = Timer(debounceTime, () {
-      if (_currentQuery == query) {
-        search(
-          query,
-          specificCollections: specificCollections,
-          limit: limit,
-          sortByRelevance: sortByRelevance,
-        );
-      }
-    });
+  Future<void> fetchEntity(SearchResultEntity search) async {
+    emit(SearchGetEntityLoading());
+    final result = await getEntityFromSearch(search);
+    result.fold(
+      (fail) {
+        emit(SearchGetEntityError(fail.message));
+      },
+      (entity) {
+        emit(SearchGetEntitySuccess(entity, search.collection));
+      },
+    );
   }
 
+//------------------------------------------------------------------
+  List<SearchResultEntity> searchResults = [];
+  String searchQuery = '';
   Future<void> search(
-    String query, {
-    List<String>? specificCollections,
-    int? limit,
-    bool sortByRelevance = true,
-  }) async {
-    if (query.trim().isEmpty) {
+    SearchParamsEntity searchParamsEntity,
+  ) async {
+    if (searchParamsEntity.query.trim().isEmpty) {
       emit(SearchInitial());
       return;
     }
-
     emit(SearchLoading());
 
-    final params = SearchParamsEntity(
-      query: query.trim(),
-      specificCollections: specificCollections,
-      limit: limit,
-      sortByRelevance: sortByRelevance,
-    );
-
-    final result = await searchAcrossCollectionsUseCase(params);
+    final result = await searchAcrossCollectionsUseCase(searchParamsEntity);
 
     result.fold(
       (failure) => emit(SearchError(failure.message)),
       (results) {
         if (results.isEmpty) {
-          emit(SearchEmpty(query));
+          emit(SearchEmpty(searchParamsEntity.query));
         } else {
-          emit(SearchSuccess(results: results, query: query));
+          searchResults = results;
+          searchQuery = searchParamsEntity.query;
+          emit(
+              SearchSuccess(results: results, query: searchParamsEntity.query));
         }
       },
     );
-  }
-
-  void clearSearch() {
-    _debounceTimer?.cancel();
-    _currentQuery = '';
-    emit(SearchInitial());
-  }
-
-  @override
-  Future<void> close() {
-    _debounceTimer?.cancel();
-    return super.close();
   }
 }

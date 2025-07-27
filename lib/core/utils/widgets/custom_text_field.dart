@@ -1,81 +1,48 @@
-import 'package:your_tour_guide/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:your_tour_guide/core/utils/text_styles.dart';
 
 class CustomTextField extends StatelessWidget {
   CustomTextField({
     Key? key,
     required this.labelText,
-    this.borderColor = kTextColor ,
-    this.textColor = kTextColor ,
     this.prefixIcon,
-    this.obscureText = false,
+    this.isObscure = false,
     this.textInputType,
     this.onChanged,
+    this.onFieldSubmitted,
     this.validator,
     this.controller,
     this.suffixIcon,
+    this.focusNode,
   }) : super(key: key);
-
+  final String? Function(String?)? validator;
+  final TextEditingController? controller;
+  final TextInputType? textInputType;
+  final bool isObscure;
   final String labelText;
   final Icon? prefixIcon;
   final Widget? suffixIcon;
-  final bool obscureText ;
-  final TextInputType? textInputType;
   final Function(String)? onChanged;
-  final String? Function(String?)? validator;
-  final TextEditingController? controller;
-  final Color? borderColor;
-  final Color? textColor;
-
+  final void Function(String)? onFieldSubmitted;
+  final FocusNode? focusNode;
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 25.0),
-      child: TextFormField(
-        controller: controller,
-        autovalidateMode: AutovalidateMode.onUserInteraction,
-        validator: validator,
-        keyboardType: textInputType,
-        obscureText: obscureText,
-        cursorColor: Colors.white,
-        style: TextStyle(
-          color: textColor!,
-          fontSize: 14,
+    return TextFormField(
+      controller: controller,
+      focusNode: focusNode,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
+      validator: validator,
+      keyboardType: textInputType,
+      obscureText: isObscure,
+      style: TextStyles.regular14,
+      onFieldSubmitted: onFieldSubmitted,
+      decoration: InputDecoration(
+        labelStyle: TextStyle(
+          color: Colors.black,
         ),
-        decoration: InputDecoration(
-          errorMaxLines: 2,
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(20),
-            borderSide:  BorderSide(
-              color: borderColor!,
-            ),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(20),
-            borderSide:  BorderSide(
-              color: borderColor!,
-            ),
-          ),
-          errorBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(20),
-            borderSide:  BorderSide(
-              color: borderColor!,
-            ),
-          ),
-          focusedErrorBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(20),
-            borderSide: const BorderSide(
-              color: Colors.red,
-            ),
-          ),
-          prefixIcon: prefixIcon,
-          suffixIcon: suffixIcon,
-          labelText: labelText,
-          labelStyle: TextStyle(
-            color: borderColor!,
-          ),
-          contentPadding: const EdgeInsets.symmetric(horizontal: 10,vertical: 15),
-        ),
+        prefixIcon: prefixIcon,
+        suffixIcon: suffixIcon,
+        labelText: labelText,
       ),
     );
   }

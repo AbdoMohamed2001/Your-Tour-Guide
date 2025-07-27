@@ -4,7 +4,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../../../../../core/cubits/home/home_cubit.dart';
 import '../../../../../core/utils/functions/is_arabic.dart';
 import '../../../../../core/utils/widgets/custom_app_bar.dart';
 import '../../../../../core/utils/widgets/custom_text_field.dart';
@@ -37,7 +36,6 @@ class EditProfileView extends StatelessWidget {
         future: users.doc(currentUser).get(),
         builder:
             (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
-          var homeCubit = HomeCubit.get(context);
           if (snapshot.data?.data == null) {
             return Scaffold(
               body: Center(
@@ -107,10 +105,6 @@ class EditProfileView extends StatelessWidget {
                       //Username
                       CustomTextField(
                         labelText: data['username'],
-                        borderColor:
-                            homeCubit.isDark! ? Colors.white : Colors.black,
-                        textColor:
-                            homeCubit.isDark! ? Colors.white : Colors.black,
                       ),
                       SizedBox(
                         height: 30,
@@ -119,10 +113,6 @@ class EditProfileView extends StatelessWidget {
                       //Password
                       CustomTextField(
                         labelText: S.of(context).Password,
-                        borderColor:
-                            homeCubit.isDark! ? Colors.white : Colors.black,
-                        textColor:
-                            homeCubit.isDark! ? Colors.white : Colors.black,
                       ),
                       SizedBox(
                         height: 30,
@@ -131,10 +121,6 @@ class EditProfileView extends StatelessWidget {
                       //Confirm Password
                       CustomTextField(
                         labelText: S.of(context).ConfirmPassword,
-                        borderColor:
-                            homeCubit.isDark! ? Colors.white : Colors.black,
-                        textColor:
-                            homeCubit.isDark! ? Colors.white : Colors.black,
                       ),
                       SizedBox(
                         height: 20,

@@ -3,6 +3,7 @@ part of 'search_cubit.dart';
 @immutable
 sealed class SearchState extends Equatable {
   const SearchState();
+
   @override
   List<Object> get props => [];
 }
@@ -40,4 +41,25 @@ class SearchEmpty extends SearchState {
 
   @override
   List<Object> get props => [query];
+}
+
+//-------------------------------------------------------------------
+class SearchGetEntityLoading extends SearchState {}
+
+class SearchGetEntitySuccess extends SearchState {
+  final dynamic entity;
+  final String collectionName;
+  const SearchGetEntitySuccess(this.entity, this.collectionName);
+
+  @override
+  List<Object> get props => [entity];
+}
+
+class SearchGetEntityError extends SearchState {
+  final String message;
+
+  const SearchGetEntityError(this.message);
+
+  @override
+  List<Object> get props => [message];
 }

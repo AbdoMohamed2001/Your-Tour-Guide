@@ -97,7 +97,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                     CustomTextField(
                       controller: _emailController,
                       labelText: 'Email',
-                      obscureText: false,
+                      isObscure: false,
                       validator: (value) {
                         if (value!.isEmpty ||
                             !RegExp(r'^([a-z\d_.-]+)@([\da-z.-]+)\.([a-z.]{2,63})$')

@@ -88,7 +88,7 @@ class LoginViewBody extends StatelessWidget {
                 CustomTextField(
                   controller: AuthCubitClass.emailController,
                   labelText: S.of(context).Email,
-                  obscureText: false,
+                  isObscure: false,
                   validator: (value) {
                     if (value!.isEmpty ||
                         !RegExp(r'^([a-z\d_.-]+)@([\da-z.-]+)\.([a-z.]{2,63})$')
@@ -111,7 +111,7 @@ class LoginViewBody extends StatelessWidget {
                 CustomTextField(
                   controller: AuthCubitClass.passController,
                   labelText: S.of(context).Password,
-                  obscureText: AuthCubitClass.isPassObscure,
+                  isObscure: AuthCubitClass.isPassObscure,
                   validator: (value) {
                     if (value!.isEmpty) {
                       return S.of(context).EnterCorrectPassword;

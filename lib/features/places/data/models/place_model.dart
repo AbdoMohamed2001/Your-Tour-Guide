@@ -1,5 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-
 import '../../domian/entities/place_entity.dart';
 
 class PlaceModel {
@@ -52,39 +50,6 @@ class PlaceModel {
     required this.transport,
     required this.transportArabic,
   });
-
-  List<PlaceModel> dataListFromSnapshot(QuerySnapshot querySnapshot) {
-    return querySnapshot.docs.map((snapshot) {
-      final Map<String, dynamic> dataMap =
-          snapshot.data() as Map<String, dynamic>;
-
-      return PlaceModel(
-        address: dataMap['address'],
-        addressArabic: dataMap['addressArabic'],
-        cityName: dataMap['cityName'],
-        cityNameArabic: dataMap['cityNameArabic'],
-        description: dataMap['description'],
-        descriptionArabic: dataMap['descriptionArabic'],
-        imageUrl: dataMap['imageUrl'],
-        images: dataMap['images'],
-        mapUrl: dataMap['mapUrl'],
-        name: dataMap['name'],
-        nameArabic: dataMap['nameArabic'],
-        openingHours: dataMap['openingHours'],
-        openingHoursArabic: dataMap['openingHoursArabic'],
-        rate: dataMap['rate'],
-        docId: dataMap['docId'],
-        tickets: dataMap['tickets'],
-        ticketsArabic: dataMap['ticketsArabic'],
-        isBest: dataMap['isBest'],
-        metroImageUrl: dataMap['metroImageUrl'],
-        includeTour: dataMap['includeTour'],
-        tourDocId: dataMap['tourDocId'],
-        transport: dataMap['transport'],
-        transportArabic: dataMap['transportArabic'],
-      );
-    }).toList();
-  }
 
   factory PlaceModel.fromJson(doc) {
     return PlaceModel(

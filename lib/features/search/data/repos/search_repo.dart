@@ -14,4 +14,7 @@ abstract class SearchRepo {
     String query, {
     int limit = 10,
   });
+
+  Future<Either<Failure, dynamic>> getEntityFromSearch(
+      SearchResultEntity search);
 }

@@ -22,6 +22,7 @@ import 'package:your_tour_guide/features/restaurants/data/repos/restaurant_repo.
 import 'package:your_tour_guide/features/search/data/data_sources/search_remote_data_source.dart';
 import 'package:your_tour_guide/features/search/data/repos/search_repo.dart';
 import 'package:your_tour_guide/features/search/domain/repos/search_repo_impl.dart';
+import 'package:your_tour_guide/features/search/domain/use_cases/get_entity_from_search_usecase.dart';
 import 'package:your_tour_guide/features/search/domain/use_cases/search_collections_usecase.dart';
 
 import '../../features/cinemas/domain/repos/cinema_repo_impl.dart';
@@ -84,5 +85,8 @@ void setupGetIt() {
   );
   getIt.registerSingleton<GetSearchSuggestionsUseCase>(
     GetSearchSuggestionsUseCase(getIt<SearchRepo>()),
+  );
+  getIt.registerSingleton<GetEntityFromSearchUseCase>(
+    GetEntityFromSearchUseCase(getIt<SearchRepo>()),
   );
 }

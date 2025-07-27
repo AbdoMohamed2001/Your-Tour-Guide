@@ -114,7 +114,6 @@ class RegisterView extends StatelessWidget {
                             controller:
                                 AuthCubitClass.registerUserNameController,
                             labelText: S.of(context).UserName,
-                            obscureText: false,
                             validator: (value) {
                               if (value!.isEmpty ||
                                   !RegExp(r'^[a-zA-Z\d_-].{3,30}$')
@@ -135,7 +134,6 @@ class RegisterView extends StatelessWidget {
                           CustomTextField(
                             controller: AuthCubitClass.registerEmailController,
                             labelText: S.of(context).Email,
-                            obscureText: false,
                             validator: (value) {
                               if (value!.isEmpty ||
                                   !RegExp(r'^([a-z\d_.-]+)@([\da-z.-]+)\.([a-z.]{2,63})$')
@@ -157,7 +155,7 @@ class RegisterView extends StatelessWidget {
                             controller:
                                 AuthCubitClass.registerPasswordController,
                             labelText: S.of(context).Password,
-                            obscureText: true,
+                            isObscure: true,
                             validator: (value) {
                               if (value!.isEmpty ||
                                   !RegExp(r'^.{8,}$').hasMatch(value)) {
@@ -180,7 +178,7 @@ class RegisterView extends StatelessWidget {
                             controller: AuthCubitClass
                                 .registerConfirmPasswordController,
                             labelText: S.of(context).ConfirmPassword,
-                            obscureText: true,
+                            isObscure: true,
                             validator: (value) {
                               if (value!.isEmpty ||
                                   value != AuthCubitClass.passwordValue) {
