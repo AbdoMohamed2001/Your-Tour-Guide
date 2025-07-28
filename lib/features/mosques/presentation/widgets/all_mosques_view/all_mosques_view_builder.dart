@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:your_tour_guide/core/utils/widgets/custom-grid-view/grid_list_view.dart';
 import 'package:your_tour_guide/features/mosques/domain/entities/mosque_entity.dart';
 import 'package:your_tour_guide/features/mosques/presentation/cubit/mosque_cubit.dart';
-import 'package:your_tour_guide/features/mosques/presentation/widgets/all_mosques_view/mosques_list_view.dart';
 
 class AllMosquesViewBuilder extends StatelessWidget {
   const AllMosquesViewBuilder({super.key});
@@ -18,7 +18,7 @@ class AllMosquesViewBuilder extends StatelessWidget {
         } else if (state is MosquesGetFailure) {
           return const Center(child: Text('Failed to load Mosques'));
         } else {
-          return MosquesListView(list: allMosques);
+          return GridListView(list: allMosques);
         }
       },
     );

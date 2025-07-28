@@ -1,7 +1,8 @@
-import 'package:bordered_text/bordered_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import '../text_styles.dart';
 
 class RateWidget extends StatelessWidget {
   const RateWidget({
@@ -22,26 +23,12 @@ class RateWidget extends StatelessWidget {
                 size: 24,
               )
             : Container(),
-        starIconIncluded == true
-            ? SizedBox(
-                width: 10,
-              )
-            : Container(),
-        BorderedText(
-          strokeColor: Colors.black,
-          strokeWidth: 2,
-          child: Text(
-            '($rate)',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              color: Colors.orange,
-              fontSize: 18,
-            ),
-          ),
+        starIconIncluded == true ? SizedBox(width: 10) : Container(),
+        Text(
+          '($rate)',
+          style: TextStyles.bold18,
         ),
-        SizedBox(
-          width: 5,
-        ),
+        SizedBox(width: 5),
         RatingBar(
             ignoreGestures: true,
             itemSize: 24,

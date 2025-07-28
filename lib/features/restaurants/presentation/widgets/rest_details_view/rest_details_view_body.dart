@@ -8,7 +8,7 @@ import '../../../../../core/utils/widgets/contact_widget.dart';
 import '../../../../../core/utils/widgets/head_text.dart';
 import '../../../../../core/utils/widgets/location_widget.dart';
 import '../../../../../core/utils/widgets/opening_hours_item.dart';
-import '../../../../../core/utils/widgets/place/custom_place_image.dart';
+import '../../../../../core/utils/widgets/default-services-details-image/default_services_details_image.dart';
 import '../../../../../core/utils/widgets/place/gallery_widget.dart';
 import '../../../../../generated/l10n.dart';
 
@@ -28,7 +28,7 @@ class RestDetailsViewBody extends StatelessWidget {
           child: Column(
             children: [
               //image
-              CustomPlaceImage(
+              DefaultServiceDetailsImage(
                 cubitDataKeyCurrentContext: GlobalKey(),
                 entity: restEntity,
               ),

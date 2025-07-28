@@ -14,6 +14,7 @@ class ChurchEntity {
   final Map openingHoursArabic;
   final num rate;
   final String docId;
+  final String collectionRef;
 
   ChurchEntity({
     required this.address,
@@ -31,5 +32,6 @@ class ChurchEntity {
     required this.openingHoursArabic,
     required this.rate,
     required this.docId,
+    this.collectionRef = 'churchs',
   });
 }

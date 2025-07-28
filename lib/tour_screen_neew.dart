@@ -10,7 +10,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'core/utils/functions/is_arabic.dart';
 import 'core/utils/widgets/contact_widget.dart';
-import 'core/utils/widgets/place/custom_place_image.dart';
+import 'core/utils/widgets/default-services-details-image/default_services_details_image.dart';
 import 'core/utils/widgets/place/gallery_widget.dart';
 import 'features/places/data/repos/places_repo.dart';
 import 'core/services/get_it_services_locator.dart';
@@ -44,7 +44,7 @@ class TourScreenNeew extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    CustomPlaceImage(
+                    DefaultServiceDetailsImage(
                       fontSize: placeModel.nameArabic.length >= 25 ||
                               placeModel.name.length >= 25
                           ? 19

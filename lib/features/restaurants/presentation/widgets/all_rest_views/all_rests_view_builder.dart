@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:your_tour_guide/core/utils/widgets/custom-grid-view/grid_list_view.dart';
 import 'package:your_tour_guide/features/restaurants/domain/entities/restaurant_entity.dart';
 import 'package:your_tour_guide/features/restaurants/presentation/cubit/restaurant_cubit.dart';
-
-import 'all_rests_list_view.dart';
 
 class AllRestsViewBuilder extends StatelessWidget {
   const AllRestsViewBuilder({super.key});
@@ -17,9 +16,9 @@ class AllRestsViewBuilder extends StatelessWidget {
         if (state is RestaurantsGetLoading) {
           return const Center(child: CircularProgressIndicator());
         } else if (state is RestaurantsGetFailure) {
-          return const Center(child: Text('Failed to load featured places'));
+          return const Center(child: Text('Failed to load Restaurants'));
         } else {
-          return RestsListView(list: allRestaurant);
+          return GridListView(list: allRestaurant);
         }
       },
     );

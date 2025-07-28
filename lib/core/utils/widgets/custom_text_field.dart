@@ -14,6 +14,7 @@ class CustomTextField extends StatelessWidget {
     this.controller,
     this.suffixIcon,
     this.focusNode,
+    this.isEnabled = true,
   }) : super(key: key);
   final String? Function(String?)? validator;
   final TextEditingController? controller;
@@ -25,9 +26,12 @@ class CustomTextField extends StatelessWidget {
   final Function(String)? onChanged;
   final void Function(String)? onFieldSubmitted;
   final FocusNode? focusNode;
+  final bool isEnabled;
+
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      enabled: isEnabled,
       controller: controller,
       focusNode: focusNode,
       autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -37,9 +41,8 @@ class CustomTextField extends StatelessWidget {
       style: TextStyles.regular14,
       onFieldSubmitted: onFieldSubmitted,
       decoration: InputDecoration(
-        labelStyle: TextStyle(
-          color: Colors.black,
-        ),
+        labelStyle:
+            TextStyle(color: Theme.of(context).textTheme.bodyLarge?.color),
         prefixIcon: prefixIcon,
         suffixIcon: suffixIcon,
         labelText: labelText,

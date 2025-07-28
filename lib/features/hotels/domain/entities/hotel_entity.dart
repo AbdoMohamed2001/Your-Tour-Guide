@@ -33,6 +33,7 @@ class HotelEntity {
   final Map<String, dynamic> socialMedia;
   final num stars;
   final String webSite;
+  final String collectionRef;
 
   HotelEntity(
       {required this.about,
@@ -66,5 +67,7 @@ class HotelEntity {
       required this.rate,
       required this.socialMedia,
       required this.stars,
-      required this.webSite});
+      required this.webSite,
+      this.collectionRef = 'hotels',
+      });
 }

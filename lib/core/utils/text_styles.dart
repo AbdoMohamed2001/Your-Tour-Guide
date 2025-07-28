@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 
 class TextStyles {
   //Bold
+  static const TextStyle bold12 = TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w700,
+  );
   static const TextStyle bold14 = TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.w700,

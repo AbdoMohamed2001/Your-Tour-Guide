@@ -1,0 +1,44 @@
+import 'package:flutter/material.dart';
+import 'package:your_tour_guide/constants.dart';
+import 'custom_sliver_grid_item.dart';
+
+class CustomSliverGrid extends StatelessWidget {
+  const CustomSliverGrid({
+    Key? key,
+    required this.entityList,
+    this.crossAxisCount = 2,
+    this.mainAxisSpacing = 16.0,
+    this.crossAxisSpacing = 16.0,
+    this.childAspectRatio = 0.65,
+  }) : super(key: key);
+
+  final List<dynamic> entityList;
+  final int crossAxisCount;
+  final double mainAxisSpacing;
+  final double crossAxisSpacing;
+  final double childAspectRatio;
+  @override
+  Widget build(BuildContext context) {
+    return SliverPadding(
+      padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
+      sliver: SliverGrid(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: crossAxisCount,
+          childAspectRatio: childAspectRatio,
+          mainAxisSpacing: mainAxisSpacing,
+          crossAxisSpacing: crossAxisSpacing,
+        ),
+        delegate: SliverChildBuilderDelegate(
+          (context, index) => CustomSliverGridItem(
+            entity: entityList[index],
+          ),
+          childCount: entityList.length,
+        ),
+      ),
+    );
+  }
+}
+
+// Grid Item Component with Fixed Size
+
+// Optimized Image Component

@@ -37,12 +37,12 @@ class OpeningHoursWidget extends StatelessWidget {
               height: 90,
             ),
             Positioned(
-              top: isArabic() ? 20 : 13,
+              top: isArabic() ? 20 : 20,
               right: isArabic() ? 20 : 0,
               left: isArabic() ? 0 : 16,
               child: Text(
                 S.of(context).openingHours,
-                style: TextStyles.bold16,
+                style: TextStyles.bold16.copyWith(color: Colors.white),
               ),
             ),
           ],

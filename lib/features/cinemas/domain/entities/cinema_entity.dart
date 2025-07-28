@@ -18,6 +18,7 @@ class CinemaEntity {
   final String tickets;
   final String ticketsArabic;
   final String website;
+  final String collectionRef;
 
   CinemaEntity({
     required this.address,
@@ -39,6 +40,7 @@ class CinemaEntity {
     required this.tickets,
     required this.ticketsArabic,
     required this.website,
+    this.collectionRef = 'cinemas',
   });
 
 //-------------------------------------------------------------

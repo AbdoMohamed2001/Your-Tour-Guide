@@ -5,11 +5,14 @@ class CityEntity {
   final String name;
   final String nameArabic;
   final List<CityServicesEntity> services;
+  final String collectionRef;
+
 
   CityEntity({
     required this.imageUrl,
     required this.name,
     required this.nameArabic,
     required this.services,
+    this.collectionRef = 'cities',
   });
 }

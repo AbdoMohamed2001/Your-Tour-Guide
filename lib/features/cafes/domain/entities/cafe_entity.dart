@@ -17,24 +17,27 @@ class CafeEntity {
   final Map openingHoursArabic;
   final num phone;
   final num rate;
+  final String collectionRef;
 
-  CafeEntity(
-      {required this.address,
-      required this.addressArabic,
-      required this.cityName,
-      required this.cityNameArabic,
-      required this.docId,
-      required this.email,
-      required this.imageUrl,
-      required this.images,
-      required this.mapUrl,
-      required this.meals,
-      required this.mealsArabic,
-      required this.menuImages,
-      required this.name,
-      required this.nameArabic,
-      required this.openingHours,
-      required this.openingHoursArabic,
-      required this.phone,
-      required this.rate});
+  CafeEntity({
+    required this.address,
+    required this.addressArabic,
+    required this.cityName,
+    required this.cityNameArabic,
+    required this.docId,
+    required this.email,
+    required this.imageUrl,
+    required this.images,
+    required this.mapUrl,
+    required this.meals,
+    required this.mealsArabic,
+    required this.menuImages,
+    required this.name,
+    required this.nameArabic,
+    required this.openingHours,
+    required this.openingHoursArabic,
+    required this.phone,
+    required this.rate,
+    this.collectionRef = 'cafes',
+  });
 }

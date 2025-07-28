@@ -24,6 +24,7 @@ class PlaceModel {
   final String metroImageUrl;
   final bool includeTour;
   final String tourDocId;
+  final String collectionRef;
 
   PlaceModel({
     required this.address,
@@ -49,6 +50,7 @@ class PlaceModel {
     required this.tourDocId,
     required this.transport,
     required this.transportArabic,
+    this.collectionRef = 'places',
   });
 
   factory PlaceModel.fromJson(doc) {
@@ -132,6 +134,7 @@ class PlaceModel {
       tourDocId: tourDocId,
       transport: transport,
       transportArabic: transportArabic,
+      collectionRef: collectionRef,
     );
   }
 }

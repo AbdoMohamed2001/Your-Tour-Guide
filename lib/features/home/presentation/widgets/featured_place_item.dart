@@ -1,5 +1,6 @@
 import 'package:your_tour_guide/constants.dart';
 import 'package:your_tour_guide/core/utils/functions/is_arabic.dart';
+import 'package:your_tour_guide/core/utils/text_styles.dart';
 import 'package:your_tour_guide/features/places/domian/entities/place_entity.dart';
 import 'package:your_tour_guide/features/places/presentation/views/place_details_view.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +15,7 @@ class FeaturedPlaceItem extends StatelessWidget {
   });
 
   final PlaceEntity placeEntity;
+
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
@@ -30,14 +32,19 @@ class FeaturedPlaceItem extends StatelessWidget {
             }));
           },
           child: Container(
-            width: screenWidth * 0.48,
+            width: screenWidth * 0.45,
             height: screenHeight * 0.47,
             decoration: BoxDecoration(
-              color: Colors.white10,
-              border: Border.all(
-                width: 0.1,
-                color: Colors.grey,
-              ),
+              borderRadius: BorderRadius.circular(12),
+              color: Theme.of(context).cardColor,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.1),
+                  blurRadius: 8,
+                  offset: const Offset(0, 4),
+                  blurStyle: BlurStyle.inner,
+                ),
+              ],
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -45,7 +52,7 @@ class FeaturedPlaceItem extends StatelessWidget {
                 //image
                 //---------------------------------------------------------------------
                 ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.vertical(top: Radius.circular(12)),
                   child: DefaultCachedNetworkImage(
                     imageUrl: placeEntity.imageUrl,
                     imageHeight: 100,
@@ -55,20 +62,15 @@ class FeaturedPlaceItem extends StatelessWidget {
                 kSizedBox,
                 //---------------------------------------------------------------------
                 Container(
-                  margin: const EdgeInsets.only(left: 20, right: 20),
+                  margin: const EdgeInsets.only(left: 10, right: 10),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         isArabic() ? placeEntity.nameArabic : placeEntity.name,
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
+                        style: TextStyles.bold16,
                       ),
-                      SizedBox(
-                        height: 5,
-                      ),
+                      SizedBox(height: 5),
                       Row(
                         children: [
                           RatingBar(
@@ -91,18 +93,14 @@ class FeaturedPlaceItem extends StatelessWidget {
                                 ),
                               ),
                               onRatingUpdate: (rating) {}),
-                          SizedBox(
-                            width: 5,
-                          ),
+                          SizedBox(width: 5),
                           isArabic()
                               ? Text(
                                   '(${arabicNumber.convert(placeEntity.rate.toString())})')
                               : Text('(${placeEntity.rate.toString()})'),
                         ],
                       ),
-                      SizedBox(
-                        height: 5,
-                      )
+                      SizedBox(height: 5)
                     ],
                   ),
                 ),

@@ -14,6 +14,7 @@ class MallEntity {
   final Map openingHoursArabic;
   final num rate;
   final String docId;
+  final String collectionRef;
 
   MallEntity({
     required this.address,
@@ -31,5 +32,6 @@ class MallEntity {
     required this.openingHoursArabic,
     required this.rate,
     required this.docId,
+    this.collectionRef = 'malls',
   });
 }

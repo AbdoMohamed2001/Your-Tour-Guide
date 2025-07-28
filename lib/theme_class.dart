@@ -32,7 +32,10 @@ class ThemeClass {
       ),
       horizontalTitleGap: 12,
     ),
-    textTheme: GoogleFonts.cairoTextTheme(),
+    textTheme: GoogleFonts.cairoTextTheme().apply(
+      bodyColor: Colors.black,
+      displayColor: Colors.black,
+    ),
     inputDecorationTheme: InputDecorationTheme(
       errorMaxLines: 2,
       hintStyle: TextStyle(
@@ -44,13 +47,15 @@ class ThemeClass {
       contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(8),
-        borderSide: BorderSide.none,
+        borderSide: BorderSide(color: AppColors.primaryColor),
       ),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(8),
+        borderSide: BorderSide(color: AppColors.primaryColor),
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(8),
+        borderSide: BorderSide(color: AppColors.primaryColor),
       ),
       errorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(8),
@@ -69,7 +74,8 @@ class ThemeClass {
     primarySwatch: Colors.orange,
     primaryColorDark: Colors.black,
     primaryColor: Colors.white,
-    canvasColor: Colors.white38,
+    canvasColor: Colors.white70,
+    cardColor: Colors.white70,
   );
 
   static ThemeData darkTheme = ThemeData(
@@ -86,7 +92,10 @@ class ThemeClass {
         statusBarIconBrightness: Brightness.light,
       ),
     ),
-    textTheme: GoogleFonts.cairoTextTheme(),
+    textTheme: GoogleFonts.cairoTextTheme().apply(
+      bodyColor: Colors.white,
+      displayColor: Colors.white,
+    ),
     inputDecorationTheme: InputDecorationTheme(
       errorMaxLines: 2,
       hintStyle: TextStyle(
@@ -98,13 +107,14 @@ class ThemeClass {
       contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(8),
-        borderSide: BorderSide.none,
+        borderSide: BorderSide(color: AppColors.primaryColor),
       ),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(8),
+        borderSide: BorderSide(color: AppColors.primaryColor),
       ),
       focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8),
+        borderSide: BorderSide(color: AppColors.primaryColor),
       ),
       errorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(8),
@@ -134,7 +144,8 @@ class ThemeClass {
     primarySwatch: Colors.orange,
     primaryColorDark: Colors.white,
     primaryColor: Colors.black,
-    canvasColor: Colors.white38,
+    canvasColor: Colors.white10,
+    cardColor: Colors.white10,
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       backgroundColor: Color(0xff121212),
     ),

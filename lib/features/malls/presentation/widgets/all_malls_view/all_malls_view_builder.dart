@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:your_tour_guide/core/utils/widgets/custom-grid-view/grid_list_view.dart';
 
 import '../../../domain/entities/mall_entity.dart';
 import '../../cubit/mall_cubit.dart';
-import 'malls_list_view.dart';
 
 class AllMallsViewBuilder extends StatelessWidget {
   const AllMallsViewBuilder({super.key});
@@ -19,7 +19,7 @@ class AllMallsViewBuilder extends StatelessWidget {
         } else if (state is MallsGetFailure) {
           return const Center(child: Text('Failed to load Malls'));
         } else {
-          return MallsListView(list: allMalls);
+          return GridListView(list: allMalls);
         }
       },
     );

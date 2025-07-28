@@ -38,7 +38,7 @@ class UpcomingEventScreen extends StatelessWidget {
                   children: [
                     //-------------------------------------------------
                     //Image
-                    // CustomPlaceImage(
+                    // DefaultServiceDetailsImage(
                     //   imageUrl: model.imageUrl,
                     //   name: isArabic() ? model.nameArabic : model.name,
                     //   cityName: '',

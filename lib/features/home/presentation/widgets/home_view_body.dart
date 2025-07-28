@@ -8,6 +8,7 @@ import 'package:your_tour_guide/features/home/presentation/widgets/features_grid
 import 'package:flutter/material.dart';
 import '../../../../constants.dart';
 import '../../../../core/cubits/home/home_cubit.dart';
+import '../../../../core/utils/widgets/custom_text_field.dart';
 import 'explore_more.dart';
 
 class HomeViewBody extends StatefulWidget {
@@ -40,6 +41,22 @@ class _HomeViewBodyState extends State<HomeViewBody> {
               ExploreMore(),
               kSizedBox,
               //-----------------------------------------------------------------
+              GestureDetector(
+                onTap: () {
+                  context.read<HomeCubit>().changeIndex(1);
+                },
+                child: CustomTextField(
+                  labelText: S.of(context).startSearch,
+                  prefixIcon: Icon(
+                    Icons.search,
+                    color: Theme.of(context).textTheme.bodyLarge?.color,
+                  ),
+                  textInputType: TextInputType.text,
+                  isEnabled: false,
+                ),
+              ),
+              kSizedBox,
+              //----------------------------------------------------------------
               FeaturesGridView(),
               kSizedBox,
               //----------------------------------------------------------------

@@ -23,22 +23,6 @@ class ServicesGridViewItem extends StatelessWidget {
         navigateToServiceScreen(
             getServicesContainerList(context)[index].collectionName, context);
       },
-      // onTap: () {
-      //   Navigator.push(
-      //       context,
-      //       MaterialPageRoute(
-      //         builder: (context) => getServicesContainerList(context)[index]
-      //                     .collectionName ==
-      //                 'hotels'
-      //             ? AllHotelsView(cityName: '')
-      //             : AllScreen(
-      //                 collectionName: getServicesContainerList(context)[index]
-      //                     .collectionName,
-      //                 appBarText: getServicesContainerList(context)[index].name,
-      //                 cityName: '',
-      //               ),
-      //       ));
-      // },
       child: Stack(
         fit: StackFit.expand,
         children: [
@@ -60,7 +44,7 @@ class ServicesGridViewItem extends StatelessWidget {
                   strokeColor: Colors.black,
                   child: Text(
                     getServicesContainerList(context)[index].name,
-                    style: TextStyles.bold28,
+                    style: TextStyles.bold28.copyWith(color: Colors.white),
                   ),
                 ),
               ),

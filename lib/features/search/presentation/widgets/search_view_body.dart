@@ -106,7 +106,7 @@ class _SearchViewBodyState extends State<SearchViewBody> {
                 : null,
             textInputType: TextInputType.text,
             onFieldSubmitted: (value) => _performSearch(query: value),
-          ), // Content Area
+          ),
           Expanded(
             child: Stack(
               children: [

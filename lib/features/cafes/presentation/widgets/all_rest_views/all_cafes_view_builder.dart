@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:your_tour_guide/core/utils/widgets/custom-grid-view/grid_list_view.dart';
 import 'package:your_tour_guide/features/cafes/domain/entities/cafe_entity.dart';
 import 'package:your_tour_guide/features/cafes/presentation/cubit/cafe_cubit.dart';
-
-import 'cafes_list_view.dart';
 
 class AllCafesViewBuilder extends StatelessWidget {
   const AllCafesViewBuilder({super.key});
@@ -19,7 +18,7 @@ class AllCafesViewBuilder extends StatelessWidget {
         } else if (state is CafesGetFailure) {
           return const Center(child: Text('Failed to load featured places'));
         } else {
-          return CafesListView(list: allCafes);
+          return GridListView(list: allCafes);
         }
       },
     );

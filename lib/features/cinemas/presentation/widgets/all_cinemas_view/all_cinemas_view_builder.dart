@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:your_tour_guide/core/utils/widgets/custom-grid-view/grid_list_view.dart';
 
 import '../../../domain/entities/cinema_entity.dart';
 import '../../cubit/cinema_cubit.dart';
-import 'cinemas_list_view.dart';
 
 class AllCinemasViewBuilder extends StatelessWidget {
   const AllCinemasViewBuilder({super.key});
@@ -19,7 +19,7 @@ class AllCinemasViewBuilder extends StatelessWidget {
         } else if (state is CinemasGetFailure) {
           return const Center(child: Text('Failed to load Cinemas'));
         } else {
-          return CinemasListView(list: allCinemas);
+          return GridListView(list: allCinemas);
         }
       },
     );

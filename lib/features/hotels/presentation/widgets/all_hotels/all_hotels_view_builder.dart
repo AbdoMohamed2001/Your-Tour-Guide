@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:your_tour_guide/core/utils/widgets/custom-grid-view/grid_list_view.dart';
 import 'package:your_tour_guide/features/hotels/domain/entities/hotel_entity.dart';
 import 'package:your_tour_guide/features/hotels/presentation/cubit/hotel_cubit.dart';
-import 'package:your_tour_guide/features/hotels/presentation/widgets/all_hotels/all_hotels_list_view.dart';
 
 class AllHotelsViewBuilder extends StatelessWidget {
   const AllHotelsViewBuilder({super.key});
@@ -18,7 +18,7 @@ class AllHotelsViewBuilder extends StatelessWidget {
         } else if (state is HotelsGetFailure) {
           return const Center(child: Text('Failed to load featured places'));
         } else {
-          return HotelsListView(list: allHotels);
+          return GridListView(list: allHotels);
         }
       },
     );

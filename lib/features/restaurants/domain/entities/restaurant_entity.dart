@@ -17,6 +17,7 @@ class RestaurantEntity {
   final Map openingHoursArabic;
   final num phone;
   final num rate;
+  final String collectionRef;
 
   RestaurantEntity(
       {required this.address,
@@ -36,5 +37,7 @@ class RestaurantEntity {
       required this.openingHours,
       required this.openingHoursArabic,
       required this.phone,
-      required this.rate});
+      required this.rate,
+      this.collectionRef = 'restaurants',
+      });
 }
