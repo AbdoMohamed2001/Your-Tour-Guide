@@ -19,7 +19,6 @@ class MainView extends StatelessWidget {
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(
         SystemUiOverlayStyle(statusBarColor: Colors.transparent));
-
     DateTime timeBackPressed = DateTime.now();
     return BlocBuilder<HomeCubit, HomeState>(
       builder: (context, state) {

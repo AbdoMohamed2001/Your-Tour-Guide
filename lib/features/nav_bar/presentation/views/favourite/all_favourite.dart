@@ -1,5 +1,9 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:your_tour_guide/core/services/get_it_services_locator.dart';
+import 'package:your_tour_guide/features/favourite/data/repos/favourite_repo.dart';
+import 'package:your_tour_guide/features/favourite/presentation/cubit/favourtie_cubit.dart';
+import 'package:your_tour_guide/features/favourite/presentation/widgets/all_favourite_view_body.dart';
 import 'package:your_tour_guide/generated/l10n.dart';
-import 'package:your_tour_guide/core/utils/widgets/favourite_widget.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/cubits/home/home_cubit.dart';
@@ -32,19 +36,23 @@ class AllFavouriteView extends StatelessWidget {
                 ),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10.0),
-        child: GridView.builder(
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            childAspectRatio: .95 / 1,
-            crossAxisCount: 2,
-            crossAxisSpacing: 10,
-            mainAxisSpacing: 10,
-          ),
-          itemBuilder: (context, index) => BuildFavouriteWidget(index: index),
-          itemCount: BuildFavouriteWidget.listOfServicesContainerEntity.length,
-        ),
+      body: BlocProvider(
+        create: (context) => FavouriteCubit(getIt<FavouriteRepo>()),
+        child: AllFavouritesViewBody(),
       ),
     );
   }
 }
+//Padding(
+//         padding: const EdgeInsets.symmetric(horizontal: 10.0),
+//         child: GridView.builder(
+//           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+//             childAspectRatio: .95 / 1,
+//             crossAxisCount: 2,
+//             crossAxisSpacing: 10,
+//             mainAxisSpacing: 10,
+//           ),
+//           itemBuilder: (context, index) => BuildFavouriteWidget(index: index),
+//           itemCount: BuildFavouriteWidget.listOfServicesContainerEntity.length,
+//         ),
+//       ),

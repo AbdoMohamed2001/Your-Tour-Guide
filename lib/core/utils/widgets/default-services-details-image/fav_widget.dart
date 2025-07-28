@@ -22,7 +22,6 @@ class FavouriteWidget extends StatelessWidget {
       child: BlocConsumer<FavouriteCubit, FavouriteState>(
         listener: (context, state) {
           if (state is FavouriteToggleFailure) {
-            // Handle error if needed
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(content: Text(state.message)),
             );
@@ -45,10 +44,11 @@ class FavouriteWidget extends StatelessWidget {
                       docId: entity.docId,
                       name: entity.name,
                       nameArabic: entity.nameArabic,
-                      image: entity.imageUrl,
+                      imageUrl: entity.imageUrl,
                       cityName: entity.cityName,
                       cityNameArabic: entity.cityNameArabic,
-                      collectionName: 'places',
+                      collectionName: entity.collectionRef,
+                      rate: entity.rate,
                     );
                     context.read<FavouriteCubit>().toggle(model);
                   },

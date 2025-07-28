@@ -1,31 +1,35 @@
+import 'package:your_tour_guide/features/favourite/domain/entities/favourite_entity.dart';
+
 class FavouriteModel {
   final String docId;
   final String name;
   final String nameArabic;
   final String cityName;
   final String cityNameArabic;
-  final String image;
+  final String imageUrl;
   final String collectionName;
-
+  final num rate;
   FavouriteModel({
     required this.docId,
     required this.name,
     required this.nameArabic,
     required this.cityName,
     required this.cityNameArabic,
-    required this.image,
+    required this.imageUrl,
     required this.collectionName,
+    required this.rate,
   });
 
   factory FavouriteModel.fromJson(Map<String, dynamic> json) {
     return FavouriteModel(
       docId: json['docId'],
       name: json['name'],
-      nameArabic: json['name_arabic'],
-      cityName: json['city_name'],
-      cityNameArabic: json['city_name_arabic'],
-      image: json['image'],
-      collectionName: json['collection_name'],
+      nameArabic: json['nameArabic'],
+      cityName: json['cityName'],
+      cityNameArabic: json['cityNameArabic'],
+      imageUrl: json['imageUrl'],
+      collectionName: json['collectionName'],
+      rate: json['rate'],
     );
   }
 
@@ -33,11 +37,25 @@ class FavouriteModel {
     return {
       'docId': docId,
       'name': name,
-      'name_arabic': nameArabic,
-      'city_name': cityName,
-      'city_name_arabic': cityNameArabic,
-      'image': image,
-      'collection_name': collectionName,
+      'nameArabic': nameArabic,
+      'cityName': cityName,
+      'cityNameArabic': cityNameArabic,
+      'imageUrl': imageUrl,
+      'collectionName': collectionName,
+      'rate': rate,
     };
+  }
+
+  FavouriteEntity toEntity() {
+    return FavouriteEntity(
+      docId: docId,
+      name: name,
+      nameArabic: nameArabic,
+      cityName: cityName,
+      cityNameArabic: cityNameArabic,
+      imageUrl: imageUrl,
+      collectionName: collectionName,
+      rate: rate,
+    );
   }
 }

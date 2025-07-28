@@ -10,6 +10,7 @@ class CustomSliverGrid extends StatelessWidget {
     this.mainAxisSpacing = 16.0,
     this.crossAxisSpacing = 16.0,
     this.childAspectRatio = 0.65,
+    this.isFavEntity = false,
   }) : super(key: key);
 
   final List<dynamic> entityList;
@@ -17,6 +18,7 @@ class CustomSliverGrid extends StatelessWidget {
   final double mainAxisSpacing;
   final double crossAxisSpacing;
   final double childAspectRatio;
+  final bool isFavEntity;
   @override
   Widget build(BuildContext context) {
     return SliverPadding(
@@ -31,6 +33,7 @@ class CustomSliverGrid extends StatelessWidget {
         delegate: SliverChildBuilderDelegate(
           (context, index) => CustomSliverGridItem(
             entity: entityList[index],
+            isFavEntity: isFavEntity,
           ),
           childCount: entityList.length,
         ),

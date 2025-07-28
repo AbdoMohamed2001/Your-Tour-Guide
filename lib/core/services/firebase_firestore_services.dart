@@ -30,18 +30,22 @@ class FireStoreServices extends DatabaseServices {
     String? subRecordId,
     dynamic whereFieldValue,
   }) async {
+    //get data in document
     if (recordId != null && subPath == null) {
       var docData = await firestore.collection(path).doc(recordId).get();
       return docData.data() as Map<String, dynamic>;
     } else {
       List<Map<String, dynamic>> dataList;
+      //get data in sub collection
       if (subPath != null) {
         Query<Map<String, dynamic>> data =
-            firestore.collection(path).doc(subRecordId).collection(subPath);
+            firestore.collection(path).doc(recordId).collection(subPath);
         QuerySnapshot<Map<String, dynamic>> result = await data.get();
         dataList = result.docs.map((e) => e.data()).toList();
       } else {
+        //get data in collection
         Query<Map<String, dynamic>> data = firestore.collection(path);
+        //get data with query
         if (query != null) {
           if (query['orderBy'] != null) {
             var orderByField = query['orderBy'];

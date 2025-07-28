@@ -18,3 +18,36 @@ final class FavouriteToggleFailure extends FavouriteState {
 
   FavouriteToggleFailure(this.message);
 }
+
+//-------------------------------------------------------------
+final class FavouritesGetLoading extends FavouriteState {}
+
+final class FavouritesGetSuccess extends FavouriteState {
+  final List<FavouriteEntity> favList;
+
+  FavouritesGetSuccess(this.favList);
+}
+
+final class FavouritesGetFailure extends FavouriteState {
+  final String message;
+
+  FavouritesGetFailure(this.message);
+}
+
+//-------------------------------------------------------------
+
+class FavouritesGetEntityLoading extends FavouriteState {}
+
+class FavouritesGetEntitySuccess extends FavouriteState {
+  final dynamic entity;
+  final String collectionName;
+  FavouritesGetEntitySuccess(this.entity, this.collectionName);
+}
+
+class FavouritesGetEntityError extends FavouriteState {
+  final String message;
+
+  FavouritesGetEntityError(this.message);
+}
+
+//-------------------------------------------------------------

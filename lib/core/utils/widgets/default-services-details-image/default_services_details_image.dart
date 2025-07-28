@@ -34,6 +34,7 @@ class DefaultServiceDetailsImage extends StatelessWidget {
         ),
         child: Stack(
           children: [
+            //Image
             DefaultCachedNetworkImage(
               imageUrl: entity.imageUrl,
               imageHeight: 370,
