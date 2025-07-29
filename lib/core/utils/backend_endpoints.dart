@@ -11,6 +11,7 @@ abstract class BackEndEndPoints {
   static const cinemasCollection = 'cinemas';
   static const favouritesCollection = 'favourites';
   static const eventsCollection = 'Events';
+  static const toursCollection = 'tours';
   static const List<String> searchableCollections = [
     'cinemas',
     'cities',
@@ -24,6 +25,6 @@ abstract class BackEndEndPoints {
     'tourCompanies',
     'tourGuides',
     'tours',
-    'events',
+    'Events',
   ];
 }

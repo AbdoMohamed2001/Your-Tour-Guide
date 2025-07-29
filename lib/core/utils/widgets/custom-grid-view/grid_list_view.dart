@@ -7,11 +7,15 @@ class GridListView extends StatelessWidget {
     required this.list,
     this.isFavEntity = false,
     this.isEvent = false,
+    this.isTour = false,
+    this.isTourType = false,
   });
 
   final List<dynamic> list;
   final bool isFavEntity;
   final bool isEvent;
+  final bool isTour;
+  final bool isTourType;
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +25,8 @@ class GridListView extends StatelessWidget {
           entityList: list,
           isFavEntity: isFavEntity,
           isEvent: isEvent,
+          isTour: isTour,
+          isTourType: isTourType,
         ),
       ],
     );

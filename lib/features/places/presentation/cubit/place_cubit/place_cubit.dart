@@ -6,7 +6,6 @@ import 'package:your_tour_guide/generated/l10n.dart';
 import 'package:your_tour_guide/features/cinemas/data/models/cinema_model.dart';
 import 'package:your_tour_guide/features/places/data/models/place_model.dart';
 import 'package:your_tour_guide/features/restaurants/data/models/restaurant_model.dart';
-import 'package:your_tour_guide/models/tour_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -205,64 +204,64 @@ class PlaceCubit extends Cubit<PlaceState> {
   }
 
   //-------------------Favourite Functions------------------------------------
-  Future<void> addTourToFavourite({
-    required TourModel tourModel,
-    required var docID,
-    required BuildContext context,
-  }) async {
-    emit(PlaceAddedToFavouriteLoading());
-    late var currentUser = _auth.currentUser;
-    CollectionReference _collectionReference =
-        FirebaseFirestore.instance.collection('favouritePlaces');
-    return _collectionReference
-        .doc(currentUser!.email)
-        .collection('tours')
-        .doc(docID)
-        .set({
-      "booking": tourModel.booking,
-      'description': tourModel.description,
-      'descriptionArabic': tourModel.descriptionArabic,
-      'docId': tourModel.docId,
-      'duration': tourModel.duration,
-      'durationArabic': tourModel.durationArabic,
-      'email': tourModel.email,
-      'exclusions': tourModel.exclusions,
-      'exclusionsArabic': tourModel.exclusionsArabic,
-      'imageUrl': tourModel.imageUrl,
-      'images': tourModel.images,
-      'InclusionsWidget': tourModel.InclusionsWidget,
-      'InclusionsWidgetArabic': tourModel.InclusionsWidgetArabic,
-      'name': tourModel.name,
-      'nameArabic': tourModel.nameArabic,
-      'phone': tourModel.phone,
-      'pickupFrom': tourModel.pickupFrom,
-      'pickupFromArabic ': tourModel.pickupFromArabic,
-      'startPrice': tourModel.startPrice,
-      'startPriceArabic': tourModel.startPriceArabic,
-      'tourAvailability': tourModel.tourAvailability,
-      'tourAvailabilityArabic': tourModel.tourAvailabilityArabic,
-      'tourItinerary': tourModel.tourItinerary,
-      'tourItineraryArabic': tourModel.tourItineraryArabic,
-      'tourLocation': tourModel.tourLocation,
-      'tourLocationArabic': tourModel.tourLocationArabic,
-      'tourType': tourModel.tourType,
-      'tourTypeArabic': tourModel.tourTypeArabic,
-      'tripOrganizer': tourModel.tripOrganizer,
-      'tripOrganizerArabic': tourModel.tripOrganizerArabic,
-      'tripOrganizerLogo': tourModel.tripOrganizerLogo,
-      'type': tourModel.type,
-      'website': tourModel.website,
-    }).then((value) {
-      iconColor = Colors.red;
-      showToast(msg: S.of(context).AddedToFavourite);
-      emit(PlaceAddedToFavouriteSuccess());
-      iconColor = Colors.red;
-    }).onError((error, stackTrace) {
-      showToast(msg: 'Failed to add to favourite');
-      emit(PlaceAddedToFavouriteFailure(error.toString()));
-      debugPrint(error.toString());
-    });
-  }
+  // Future<void> addTourToFavourite({
+  //   required TourModel tourModel,
+  //   required var docID,
+  //   required BuildContext context,
+  // }) async {
+  //   emit(PlaceAddedToFavouriteLoading());
+  //   late var currentUser = _auth.currentUser;
+  //   CollectionReference _collectionReference =
+  //       FirebaseFirestore.instance.collection('favouritePlaces');
+  //   return _collectionReference
+  //       .doc(currentUser!.email)
+  //       .collection('tours')
+  //       .doc(docID)
+  //       .set({
+  //     "booking": tourModel.booking,
+  //     'description': tourModel.description,
+  //     'descriptionArabic': tourModel.descriptionArabic,
+  //     'docId': tourModel.docId,
+  //     'duration': tourModel.duration,
+  //     'durationArabic': tourModel.durationArabic,
+  //     'email': tourModel.email,
+  //     'exclusions': tourModel.exclusions,
+  //     'exclusionsArabic': tourModel.exclusionsArabic,
+  //     'imageUrl': tourModel.imageUrl,
+  //     'images': tourModel.images,
+  //     'InclusionsWidget': tourModel.InclusionsWidget,
+  //     'InclusionsWidgetArabic': tourModel.InclusionsWidgetArabic,
+  //     'name': tourModel.name,
+  //     'nameArabic': tourModel.nameArabic,
+  //     'phone': tourModel.phone,
+  //     'pickupFrom': tourModel.pickupFrom,
+  //     'pickupFromArabic ': tourModel.pickupFromArabic,
+  //     'startPrice': tourModel.startPrice,
+  //     'startPriceArabic': tourModel.startPriceArabic,
+  //     'tourAvailability': tourModel.tourAvailability,
+  //     'tourAvailabilityArabic': tourModel.tourAvailabilityArabic,
+  //     'tourItinerary': tourModel.tourItinerary,
+  //     'tourItineraryArabic': tourModel.tourItineraryArabic,
+  //     'tourLocation': tourModel.tourLocation,
+  //     'tourLocationArabic': tourModel.tourLocationArabic,
+  //     'tourType': tourModel.tourType,
+  //     'tourTypeArabic': tourModel.tourTypeArabic,
+  //     'tripOrganizer': tourModel.tripOrganizer,
+  //     'tripOrganizerArabic': tourModel.tripOrganizerArabic,
+  //     'tripOrganizerLogo': tourModel.tripOrganizerLogo,
+  //     'type': tourModel.type,
+  //     'website': tourModel.website,
+  //   }).then((value) {
+  //     iconColor = Colors.red;
+  //     showToast(msg: S.of(context).AddedToFavourite);
+  //     emit(PlaceAddedToFavouriteSuccess());
+  //     iconColor = Colors.red;
+  //   }).onError((error, stackTrace) {
+  //     showToast(msg: 'Failed to add to favourite');
+  //     emit(PlaceAddedToFavouriteFailure(error.toString()));
+  //     debugPrint(error.toString());
+  //   });
+  // }
 
   //----------------------------------------------------------
   Future<void> addPlaceToFavourite({

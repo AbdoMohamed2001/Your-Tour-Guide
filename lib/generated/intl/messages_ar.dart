@@ -182,6 +182,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "startSearch": MessageLookupByLibrary.simpleMessage("ابدأ البحث الان "),
     "tourAvailability": MessageLookupByLibrary.simpleMessage("توافر الرحله"),
     "tourItinerary": MessageLookupByLibrary.simpleMessage("خط الرحله"),
+    "tourLocation": MessageLookupByLibrary.simpleMessage("موقع الرحلة"),
     "tourOrganizer": MessageLookupByLibrary.simpleMessage("منظم الرحله : "),
     "tourPackage": MessageLookupByLibrary.simpleMessage("برامج رحلات"),
     "tours": MessageLookupByLibrary.simpleMessage("الرحلات"),

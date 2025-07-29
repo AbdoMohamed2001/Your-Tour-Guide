@@ -9,6 +9,7 @@ import 'package:your_tour_guide/features/mosques/presentation/views/moqsue_detai
 import 'package:your_tour_guide/features/nav_bar/presentation/views/home_view.dart';
 import 'package:your_tour_guide/features/places/presentation/views/place_details_view.dart';
 import 'package:your_tour_guide/features/restaurants/presentation/views/restaurant_details_view.dart';
+import 'package:your_tour_guide/features/tours/presentation/views/tour_details_view.dart';
 
 void navigateToServiceDetailsScreen(
     String collectionRef, BuildContext context, dynamic entity) {
@@ -70,6 +71,12 @@ void navigateToServiceDetailsScreen(
           context,
           MaterialPageRoute(
             builder: (_) => EventDetailsView(eventEntity: entity),
+          ));
+    case 'tours':
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (_) => TourDetailsView(tourEntity: entity),
           ));
     case 'tourGuides':
       Navigator.push(

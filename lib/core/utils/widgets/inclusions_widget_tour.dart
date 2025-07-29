@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-
-import '../../../models/tour_model.dart';
 import '../functions/is_arabic.dart';
 
 class InclusionsWidgetWidgetTour extends StatelessWidget {
@@ -8,14 +6,12 @@ class InclusionsWidgetWidgetTour extends StatelessWidget {
     Key? key,
     required this.icon,
     required this.index,
-    required this.tourModel,
     required this.exclusionsOrInclusion,
     required this.iconColor,
   }) : super(key: key);
   final IconData icon;
   final int index;
   final exclusionsOrInclusion;
-  final TourModel tourModel;
   final Color iconColor;
 
   @override

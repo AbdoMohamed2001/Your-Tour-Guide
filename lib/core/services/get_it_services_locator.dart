@@ -28,6 +28,9 @@ import 'package:your_tour_guide/features/search/data/repos/search_repo.dart';
 import 'package:your_tour_guide/features/search/domain/repos/search_repo_impl.dart';
 import 'package:your_tour_guide/features/search/domain/use_cases/get_entity_from_search_usecase.dart';
 import 'package:your_tour_guide/features/search/domain/use_cases/search_collections_usecase.dart';
+import 'package:your_tour_guide/features/tours/data/datasources/tour_remote_data_source.dart';
+import 'package:your_tour_guide/features/tours/domain/repos/tour_repo.dart';
+import 'package:your_tour_guide/features/tours/domain/usecases/get_tours_usecase.dart';
 
 import '../../features/cinemas/data/repos/cinema_repo_impl.dart';
 import '../../features/cities/data/repos/city_repo.dart';
@@ -35,6 +38,7 @@ import '../../features/cities/domain/repos/city_repo_impl.dart';
 import '../../features/malls/domain/repos/mall_repo_impl.dart';
 import '../../features/restaurants/domain/repos/rest_repo_impl.dart';
 import '../../features/search/domain/use_cases/get_search_suggestion_usecase.dart';
+import '../../features/tours/data/repos/tour_repo_impl.dart';
 import 'database_services.dart';
 import 'firebase_auth_services.dart';
 import 'firebase_firestore_services.dart';
@@ -55,6 +59,8 @@ void setupGetIt() {
       SearchRemoteDataSourceImpl(databaseServices: getIt<DatabaseServices>()));
   getIt.registerSingleton<EventRemoteDataSource>(
       EventRemoteDataSourceImpl(databaseServices: getIt<DatabaseServices>()));
+  getIt.registerSingleton<TourRemoteDataSource>(
+      TourRemoteDataSourceImpl(databaseServices: getIt<DatabaseServices>()));
   //------------------------------------------------------------------
   //Repos
   getIt.registerSingleton<SearchRepo>(
@@ -76,6 +82,8 @@ void setupGetIt() {
   getIt.registerSingleton<CityRepo>(CityRepoImpl(getIt<DatabaseServices>()));
   getIt.registerSingleton<EventRepo>(
       EventRepoImpl(getIt<EventRemoteDataSource>()));
+  getIt
+      .registerSingleton<TourRepo>(TourRepoImpl(getIt<TourRemoteDataSource>()));
   getIt.registerSingleton<FeaturesRepo>(
     FeatureRepoImpl(getIt<DatabaseServices>()),
   );
@@ -99,5 +107,8 @@ void setupGetIt() {
   );
   getIt.registerSingleton<GetEventsUseCase>(
     GetEventsUseCase(getIt<EventRepo>()),
+  );
+  getIt.registerSingleton<GetToursUseCase>(
+    GetToursUseCase(getIt<TourRepo>()),
   );
 }

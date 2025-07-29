@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:your_tour_guide/core/utils/functions/is_arabic.dart';
-import 'package:your_tour_guide/features/events/domain/entities/event_entity.dart';
 
 class InclusionsWidget extends StatelessWidget {
   InclusionsWidget({
@@ -8,7 +7,7 @@ class InclusionsWidget extends StatelessWidget {
     required this.eventEntity,
     this.isInclusion = true,
   }) : super(key: key);
-  final EventEntity eventEntity;
+  final dynamic eventEntity;
   final bool isInclusion;
 
   @override

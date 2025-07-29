@@ -29,10 +29,6 @@ class DefaultServiceDetailsImage extends StatelessWidget {
       create: (context) =>
           FavouriteCubit(getIt<FavouriteRepo>())..loadLocalFavourites(),
       child: ClipRRect(
-        borderRadius: BorderRadius.only(
-          bottomRight: Radius.circular(10),
-          bottomLeft: Radius.circular(10),
-        ),
         child: Stack(
           children: [
             //Image

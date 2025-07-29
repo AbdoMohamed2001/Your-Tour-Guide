@@ -8,8 +8,7 @@ import 'package:your_tour_guide/core/utils/widgets/location_widget.dart';
 import 'package:your_tour_guide/core/utils/widgets/opening_hours_item.dart';
 import 'package:your_tour_guide/features/places/presentation/widgets/place_details/transport_widget.dart';
 import 'package:your_tour_guide/generated/l10n.dart';
-import 'package:your_tour_guide/models/tour_model.dart';
-import 'package:your_tour_guide/tour_screen_neew.dart';
+import 'package:your_tour_guide/features/tours/data/models/tour_model.dart';
 import 'package:your_tour_guide/core/utils/widgets/default_read_more.dart';
 import 'package:your_tour_guide/core/utils/widgets/head_text.dart';
 import '../../../../../core/utils/widgets/default-services-details-image/default_services_details_image.dart';
@@ -29,7 +28,6 @@ class PlaceDetailsViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     CollectionReference tour = FirebaseFirestore.instance.collection('tours');
-    List<TourModel>? tourList;
     return BlocBuilder<PlaceCubit, PlaceState>(
       builder: (context, state) {
         var placeCubit = PlaceCubit.get(context);
@@ -141,7 +139,6 @@ class PlaceDetailsViewBody extends StatelessWidget {
                                     i++) {
                                   tourListt.add(TourModel.fromJson(
                                       snapshot.data!.docs[i]));
-                                  tourList = tourListt;
                                 }
 
                                 return SizedBox(
@@ -151,16 +148,7 @@ class PlaceDetailsViewBody extends StatelessWidget {
                                     shrinkWrap: true,
                                     itemBuilder: (context, index) =>
                                         GestureDetector(
-                                      onTap: () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (_) => TourScreenNeew(
-                                                      placeModel:
-                                                          tourList![index],
-                                                      docID: allDocs[index].id,
-                                                    )));
-                                      },
+                                      onTap: () {},
                                       child: Padding(
                                         padding: const EdgeInsets.symmetric(
                                             horizontal: 6.0),

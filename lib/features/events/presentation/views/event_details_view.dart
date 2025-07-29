@@ -12,7 +12,7 @@ class EventDetailsView extends StatelessWidget {
     required this.eventEntity,
   }) : super(key: key);
   final EventEntity eventEntity;
-  static final String id = 'EventsDetailsView';
+  static final String id = 'EventDetailsView';
 
   @override
   Widget build(BuildContext context) {

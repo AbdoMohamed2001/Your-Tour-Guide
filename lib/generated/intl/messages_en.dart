@@ -187,6 +187,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Tour Availability",
     ),
     "tourItinerary": MessageLookupByLibrary.simpleMessage("Tour Itinerary"),
+    "tourLocation": MessageLookupByLibrary.simpleMessage("Tour Location"),
     "tourOrganizer": MessageLookupByLibrary.simpleMessage("Tour Organizer : "),
     "tourPackage": MessageLookupByLibrary.simpleMessage("Tour Package"),
     "tours": MessageLookupByLibrary.simpleMessage("Tours"),

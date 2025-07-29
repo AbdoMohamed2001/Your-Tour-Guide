@@ -707,6 +707,16 @@ class S {
     );
   }
 
+  /// `Tour Location`
+  String get tourLocation {
+    return Intl.message(
+      'Tour Location',
+      name: 'tourLocation',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Egyptians Trip`
   String get egyptiansTrip {
     return Intl.message(
