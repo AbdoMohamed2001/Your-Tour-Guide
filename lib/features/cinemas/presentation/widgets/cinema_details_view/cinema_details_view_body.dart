@@ -36,7 +36,8 @@ class CinemaDetailsViewBody extends StatelessWidget {
                 children: [
                   //-------------------------------------------------------------------------
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: kHorizontalPadding),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [

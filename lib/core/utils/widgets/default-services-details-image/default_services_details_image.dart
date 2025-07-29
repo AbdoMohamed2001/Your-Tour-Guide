@@ -16,12 +16,13 @@ class DefaultServiceDetailsImage extends StatelessWidget {
     required this.cubitDataKeyCurrentContext,
     this.fontSize = 22,
     this.entity,
+    this.isNotEvent = true,
   });
 
   final cubitDataKeyCurrentContext;
   final double? fontSize;
   final dynamic entity;
-
+  final bool isNotEvent;
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -42,13 +43,15 @@ class DefaultServiceDetailsImage extends StatelessWidget {
             //Name
             NameWidget(entity: entity), //Done
             //City
-            CityWidget(entity: entity), //Done
+            isNotEvent ? CityWidget(entity: entity) : SizedBox(), //Done
             //End Image
-            entity.images.isEmpty
-                ? Container()
-                : EndImageWidget(
+            isNotEvent
+                ? EndImageWidget(
                     cubitDataKeyCurrentContext: cubitDataKeyCurrentContext,
-                    entity: entity),
+                    entity: entity,
+                  )
+                : Container(),
+
             //Favourite
             FavouriteWidget(entity: entity),
             //Back

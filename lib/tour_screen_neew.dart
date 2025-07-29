@@ -3,7 +3,6 @@ import 'package:your_tour_guide/generated/l10n.dart';
 import 'package:your_tour_guide/models/tour_model.dart';
 import 'package:your_tour_guide/core/utils/widgets/default_read_more.dart';
 import 'package:your_tour_guide/core/utils/widgets/head_text.dart';
-import 'package:your_tour_guide/core/utils/widgets/inclusions_widget_tour.dart';
 import 'package:your_tour_guide/core/utils/widgets/none_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,6 +10,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'core/utils/functions/is_arabic.dart';
 import 'core/utils/widgets/contact_widget.dart';
 import 'core/utils/widgets/default-services-details-image/default_services_details_image.dart';
+import 'core/utils/widgets/inclusions_widget_tour.dart';
 import 'core/utils/widgets/place/gallery_widget.dart';
 import 'features/places/data/repos/places_repo.dart';
 import 'core/services/get_it_services_locator.dart';
@@ -147,25 +147,26 @@ class TourScreenNeew extends StatelessWidget {
                           ),
                           kSizedBox,
                           //-------------------------------------------------------------------
-                          //Inclusions
+                          //InclusionsWidget
                           HeadText(text: S.of(context).inclusions),
                           kSmallSizedBox,
                           ListView.separated(
                             shrinkWrap: true,
                             physics: NeverScrollableScrollPhysics(),
-                            itemBuilder: (_, index) => InclusionsWidgetTour(
+                            itemBuilder: (_, index) =>
+                                InclusionsWidgetWidgetTour(
                               icon: Icons.done,
                               index: index,
                               tourModel: placeModel,
                               exclusionsOrInclusion: isArabic()
-                                  ? placeModel.inclusionsArabic
-                                  : placeModel.inclusions,
+                                  ? placeModel.InclusionsWidgetArabic
+                                  : placeModel.InclusionsWidget,
                               iconColor: Colors.green,
                             ),
                             separatorBuilder: (_, index) => SizedBox(
                               height: 10,
                             ),
-                            itemCount: placeModel.inclusions.length,
+                            itemCount: placeModel.InclusionsWidget.length,
                           ),
                           kSizedBox,
                           //-------------------------------------------------------------------
@@ -175,7 +176,8 @@ class TourScreenNeew extends StatelessWidget {
                           ListView.separated(
                             shrinkWrap: true,
                             physics: NeverScrollableScrollPhysics(),
-                            itemBuilder: (_, index) => InclusionsWidgetTour(
+                            itemBuilder: (_, index) =>
+                                InclusionsWidgetWidgetTour(
                               icon: Icons.close,
                               index: index,
                               tourModel: placeModel,

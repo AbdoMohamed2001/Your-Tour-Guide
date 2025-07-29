@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:your_tour_guide/features/cafes/presentation/views/cafe_details_view.dart';
 import 'package:your_tour_guide/features/churchs/presentation/views/church_details_view.dart';
 import 'package:your_tour_guide/features/cinemas/presentation/views/cinema_details_view.dart';
+import 'package:your_tour_guide/features/events/presentation/views/event_details_view.dart';
 import 'package:your_tour_guide/features/hotels/presentation/views/hotel_details_view.dart';
 import 'package:your_tour_guide/features/malls/presentation/views/mall_details_view.dart';
 import 'package:your_tour_guide/features/mosques/presentation/views/moqsue_details_view.dart';
@@ -63,6 +64,12 @@ void navigateToServiceDetailsScreen(
           context,
           MaterialPageRoute(
             builder: (_) => ChurchDetailsView(churchEntity: entity),
+          ));
+    case 'Events':
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (_) => EventDetailsView(eventEntity: entity),
           ));
     case 'tourGuides':
       Navigator.push(

@@ -39,7 +39,7 @@
 - Services Inside, Gallery, Contact Info
 
 ### 🧭 Tours
-- Price, Duration, Dates, Inclusions/Exclusions
+- Price, Duration, Dates, InclusionsWidget/Exclusions
 
 ---
 

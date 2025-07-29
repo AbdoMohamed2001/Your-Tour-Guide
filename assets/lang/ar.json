@@ -100,7 +100,7 @@
   "TourType" : "نوع الرحله",
   "PickFrom" : "البدء من ",
   "tourItinerary" : "خط الرحله",
-  "inclusions" : "مشتملات الرحله",
+  "InclusionsWidget" : "مشتملات الرحله",
   "exclusions" : "الاستثنائات",
   "tourAvailability" : "توافر الرحله",
   "tourOrganizer" : "منظم الرحله : ",

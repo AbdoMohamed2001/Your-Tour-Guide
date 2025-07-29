@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 
-import '../../data/repos/cinema_repo.dart';
+import '../../domain/repos/cinema_repo.dart';
 import '../../domain/entities/cinema_entity.dart';
 
 part 'cinema_state.dart';

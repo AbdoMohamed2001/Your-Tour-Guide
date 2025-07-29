@@ -5,9 +5,9 @@ import 'package:dartz/dartz.dart';
 import '../../../../core/errors/failure.dart';
 import '../../../../core/services/database_services.dart';
 import '../../../../core/utils/backend_endpoints.dart';
-import '../../data/models/cinema_model.dart';
-import '../../data/repos/cinema_repo.dart';
-import '../entities/cinema_entity.dart';
+import '../models/cinema_model.dart';
+import '../../domain/repos/cinema_repo.dart';
+import '../../domain/entities/cinema_entity.dart';
 
 class CinemaRepoImpl extends CinemaRepo {
   final DatabaseServices databaseServices;

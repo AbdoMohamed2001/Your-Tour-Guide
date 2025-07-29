@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import '../../../models/tour_model.dart';
 import '../functions/is_arabic.dart';
 
-class InclusionsWidgetTour extends StatelessWidget {
-  InclusionsWidgetTour({
+class InclusionsWidgetWidgetTour extends StatelessWidget {
+  InclusionsWidgetWidgetTour({
     Key? key,
     required this.icon,
     required this.index,

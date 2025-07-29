@@ -3,7 +3,7 @@ import 'package:your_tour_guide/features/places/presentation/views/all_best_plac
 import 'package:your_tour_guide/generated/assets.dart';
 
 import '../features/home/presentation/views/features/all_tours.dart';
-import '../features/home/presentation/views/features/all_upcoming.dart';
+import '../features/home/presentation/views/features/events_view.dart';
 import '../generated/l10n.dart';
 import '../features/cities/presentation/views/all_cities_view.dart';
 
@@ -58,7 +58,7 @@ List<FeaturesContainerEntity> getFeaturesList(BuildContext context) {
       // name: 'UpcomingEvents',
       name: S.of(context).UpcomingEvents,
       containerColor: Color(0xffd89d27),
-      pushedPage: AllUpcoming(),
+      pushedPage: EventsView(),
       icon: Assets.iconsEvent,
       collectionName: 'Events',
       appBarTitle: S.of(context).UpcomingEventsAppbar,

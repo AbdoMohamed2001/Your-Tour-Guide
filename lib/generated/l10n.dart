@@ -632,6 +632,26 @@ class S {
     return Intl.message('Inclusions', name: 'inclusions', desc: '', args: []);
   }
 
+  /// `Start Date`
+  String get startDate {
+    return Intl.message('Start Date', name: 'startDate', desc: '', args: []);
+  }
+
+  /// `End Date`
+  String get endDate {
+    return Intl.message('End Date', name: 'endDate', desc: '', args: []);
+  }
+
+  /// `More information :`
+  String get moreInformation {
+    return Intl.message(
+      'More information :',
+      name: 'moreInformation',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Exclusions`
   String get exclusions {
     return Intl.message('Exclusions', name: 'exclusions', desc: '', args: []);

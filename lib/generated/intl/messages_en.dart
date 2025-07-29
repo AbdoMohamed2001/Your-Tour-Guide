@@ -135,6 +135,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "contains": MessageLookupByLibrary.simpleMessage("Contains : "),
     "dayTour": MessageLookupByLibrary.simpleMessage("Day Tour"),
     "egyptiansTrip": MessageLookupByLibrary.simpleMessage("Egyptians Trip"),
+    "endDate": MessageLookupByLibrary.simpleMessage("End Date"),
     "exclusions": MessageLookupByLibrary.simpleMessage("Exclusions"),
     "films": MessageLookupByLibrary.simpleMessage("Films"),
     "genre": MessageLookupByLibrary.simpleMessage("Movie Genre : "),
@@ -146,6 +147,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "mallsCollection": MessageLookupByLibrary.simpleMessage("malls"),
     "metro": MessageLookupByLibrary.simpleMessage("Nearest Metro station :"),
     "moreAboutEgypt": MessageLookupByLibrary.simpleMessage("More About Egypt"),
+    "moreInformation": MessageLookupByLibrary.simpleMessage(
+      "More information :",
+    ),
     "mosquesCollection": MessageLookupByLibrary.simpleMessage("mosques"),
     "name": MessageLookupByLibrary.simpleMessage("Name"),
     "nearly": MessageLookupByLibrary.simpleMessage(
@@ -177,6 +181,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "showMore": MessageLookupByLibrary.simpleMessage("Show more "),
     "sortBy": MessageLookupByLibrary.simpleMessage("Sort by : "),
     "stars": MessageLookupByLibrary.simpleMessage("Stars"),
+    "startDate": MessageLookupByLibrary.simpleMessage("Start Date"),
     "startSearch": MessageLookupByLibrary.simpleMessage("Start Search Now !"),
     "tourAvailability": MessageLookupByLibrary.simpleMessage(
       "Tour Availability",

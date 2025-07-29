@@ -18,7 +18,7 @@ class ContactWidget extends StatelessWidget {
       width: double.infinity,
       color:
           HomeCubit.get(context).isDark! ? Color(0xfffffff) : Color(0xfff1f1f1),
-      height: 70,
+      height: 50,
       child: ListView(
         shrinkWrap: true,
         scrollDirection: Axis.horizontal,

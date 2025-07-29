@@ -1,11 +1,15 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get_it/get_it.dart';
 import 'package:your_tour_guide/core/data/repos/features_repo.dart';
-import 'package:your_tour_guide/features/cinemas/data/repos/cinema_repo.dart';
+import 'package:your_tour_guide/features/cinemas/domain/repos/cinema_repo.dart';
 import 'package:your_tour_guide/features/cafes/data/repos/cafe_repo.dart';
 import 'package:your_tour_guide/features/cafes/domain/repos/cafe_repo_impl.dart';
 import 'package:your_tour_guide/features/churchs/data/repos/church_repo.dart';
 import 'package:your_tour_guide/features/churchs/domain/repos/church_repo_impl.dart';
+import 'package:your_tour_guide/features/events/data/datasources/event_remote_data_source.dart';
+import 'package:your_tour_guide/features/events/data/repos/event_repo_impl.dart';
+import 'package:your_tour_guide/features/events/domain/repos/event_repo.dart';
+import 'package:your_tour_guide/features/events/domain/usecases/get_events_usecase.dart';
 import 'package:your_tour_guide/features/favourite/data/data_sources/local_data_source.dart';
 import 'package:your_tour_guide/features/favourite/data/data_sources/remote_data_source.dart';
 import 'package:your_tour_guide/features/favourite/data/repos/favourite_repo.dart';
@@ -25,7 +29,7 @@ import 'package:your_tour_guide/features/search/domain/repos/search_repo_impl.da
 import 'package:your_tour_guide/features/search/domain/use_cases/get_entity_from_search_usecase.dart';
 import 'package:your_tour_guide/features/search/domain/use_cases/search_collections_usecase.dart';
 
-import '../../features/cinemas/domain/repos/cinema_repo_impl.dart';
+import '../../features/cinemas/data/repos/cinema_repo_impl.dart';
 import '../../features/cities/data/repos/city_repo.dart';
 import '../../features/cities/domain/repos/city_repo_impl.dart';
 import '../../features/malls/domain/repos/mall_repo_impl.dart';
@@ -49,6 +53,8 @@ void setupGetIt() {
   getIt.registerSingleton<FavouriteLocalDataSource>(FavouriteLocalDataSource());
   getIt.registerSingleton<SearchRemoteDataSource>(
       SearchRemoteDataSourceImpl(databaseServices: getIt<DatabaseServices>()));
+  getIt.registerSingleton<EventRemoteDataSource>(
+      EventRemoteDataSourceImpl(databaseServices: getIt<DatabaseServices>()));
   //------------------------------------------------------------------
   //Repos
   getIt.registerSingleton<SearchRepo>(
@@ -68,6 +74,8 @@ void setupGetIt() {
   getIt.registerSingleton<RestaurantRepo>(
       RestaurantsRepoImpl(getIt<DatabaseServices>()));
   getIt.registerSingleton<CityRepo>(CityRepoImpl(getIt<DatabaseServices>()));
+  getIt.registerSingleton<EventRepo>(
+      EventRepoImpl(getIt<EventRemoteDataSource>()));
   getIt.registerSingleton<FeaturesRepo>(
     FeatureRepoImpl(getIt<DatabaseServices>()),
   );
@@ -88,5 +96,8 @@ void setupGetIt() {
   );
   getIt.registerSingleton<GetEntityFromSearchUseCase>(
     GetEntityFromSearchUseCase(getIt<SearchRepo>()),
+  );
+  getIt.registerSingleton<GetEventsUseCase>(
+    GetEventsUseCase(getIt<EventRepo>()),
   );
 }

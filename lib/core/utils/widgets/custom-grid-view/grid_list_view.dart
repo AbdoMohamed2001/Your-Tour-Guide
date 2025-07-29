@@ -6,10 +6,12 @@ class GridListView extends StatelessWidget {
     super.key,
     required this.list,
     this.isFavEntity = false,
+    this.isEvent = false,
   });
 
   final List<dynamic> list;
   final bool isFavEntity;
+  final bool isEvent;
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +20,7 @@ class GridListView extends StatelessWidget {
         CustomSliverGrid(
           entityList: list,
           isFavEntity: isFavEntity,
+          isEvent: isEvent,
         ),
       ],
     );

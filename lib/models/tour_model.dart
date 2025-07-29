@@ -9,8 +9,8 @@ class TourModel {
   final List<dynamic> exclusionsArabic;
   final String imageUrl;
   final List<dynamic> images;
-  final List<dynamic> inclusions;
-  final List<dynamic> inclusionsArabic;
+  final List<dynamic> InclusionsWidget;
+  final List<dynamic> InclusionsWidgetArabic;
   final String name;
   final String nameArabic;
   final String pickupFrom;
@@ -49,8 +49,8 @@ class TourModel {
         exclusionsArabic: dataMap['exclusionsArabic'],
         imageUrl: dataMap['imageUrl'],
         images: dataMap['images'],
-        inclusions: dataMap['inclusions'],
-        inclusionsArabic: dataMap['inclusionsArabic'],
+        InclusionsWidget: dataMap['InclusionsWidget'],
+        InclusionsWidgetArabic: dataMap['InclusionsWidgetArabic'],
         name: dataMap['name'],
         nameArabic: dataMap['nameArabic'],
         pickupFrom: dataMap['pickupFrom'],
@@ -88,8 +88,8 @@ class TourModel {
       exclusionsArabic: dataMap['exclusionsArabic'],
       imageUrl: dataMap['imageUrl'],
       images: dataMap['images'],
-      inclusions: dataMap['inclusions'],
-      inclusionsArabic: dataMap['inclusionsArabic'],
+      InclusionsWidget: dataMap['InclusionsWidget'],
+      InclusionsWidgetArabic: dataMap['InclusionsWidgetArabic'],
       name: dataMap['name'],
       nameArabic: dataMap['nameArabic'],
       pickupFrom: dataMap['pickupFrom'],
@@ -125,8 +125,8 @@ class TourModel {
       required this.exclusionsArabic,
       required this.imageUrl,
       required this.images,
-      required this.inclusions,
-      required this.inclusionsArabic,
+      required this.InclusionsWidget,
+      required this.InclusionsWidgetArabic,
       required this.name,
       required this.nameArabic,
       required this.pickupFrom,

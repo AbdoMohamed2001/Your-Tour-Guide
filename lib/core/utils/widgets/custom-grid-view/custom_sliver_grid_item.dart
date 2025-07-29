@@ -13,10 +13,12 @@ class CustomSliverGridItem extends StatelessWidget {
     Key? key,
     required this.entity,
     this.isFavEntity = false,
+    this.isEvent = false,
   }) : super(key: key);
 
   final dynamic entity;
   final bool isFavEntity;
+  final bool isEvent;
 
   @override
   Widget build(BuildContext context) {
@@ -72,39 +74,52 @@ class CustomSliverGridItem extends StatelessWidget {
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                           ),
-                          Text(
-                            isArabic()
-                                ? entity.cityNameArabic
-                                : entity.cityName ?? '',
-                            style: TextStyles.bold16
-                                .copyWith(color: AppColors.primaryColor),
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                          ),
+                          isEvent == true
+                              ? Text(
+                                  isArabic()
+                                      ? entity.locationArabic ?? ''
+                                      : entity.location ?? '',
+                                  style: TextStyles.bold16
+                                      .copyWith(color: AppColors.primaryColor),
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                )
+                              : Text(
+                                  isArabic()
+                                      ? entity.cityNameArabic ?? ''
+                                      : entity.cityName ?? '',
+                                  style: TextStyles.bold16
+                                      .copyWith(color: AppColors.primaryColor),
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
 
                           const SizedBox(height: 4),
 
                           // Rating
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              if (entity.rate != null)
-                                Row(
+                          isEvent
+                              ? SizedBox()
+                              : Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
-                                    const Icon(
-                                      Icons.star,
-                                      size: 16,
-                                      color: Colors.amber,
-                                    ),
-                                    const SizedBox(width: 4),
-                                    Text(
-                                      entity.rate!.toString(),
-                                      style: TextStyles.bold12,
-                                    ),
+                                    if (entity.rate != null)
+                                      Row(
+                                        children: [
+                                          const Icon(
+                                            Icons.star,
+                                            size: 16,
+                                            color: Colors.amber,
+                                          ),
+                                          const SizedBox(width: 4),
+                                          Text(
+                                            entity.rate!.toString(),
+                                            style: TextStyles.bold12,
+                                          ),
+                                        ],
+                                      ),
                                   ],
                                 ),
-                            ],
-                          ),
                         ],
                       ),
                     ),
@@ -166,39 +181,52 @@ class CustomSliverGridItem extends StatelessWidget {
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                           ),
-                          Text(
-                            isArabic()
-                                ? entity.cityNameArabic
-                                : entity.cityName ?? '',
-                            style: TextStyles.bold16
-                                .copyWith(color: AppColors.primaryColor),
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                          ),
+                          isEvent == true
+                              ? Text(
+                                  isArabic()
+                                      ? entity.locationArabic ?? ''
+                                      : entity.location ?? '',
+                                  style: TextStyles.bold16
+                                      .copyWith(color: AppColors.primaryColor),
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                )
+                              : Text(
+                                  isArabic()
+                                      ? entity.cityNameArabic ?? ''
+                                      : entity.cityName ?? '',
+                                  style: TextStyles.bold16
+                                      .copyWith(color: AppColors.primaryColor),
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
 
                           const SizedBox(height: 4),
 
                           // Rating
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              if (entity.rate != null)
-                                Row(
+                          isEvent
+                              ? SizedBox()
+                              : Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
-                                    const Icon(
-                                      Icons.star,
-                                      size: 16,
-                                      color: Colors.amber,
-                                    ),
-                                    const SizedBox(width: 4),
-                                    Text(
-                                      entity.rate!.toString(),
-                                      style: TextStyles.bold12,
-                                    ),
+                                    if (entity.rate != null)
+                                      Row(
+                                        children: [
+                                          const Icon(
+                                            Icons.star,
+                                            size: 16,
+                                            color: Colors.amber,
+                                          ),
+                                          const SizedBox(width: 4),
+                                          Text(
+                                            entity.rate!.toString(),
+                                            style: TextStyles.bold12,
+                                          ),
+                                        ],
+                                      ),
                                   ],
                                 ),
-                            ],
-                          ),
                         ],
                       ),
                     ),

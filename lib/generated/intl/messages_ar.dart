@@ -133,10 +133,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "contains": MessageLookupByLibrary.simpleMessage("تتسع ل : "),
     "dayTour": MessageLookupByLibrary.simpleMessage("رحلات يوم واحد"),
     "egyptiansTrip": MessageLookupByLibrary.simpleMessage("رحلات للمصريين"),
+    "endDate": MessageLookupByLibrary.simpleMessage("نهاية الرحله"),
     "exclusions": MessageLookupByLibrary.simpleMessage("الاستثنائات"),
     "films": MessageLookupByLibrary.simpleMessage("الأفلام"),
     "genre": MessageLookupByLibrary.simpleMessage("التصنيف : "),
-    "inclusions": MessageLookupByLibrary.simpleMessage("مشتملات الرحله"),
     "length": MessageLookupByLibrary.simpleMessage("المدة : "),
     "loggedInSuccessfully": MessageLookupByLibrary.simpleMessage(
       "تم تسجيل الدخول بنجاح",
@@ -144,6 +144,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "mallsCollection": MessageLookupByLibrary.simpleMessage("malls"),
     "metro": MessageLookupByLibrary.simpleMessage("اقرب محطة مترو :"),
     "moreAboutEgypt": MessageLookupByLibrary.simpleMessage("المزيد عن مصر"),
+    "moreInformation": MessageLookupByLibrary.simpleMessage(
+      "مزيد من المعلومات : ",
+    ),
     "mosquesCollection": MessageLookupByLibrary.simpleMessage("mosques"),
     "name": MessageLookupByLibrary.simpleMessage("الأسم"),
     "nearly": MessageLookupByLibrary.simpleMessage(
@@ -175,6 +178,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "showMore": MessageLookupByLibrary.simpleMessage(" عرض المزيد "),
     "sortBy": MessageLookupByLibrary.simpleMessage("ترتيب حسب :  "),
     "stars": MessageLookupByLibrary.simpleMessage("النجوم"),
+    "startDate": MessageLookupByLibrary.simpleMessage("بداية الرحله"),
     "startSearch": MessageLookupByLibrary.simpleMessage("ابدأ البحث الان "),
     "tourAvailability": MessageLookupByLibrary.simpleMessage("توافر الرحله"),
     "tourItinerary": MessageLookupByLibrary.simpleMessage("خط الرحله"),

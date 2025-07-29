@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:bordered_text/bordered_text.dart';
 import 'package:your_tour_guide/constants.dart';
-import 'package:your_tour_guide/models/event_model.dart';
+import 'package:your_tour_guide/features/events/data/models/event_model.dart';
 
 import 'core/utils/functions/is_arabic.dart';
 
@@ -427,8 +427,8 @@ class BuildAllOptionsNew extends StatelessWidget {
 }
 
 //-------------------------------------------------------
-class BuildAllUpcomingEvents extends StatelessWidget {
-  BuildAllUpcomingEvents({
+class BuildEventsViewEvents extends StatelessWidget {
+  BuildEventsViewEvents({
     Key? key,
     required this.model,
     required this.pushedPage,

@@ -1,49 +1,61 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:your_tour_guide/core/utils/functions/is_arabic.dart';
+import 'package:your_tour_guide/features/events/domain/entities/event_entity.dart';
 
-class Inclusions extends StatelessWidget {
-  Inclusions({
+class InclusionsWidget extends StatelessWidget {
+  InclusionsWidget({
     Key? key,
-    required this.icon,
-    required this.index,
-    required this.upcomingEvent,
-    required this.exclusionsOrInclusion,
-    required this.iconColor,
+    required this.eventEntity,
+    this.isInclusion = true,
   }) : super(key: key);
-  final IconData icon;
-  final int index;
-  final String exclusionsOrInclusion;
-  final QueryDocumentSnapshot<Object?> upcomingEvent;
-  final Color iconColor;
+  final EventEntity eventEntity;
+  final bool isInclusion;
+
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
-    return Container(
-
-      padding: EdgeInsets.only(left: 4),
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: Colors.black12,
-        ),
-      ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Icon(
-            icon,
-            color: iconColor,
-            size: 25,
+    return ListView.separated(
+      shrinkWrap: true,
+      physics: NeverScrollableScrollPhysics(),
+      itemCount: isInclusion
+          ? eventEntity.inclusions.length
+          : eventEntity.exclusions.length,
+      padding: EdgeInsets.zero,
+      itemBuilder: (_, i) {
+        return Container(
+          decoration: BoxDecoration(
+            border: Border.all(color: Colors.black12),
           ),
-          SizedBox(
-            width: 5,
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              isInclusion
+                  ? Icon(
+                      Icons.done,
+                      color: Colors.green,
+                      size: 25,
+                    )
+                  : Icon(
+                      Icons.close,
+                      color: Colors.red,
+                      size: 25,
+                    ),
+              SizedBox(width: 5),
+              Container(
+                width: screenWidth * 0.75,
+                child: isInclusion
+                    ? isArabic()
+                        ? Text(eventEntity.inclusions[i])
+                        : Text(eventEntity.inclusions[i])
+                    : isArabic()
+                        ? Text(eventEntity.exclusionsArabic[i])
+                        : Text(eventEntity.exclusions[i]),
+              ),
+            ],
           ),
-          Container(
-            width: screenWidth*0.75,
-            child: Text(upcomingEvent[exclusionsOrInclusion][index]),
-
-          ),
-        ],
-      ),
+        );
+      },
+      separatorBuilder: (_, i) => SizedBox(height: 4),
     );
   }
 }

@@ -1,4 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:your_tour_guide/features/events/domain/entities/event_entity.dart';
 
 class EventModel {
   final String about;
@@ -42,35 +42,6 @@ class EventModel {
       required this.startDate,
       required this.website});
 
-  List<EventModel> dataListFromSnapshot(QuerySnapshot querySnapshot) {
-    return querySnapshot.docs.map((snapshot) {
-      final Map<String, dynamic> dataMap =
-          snapshot.data() as Map<String, dynamic>;
-
-      return EventModel(
-        about: dataMap['about'],
-        aboutArabic: dataMap['aboutArabic'],
-        email: dataMap['email'],
-        endDate: dataMap['endDate'],
-        eventLink: dataMap['eventLink'],
-        exclusions: dataMap['exclusions'],
-        exclusionsArabic: dataMap['exclusionsArabic'],
-        imageUrl: dataMap['imageUrl'],
-        inclusions: dataMap['inclusions'],
-        inclusionsArabic: dataMap['inclusionsArabic'],
-        location: dataMap['location'],
-        locationArabic: dataMap['locationArabic'],
-        name: dataMap['name'],
-        nameArabic: dataMap['nameArabic'],
-        organizer: dataMap['organizer'],
-        phone: dataMap['phone'],
-        startDate: dataMap['startDate'],
-        website: dataMap['website'],
-        docId: dataMap['docId'],
-      );
-    }).toList();
-  }
-
   factory EventModel.fromJson(dataMap) {
     return EventModel(
       about: dataMap['about'],
@@ -92,6 +63,30 @@ class EventModel {
       startDate: dataMap['startDate'],
       website: dataMap['website'],
       docId: dataMap['docId'],
+    );
+  }
+
+  EventEntity toEntity() {
+    return EventEntity(
+      about: about,
+      aboutArabic: aboutArabic,
+      email: email,
+      endDate: endDate,
+      eventLink: eventLink,
+      exclusions: exclusions,
+      exclusionsArabic: exclusionsArabic,
+      imageUrl: imageUrl,
+      inclusions: inclusions,
+      inclusionsArabic: inclusionsArabic,
+      location: location,
+      locationArabic: locationArabic,
+      name: name,
+      nameArabic: nameArabic,
+      organizer: organizer,
+      phone: phone,
+      startDate: startDate,
+      website: website,
+      docId: docId,
     );
   }
 }

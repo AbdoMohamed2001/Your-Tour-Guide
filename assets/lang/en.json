@@ -105,7 +105,7 @@
   "TourType" : "Tour Type",
   "PickFrom" : "Pick from",
   "tourItinerary" : "Tour Itinerary",
-  "inclusions" : "Inclusions",
+  "InclusionsWidget" : "InclusionsWidget",
   "exclusions" : "Exclusions",
   "tourAvailability" : "Tour Availability",
   "tourOrganizer" : "Tour Organizer : ",

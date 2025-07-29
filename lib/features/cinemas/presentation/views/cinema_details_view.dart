@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:flutter/material.dart';
-import 'package:your_tour_guide/features/cinemas/data/repos/cinema_repo.dart';
+import 'package:your_tour_guide/features/cinemas/domain/repos/cinema_repo.dart';
 import 'package:your_tour_guide/features/cinemas/domain/entities/cinema_entity.dart';
 import 'package:your_tour_guide/features/cinemas/presentation/cubit/cinema_cubit.dart';
 
