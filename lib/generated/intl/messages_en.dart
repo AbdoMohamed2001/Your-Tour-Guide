@@ -138,19 +138,24 @@ class MessageLookup extends MessageLookupByLibrary {
     "endDate": MessageLookupByLibrary.simpleMessage("End Date"),
     "exclusions": MessageLookupByLibrary.simpleMessage("Exclusions"),
     "films": MessageLookupByLibrary.simpleMessage("Films"),
+    "general": MessageLookupByLibrary.simpleMessage("General"),
     "genre": MessageLookupByLibrary.simpleMessage("Movie Genre : "),
+    "help": MessageLookupByLibrary.simpleMessage("Help"),
     "inclusions": MessageLookupByLibrary.simpleMessage("Inclusions"),
+    "language": MessageLookupByLibrary.simpleMessage("Language"),
     "length": MessageLookupByLibrary.simpleMessage("Length : "),
     "loggedInSuccessfully": MessageLookupByLibrary.simpleMessage(
       "logged in successfully",
     ),
     "mallsCollection": MessageLookupByLibrary.simpleMessage("malls"),
     "metro": MessageLookupByLibrary.simpleMessage("Nearest Metro station :"),
+    "mode": MessageLookupByLibrary.simpleMessage("Mode"),
     "moreAboutEgypt": MessageLookupByLibrary.simpleMessage("More About Egypt"),
     "moreInformation": MessageLookupByLibrary.simpleMessage(
       "More information :",
     ),
     "mosquesCollection": MessageLookupByLibrary.simpleMessage("mosques"),
+    "myAccount": MessageLookupByLibrary.simpleMessage("My Account"),
     "name": MessageLookupByLibrary.simpleMessage("Name"),
     "nearly": MessageLookupByLibrary.simpleMessage(
       "Nearly in this governorate",
@@ -159,9 +164,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "noInternet": MessageLookupByLibrary.simpleMessage(
       "\'Your Device is offline. Your Tour Guide App requires internet connection to start\'",
     ),
+    "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
     "openingHours": MessageLookupByLibrary.simpleMessage("Opening \n Hours"),
     "passwordNotMatched": MessageLookupByLibrary.simpleMessage(
       "Password not matched",
+    ),
+    "personalProfile": MessageLookupByLibrary.simpleMessage(
+      "Profile information",
     ),
     "placesCollection": MessageLookupByLibrary.simpleMessage("places"),
     "pressBackAgain": MessageLookupByLibrary.simpleMessage(

@@ -7,7 +7,7 @@ import 'package:flutter/services.dart';
 import '../../../auth/presentation/views/register_view.dart';
 
 class WelcomeView extends StatelessWidget {
-  static String id = 'welcome';
+  static String id = 'welcomeView';
 
   const WelcomeView({
     Key? key,

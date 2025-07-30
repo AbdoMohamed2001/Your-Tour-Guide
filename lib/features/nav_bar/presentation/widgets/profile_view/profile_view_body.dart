@@ -1,254 +1,98 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:your_tour_guide/features/profile/presentation/cubit/profile_cubit.dart';
+import 'package:your_tour_guide/features/splash/presentation/views/welcome_view.dart';
 import '../../../../../constants.dart';
-import '../../../../../core/cubits/home/home_cubit.dart';
-import '../../../../../core/utils/functions/is_arabic.dart';
+import '../../../../../core/utils/text_styles.dart';
 import '../../../../../generated/l10n.dart';
-import '../../../../splash/presentation/views/welcome_view.dart';
-import '../../views/profile/edit_profile_view.dart';
+import '../../../../profile/presentation/widgets/profile_list_view.dart';
+import '../../../../profile/presentation/widgets/profile_list_view_items.dart';
+import '../../../../profile/presentation/widgets/user_info.dart';
 
 class ProfileViewBody extends StatelessWidget {
   const ProfileViewBody({super.key});
 
   @override
   Widget build(BuildContext context) {
-    var screenWidth = MediaQuery.of(context).size.width;
-    var currentUser = FirebaseAuth.instance.currentUser?.uid;
-    var authCubit = HomeCubit.get(context);
-    final CollectionReference users =
-        FirebaseFirestore.instance.collection('users');
-    return FutureBuilder<DocumentSnapshot>(
-      future: users.doc(currentUser).get(),
-      builder:
-          (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
-        var homeCubit = HomeCubit.get(context);
-        if (snapshot.data?.data == null) {
-          return Center(
-            child: CircularProgressIndicator(
-              color: Colors.orange,
-            ),
-          );
+    double deviceHeight = MediaQuery.of(context).size.height;
+    return BlocListener<ProfileCubit, ProfileState>(
+      listener: (context, state) {
+        if (state is ProfileLogoutSuccess) {
+          Navigator.pushReplacement(
+              context, MaterialPageRoute(builder: (_) => WelcomeView()));
         }
-        if (snapshot.data?.data != null) {
-          Map<String, dynamic> data =
-              snapshot.data!.data() as Map<String, dynamic>;
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Stack(
-                children: [
-                  Container(
-                    width: screenWidth,
-                    height: 250,
-                    child: Image.asset(
-                      homeCubit.isDark!
-                          ? 'assets/images/edit_profile_dark.png'
-                          : 'assets/images/edit_profile.png',
-                      fit: BoxFit.fitWidth,
-                    ),
-                  ),
-                  Positioned(
-                    top: 95,
-                    right: screenWidth * 0.3,
-                    child: GestureDetector(
-                      onTap: () {},
-                      child: Container(
-                        width: 150.0,
-                        height: 150.0,
-                        decoration: BoxDecoration(
-                          color: const Color(0xff7c94b6),
-                          image: DecorationImage(
-                            image: NetworkImage(data['photoUrl']),
-                            fit: BoxFit.cover,
-                          ),
-                          borderRadius: BorderRadius.all(Radius.circular(75.0)),
-                          border: Border.all(
-                            color: Colors.white,
-                            width: 4.0,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    top: 25,
-                    child: IconButton(
-                      onPressed: () {
-                        HomeCubit.get(context).changeIndex(0);
-                      },
-                      icon: isArabic()
-                          ? RotatedBox(
-                              quarterTurns: 2,
-                              child: Icon(
-                                Icons.arrow_back_ios_new_outlined,
-                                color: Theme.of(context).primaryColorDark,
-                              ),
-                            )
-                          : Icon(
-                              Icons.arrow_back_ios_new_outlined,
-                              color: Theme.of(context).primaryColorDark,
-                            ),
-                    ),
-                  ),
-                ],
+      },
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(height: deviceHeight * 0.01),
+            AppBar(
+              title: Text(
+                S.of(context).myAccount,
+                style: TextStyles.bold18,
               ),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: kHorizontalPadding),
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: 40,
-                    ),
-                    //-------------------------------------------------------------------------
-                    //Username
-                    Row(
-                      children: [
-                        Container(
-                          width: 110,
-                          child: Text(
-                            S.of(context).UserName,
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16,
-                            ),
-                          ),
-                        ),
-                        Text(
-                          data['username'],
-                          style: TextStyle(
-                            fontSize: screenWidth * 0.04,
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    //-------------------------------------------------------------------------
-                    //Email
-                    Row(
-                      children: [
-                        Container(
-                          width: 110,
-                          child: Center(
-                            child: Text(
-                              S.of(context).Email,
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 16,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Text(
-                          data['email'],
-                          style: TextStyle(
-                            fontSize: screenWidth * 0.035,
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 70,
-                    ),
-                    //-------------------------------------------------------------------------
-                    //Edit profile
-                    GestureDetector(
-                      onTap: () async {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) {
-                          return EditProfileView(
-                            data: data,
-                          );
-                        }));
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 100.0),
-                        child: Container(
-                          width: double.infinity,
-                          height: 35,
-                          decoration: BoxDecoration(
-                            color: Colors.grey[300],
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(8),
-                            ),
-                          ),
-                          child: Center(
-                              child: Text(
-                            S.of(context).EditProfile,
-                            style: TextStyle(
-                              color: Colors.black,
-                            ),
-                          )),
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    //-------------------------------------------------------------------------
-                    //sign out
-                    GestureDetector(
-                      onTap: () async {
-                        authCubit.emailLogOut();
-                        authCubit.facebookLogOut();
-                        authCubit.googleLogOut();
-
-                        Navigator.pushReplacement(context,
-                            MaterialPageRoute(builder: (context) {
-                          return WelcomeView();
-                        }));
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 100.0),
-                        child: Container(
-                          width: double.infinity,
-                          height: 35,
-                          decoration: BoxDecoration(
-                            color: Colors.orange[300],
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(8),
-                            ),
-                          ),
-                          child: Center(
-                              child: Text(
-                            S.of(context).SignOut,
-                            style: TextStyle(
-                              color: Colors.black,
-                            ),
-                          )),
-                        ),
-                      ),
-                    ),
-                  ],
+              centerTitle: true,
+              automaticallyImplyLeading: false,
+            ),
+            SizedBox(height: deviceHeight * 0.018),
+            //Profile Info
+            UserInfoWidget(),
+            SizedBox(height: deviceHeight * 0.018),
+            Text(
+              S.of(context).general,
+              style: TextStyles.regular14,
+            ),
+            SizedBox(height: deviceHeight * 0.016),
+            // Profile List
+            ProfileListView(
+              list: profileListWithArrowIcon(context),
+            ),
+            ProfileListView(
+              list: profileListWithoutIcon(context),
+              containsArrowIcon: false,
+            ),
+            Divider(
+              height: 1,
+              color: Color(0xffF2F3F3),
+            ),
+            SizedBox(height: deviceHeight * 0.024),
+            Text(
+              S.of(context).help,
+              style: TextStyles.regular14,
+            ),
+            SizedBox(height: deviceHeight * 0.018),
+            // ProfileListItemWithArrowIcon(
+            //   image: Assets.imagesInfoCircle,
+            //   text: 'من نحن',
+            //   pageName: 'about_us',
+            // ),
+            SizedBox(height: deviceHeight * 0.065),
+            //SignOut
+            InkWell(
+              onTap: () {
+                context.read<ProfileCubit>().signOut();
+              },
+              child: Container(
+                height: 41,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: Colors.orange.shade300,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Center(
+                  child: Text(
+                    S.of(context).SignOut,
+                    style: TextStyles.regular14,
+                  ),
                 ),
               ),
-              //-------------------------------------------------------------------------
-            ],
-          );
-        }
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return Center(
-            child: CircularProgressIndicator(
-              color: Colors.orange,
             ),
-          );
-        } else if (snapshot.hasError) {
-          return Scaffold(
-            body: Center(
-              child: Text('error with data'),
-            ),
-          );
-        }
-        return Scaffold(
-          body: Center(
-            child: Text('error with data'),
-          ),
-        );
-      },
+            SizedBox(height: deviceHeight * 0.035),
+          ],
+        ),
+      ),
     );
   }
 }

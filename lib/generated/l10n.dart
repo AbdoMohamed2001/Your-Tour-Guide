@@ -85,6 +85,11 @@ class S {
     return Intl.message('SIGNUP', name: 'SIGNUP', desc: '', args: []);
   }
 
+  /// `Sign out`
+  String get SignOut {
+    return Intl.message('Sign out', name: 'SignOut', desc: '', args: []);
+  }
+
   /// `logged in successfully`
   String get loggedInSuccessfully {
     return Intl.message(
@@ -215,6 +220,11 @@ class S {
     );
   }
 
+  /// `My Account`
+  String get myAccount {
+    return Intl.message('My Account', name: 'myAccount', desc: '', args: []);
+  }
+
   /// `Sign In`
   String get SignIn {
     return Intl.message('Sign In', name: 'SignIn', desc: '', args: []);
@@ -320,11 +330,6 @@ class S {
       desc: '',
       args: [],
     );
-  }
-
-  /// `Sign out`
-  String get SignOut {
-    return Intl.message('Sign out', name: 'SignOut', desc: '', args: []);
   }
 
   /// `How to go`
@@ -910,6 +915,46 @@ class S {
   /// `Overview`
   String get about {
     return Intl.message('Overview', name: 'about', desc: '', args: []);
+  }
+
+  /// `General`
+  String get general {
+    return Intl.message('General', name: 'general', desc: '', args: []);
+  }
+
+  /// `Help`
+  String get help {
+    return Intl.message('Help', name: 'help', desc: '', args: []);
+  }
+
+  /// `Notifications`
+  String get notifications {
+    return Intl.message(
+      'Notifications',
+      name: 'notifications',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Language`
+  String get language {
+    return Intl.message('Language', name: 'language', desc: '', args: []);
+  }
+
+  /// `Mode`
+  String get mode {
+    return Intl.message('Mode', name: 'mode', desc: '', args: []);
+  }
+
+  /// `Profile information`
+  String get personalProfile {
+    return Intl.message(
+      'Profile information',
+      name: 'personalProfile',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `'Your Device is offline. Your Tour Guide App requires internet connection to start'`

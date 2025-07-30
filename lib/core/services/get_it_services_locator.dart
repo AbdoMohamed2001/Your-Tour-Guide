@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get_it/get_it.dart';
 import 'package:your_tour_guide/core/data/repos/features_repo.dart';
+import 'package:your_tour_guide/features/auth/data/repos/auth_repo_impl.dart';
+import 'package:your_tour_guide/features/auth/domain/repos/auth_repo.dart';
 import 'package:your_tour_guide/features/cinemas/domain/repos/cinema_repo.dart';
 import 'package:your_tour_guide/features/cafes/data/repos/cafe_repo.dart';
 import 'package:your_tour_guide/features/cafes/domain/repos/cafe_repo_impl.dart';
@@ -63,6 +65,9 @@ void setupGetIt() {
       TourRemoteDataSourceImpl(databaseServices: getIt<DatabaseServices>()));
   //------------------------------------------------------------------
   //Repos
+  getIt.registerSingleton<AuthRepo>(AuthRepoImpl(
+      firebaseAuthService: getIt<FirebaseAuthService>(),
+      databaseServices: getIt<DatabaseServices>()));
   getIt.registerSingleton<SearchRepo>(
       SearchRepositoryImpl(remoteDataSource: getIt<SearchRemoteDataSource>()));
   getIt

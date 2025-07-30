@@ -4,6 +4,7 @@
   "APP"       			:"APP",
   "LOGIN"    			:"LOGIN",
   "SIGNUP"   			:"SIGNUP",
+  "SignOut":"Sign out",
 
 
   "loggedInSuccessfully"     :"logged in successfully",
@@ -22,6 +23,7 @@
   "passwordNotMatched":"Password not matched",
   "SignUp":"Sign Up",
   "AlreadyHaveAccount":"Already have account",
+  "myAccount":"My Account",
   "SignIn":"Sign In",
   "ChooseWhatToSearchFor":"Choose what to search for",
   "Explore":"Explore",
@@ -37,7 +39,6 @@
   "NoResultsReturned":"No Results Returned",
 
   "EditProfile":"Edit Profile",
-  "SignOut":"Sign out",
   "HowToGo": "How to go",
   "pressBackAgain": "Press Back Again To Exit",
 
@@ -148,6 +149,13 @@
   "city" : "City",
   "bed": "Bed :",
   "about": "Overview",
+  "general": "General",
+  "help": "Help",
+  "notifications": "Notifications",
+  "language": "Language",
+  "mode": "Mode",
+  "personalProfile": "Profile information",
+
   "noInternet": "'Your Device is offline. Your Tour Guide App requires internet connection to start'"
 
 

@@ -118,6 +118,7 @@ class AuthRepoImpl implements AuthRepo {
     }
   }
 
+//--------------------------------------------------------------------------------
   @override
   Future addUserData({required UserEntity userEntity, String? userId}) async {
     await databaseServices.addUser(
@@ -126,18 +127,21 @@ class AuthRepoImpl implements AuthRepo {
       docId: userId,
     );
   }
+//--------------------------------------------------------------------------------
 
   @override
   Future<UserEntity> getUserData({required String docId}) async {
     var data = await databaseServices.getData(path: 'users', recordId: docId);
     return UserModel.fromFireStore(data);
   }
+//--------------------------------------------------------------------------------
 
   @override
   Future cacheUserData({required UserEntity userEntity}) async {
     var userModelEncoded = jsonEncode(UserModel.fromEntity(userEntity).toMap());
     await Prefs.setString(kUserData, userModelEncoded);
   }
+//--------------------------------------------------------------------------------
 
   Future<void> deleteUserMethod(User? user) async {
     if (user != null) {
@@ -170,7 +174,7 @@ class AuthRepoImpl implements AuthRepo {
     return right(null);
   }
 
-  //-----------
+//--------------------------------------------------------------------------------
   @override
   Future<Either<Failure, void>> updateEmail(
       {required String userId, required String email}) async {
@@ -192,11 +196,9 @@ class AuthRepoImpl implements AuthRepo {
       return left(ServerFailure(message: 'error while trying to update data'));
     }
     return right(null);
-    // TODO: implement updateEmail
-    throw UnimplementedError();
   }
 
-  //-------------------------------------------
+//--------------------------------------------------------------------------------
   @override
   Future updateCachedData({
     required String key,
@@ -217,4 +219,17 @@ class AuthRepoImpl implements AuthRepo {
       log("Error updating display name in cache: $e");
     }
   }
+
+//--------------------------------------------------------------------------------
+  @override
+  Future<Either<Failure, void>> logout() async {
+    try {
+      await firebaseAuthService.signOut();
+      return right(null);
+    } catch (e) {
+      log('error while trying to logout ${e.toString()}');
+      return left(Failure(message: 'error while trying to logout'));
+    }
+  }
+//--------------------------------------------------------------------------------
 }

@@ -5,14 +5,37 @@ class Assets {
   static const String assetsImagesApplogo = 'assets/images/applogo.psd';
   static const String assetsImagesEditProfileDark =
       'assets/images/edit_profile_dark.png';
+  static const String boldCategoriesBold =
+      'assets/icons/bold/categories-bold.svg';
+  static const String boldHomeBold = 'assets/icons/bold/home-bold.svg';
+  static const String boldShoppingCartBold =
+      'assets/icons/bold/shopping-cart-bold.svg';
+  static const String boldUserBold = 'assets/icons/bold/user-bold.svg';
   static const String iconsAllCities = 'assets/icons/allCities.svg';
   static const String iconsBestPlace = 'assets/icons/bestPlace.svg';
+  static const String iconsCalendar = 'assets/icons/calendar.svg';
+  static const String iconsCamera = 'assets/icons/Camera.svg';
+  static const String iconsCircles = 'assets/icons/circles.svg';
+  static const String iconsEdit = 'assets/icons/edit.svg';
+  static const String iconsEmptyWallet = 'assets/icons/empty-wallet.svg';
   static const String iconsEvent = 'assets/icons/event.svg';
+  static const String iconsFacebook = 'assets/icons/facebook.svg';
+  static const String iconsFavourites = 'assets/icons/favourites.svg';
+  static const String iconsGlobal = 'assets/icons/global.svg';
+  static const String iconsGoogle = 'assets/icons/google.svg';
+  static const String iconsHeart = 'assets/icons/heart.svg';
   static const String iconsHotel = 'assets/icons/hotel.svg';
+  static const String iconsInfoCircle = 'assets/icons/info-circle.svg';
   static const String iconsLogo = 'assets/icons/logo.png';
+  static const String iconsMagicpen = 'assets/icons/magicpen.svg';
   static const String iconsMosque = 'assets/icons/mosque.svg';
+  static const String iconsNoResult2 = 'assets/icons/no-result2.png';
+  static const String iconsNotification = 'assets/icons/notification.svg';
+  static const String iconsPlusIcon = 'assets/icons/plus-icon.svg';
   static const String iconsPyramids02 = 'assets/icons/pyramids-02.eps';
+  static const String iconsSearchIcon = 'assets/icons/search-icon.svg';
   static const String iconsServices = 'assets/icons/services.svg';
+  static const String iconsSettingIcon = 'assets/icons/setting-icon.svg';
   static const String iconsTour = 'assets/icons/tour.svg';
   static const String images1 = 'assets/images/1.jpg';
   static const String imagesAppLogoBlack = 'assets/images/appLogoBlack.png';
@@ -61,4 +84,12 @@ class Assets {
       'assets/images/old/app_logo_dark_theme.png';
   static const String oldApplelogo = 'assets/images/old/applelogo.png';
   static const String oldCalendarImage = 'assets/images/old/calendar image.jpg';
+  static const String outlinedCategoriesOutlined =
+      'assets/icons/outlined/categories-outlined.svg';
+  static const String outlinedHomeOutlined =
+      'assets/icons/outlined/home-outlined.svg';
+  static const String outlinedShoppingCartOutlined =
+      'assets/icons/outlined/shopping-cart-outlined.svg';
+  static const String outlinedUserOutlined =
+      'assets/icons/outlined/user-outlined.svg';
 }

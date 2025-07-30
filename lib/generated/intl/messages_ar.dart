@@ -136,18 +136,23 @@ class MessageLookup extends MessageLookupByLibrary {
     "endDate": MessageLookupByLibrary.simpleMessage("نهاية الرحله"),
     "exclusions": MessageLookupByLibrary.simpleMessage("الاستثنائات"),
     "films": MessageLookupByLibrary.simpleMessage("الأفلام"),
+    "general": MessageLookupByLibrary.simpleMessage("عام"),
     "genre": MessageLookupByLibrary.simpleMessage("التصنيف : "),
+    "help": MessageLookupByLibrary.simpleMessage("المساعدة"),
+    "language": MessageLookupByLibrary.simpleMessage("اللغة"),
     "length": MessageLookupByLibrary.simpleMessage("المدة : "),
     "loggedInSuccessfully": MessageLookupByLibrary.simpleMessage(
       "تم تسجيل الدخول بنجاح",
     ),
     "mallsCollection": MessageLookupByLibrary.simpleMessage("malls"),
     "metro": MessageLookupByLibrary.simpleMessage("اقرب محطة مترو :"),
+    "mode": MessageLookupByLibrary.simpleMessage("الوضع"),
     "moreAboutEgypt": MessageLookupByLibrary.simpleMessage("المزيد عن مصر"),
     "moreInformation": MessageLookupByLibrary.simpleMessage(
       "مزيد من المعلومات : ",
     ),
     "mosquesCollection": MessageLookupByLibrary.simpleMessage("mosques"),
+    "myAccount": MessageLookupByLibrary.simpleMessage("حسابي"),
     "name": MessageLookupByLibrary.simpleMessage("الأسم"),
     "nearly": MessageLookupByLibrary.simpleMessage(
       "قريب من المكان في نفس المحافظة",
@@ -156,10 +161,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "noInternet": MessageLookupByLibrary.simpleMessage(
       "\'جهازك غير متصل بالإنترنت. يتطلب تطبيق Your Tour Guide اتصالاً بالإنترنت للبدء\'",
     ),
+    "notifications": MessageLookupByLibrary.simpleMessage("الاشعارات"),
     "openingHours": MessageLookupByLibrary.simpleMessage("مواعيد \n العمل"),
     "passwordNotMatched": MessageLookupByLibrary.simpleMessage(
       "كلمة المرور غير متطابقة",
     ),
+    "personalProfile": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),
     "placesCollection": MessageLookupByLibrary.simpleMessage("places"),
     "pressBackAgain": MessageLookupByLibrary.simpleMessage(
       "اضغط مرة اخري للخروج",

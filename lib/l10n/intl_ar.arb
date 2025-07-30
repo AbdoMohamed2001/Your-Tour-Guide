@@ -4,6 +4,7 @@
   "APP"       			:"برنامج",
   "LOGIN"    			:"تسجيل دخول",
   "SIGNUP"   			:"انشاء حساب",
+  "SignOut":"تسجيل الخروج",
 
 
   "loggedInSuccessfully"     :"تم تسجيل الدخول بنجاح",
@@ -22,6 +23,7 @@
   "passwordNotMatched":"كلمة المرور غير متطابقة",
   "SignUp":"انشاء حساب",
   "AlreadyHaveAccount":"لديك حساب بالفعل ؟",
+  "myAccount":"حسابي",
   "SignIn":"تسحيل دخول",
   "ChooseWhatToSearchFor":"اختر ما تبحث عنه",
   "Explore":"اكتشف",
@@ -37,7 +39,6 @@
   "NoResultsReturned":"",
 
   "EditProfile":"تعديل الملف الشخصي",
-  "SignOut":"تسجيل الخروج",
 
 
   "bestPlacesCollection" : "bestPlaces",
@@ -143,6 +144,13 @@
   "city" : "المدينة",
   "bed": "السرير :",
   "about": "نظرة عامة",
+  "general": "عام",
+  "help": "المساعدة",
+  "notifications": "الاشعارات",
+  "language": "اللغة",
+  "mode": "الوضع",
+  "personalProfile": "الملف الشخصي",
+
   "noInternet": "'جهازك غير متصل بالإنترنت. يتطلب تطبيق Your Tour Guide اتصالاً بالإنترنت للبدء'"
 
 
