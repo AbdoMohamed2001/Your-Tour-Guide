@@ -42,6 +42,7 @@ class ProfileCubit extends Cubit<ProfileState> {
     );
   }
 
+//
   void signOut() async {
     emit(ProfileLogoutLoading());
     var result = await authRepo.logout();

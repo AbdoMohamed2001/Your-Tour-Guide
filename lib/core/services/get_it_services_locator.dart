@@ -63,7 +63,7 @@ void setupGetIt() {
       EventRemoteDataSourceImpl(databaseServices: getIt<DatabaseServices>()));
   getIt.registerSingleton<TourRemoteDataSource>(
       TourRemoteDataSourceImpl(databaseServices: getIt<DatabaseServices>()));
-  //------------------------------------------------------------------
+  //-------------------------------------------------------------------
   //Repos
   getIt.registerSingleton<AuthRepo>(AuthRepoImpl(
       firebaseAuthService: getIt<FirebaseAuthService>(),

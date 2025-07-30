@@ -13,7 +13,7 @@ class ProfileListItemWithArrowIcon extends StatelessWidget {
     required this.text,
     required this.pageName,
   });
-
+//
   final String image;
   final String text;
   final String pageName;

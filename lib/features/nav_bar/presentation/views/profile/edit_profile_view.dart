@@ -12,7 +12,7 @@ class EditProfileView extends StatelessWidget {
   static String id = 'EditProfileView';
   const EditProfileView({super.key, required this.data});
   final Map<String, dynamic> data;
-
+//
   @override
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.of(context).size.width;

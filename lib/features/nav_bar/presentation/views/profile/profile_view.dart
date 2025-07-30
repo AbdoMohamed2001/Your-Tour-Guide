@@ -7,7 +7,7 @@ import 'package:your_tour_guide/features/profile/presentation/cubit/profile_cubi
 
 class ProfileView extends StatelessWidget {
   static String id = '  ProfileView';
-
+//
   @override
   Widget build(BuildContext context) {
     return Scaffold(

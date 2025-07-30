@@ -20,6 +20,7 @@ class ProfileViewBody extends StatelessWidget {
         if (state is ProfileLogoutSuccess) {
           Navigator.pushReplacement(
               context, MaterialPageRoute(builder: (_) => WelcomeView()));
+          //
         }
       },
       child: Padding(

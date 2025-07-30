@@ -7,7 +7,7 @@ class ProfileListView extends StatelessWidget {
     required this.list,
     this.containsArrowIcon = true,
   });
-
+//
   final List list;
   final bool containsArrowIcon;
 

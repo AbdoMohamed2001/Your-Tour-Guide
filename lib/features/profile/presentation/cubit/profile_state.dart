@@ -21,6 +21,7 @@ final class ProfileLogoutFailure extends ProfileState {
   ProfileLogoutFailure({required this.failMessage});
 }
 
+//
 final class ProfileLogoutSuccess extends ProfileState {}
 
 final class ProfileLogoutLoading extends ProfileState {}

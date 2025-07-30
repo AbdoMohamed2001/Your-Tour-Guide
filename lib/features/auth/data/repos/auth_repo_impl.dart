@@ -174,6 +174,7 @@ class AuthRepoImpl implements AuthRepo {
     return right(null);
   }
 
+//
 //--------------------------------------------------------------------------------
   @override
   Future<Either<Failure, void>> updateEmail(

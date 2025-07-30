@@ -15,6 +15,7 @@ class UserInfoWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ProfileCubit, ProfileState>(
+      //
       buildWhen: (previous, current) => current is ProfileSuccess,
       builder: (context, state) {
         if (state is ProfileSuccess) {
