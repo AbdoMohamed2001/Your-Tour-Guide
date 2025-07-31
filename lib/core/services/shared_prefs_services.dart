@@ -29,4 +29,8 @@ class Prefs {
   static List<String>? getStringList(String key) {
     return _instance.getStringList(key);
   }
+
+  static Future<void> delete(String key) async {
+    await _instance.remove(key);
+  }
 }

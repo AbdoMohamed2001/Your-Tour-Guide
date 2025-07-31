@@ -21,8 +21,8 @@ class GetSearchSuggestionsUseCase
 
   @override
   Future<Either<Failure, List<String>>> call(
-      GetSearchSuggestionsParams params) async {
-    if (params.query.trim().isEmpty) {
+      {GetSearchSuggestionsParams? params}) async {
+    if (params!.query.trim().isEmpty) {
       return const Right([]);
     }
     return await searchRepo.getSearchSuggestions(params.query,

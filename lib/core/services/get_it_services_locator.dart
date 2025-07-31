@@ -1,8 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get_it/get_it.dart';
 import 'package:your_tour_guide/core/data/repos/features_repo.dart';
-import 'package:your_tour_guide/features/auth/data/repos/auth_repo_impl.dart';
-import 'package:your_tour_guide/features/auth/domain/repos/auth_repo.dart';
+import 'package:your_tour_guide/features/auth/data/datasources/remote/auth_remote_datasource.dart';
+import 'package:your_tour_guide/features/auth/domain/repos/auth_repo_impl.dart';
+import 'package:your_tour_guide/features/auth/data/repos/auth_repo.dart';
+import 'package:your_tour_guide/features/auth/domain/usecases/is_logged_use_case.dart';
+import 'package:your_tour_guide/features/auth/domain/usecases/login_usecase.dart';
+import 'package:your_tour_guide/features/auth/domain/usecases/login_with_facebook_usecase.dart';
+import 'package:your_tour_guide/features/auth/domain/usecases/login_with_google_usecase.dart';
+import 'package:your_tour_guide/features/auth/domain/usecases/register_use_case.dart';
 import 'package:your_tour_guide/features/cinemas/domain/repos/cinema_repo.dart';
 import 'package:your_tour_guide/features/cafes/data/repos/cafe_repo.dart';
 import 'package:your_tour_guide/features/cafes/domain/repos/cafe_repo_impl.dart';
@@ -11,7 +17,6 @@ import 'package:your_tour_guide/features/churchs/domain/repos/church_repo_impl.d
 import 'package:your_tour_guide/features/events/data/datasources/event_remote_data_source.dart';
 import 'package:your_tour_guide/features/events/data/repos/event_repo_impl.dart';
 import 'package:your_tour_guide/features/events/domain/repos/event_repo.dart';
-import 'package:your_tour_guide/features/events/domain/usecases/get_events_usecase.dart';
 import 'package:your_tour_guide/features/favourite/data/data_sources/local_data_source.dart';
 import 'package:your_tour_guide/features/favourite/data/data_sources/remote_data_source.dart';
 import 'package:your_tour_guide/features/favourite/data/repos/favourite_repo.dart';
@@ -32,8 +37,8 @@ import 'package:your_tour_guide/features/search/domain/use_cases/get_entity_from
 import 'package:your_tour_guide/features/search/domain/use_cases/search_collections_usecase.dart';
 import 'package:your_tour_guide/features/tours/data/datasources/tour_remote_data_source.dart';
 import 'package:your_tour_guide/features/tours/domain/repos/tour_repo.dart';
-import 'package:your_tour_guide/features/tours/domain/usecases/get_tours_usecase.dart';
 
+import '../../features/auth/data/datasources/local/auth_local_datasource.dart';
 import '../../features/cinemas/data/repos/cinema_repo_impl.dart';
 import '../../features/cities/data/repos/city_repo.dart';
 import '../../features/cities/domain/repos/city_repo_impl.dart';
@@ -63,11 +68,15 @@ void setupGetIt() {
       EventRemoteDataSourceImpl(databaseServices: getIt<DatabaseServices>()));
   getIt.registerSingleton<TourRemoteDataSource>(
       TourRemoteDataSourceImpl(databaseServices: getIt<DatabaseServices>()));
+  getIt.registerSingleton<AuthRemoteDataSource>(AuthRemoteDataSourceImpl(
+      getIt<FirebaseAuthService>(), getIt<DatabaseServices>()));
+  getIt.registerSingleton<AuthLocalDataSource>(AuthLocalDataSourceImpl());
   //-------------------------------------------------------------------
   //Repos
   getIt.registerSingleton<AuthRepo>(AuthRepoImpl(
-      firebaseAuthService: getIt<FirebaseAuthService>(),
-      databaseServices: getIt<DatabaseServices>()));
+    getIt<AuthRemoteDataSource>(),
+    getIt<AuthLocalDataSource>(),
+  ));
   getIt.registerSingleton<SearchRepo>(
       SearchRepositoryImpl(remoteDataSource: getIt<SearchRemoteDataSource>()));
   getIt
@@ -110,10 +119,19 @@ void setupGetIt() {
   getIt.registerSingleton<GetEntityFromSearchUseCase>(
     GetEntityFromSearchUseCase(getIt<SearchRepo>()),
   );
-  getIt.registerSingleton<GetEventsUseCase>(
-    GetEventsUseCase(getIt<EventRepo>()),
+  getIt.registerSingleton<LoginUseCase>(
+    LoginUseCase(getIt<AuthRepo>()),
   );
-  getIt.registerSingleton<GetToursUseCase>(
-    GetToursUseCase(getIt<TourRepo>()),
+  getIt.registerSingleton<LoginWithGoogleUseCase>(
+    LoginWithGoogleUseCase(getIt<AuthRepo>()),
+  );
+  getIt.registerSingleton<LoginWithFacebookUseCase>(
+    LoginWithFacebookUseCase(getIt<AuthRepo>()),
+  );
+  getIt.registerSingleton<RegisterUseCase>(
+    RegisterUseCase(getIt<AuthRepo>()),
+  );
+  getIt.registerSingleton<IsLoggedUseCase>(
+    IsLoggedUseCase(getIt<AuthRepo>()),
   );
 }

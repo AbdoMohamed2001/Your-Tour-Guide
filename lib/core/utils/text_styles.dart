@@ -30,6 +30,35 @@ class TextStyles {
     fontSize: 24,
     fontWeight: FontWeight.w700,
   );
+  //Semi Bold
+  static const TextStyle semiBold12 = TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w600,
+  );
+  static const TextStyle semiBold14 = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w600,
+  );
+  static const TextStyle semiBold16 = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w600,
+  );
+  static const TextStyle semiBold18 = TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.w600,
+  );
+  static const TextStyle semiBold22 = TextStyle(
+    fontSize: 22,
+    fontWeight: FontWeight.w600,
+  );
+  static const TextStyle semiBold24 = TextStyle(
+    fontSize: 24,
+    fontWeight: FontWeight.w600,
+  );
+  static const TextStyle semiBold28 = TextStyle(
+    fontSize: 24,
+    fontWeight: FontWeight.w600,
+  );
 //Regular
   static const TextStyle regular14 = TextStyle(
     fontSize: 14,

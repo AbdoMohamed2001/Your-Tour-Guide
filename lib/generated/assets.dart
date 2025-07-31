@@ -45,6 +45,7 @@ class Assets {
   static const String imagesAppLogoLightMode =
       'assets/images/appLogoLightMode.png';
   static const String imagesApplogo = 'assets/images/applogo.png';
+  static const String imagesApplogonew = 'assets/images/applogonew.png';
   static const String imagesBooking = 'assets/images/booking.png';
   static const String imagesCalendar = 'assets/images/calendar.png';
   static const String imagesDurationIcon3 = 'assets/images/duration-icon-3.jpg';

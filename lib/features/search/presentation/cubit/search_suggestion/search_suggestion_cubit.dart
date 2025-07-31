@@ -24,7 +24,7 @@ class SearchSuggestionCubit extends Cubit<SearchSuggestionState> {
       limit: limit,
     );
 
-    final result = await getSearchSuggestionsUseCase(params);
+    final result = await getSearchSuggestionsUseCase(params: params);
 
     result.fold(
       (failure) => emit(SearchSuggestionsError(failure.message)),

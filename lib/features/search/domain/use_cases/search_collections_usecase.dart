@@ -13,8 +13,8 @@ class SearchAcrossCollectionsUseCase
 
   @override
   Future<Either<Failure, List<SearchResultEntity>>> call(
-      SearchParamsEntity params) async {
-    if (params.query.trim().isEmpty) {
+      {SearchParamsEntity? params}) async {
+    if (params!.query.trim().isEmpty) {
       return const Right([]);
     }
     return await searchRepo.searchAcrossCollections(params);

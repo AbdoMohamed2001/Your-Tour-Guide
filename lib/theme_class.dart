@@ -10,7 +10,7 @@ class ThemeClass {
       seedColor: AppColors.primaryColor,
       brightness: Brightness.light,
     ),
-    scaffoldBackgroundColor: Colors.white,
+    scaffoldBackgroundColor: Color(0xffFCFCFC),
     appBarTheme: AppBarTheme(
       backgroundColor: Color(0xffFFFFFF),
       systemOverlayStyle: SystemUiOverlayStyle(
@@ -44,6 +44,8 @@ class ThemeClass {
       labelStyle: TextStyle(
         color: Colors.black,
       ),
+      suffixIconColor: AppColors.primaryColor,
+      prefixIconColor: AppColors.primaryColor,
       contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(8),
@@ -77,7 +79,7 @@ class ThemeClass {
     canvasColor: Colors.white70,
     cardColor: Colors.white70,
   );
-
+//---------------------------------------------------------------------------------
   static ThemeData darkTheme = ThemeData(
     useMaterial3: true,
     colorScheme: ColorScheme.fromSeed(
@@ -104,6 +106,8 @@ class ThemeClass {
       labelStyle: TextStyle(
         color: Colors.black,
       ),
+      suffixIconColor: AppColors.primaryColor,
+      prefixIconColor: AppColors.primaryColor,
       contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(8),

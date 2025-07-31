@@ -11,4 +11,4 @@ const kDivider = Divider(
 );
 const kTextColor = Colors.white;
 const kAppBarFontSize = 16;
-const double kHorizontalPadding = 8;
+const double kHorizontalPadding = 16;

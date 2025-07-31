@@ -10,6 +10,7 @@ class FirebaseAuthService {
     await FirebaseAuth.instance.currentUser?.delete();
   }
 
+//-------------------------------------------------------------------
   Future<User> registerUser(
       {required String email, required String password}) async {
     try {
@@ -30,6 +31,7 @@ class FirebaseAuthService {
       throw CustomExceptions(message: 'هناك خطأ برجاء المحاولة في وقت لاحق');
     }
   }
+//-------------------------------------------------------------------
 
   Future<User> loginUser(
       {required String email, required String password}) async {
@@ -59,6 +61,7 @@ class FirebaseAuthService {
       throw CustomExceptions(message: 'هناك خطأ برجاء المحاولة في وقت لاحق');
     }
   }
+//-------------------------------------------------------------------
 
   Future<User> signInWithGoogle() async {
     try {
@@ -84,6 +87,7 @@ class FirebaseAuthService {
       throw CustomExceptions(message: 'هناك خطأ برجاء المحاولة في وقت لاحق');
     }
   }
+//-------------------------------------------------------------------
 
   Future<User> signInWithFacebook() async {
     try {
@@ -104,10 +108,12 @@ class FirebaseAuthService {
     }
   }
 
+//-------------------------------------------------------------------
   bool isLoggedIn() {
     return FirebaseAuth.instance.currentUser != null;
   }
 
+//-------------------------------------------------------------------
   Future<void> signOut() async {
     await FirebaseAuth.instance.signOut();
   }

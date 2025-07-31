@@ -46,7 +46,8 @@ class SearchCubit extends Cubit<SearchState> {
     }
     emit(SearchLoading());
 
-    final result = await searchAcrossCollectionsUseCase(searchParamsEntity);
+    final result =
+        await searchAcrossCollectionsUseCase(params: searchParamsEntity);
 
     result.fold(
       (failure) => emit(SearchError(failure.message)),
