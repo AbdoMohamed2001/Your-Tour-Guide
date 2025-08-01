@@ -37,38 +37,39 @@ class ThemeClass {
       displayColor: Colors.black,
     ),
     inputDecorationTheme: InputDecorationTheme(
+      filled: true,
+      fillColor: Color(0xFFF7F7F7),
       errorMaxLines: 2,
-      hintStyle: TextStyle(
-        color: Colors.black,
-      ),
-      labelStyle: TextStyle(
-        color: Colors.black,
-      ),
+      hintStyle: TextStyle(color: Colors.grey[600]),
+      labelStyle: TextStyle(color: Colors.black87),
       suffixIconColor: AppColors.primaryColor,
       prefixIconColor: AppColors.primaryColor,
       contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
       border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8),
-        borderSide: BorderSide(color: AppColors.primaryColor),
+        borderRadius: BorderRadius.circular(12),
+        borderSide:
+            BorderSide(color: AppColors.primaryColor.withValues(alpha: 153)),
       ),
       enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8),
-        borderSide: BorderSide(color: AppColors.primaryColor),
+        borderRadius: BorderRadius.circular(12),
+        borderSide:
+            BorderSide(color: AppColors.primaryColor.withValues(alpha: 153)),
       ),
       focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8),
-        borderSide: BorderSide(color: AppColors.primaryColor),
+        borderRadius: BorderRadius.circular(12),
+        borderSide: BorderSide(color: AppColors.primaryColor, width: 2),
       ),
       errorBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(12),
         borderSide: const BorderSide(
-          color: Colors.red,
+          color: Colors.redAccent,
         ),
       ),
       focusedErrorBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(12),
         borderSide: const BorderSide(
-          color: Colors.red,
+          color: Colors.redAccent,
+          width: 2,
         ),
       ),
     ),
@@ -99,37 +100,39 @@ class ThemeClass {
       displayColor: Colors.white,
     ),
     inputDecorationTheme: InputDecorationTheme(
+      filled: true,
+      fillColor: Colors.grey[850],
       errorMaxLines: 2,
-      hintStyle: TextStyle(
-        color: Colors.black,
-      ),
+      hintStyle: TextStyle(color: Colors.grey[400]),
       labelStyle: TextStyle(
-        color: Colors.black,
+        color: Colors.white,
+        fontWeight: FontWeight.w500,
       ),
       suffixIconColor: AppColors.primaryColor,
       prefixIconColor: AppColors.primaryColor,
       contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
       border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8),
-        borderSide: BorderSide(color: AppColors.primaryColor),
+        borderRadius: BorderRadius.circular(12),
+        borderSide:
+            BorderSide(color: AppColors.primaryColor.withValues(alpha: 153)),
       ),
       enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8),
-        borderSide: BorderSide(color: AppColors.primaryColor),
+        borderRadius: BorderRadius.circular(12),
+        borderSide:
+            BorderSide(color: AppColors.primaryColor.withValues(alpha: 153)),
       ),
       focusedBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: AppColors.primaryColor),
+        borderSide: BorderSide(color: AppColors.primaryColor, width: 2),
       ),
       errorBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8),
-        borderSide: const BorderSide(
-          color: Colors.red,
-        ),
+        borderRadius: BorderRadius.circular(12),
+        borderSide: const BorderSide(color: Colors.redAccent),
       ),
       focusedErrorBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(12),
         borderSide: const BorderSide(
-          color: Colors.red,
+          color: Colors.redAccent,
+          width: 2,
         ),
       ),
     ),

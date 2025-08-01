@@ -25,6 +25,8 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  Bloc.observer = SimpleBlocObserver();
+
   setupGetIt();
   runApp(
     DevicePreview(
@@ -43,7 +45,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(
         SystemUiOverlayStyle(statusBarColor: Colors.transparent));
-    Bloc.observer = SimpleBlocObserver();
     return BlocProvider(
       create: (context) => HomeCubit(getIt.get<PlacesRepo>())
         ..getSavedTheme()

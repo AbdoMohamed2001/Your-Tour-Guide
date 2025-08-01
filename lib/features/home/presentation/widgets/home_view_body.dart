@@ -30,7 +30,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(14),
+      padding: const EdgeInsets.all(kHorizontalPadding),
       child: ListView(
         children: [
           Column(
@@ -46,7 +46,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                   context.read<HomeCubit>().changeIndex(1);
                 },
                 child: CustomTextField(
-                  labelText: S.of(context).startSearch,
+                  labelText: S.of(context).search,
                   prefixIcon: Icon(
                     Icons.search,
                     color: Theme.of(context).textTheme.bodyLarge?.color,

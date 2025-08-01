@@ -114,51 +114,6 @@ class HomeCubit extends Cubit<HomeState> {
     FontAwesomeIcons.heart,
     FontAwesomeIcons.user,
   ];
-  final List<String> searchAbout = [
-    'hotels',
-    'malls',
-    'places',
-    'mosques',
-    'cinemas',
-    'cafes',
-    'churchs',
-    'cities',
-    'restaurants',
-  ];
-  final List<String> searchAboutArabic = [
-    'Hotels',
-    'Malls',
-    'Places',
-    'Mosques',
-    'Cinemas',
-    'Cafes',
-    'Churches',
-    'cities',
-    'Restaurants',
-
-    // S.current.Hotels,
-    // S.current.Malls,
-    // S.current.Places,
-    // S.current.Mosques,
-    // S.current.Cinemas,
-    // S.current.Cafes,
-    // S.current.Churches,
-    // S.current.cities,
-    // S.current.Restaurants,
-  ];
-
-  void changeCollectionName(int index) {
-    collectionName = searchAbout[index];
-    collectionNameAfter = collectionName;
-    print('this is collection name with cubit function $collectionName');
-    emit(HomeChangeCollectionName());
-  }
-
-  void pop(context) {
-    Navigator.pop(context, collectionName);
-    emit(HomeUpdateUi());
-    print('this is collectionName when pop $collectionName');
-  }
 
   void updateUi() {
     emit(HomeUpdateUi());

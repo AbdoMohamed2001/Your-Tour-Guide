@@ -42,10 +42,6 @@ class CustomTextField extends StatelessWidget {
       style: TextStyles.regular14,
       onFieldSubmitted: onFieldSubmitted,
       decoration: InputDecoration(
-        labelStyle: TextStyle(
-            color: labelColor ?? Theme.of(context).textTheme.bodyLarge?.color),
-        filled: true,
-        fillColor: Colors.grey.shade50,
         prefixIcon: prefixIcon,
         suffixIcon: suffixIcon,
         labelText: labelText,

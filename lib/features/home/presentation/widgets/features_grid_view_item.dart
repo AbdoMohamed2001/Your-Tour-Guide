@@ -1,3 +1,4 @@
+import 'package:your_tour_guide/core/utils/constants.dart';
 import 'package:your_tour_guide/core/utils/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -31,27 +32,19 @@ class FeaturesGridViewItem extends StatelessWidget {
             width: 0.9,
           ),
           color: boxDecorationColor,
-          borderRadius: BorderRadius.all(Radius.circular(10)),
+          borderRadius: BorderRadius.all(Radius.circular(kBorderRadius8)),
         ),
         child: Padding(
-          padding: const EdgeInsets.only(right: 15, left: 15),
+          padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               //Icon
-              Container(
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(8),
-                  ),
-                ),
-                child: SvgPicture.asset(
-                  fileName,
-                  fit: BoxFit.cover,
-                  colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn),
-                  width: 50,
-                ),
+              SvgPicture.asset(
+                fileName,
+                fit: BoxFit.cover,
+                colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn),
+                width: 50,
               ),
               Text(
                 text,

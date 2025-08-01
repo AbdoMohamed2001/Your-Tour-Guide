@@ -1,4 +1,5 @@
 import 'package:your_tour_guide/constants.dart';
+import 'package:your_tour_guide/core/utils/constants.dart';
 import 'package:your_tour_guide/core/utils/functions/is_arabic.dart';
 import 'package:your_tour_guide/core/utils/text_styles.dart';
 import 'package:your_tour_guide/features/places/domian/entities/place_entity.dart';
@@ -35,7 +36,7 @@ class FeaturedPlaceItem extends StatelessWidget {
             width: screenWidth * 0.45,
             height: screenHeight * 0.47,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.circular(kBorderRadius8),
               color: Theme.of(context).cardColor,
               boxShadow: [
                 BoxShadow(
