@@ -12,7 +12,7 @@ class ThemeClass {
     ),
     scaffoldBackgroundColor: Color(0xffFCFCFC),
     appBarTheme: AppBarTheme(
-      backgroundColor: Color(0xffFFFFFF),
+      backgroundColor: Color(0xffFCFCFC),
       systemOverlayStyle: SystemUiOverlayStyle(
         statusBarColor: Colors.white,
         statusBarIconBrightness: Brightness.dark,
@@ -78,7 +78,7 @@ class ThemeClass {
     primaryColorDark: Colors.black,
     primaryColor: Colors.white,
     canvasColor: Colors.white70,
-    cardColor: Colors.white70,
+    cardColor: Color(0xFFF7F7F7),
   );
 //---------------------------------------------------------------------------------
   static ThemeData darkTheme = ThemeData(
@@ -152,7 +152,7 @@ class ThemeClass {
     primaryColorDark: Colors.white,
     primaryColor: Colors.black,
     canvasColor: Colors.white10,
-    cardColor: Colors.white10,
+    cardColor: Colors.grey[850],
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       backgroundColor: Color(0xff121212),
     ),

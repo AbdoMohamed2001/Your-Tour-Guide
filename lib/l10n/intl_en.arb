@@ -20,7 +20,6 @@
   "EnterCorrectUserName":"Enter correct user name",
   "PasswordMustBeAtLeast8Characters":"Password must be at least 8 characters",
   "ConfirmPassword":"Confirm password",
-  "passwordNotMatched":"Password not matched",
   "SignUp":"Sign Up",
   "AlreadyHaveAccount":"Already have account",
   "myAccount":"My Account",
@@ -155,7 +154,16 @@
   "language": "Language",
   "mode": "Mode",
   "personalProfile": "Profile information",
-
+  "personalInfo": "Personal information",
+  "changePassword": "Change password",
+  "currentPassword": "Current password",
+  "newPassword": "New password",
+  "confirmPassword": "Confirm new password",
+  "passwordNotMatched": "The password confirmation does not match ",
+  "incorrectCurrentPassword": "Current password is incorrect",
+  "noDataEdited": "No data has been modified",
+  "changesSaved": "Changes saved successfully",
+  "saveChanges": "Save Changes",
   "noInternet": "'Your Device is offline. Your Tour Guide App requires internet connection to start'"
 
 

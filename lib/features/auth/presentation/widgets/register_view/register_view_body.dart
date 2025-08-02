@@ -29,6 +29,15 @@ bool isPassObscure = true;
 
 class _RegisterViewBodyState extends State<RegisterViewBody> {
   @override
+  void dispose() {
+    super.dispose();
+    emailController.dispose();
+    nameController.dispose();
+    passController.dispose();
+    confirmPassController.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     var screenHeight = MediaQuery.of(context).size.height;
     return Skeletonizer(
@@ -44,7 +53,7 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                 //Image
                 Center(
                   child: const Image(
-                    image: AssetImage(Assets.imagesApplogonew),
+                    image: AssetImage(Assets.imagesAppLogoNew),
                     height: 150,
                     width: 150,
                   ),

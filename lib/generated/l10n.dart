@@ -195,16 +195,6 @@ class S {
     );
   }
 
-  /// `Password not matched`
-  String get passwordNotMatched {
-    return Intl.message(
-      'Password not matched',
-      name: 'passwordNotMatched',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Sign Up`
   String get SignUp {
     return Intl.message('Sign Up', name: 'SignUp', desc: '', args: []);
@@ -952,6 +942,106 @@ class S {
     return Intl.message(
       'Profile information',
       name: 'personalProfile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Personal information`
+  String get personalInfo {
+    return Intl.message(
+      'Personal information',
+      name: 'personalInfo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Change password`
+  String get changePassword {
+    return Intl.message(
+      'Change password',
+      name: 'changePassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Current password`
+  String get currentPassword {
+    return Intl.message(
+      'Current password',
+      name: 'currentPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `New password`
+  String get newPassword {
+    return Intl.message(
+      'New password',
+      name: 'newPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm new password`
+  String get confirmPassword {
+    return Intl.message(
+      'Confirm new password',
+      name: 'confirmPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The password confirmation does not match `
+  String get passwordNotMatched {
+    return Intl.message(
+      'The password confirmation does not match ',
+      name: 'passwordNotMatched',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Current password is incorrect`
+  String get incorrectCurrentPassword {
+    return Intl.message(
+      'Current password is incorrect',
+      name: 'incorrectCurrentPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No data has been modified`
+  String get noDataEdited {
+    return Intl.message(
+      'No data has been modified',
+      name: 'noDataEdited',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Changes saved successfully`
+  String get changesSaved {
+    return Intl.message(
+      'Changes saved successfully',
+      name: 'changesSaved',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Save Changes`
+  String get saveChanges {
+    return Intl.message(
+      'Save Changes',
+      name: 'saveChanges',
       desc: '',
       args: [],
     );

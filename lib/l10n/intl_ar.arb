@@ -20,7 +20,6 @@
   "EnterCorrectUserName":"",
   "PasswordMustBeAtLeast8Characters":"كلمة المرور يجب ان تتكون من 8 احرف علي الاقل",
   "ConfirmPassword":"تأكيد كلمة المرور",
-  "passwordNotMatched":"كلمة المرور غير متطابقة",
   "SignUp":"انشاء حساب",
   "AlreadyHaveAccount":"لديك حساب بالفعل ؟",
   "myAccount":"حسابي",
@@ -150,6 +149,17 @@
   "language": "اللغة",
   "mode": "الوضع",
   "personalProfile": "الملف الشخصي",
+  "personalInfo": "المعلومات الشخصيه",
+  "changePassword": "تغيير كلمة المرور",
+  "currentPassword": "كلمة المرور الحالي",
+  "newPassword": "كلمة المرور الجديدة",
+  "confirmPassword": "تأكيد كلمة المرور الجديدة",
+  "passwordNotMatched": "كلمة المرور الجديده وتأكيدها غير متطابقين",
+  "incorrectCurrentPassword": "كلمة المرور الحاليه غير صحيحه",
+  "noDataEdited": "لم يتم تعديل اي بيانات",
+  "changesSaved": "تم حفظ التغييرات بنجاح",
+  "saveChanges": "حفظ التغييرات",
+
 
   "noInternet": "'جهازك غير متصل بالإنترنت. يتطلب تطبيق Your Tour Guide اتصالاً بالإنترنت للبدء'"
 

@@ -27,4 +27,6 @@ abstract class BackEndEndPoints {
     'tours',
     'Events',
   ];
+  //------------------------------------------------------
+  static const profilePictureRef = 'profilePics';
 }

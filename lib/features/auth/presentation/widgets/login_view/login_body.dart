@@ -48,7 +48,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                 //Image
                 Center(
                   child: const Image(
-                    image: AssetImage(Assets.imagesApplogonew),
+                    image: AssetImage(Assets.imagesAppLogoNew),
                     height: 150,
                     width: 150,
                   ),

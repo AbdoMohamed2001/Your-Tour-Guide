@@ -1,4 +1,6 @@
 import 'dart:convert';
+import 'package:your_tour_guide/core/utils/constants.dart';
+
 import '../../../../../core/services/shared_prefs_services.dart';
 import '../../models/user_model.dart';
 
@@ -9,7 +11,7 @@ abstract class AuthLocalDataSource {
 }
 
 class AuthLocalDataSourceImpl implements AuthLocalDataSource {
-  static const String userKey = 'CACHED_USER';
+  static const String userKey = kCachedUserData;
 
   AuthLocalDataSourceImpl();
 

@@ -1,0 +1,65 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../core/cubits/home/home_cubit.dart';
+import '../cubit/profile_cubit.dart';
+import '../views/edit_profile_view.dart';
+import 'general_item.dart';
+import 'general_list_items.dart';
+
+class GeneralList extends StatelessWidget {
+  const GeneralList({
+    super.key,
+    required this.deviceHeight,
+  });
+
+  final double deviceHeight;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        GeneralItem(
+          image: generalList(context)[0].icon,
+          text: generalList(context)[0].text,
+          containsArrow: true,
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (_) => BlocProvider.value(
+                  value: context.read<ProfileCubit>(),
+                  child: EditProfileView(),
+                ),
+              ),
+            );
+          },
+        ),
+        SizedBox(height: deviceHeight * 0.02),
+        GeneralItem(
+          image: generalList(context)[1].icon,
+          text: generalList(context)[1].text,
+          containsArrow: true,
+          onTap: () {
+            context.read<HomeCubit>().changeIndex(2);
+          },
+        ),
+        SizedBox(height: deviceHeight * 0.02),
+        GeneralItem(
+          image: generalList(context)[2].icon,
+          text: generalList(context)[2].text,
+        ),
+        SizedBox(height: deviceHeight * 0.02),
+        GeneralItem(
+          image: generalList(context)[3].icon,
+          text: generalList(context)[3].text,
+        ),
+        SizedBox(height: deviceHeight * 0.02),
+        GeneralItem(
+          image: generalList(context)[4].icon,
+          text: generalList(context)[4].text,
+        ),
+      ],
+    );
+  }
+}

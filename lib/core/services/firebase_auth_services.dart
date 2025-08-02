@@ -10,6 +10,7 @@ class FirebaseAuthService {
     await FirebaseAuth.instance.currentUser?.delete();
   }
 
+  User? user = FirebaseAuth.instance.currentUser;
 //-------------------------------------------------------------------
   Future<User> registerUser(
       {required String email, required String password}) async {
@@ -118,9 +119,22 @@ class FirebaseAuthService {
     await FirebaseAuth.instance.signOut();
   }
 
+  //-------------------------------------------------------------------
+
+  Future<void> reAuth({required String password}) async {
+    final credential = EmailAuthProvider.credential(
+      email: user!.email!,
+      password: password,
+    );
+    await user?.reauthenticateWithCredential(credential);
+  }
+
+  Future<User?> getCurrentUser() async {
+    return FirebaseAuth.instance.currentUser;
+  }
+
 //-------------------------Update-----------------------------
   Future<void> updateUserName({
-    required String userId,
     required String displayName,
   }) async {
     User? user = FirebaseAuth.instance.currentUser;
@@ -136,17 +150,42 @@ class FirebaseAuthService {
   }
 
   Future<void> updateUserEmail({
-    required String userId,
     required String email,
   }) async {
+    if (user == null) {
+      throw Exception('No user logged in.');
+    }
+    try {
+      await user?.updateEmail(email);
+    } catch (e) {
+      log("Error updating display name in Firebase Auth: $e");
+      rethrow;
+    }
+  }
+
+  Future<void> updateProfilePicture({
+    required String imageUrl,
+  }) async {
+    if (user == null) {
+      throw Exception('No user logged in.');
+    }
+    try {
+      await user?.updatePhotoURL(imageUrl);
+    } catch (e) {
+      log("Error updating PhotoUrl in Firebase Auth: $e");
+      rethrow;
+    }
+  }
+
+  Future<void> updateUserPassword({required String newPassword}) async {
     User? user = FirebaseAuth.instance.currentUser;
     if (user == null) {
       throw Exception('No user logged in.');
     }
     try {
-      await user.updateEmail(email);
+      await user.updatePassword(newPassword);
     } catch (e) {
-      log("Error updating display name in Firebase Auth: $e");
+      log("Error updating firebase in Firebase Auth: $e");
       rethrow;
     }
   }

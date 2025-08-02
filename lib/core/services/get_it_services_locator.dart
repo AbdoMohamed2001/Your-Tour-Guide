@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get_it/get_it.dart';
 import 'package:your_tour_guide/core/data/repos/features_repo.dart';
+import 'package:your_tour_guide/core/services/firebase_storage_services.dart';
+import 'package:your_tour_guide/core/services/storage_services.dart';
 import 'package:your_tour_guide/features/auth/data/datasources/remote/auth_remote_datasource.dart';
 import 'package:your_tour_guide/features/auth/domain/repos/auth_repo_impl.dart';
 import 'package:your_tour_guide/features/auth/data/repos/auth_repo.dart';
@@ -17,6 +19,7 @@ import 'package:your_tour_guide/features/churchs/domain/repos/church_repo_impl.d
 import 'package:your_tour_guide/features/events/data/datasources/event_remote_data_source.dart';
 import 'package:your_tour_guide/features/events/data/repos/event_repo_impl.dart';
 import 'package:your_tour_guide/features/events/domain/repos/event_repo.dart';
+import 'package:your_tour_guide/features/events/domain/usecases/get_events_usecase.dart';
 import 'package:your_tour_guide/features/favourite/data/data_sources/local_data_source.dart';
 import 'package:your_tour_guide/features/favourite/data/data_sources/remote_data_source.dart';
 import 'package:your_tour_guide/features/favourite/data/repos/favourite_repo.dart';
@@ -29,6 +32,9 @@ import 'package:your_tour_guide/features/mosques/domain/repos/mosque_repo_impl.d
 import 'package:your_tour_guide/features/places/data/repos/places_repo.dart';
 import 'package:your_tour_guide/core/domain/repos/feature_repo_impl.dart';
 import 'package:your_tour_guide/features/places/domian/repos/places_repo_impl.dart';
+import 'package:your_tour_guide/features/profile/data/datasources/profile_remote_data_source.dart';
+import 'package:your_tour_guide/features/profile/domain/repos/profile_repo.dart';
+import 'package:your_tour_guide/features/profile/domain/usecases/profile_usecase.dart';
 import 'package:your_tour_guide/features/restaurants/data/repos/restaurant_repo.dart';
 import 'package:your_tour_guide/features/search/data/data_sources/search_remote_data_source.dart';
 import 'package:your_tour_guide/features/search/data/repos/search_repo.dart';
@@ -37,12 +43,15 @@ import 'package:your_tour_guide/features/search/domain/use_cases/get_entity_from
 import 'package:your_tour_guide/features/search/domain/use_cases/search_collections_usecase.dart';
 import 'package:your_tour_guide/features/tours/data/datasources/tour_remote_data_source.dart';
 import 'package:your_tour_guide/features/tours/domain/repos/tour_repo.dart';
+import 'package:your_tour_guide/features/tours/domain/usecases/get_tours_usecase.dart';
 
 import '../../features/auth/data/datasources/local/auth_local_datasource.dart';
 import '../../features/cinemas/data/repos/cinema_repo_impl.dart';
 import '../../features/cities/data/repos/city_repo.dart';
 import '../../features/cities/domain/repos/city_repo_impl.dart';
 import '../../features/malls/domain/repos/mall_repo_impl.dart';
+import '../../features/profile/data/datasources/profile_local_data_source.dart';
+import '../../features/profile/data/repos/profile_repo_impl.dart';
 import '../../features/restaurants/domain/repos/rest_repo_impl.dart';
 import '../../features/search/domain/use_cases/get_search_suggestion_usecase.dart';
 import '../../features/tours/data/repos/tour_repo_impl.dart';
@@ -57,8 +66,17 @@ void setupGetIt() {
   getIt.registerSingleton<FirebaseAuthService>(FirebaseAuthService());
   getIt.registerSingleton<DatabaseServices>(FireStoreServices());
   getIt.registerSingleton<FirebaseFirestore>(FirebaseFirestore.instance);
+  getIt.registerSingleton<StorageServices>(FirebaseStorageServices());
   //------------------------------------------------------------------
   //DataSources
+  getIt.registerSingleton<ProfileRemoteDataSource>(
+    ProfileRemoteDataSourceImpl(
+      getIt<FirebaseAuthService>(),
+      getIt<DatabaseServices>(),
+      getIt<StorageServices>(),
+    ),
+  );
+  getIt.registerSingleton<ProfileLocalDataSource>(ProfileLocalDataSourceImpl());
   getIt.registerSingleton<FavouriteRemoteDataSource>(
       FavouriteRemoteDataSource(getIt<DatabaseServices>()));
   getIt.registerSingleton<FavouriteLocalDataSource>(FavouriteLocalDataSource());
@@ -73,6 +91,10 @@ void setupGetIt() {
   getIt.registerSingleton<AuthLocalDataSource>(AuthLocalDataSourceImpl());
   //-------------------------------------------------------------------
   //Repos
+  getIt.registerSingleton<ProfileRepo>(ProfileRepoImpl(
+    getIt<ProfileRemoteDataSource>(),
+    getIt<ProfileLocalDataSource>(),
+  ));
   getIt.registerSingleton<AuthRepo>(AuthRepoImpl(
     getIt<AuthRemoteDataSource>(),
     getIt<AuthLocalDataSource>(),
@@ -110,6 +132,15 @@ void setupGetIt() {
 
   //---------------------------------------------------------------------
   //UseCases
+  getIt.registerSingleton<GetToursUseCase>(
+    GetToursUseCase(getIt<TourRepo>()),
+  );
+  getIt.registerSingleton<GetEventsUseCase>(
+    GetEventsUseCase(getIt<EventRepo>()),
+  );
+  getIt.registerSingleton<ProfileUseCase>(
+    ProfileUseCaseImpl(getIt<ProfileRepo>()),
+  );
   getIt.registerSingleton<SearchAcrossCollectionsUseCase>(
     SearchAcrossCollectionsUseCase(getIt<SearchRepo>()),
   );

@@ -126,13 +126,21 @@ class MessageLookup extends MessageLookupByLibrary {
     "bestPlacesCollection": MessageLookupByLibrary.simpleMessage("bestPlaces"),
     "cafesCollection": MessageLookupByLibrary.simpleMessage("cafes"),
     "cast": MessageLookupByLibrary.simpleMessage("Movie Cast "),
+    "changePassword": MessageLookupByLibrary.simpleMessage("Change password"),
+    "changesSaved": MessageLookupByLibrary.simpleMessage(
+      "Changes saved successfully",
+    ),
     "churchesCollection": MessageLookupByLibrary.simpleMessage("churches"),
     "cinemasCollection": MessageLookupByLibrary.simpleMessage("cinemas"),
     "cities": MessageLookupByLibrary.simpleMessage("Cities"),
     "citiesCollection": MessageLookupByLibrary.simpleMessage("cities"),
     "city": MessageLookupByLibrary.simpleMessage("City"),
     "cityName": MessageLookupByLibrary.simpleMessage("cityName"),
+    "confirmPassword": MessageLookupByLibrary.simpleMessage(
+      "Confirm new password",
+    ),
     "contains": MessageLookupByLibrary.simpleMessage("Contains : "),
+    "currentPassword": MessageLookupByLibrary.simpleMessage("Current password"),
     "dayTour": MessageLookupByLibrary.simpleMessage("Day Tour"),
     "egyptiansTrip": MessageLookupByLibrary.simpleMessage("Egyptians Trip"),
     "endDate": MessageLookupByLibrary.simpleMessage("End Date"),
@@ -142,6 +150,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "genre": MessageLookupByLibrary.simpleMessage("Movie Genre : "),
     "help": MessageLookupByLibrary.simpleMessage("Help"),
     "inclusions": MessageLookupByLibrary.simpleMessage("Inclusions"),
+    "incorrectCurrentPassword": MessageLookupByLibrary.simpleMessage(
+      "Current password is incorrect",
+    ),
     "language": MessageLookupByLibrary.simpleMessage("Language"),
     "length": MessageLookupByLibrary.simpleMessage("Length : "),
     "loggedInSuccessfully": MessageLookupByLibrary.simpleMessage(
@@ -160,14 +171,21 @@ class MessageLookup extends MessageLookupByLibrary {
     "nearly": MessageLookupByLibrary.simpleMessage(
       "Nearly in this governorate",
     ),
+    "newPassword": MessageLookupByLibrary.simpleMessage("New password"),
     "nileCruise": MessageLookupByLibrary.simpleMessage("Nile Cruise"),
+    "noDataEdited": MessageLookupByLibrary.simpleMessage(
+      "No data has been modified",
+    ),
     "noInternet": MessageLookupByLibrary.simpleMessage(
       "\'Your Device is offline. Your Tour Guide App requires internet connection to start\'",
     ),
     "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
     "openingHours": MessageLookupByLibrary.simpleMessage("Opening \n Hours"),
     "passwordNotMatched": MessageLookupByLibrary.simpleMessage(
-      "Password not matched",
+      "The password confirmation does not match ",
+    ),
+    "personalInfo": MessageLookupByLibrary.simpleMessage(
+      "Personal information",
     ),
     "personalProfile": MessageLookupByLibrary.simpleMessage(
       "Profile information",
@@ -181,6 +199,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "restaurants",
     ),
     "rooms": MessageLookupByLibrary.simpleMessage("Rooms"),
+    "saveChanges": MessageLookupByLibrary.simpleMessage("Save Changes"),
     "search": MessageLookupByLibrary.simpleMessage("Search"),
     "searchFor": MessageLookupByLibrary.simpleMessage(
       "Choose what to search for",

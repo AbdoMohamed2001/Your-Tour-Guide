@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:your_tour_guide/constants.dart';
 
 import '../functions/is_arabic.dart';
 
@@ -25,7 +24,6 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     return SafeArea(
         child: Padding(
       padding: const EdgeInsets.symmetric(
-        horizontal: kHorizontalPadding,
         vertical: 25 / 2.5,
       ),
       child: Stack(

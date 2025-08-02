@@ -1,20 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:your_tour_guide/core/utils/app_colors.dart';
 
 class DefaultIcon extends StatelessWidget {
   const DefaultIcon({
     super.key,
     required this.icon,
     this.radius = 22,
+    this.onTap,
   });
   final Widget icon;
   final double? radius;
+  final void Function()? onTap;
   @override
   Widget build(BuildContext context) {
     return CircleAvatar(
       radius: radius,
-      backgroundColor: Color(0xffEEF8ED),
-      child: GestureDetector(
-        onTap: () {},
+      backgroundColor: AppColors.primaryColor,
+      child: InkWell(
+        onTap: onTap,
         child: icon,
       ),
     );

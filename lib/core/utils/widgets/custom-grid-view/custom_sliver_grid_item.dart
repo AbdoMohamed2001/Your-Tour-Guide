@@ -50,7 +50,7 @@ class CustomSliverGridItem extends StatelessWidget {
           borderRadius: BorderRadius.circular(12),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.1),
+              color: Colors.black.withValues(alpha: 0.15),
               blurRadius: 8,
               offset: const Offset(0, 4),
             ),
@@ -61,7 +61,7 @@ class CustomSliverGridItem extends StatelessWidget {
           children: [
             // Image Container with Fixed Height
             Expanded(
-              flex: 4,
+              flex: 2,
               child: Padding(
                 padding: const EdgeInsets.all(6.0),
                 child: ClipRRect(
@@ -72,12 +72,13 @@ class CustomSliverGridItem extends StatelessWidget {
             ),
             // Content Container with Fixed Height
             Expanded(
-              flex: 2,
+              flex: 1,
               child: Padding(
-                padding: const EdgeInsets.all(12.0),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 12.0, vertical: 6),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     // Name
                     Text(
@@ -88,6 +89,7 @@ class CustomSliverGridItem extends StatelessWidget {
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     ),
+                    const SizedBox(height: 4),
                     //Location
                     Text(
                       isArabic()
@@ -98,9 +100,7 @@ class CustomSliverGridItem extends StatelessWidget {
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     ),
-
                     const SizedBox(height: 4),
-
                     // Rating
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,

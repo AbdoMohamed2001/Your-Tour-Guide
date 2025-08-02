@@ -124,13 +124,23 @@ class MessageLookup extends MessageLookupByLibrary {
     "bestPlacesCollection": MessageLookupByLibrary.simpleMessage("bestPlaces"),
     "cafesCollection": MessageLookupByLibrary.simpleMessage("cafes"),
     "cast": MessageLookupByLibrary.simpleMessage("طاقم العمل : "),
+    "changePassword": MessageLookupByLibrary.simpleMessage("تغيير كلمة المرور"),
+    "changesSaved": MessageLookupByLibrary.simpleMessage(
+      "تم حفظ التغييرات بنجاح",
+    ),
     "churchesCollection": MessageLookupByLibrary.simpleMessage("churches"),
     "cinemasCollection": MessageLookupByLibrary.simpleMessage("cinemas"),
     "cities": MessageLookupByLibrary.simpleMessage("المدن"),
     "citiesCollection": MessageLookupByLibrary.simpleMessage("cities"),
     "city": MessageLookupByLibrary.simpleMessage("المدينة"),
     "cityName": MessageLookupByLibrary.simpleMessage("cityNameArabic"),
+    "confirmPassword": MessageLookupByLibrary.simpleMessage(
+      "تأكيد كلمة المرور الجديدة",
+    ),
     "contains": MessageLookupByLibrary.simpleMessage("تتسع ل : "),
+    "currentPassword": MessageLookupByLibrary.simpleMessage(
+      "كلمة المرور الحالي",
+    ),
     "dayTour": MessageLookupByLibrary.simpleMessage("رحلات يوم واحد"),
     "egyptiansTrip": MessageLookupByLibrary.simpleMessage("رحلات للمصريين"),
     "endDate": MessageLookupByLibrary.simpleMessage("نهاية الرحله"),
@@ -139,6 +149,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "general": MessageLookupByLibrary.simpleMessage("عام"),
     "genre": MessageLookupByLibrary.simpleMessage("التصنيف : "),
     "help": MessageLookupByLibrary.simpleMessage("المساعدة"),
+    "incorrectCurrentPassword": MessageLookupByLibrary.simpleMessage(
+      "كلمة المرور الحاليه غير صحيحه",
+    ),
     "language": MessageLookupByLibrary.simpleMessage("اللغة"),
     "length": MessageLookupByLibrary.simpleMessage("المدة : "),
     "loggedInSuccessfully": MessageLookupByLibrary.simpleMessage(
@@ -157,15 +170,20 @@ class MessageLookup extends MessageLookupByLibrary {
     "nearly": MessageLookupByLibrary.simpleMessage(
       "قريب من المكان في نفس المحافظة",
     ),
+    "newPassword": MessageLookupByLibrary.simpleMessage("كلمة المرور الجديدة"),
     "nileCruise": MessageLookupByLibrary.simpleMessage("رحلات نيليه"),
+    "noDataEdited": MessageLookupByLibrary.simpleMessage(
+      "لم يتم تعديل اي بيانات",
+    ),
     "noInternet": MessageLookupByLibrary.simpleMessage(
       "\'جهازك غير متصل بالإنترنت. يتطلب تطبيق Your Tour Guide اتصالاً بالإنترنت للبدء\'",
     ),
     "notifications": MessageLookupByLibrary.simpleMessage("الاشعارات"),
     "openingHours": MessageLookupByLibrary.simpleMessage("مواعيد \n العمل"),
     "passwordNotMatched": MessageLookupByLibrary.simpleMessage(
-      "كلمة المرور غير متطابقة",
+      "كلمة المرور الجديده وتأكيدها غير متطابقين",
     ),
+    "personalInfo": MessageLookupByLibrary.simpleMessage("المعلومات الشخصيه"),
     "personalProfile": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),
     "placesCollection": MessageLookupByLibrary.simpleMessage("places"),
     "pressBackAgain": MessageLookupByLibrary.simpleMessage(
@@ -176,6 +194,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "restaurants",
     ),
     "rooms": MessageLookupByLibrary.simpleMessage("الغرف"),
+    "saveChanges": MessageLookupByLibrary.simpleMessage("حفظ التغييرات"),
     "search": MessageLookupByLibrary.simpleMessage("ابحث "),
     "searchFor": MessageLookupByLibrary.simpleMessage(
       "اختر ما تريد البحث عنه ",
