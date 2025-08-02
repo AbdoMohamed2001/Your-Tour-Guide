@@ -44,8 +44,8 @@ class Assets {
   static const String imagesAppLogoFinal = 'assets/images/appLogoFinal.png';
   static const String imagesAppLogoLightMode =
       'assets/images/appLogoLightMode.png';
+  static const String imagesAppLogoNew = 'assets/images/app_logo_new.png';
   static const String imagesApplogo = 'assets/images/applogo.png';
-  static const String imagesApplogonew = 'assets/images/applogonew.png';
   static const String imagesBooking = 'assets/images/booking.png';
   static const String imagesCalendar = 'assets/images/calendar.png';
   static const String imagesDurationIcon3 = 'assets/images/duration-icon-3.jpg';
@@ -84,7 +84,7 @@ class Assets {
   static const String oldAppLogoDarkTheme =
       'assets/images/old/app_logo_dark_theme.png';
   static const String oldApplelogo = 'assets/images/old/applelogo.png';
-  static const String oldCalendarImage = 'assets/images/old/calendar image.jpg';
+  static const String oldCalendarImage = 'assets/images/old/calendarImage.jpg';
   static const String outlinedCategoriesOutlined =
       'assets/icons/outlined/categories-outlined.svg';
   static const String outlinedHomeOutlined =
