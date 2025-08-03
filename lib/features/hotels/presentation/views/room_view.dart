@@ -1,7 +1,7 @@
 import 'package:your_tour_guide/core/utils/functions/is_arabic.dart';
 import 'package:your_tour_guide/core/utils/widgets/custom_app_bar.dart';
 import 'package:your_tour_guide/core/utils/widgets/default_cached_network_image.dart';
-import 'package:your_tour_guide/core/utils/widgets/facalities_item.dart';
+import 'package:your_tour_guide/core/utils/widgets/hotels/facalities_item.dart';
 import 'package:your_tour_guide/features/hotels/domain/entities/hotel_entity.dart';
 import 'package:your_tour_guide/generated/l10n.dart';
 import 'package:bordered_text/bordered_text.dart';

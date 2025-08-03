@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import '../../../../core/utils/app_colors.dart';
-import '../../../../core/utils/text_styles.dart';
+import '../../../../core/utils/theme/app_colors.dart';
+import '../../../../core/utils/theme/text_styles.dart';
 
 class GeneralItem extends StatelessWidget {
   const GeneralItem({

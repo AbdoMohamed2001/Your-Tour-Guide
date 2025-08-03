@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:your_tour_guide/features/hotels/presentation/cubit/hotel_cubit.dart';
 import 'package:your_tour_guide/generated/assets.dart';
-import '../../../../../constants.dart';
+import '../../../../../core/utils/constants.dart';
 import '../../../../../core/utils/functions/is_arabic.dart';
 import '../../../../../core/utils/widgets/contact_widget.dart';
 import '../../../../../core/utils/widgets/default_read_more.dart';

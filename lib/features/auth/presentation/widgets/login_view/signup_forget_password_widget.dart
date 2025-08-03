@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../core/utils/text_styles.dart';
+import '../../../../../core/utils/theme/text_styles.dart';
 import '../../../../../generated/l10n.dart';
 import '../../views/forget_password.dart';
 import '../../views/register_view.dart';

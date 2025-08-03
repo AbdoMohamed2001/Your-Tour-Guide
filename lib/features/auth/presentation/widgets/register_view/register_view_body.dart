@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:skeletonizer/skeletonizer.dart';
-import 'package:your_tour_guide/constants.dart';
+import 'package:your_tour_guide/core/utils/constants.dart';
 import 'package:your_tour_guide/features/auth/data/models/user_create_req_model.dart';
 import 'package:your_tour_guide/features/auth/presentation/widgets/social_buttons.dart';
-import '../../../../../core/utils/text_styles.dart';
+import '../../../../../core/utils/theme/text_styles.dart';
 import '../../../../../core/utils/widgets/combined_text.dart';
 import '../../../../../core/utils/widgets/custom_button.dart';
 import '../../../../../core/utils/widgets/custom_text_field.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../constants.dart';
+import '../../../../../core/utils/constants.dart';
 import '../../../../../core/utils/functions/is_arabic.dart';
 import '../../../../../core/utils/widgets/head_text.dart';
 import '../../../../../generated/l10n.dart';

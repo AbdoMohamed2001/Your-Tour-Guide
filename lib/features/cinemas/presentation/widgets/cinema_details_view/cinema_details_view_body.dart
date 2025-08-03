@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:your_tour_guide/features/cinemas/domain/entities/cinema_entity.dart';
 import 'package:your_tour_guide/features/cinemas/presentation/cubit/cinema_cubit.dart';
 import 'package:your_tour_guide/features/cinemas/presentation/widgets/cinema_details_view/movie_widget.dart';
-import '../../../../../constants.dart';
+import '../../../../../core/utils/constants.dart';
 import '../../../../../core/utils/functions/is_arabic.dart';
 import '../../../../../core/utils/widgets/head_text.dart';
 import '../../../../../core/utils/widgets/location_widget.dart';

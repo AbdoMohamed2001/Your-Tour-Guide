@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:your_tour_guide/core/utils/widgets/default_list_view.dart';
 
-import '../../../../../core/domain/entities/feature_entity.dart';
+import '../../../domain/entities/feature_entity.dart';
 
 class FeatureDetailsListView extends StatelessWidget {
   const FeatureDetailsListView({

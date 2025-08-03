@@ -1,12 +1,12 @@
 import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
-import 'package:your_tour_guide/core/data/models/feature_model.dart';
-import 'package:your_tour_guide/core/data/repos/features_repo.dart';
-import 'package:your_tour_guide/core/domain/entities/feature_entity.dart';
+import 'package:your_tour_guide/features/feature_details/domain/entities/feature_entity.dart';
 import 'package:your_tour_guide/core/errors/failure.dart';
 
-import '../../services/database_services.dart';
+import '../../../../core/services/database_services.dart';
+import '../../data/models/feature_model.dart';
+import '../../data/repos/features_repo.dart';
 
 class FeatureRepoImpl implements FeaturesRepo {
   final DatabaseServices databaseServices;

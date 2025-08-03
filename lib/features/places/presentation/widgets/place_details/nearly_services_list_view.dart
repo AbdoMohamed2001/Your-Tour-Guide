@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../core/utils/widgets/nearly_item.dart';
+import '../../../../../core/utils/widgets/place/nearly_item.dart';
 import '../../../domian/entities/nearly_place_entity.dart';
 
 class NearlyServicesListView extends StatelessWidget {

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
 
-import '../../core/utils/widgets/custom_app_bar.dart';
+import 'custom_app_bar.dart';
 
 class PhotoViewPage extends StatelessWidget {
   final List<dynamic> photos;

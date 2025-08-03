@@ -1,4 +1,4 @@
-import 'package:your_tour_guide/constants.dart';
+import 'package:your_tour_guide/core/utils/constants.dart';
 import 'package:your_tour_guide/core/utils/widgets/default_cached_network_image.dart';
 import 'package:bordered_text/bordered_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';

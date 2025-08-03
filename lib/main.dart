@@ -1,11 +1,11 @@
 import 'package:internet_connection_checker/internet_connection_checker.dart';
-import 'package:your_tour_guide/app_locale.dart';
+import 'package:your_tour_guide/core/utils/app_locale.dart';
 import 'package:your_tour_guide/features/places/data/repos/places_repo.dart';
 import 'package:your_tour_guide/core/services/cacheHelper.dart';
 import 'package:your_tour_guide/features/splash/presentation/views/splash_view.dart';
 import 'package:your_tour_guide/generated/l10n.dart';
 import 'package:your_tour_guide/core/utils/functions/simple_bloc_observer.dart';
-import 'package:your_tour_guide/theme_class.dart';
+import 'package:your_tour_guide/core/utils/theme/theme_class.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';

@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:your_tour_guide/constants.dart';
+import 'package:your_tour_guide/core/utils/constants.dart';
 import 'package:your_tour_guide/core/utils/widgets/custom_text_field.dart';
 import 'package:your_tour_guide/features/search/domain/entities/search_params_entity.dart';
 import 'package:your_tour_guide/features/search/presentation/cubit/search_suggestion/search_suggestion_cubit.dart';

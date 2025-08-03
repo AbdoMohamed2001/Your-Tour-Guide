@@ -1,10 +1,10 @@
 import 'package:bordered_text/bordered_text.dart';
 import 'package:flutter/material.dart';
-import 'package:your_tour_guide/core/domain/entities/feature_entity.dart';
+import 'package:your_tour_guide/features/feature_details/domain/entities/feature_entity.dart';
 import 'package:your_tour_guide/core/utils/functions/is_arabic.dart';
 import 'package:your_tour_guide/core/utils/widgets/default_cached_network_image.dart';
 
-import '../../../../../constants.dart';
+import '../../../../../core/utils/constants.dart';
 
 class FeatureDetailsListViewItem extends StatelessWidget {
   const FeatureDetailsListViewItem({

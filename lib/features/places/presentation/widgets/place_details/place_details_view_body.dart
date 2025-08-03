@@ -2,7 +2,7 @@ import 'package:bordered_text/bordered_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:your_tour_guide/constants.dart';
+import 'package:your_tour_guide/core/utils/constants.dart';
 import 'package:your_tour_guide/core/utils/functions/is_arabic.dart';
 import 'package:your_tour_guide/core/utils/widgets/location_widget.dart';
 import 'package:your_tour_guide/core/utils/widgets/opening_hours_item.dart';

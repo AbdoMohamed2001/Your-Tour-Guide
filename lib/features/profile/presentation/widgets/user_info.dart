@@ -7,7 +7,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:your_tour_guide/core/utils/functions/get_user_data.dart';
 
-import '../../../../../../core/utils/text_styles.dart';
+import '../../../../core/utils/theme/text_styles.dart';
 import '../../../../../../core/utils/widgets/default_icon.dart';
 import '../../../../../../generated/assets.dart';
 import '../cubit/profile_cubit.dart';

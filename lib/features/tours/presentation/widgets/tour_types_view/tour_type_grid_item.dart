@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:your_tour_guide/features/tours/presentation/views/tours_view.dart';
 
 import '../../../../../core/utils/functions/is_arabic.dart';
-import '../../../../../core/utils/text_styles.dart';
+import '../../../../../core/utils/theme/text_styles.dart';
 import '../../../../../core/utils/widgets/custom-grid-view/custom_sliver_grid_item_image.dart';
 import '../../../domain/entities/tour_type_entity.dart';
 

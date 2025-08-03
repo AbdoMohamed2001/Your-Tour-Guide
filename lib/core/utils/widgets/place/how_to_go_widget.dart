@@ -1,4 +1,4 @@
-import 'package:your_tour_guide/constants.dart';
+import 'package:your_tour_guide/core/utils/constants.dart';
 import 'package:your_tour_guide/core/utils/widgets/head_text.dart';
 import 'package:your_tour_guide/features/places/domian/entities/place_entity.dart';
 import 'package:your_tour_guide/generated/l10n.dart';

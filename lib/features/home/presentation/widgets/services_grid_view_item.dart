@@ -5,8 +5,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/utils/functions/navigate_to_services_screen.dart';
-import '../../../../core/utils/text_styles.dart';
-import '../../../../models/services_container_entity.dart';
+import '../../../../core/utils/theme/text_styles.dart';
+import '../../../feature_details/domain/entities/services_container_entity.dart';
 
 class ServicesGridViewItem extends StatelessWidget {
   const ServicesGridViewItem({

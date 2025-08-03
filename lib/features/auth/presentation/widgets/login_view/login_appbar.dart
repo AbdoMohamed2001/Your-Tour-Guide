@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../core/utils/text_styles.dart';
+import '../../../../../core/utils/theme/text_styles.dart';
 import '../../../../../generated/l10n.dart';
 
 class LoginAppBar extends StatelessWidget {

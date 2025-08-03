@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 import '../../cubits/home/home_cubit.dart';
 import '../functions/is_arabic.dart';
-import '../text_styles.dart';
+import '../theme/text_styles.dart';
 
 class OpeningHoursWidget extends StatelessWidget {
   const OpeningHoursWidget({

@@ -1,5 +1,5 @@
-import 'package:your_tour_guide/constants.dart';
-import 'package:your_tour_guide/core/utils/text_styles.dart';
+import 'package:your_tour_guide/core/utils/constants.dart';
+import 'package:your_tour_guide/core/utils/theme/text_styles.dart';
 import 'package:your_tour_guide/core/utils/widgets/rate_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';

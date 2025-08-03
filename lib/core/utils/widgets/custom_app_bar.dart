@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:your_tour_guide/core/utils/text_styles.dart';
+import 'package:your_tour_guide/core/utils/theme/text_styles.dart';
 
 import '../functions/is_arabic.dart';
 

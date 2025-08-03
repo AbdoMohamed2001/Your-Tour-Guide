@@ -2,7 +2,7 @@ import 'package:your_tour_guide/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:readmore/readmore.dart';
 
-import '../../../../constants.dart';
+import '../../constants.dart';
 import '../../functions/is_arabic.dart';
 import '../head_text.dart';
 

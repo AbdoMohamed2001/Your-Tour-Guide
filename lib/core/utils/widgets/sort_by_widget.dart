@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../constants.dart';
+import '../constants.dart';
 import '../../../features/places/presentation/cubit/place_cubit/place_cubit.dart';
 import '../../../generated/l10n.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';

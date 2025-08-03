@@ -1,4 +1,4 @@
-import 'package:your_tour_guide/constants.dart';
+import 'package:your_tour_guide/core/utils/constants.dart';
 import 'package:your_tour_guide/core/utils/functions/is_arabic.dart';
 import 'package:your_tour_guide/core/utils/widgets/opening_hours_item.dart';
 import 'package:your_tour_guide/core/utils/widgets/default_cached_network_image.dart';

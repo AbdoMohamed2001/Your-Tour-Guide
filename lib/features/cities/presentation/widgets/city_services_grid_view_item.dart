@@ -1,8 +1,8 @@
 import 'package:bordered_text/bordered_text.dart';
 import 'package:flutter/material.dart';
-import 'package:your_tour_guide/core/utils/text_styles.dart';
+import 'package:your_tour_guide/core/utils/theme/text_styles.dart';
 
-import '../../../../constants.dart';
+import '../../../../core/utils/constants.dart';
 import '../../../../core/utils/functions/is_arabic.dart';
 import '../../../../core/utils/functions/navigate_to_services_screen.dart';
 import '../../../../core/utils/widgets/default_cached_network_image.dart';

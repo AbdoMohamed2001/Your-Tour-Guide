@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:your_tour_guide/core/utils/app_colors.dart';
+import 'package:your_tour_guide/core/utils/theme/app_colors.dart';
 import 'package:your_tour_guide/core/utils/functions/get_collection_icon.dart';
 import 'package:your_tour_guide/features/search/presentation/cubit/search/search_cubit.dart';
 
-import '../../../../../core/utils/text_styles.dart';
+import '../../../../../core/utils/theme/text_styles.dart';
 import '../../../domain/entities/search_result_entity.dart';
 
 class SearchResultItem extends StatelessWidget {

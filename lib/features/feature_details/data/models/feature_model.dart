@@ -1,4 +1,4 @@
-import 'package:your_tour_guide/core/domain/entities/feature_entity.dart';
+import 'package:your_tour_guide/features/feature_details/domain/entities/feature_entity.dart';
 
 class FeatureModel {
   final String name;

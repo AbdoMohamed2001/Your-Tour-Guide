@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:local_hero_transform/local_hero_transform.dart';
 import 'package:your_tour_guide/core/cubits/home/home_cubit.dart';
-import 'package:your_tour_guide/core/utils/text_styles.dart';
+import 'package:your_tour_guide/core/utils/theme/text_styles.dart';
 
-import '../../app_colors.dart';
+import '../../theme/app_colors.dart';
 import '../../functions/navigate_to_services_details_screen.dart';
 
 class LocalHeroView extends StatelessWidget {

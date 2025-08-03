@@ -4,7 +4,7 @@ import 'package:your_tour_guide/core/utils/widgets/custom-grid-view/grid_list_vi
 import 'package:your_tour_guide/features/favourite/presentation/cubit/favourtie_cubit.dart';
 
 import '../../../../core/utils/functions/navigate_to_services_details_screen.dart';
-import '../../../../core/utils/text_styles.dart';
+import '../../../../core/utils/theme/text_styles.dart';
 
 class FavouritesViewBuilder extends StatelessWidget {
   const FavouritesViewBuilder({

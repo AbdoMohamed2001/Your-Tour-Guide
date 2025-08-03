@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../core/utils/text_styles.dart';
+import '../../../../../core/utils/theme/text_styles.dart';
 
 class TourDetailsItem extends StatelessWidget {
   const TourDetailsItem({super.key, required this.head, required this.text});

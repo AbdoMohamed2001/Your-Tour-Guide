@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:your_tour_guide/core/utils/text_styles.dart';
+import 'package:your_tour_guide/core/utils/theme/text_styles.dart';
 import 'package:your_tour_guide/core/utils/widgets/default_read_more.dart';
 import 'package:your_tour_guide/features/events/presentation/cubit/event_cubit.dart';
 
-import '../../../../../constants.dart';
+import '../../../../../core/utils/constants.dart';
 import '../../../../../core/utils/widgets/contact_widget.dart';
 import '../../../../../core/utils/widgets/default-services-details-image/default_services_details_image.dart';
-import '../../../../../core/utils/widgets/inclusions_widget.dart';
+import '../../../../../core/utils/widgets/tours/inclusions_widget.dart';
 import '../../../../../generated/assets.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../domain/entities/event_entity.dart';

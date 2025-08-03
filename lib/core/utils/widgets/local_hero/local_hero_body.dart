@@ -5,10 +5,10 @@ import 'package:local_hero_transform/local_hero_transform.dart';
 import 'package:your_tour_guide/core/cubits/home/home_cubit.dart';
 import 'package:your_tour_guide/core/utils/functions/is_arabic.dart';
 import 'package:your_tour_guide/core/utils/functions/navigate_to_services_details_screen.dart';
-import 'package:your_tour_guide/core/utils/text_styles.dart';
+import 'package:your_tour_guide/core/utils/theme/text_styles.dart';
 
 import '../../../../features/favourite/presentation/cubit/favourtie_cubit.dart';
-import '../../app_colors.dart';
+import '../../theme/app_colors.dart';
 
 class LocalHeroBody extends StatelessWidget {
   const LocalHeroBody({

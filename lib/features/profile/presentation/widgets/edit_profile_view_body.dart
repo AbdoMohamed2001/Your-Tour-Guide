@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:your_tour_guide/constants.dart';
+import 'package:your_tour_guide/core/utils/constants.dart';
 import 'package:your_tour_guide/core/utils/functions/get_user_data.dart';
 import '../../../../../../generated/assets.dart';
 import '../../../../core/utils/functions/show_snack_bar.dart';
-import '../../../../core/utils/text_styles.dart';
+import '../../../../core/utils/theme/text_styles.dart';
 import '../../../../core/utils/widgets/custom_button.dart';
 import '../../../../core/utils/widgets/custom_text_field.dart';
 import '../../../../generated/l10n.dart';

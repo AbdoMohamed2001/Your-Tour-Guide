@@ -1,7 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
-import 'package:your_tour_guide/core/data/repos/features_repo.dart';
-import 'package:your_tour_guide/core/domain/entities/feature_entity.dart';
+import 'package:your_tour_guide/features/feature_details/domain/entities/feature_entity.dart';
+
+import '../../data/repos/features_repo.dart';
 
 part 'feature_state.dart';
 

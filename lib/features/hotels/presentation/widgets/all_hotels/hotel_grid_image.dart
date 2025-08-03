@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 import '../../../../../core/utils/functions/is_arabic.dart';
-import '../../../../../core/utils/text_styles.dart';
+import '../../../../../core/utils/theme/text_styles.dart';
 import '../../../domain/entities/hotel_entity.dart';
 
 class HotelGridImage extends StatelessWidget {

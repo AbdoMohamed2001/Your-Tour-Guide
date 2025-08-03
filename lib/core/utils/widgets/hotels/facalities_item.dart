@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:your_tour_guide/features/hotels/domain/entities/hotel_entity.dart';
 
-import '../functions/is_arabic.dart';
+import '../../functions/is_arabic.dart';
 
 class BuildFacilitiesItem extends StatelessWidget {
   const BuildFacilitiesItem({

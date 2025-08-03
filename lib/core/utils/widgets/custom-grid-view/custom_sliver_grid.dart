@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:your_tour_guide/constants.dart';
+import 'package:your_tour_guide/core/utils/constants.dart';
 import 'custom_sliver_grid_item.dart';
 
 class CustomSliverGrid extends StatelessWidget {

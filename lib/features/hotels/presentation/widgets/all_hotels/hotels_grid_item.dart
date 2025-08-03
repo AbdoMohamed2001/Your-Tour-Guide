@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:your_tour_guide/features/hotels/domain/entities/hotel_entity.dart';
 import 'package:your_tour_guide/features/hotels/presentation/views/hotel_details_view.dart';
-import '../../../../../constants.dart';
+import '../../../../../core/utils/constants.dart';
 import 'hotel_grid_features.dart';
 import 'hotel_grid_image.dart';
 

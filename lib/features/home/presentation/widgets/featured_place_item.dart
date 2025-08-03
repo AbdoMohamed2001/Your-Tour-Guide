@@ -1,7 +1,6 @@
-import 'package:your_tour_guide/constants.dart';
 import 'package:your_tour_guide/core/utils/constants.dart';
 import 'package:your_tour_guide/core/utils/functions/is_arabic.dart';
-import 'package:your_tour_guide/core/utils/text_styles.dart';
+import 'package:your_tour_guide/core/utils/theme/text_styles.dart';
 import 'package:your_tour_guide/features/places/domian/entities/place_entity.dart';
 import 'package:your_tour_guide/features/places/presentation/views/place_details_view.dart';
 import 'package:flutter/material.dart';

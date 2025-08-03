@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../core/domain/entities/feature_entity.dart';
+import '../../../domain/entities/feature_entity.dart';
 import '../../cubits/feature_cubit.dart';
 import 'feature_details_list_view.dart';
 

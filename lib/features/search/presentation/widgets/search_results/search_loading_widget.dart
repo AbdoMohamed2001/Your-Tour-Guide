@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:your_tour_guide/core/utils/app_colors.dart';
+import 'package:your_tour_guide/core/utils/theme/app_colors.dart';
 
 class SearchLoadingWidget extends StatelessWidget {
   const SearchLoadingWidget({super.key});

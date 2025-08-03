@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:your_tour_guide/core/utils/app_colors.dart';
+import 'package:your_tour_guide/core/utils/theme/app_colors.dart';
 
 class ThemeClass {
   static ThemeData lightTheme = ThemeData(

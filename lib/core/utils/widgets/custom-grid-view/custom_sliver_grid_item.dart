@@ -5,9 +5,9 @@ import 'package:your_tour_guide/features/tours/presentation/widgets/tours_view/t
 import '../../../../features/events/presentation/widgets/all_events_view/event_grid_item.dart';
 import '../../../../features/favourite/presentation/cubit/favourtie_cubit.dart';
 import '../../../../features/tours/presentation/widgets/tour_types_view/tour_type_grid_item.dart';
-import '../../app_colors.dart';
+import '../../theme/app_colors.dart';
 import '../../functions/is_arabic.dart';
-import '../../text_styles.dart';
+import '../../theme/text_styles.dart';
 import 'custom_sliver_grid_item_image.dart';
 
 class CustomSliverGridItem extends StatelessWidget {

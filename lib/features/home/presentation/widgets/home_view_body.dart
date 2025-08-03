@@ -6,7 +6,7 @@ import 'package:your_tour_guide/core/utils/widgets/head_text.dart';
 import 'package:your_tour_guide/features/home/presentation/widgets/explore_places_widget.dart';
 import 'package:your_tour_guide/features/home/presentation/widgets/features_grid_view.dart';
 import 'package:flutter/material.dart';
-import '../../../../constants.dart';
+import '../../../../core/utils/constants.dart';
 import '../../../../core/cubits/home/home_cubit.dart';
 import '../../../../core/utils/widgets/custom_text_field.dart';
 import 'explore_more.dart';

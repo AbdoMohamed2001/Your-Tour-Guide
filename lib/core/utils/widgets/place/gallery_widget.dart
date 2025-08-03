@@ -1,10 +1,10 @@
-import 'package:your_tour_guide/core/utils/text_styles.dart';
+import 'package:your_tour_guide/core/utils/theme/text_styles.dart';
 import 'package:your_tour_guide/generated/l10n.dart';
-import 'package:your_tour_guide/screens/best_places/photo_view_page.dart';
+import 'package:your_tour_guide/core/utils/widgets/photo_view_page.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../constants.dart';
+import '../../constants.dart';
 
 class GalleryWidget extends StatelessWidget {
   const GalleryWidget({

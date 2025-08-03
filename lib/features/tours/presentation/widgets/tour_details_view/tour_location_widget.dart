@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:your_tour_guide/constants.dart';
+import 'package:your_tour_guide/core/utils/constants.dart';
 
 import '../../../../../core/utils/functions/is_arabic.dart';
 import '../../../../../core/utils/widgets/head_text.dart';

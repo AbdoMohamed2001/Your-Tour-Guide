@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:your_tour_guide/core/utils/app_colors.dart';
+import 'package:your_tour_guide/core/utils/theme/app_colors.dart';
 
-import '../text_styles.dart';
+import '../theme/text_styles.dart';
 
 class CombinedText extends StatelessWidget {
   const CombinedText({

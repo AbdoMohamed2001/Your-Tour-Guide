@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:your_tour_guide/core/utils/text_styles.dart';
-import 'package:your_tour_guide/core/utils/widgets/inclusions_widget.dart';
+import 'package:your_tour_guide/core/utils/theme/text_styles.dart';
+import 'package:your_tour_guide/core/utils/widgets/tours/inclusions_widget.dart';
 import 'package:your_tour_guide/features/tours/presentation/cubit/tour_cubit.dart';
 import 'package:your_tour_guide/features/tours/presentation/widgets/tour_details_view/tour_details_widget.dart';
 import 'package:your_tour_guide/features/tours/presentation/widgets/tour_details_view/tour_itinerary_widget.dart';
 import 'package:your_tour_guide/features/tours/presentation/widgets/tour_details_view/tour_location_widget.dart';
 import 'package:your_tour_guide/features/tours/presentation/widgets/tour_details_view/tour_organizer_widget.dart';
-import '../../../../../constants.dart';
+import '../../../../../core/utils/constants.dart';
 import '../../../../../core/utils/functions/is_arabic.dart';
 import '../../../../../core/utils/widgets/contact_widget.dart';
 import '../../../../../core/utils/widgets/default-services-details-image/default_services_details_image.dart';

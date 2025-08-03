@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:your_tour_guide/features/places/presentation/views/best_places_view.dart';
 import 'package:your_tour_guide/generated/assets.dart';
 
-import '../features/home/presentation/views/features/all_tours.dart';
-import '../features/events/presentation/views/events_view.dart';
-import '../generated/l10n.dart';
-import '../features/cities/presentation/views/cities_view.dart';
+import '../../../home/presentation/views/features/all_tours.dart';
+import '../../../events/presentation/views/events_view.dart';
+import '../../../../generated/l10n.dart';
+import '../../../cities/presentation/views/cities_view.dart';
 
 class FeaturesContainerEntity {
   final String name;

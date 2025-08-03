@@ -1,5 +1,5 @@
 import 'package:your_tour_guide/core/utils/functions/show_toast.dart';
-import 'package:your_tour_guide/screens/no_internet.dart';
+import 'package:your_tour_guide/core/utils/widgets/no_internet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

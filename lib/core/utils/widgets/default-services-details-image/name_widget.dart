@@ -2,7 +2,7 @@ import 'package:bordered_text/bordered_text.dart';
 import 'package:flutter/material.dart';
 
 import '../../functions/is_arabic.dart';
-import '../../text_styles.dart';
+import '../../theme/text_styles.dart';
 
 class NameWidget extends StatelessWidget {
   const NameWidget({

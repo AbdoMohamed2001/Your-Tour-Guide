@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:your_tour_guide/core/utils/functions/get_user_data.dart';
 import 'package:your_tour_guide/core/utils/functions/navigate_to_services_details_screen.dart';
-import 'package:your_tour_guide/core/utils/text_styles.dart';
+import 'package:your_tour_guide/core/utils/theme/text_styles.dart';
 import 'package:your_tour_guide/core/utils/widgets/custom-grid-view/grid_list_view.dart';
 import 'package:your_tour_guide/features/favourite/data/models/favourite_model.dart';
 import 'package:your_tour_guide/features/favourite/presentation/cubit/favourtie_cubit.dart';
