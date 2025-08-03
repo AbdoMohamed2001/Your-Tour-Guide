@@ -62,8 +62,6 @@ class FavouriteRemoteDataSource {
       recordId: getUserId(),
       subPath: 'favourites',
     );
-    log('this is data');
-    log(data.toString());
     List<FavouriteModel> favouriteList = [];
     for (var element in data) {
       favouriteList.add(FavouriteModel.fromJson(element));

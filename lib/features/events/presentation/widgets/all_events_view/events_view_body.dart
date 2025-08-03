@@ -4,8 +4,8 @@ import 'package:your_tour_guide/features/events/presentation/cubit/event_cubit.d
 import 'package:your_tour_guide/features/events/presentation/widgets/all_events_view/events_view_builder.dart';
 
 class EventsViewBody extends StatefulWidget {
-  const EventsViewBody({super.key});
-
+  const EventsViewBody({super.key, required this.tabController});
+  final TabController tabController;
   @override
   State<EventsViewBody> createState() => _EventsViewBodyState();
 }
@@ -19,6 +19,6 @@ class _EventsViewBodyState extends State<EventsViewBody> {
 
   @override
   Widget build(BuildContext context) {
-    return EventsViewBuilder();
+    return EventsViewBuilder(tabController: widget.tabController);
   }
 }

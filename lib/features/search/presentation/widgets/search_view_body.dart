@@ -1,22 +1,13 @@
 import 'dart:async';
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:your_tour_guide/constants.dart';
-import 'package:your_tour_guide/core/utils/functions/navigate_to_services_details_screen.dart';
 import 'package:your_tour_guide/core/utils/widgets/custom_text_field.dart';
 import 'package:your_tour_guide/features/search/domain/entities/search_params_entity.dart';
 import 'package:your_tour_guide/features/search/presentation/cubit/search_suggestion/search_suggestion_cubit.dart';
-import 'package:your_tour_guide/features/search/presentation/widgets/suggestions_widget.dart';
-
+import 'package:your_tour_guide/features/search/presentation/widgets/search_results/search_content_area.dart';
 import '../../../../generated/l10n.dart';
 import '../cubit/search/search_cubit.dart';
-import 'build_empty_state.dart';
-import 'build_error_state.dart';
-import 'build_init_state.dart';
-import 'build_loading_state.dart';
-import 'build_success_state.dart';
 
 class SearchViewBody extends StatefulWidget {
   const SearchViewBody({Key? key}) : super(key: key);
@@ -29,11 +20,12 @@ class _SearchViewBodyState extends State<SearchViewBody> {
   final TextEditingController _searchController = TextEditingController();
   final FocusNode _focusNode = FocusNode();
   Timer? _debounceTimer;
-  bool _showSuggestions = false;
+  bool _showSuggestionsWidget = false;
 
   @override
   void initState() {
     super.initState();
+    _focusNode.addListener(_onFocusChange);
     _searchController.addListener(_onSearchChanged);
   }
 
@@ -45,11 +37,19 @@ class _SearchViewBodyState extends State<SearchViewBody> {
     super.dispose();
   }
 
+  void _onFocusChange() {
+    setState(() {
+      _showSuggestionsWidget =
+          _focusNode.hasFocus && _searchController.text.isNotEmpty;
+    });
+  }
+
   void _onSearchChanged() {
     final query = _searchController.text.trim();
     if (query.isEmpty) {
+      context.read<SearchCubit>().clearSearch();
       setState(() {
-        _showSuggestions = false;
+        _showSuggestionsWidget = false;
       });
       return;
     }
@@ -60,18 +60,18 @@ class _SearchViewBodyState extends State<SearchViewBody> {
       if (_focusNode.hasFocus) {
         context.read<SearchSuggestionCubit>().getSuggestions(query);
         setState(() {
-          _showSuggestions = true;
+          _showSuggestionsWidget = true;
         });
       }
     });
   }
 
   void _performSearch({String? query}) {
-    final searchQuery = _searchController.text.trim();
+    final searchQuery = query ?? _searchController.text.trim();
     if (searchQuery.isEmpty) return;
     _focusNode.unfocus();
     setState(() {
-      _showSuggestions = false;
+      _showSuggestionsWidget = false;
     });
 
     if (query != null) {
@@ -90,7 +90,7 @@ class _SearchViewBodyState extends State<SearchViewBody> {
       padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
       child: Column(
         children: [
-          // Search Bar
+          // SEARCH BAR
           CustomTextField(
             labelText: S.of(context).startSearch,
             prefixIcon: const Icon(Icons.search),
@@ -107,49 +107,10 @@ class _SearchViewBodyState extends State<SearchViewBody> {
             textInputType: TextInputType.text,
             onFieldSubmitted: (value) => _performSearch(query: value),
           ),
-          Expanded(
-            child: Stack(
-              children: [
-                BlocConsumer<SearchCubit, SearchState>(
-                  listener: (context, state) {
-                    if (state is SearchGetEntitySuccess) {
-                      navigateToServiceDetailsScreen(
-                          state.collectionName, context, state.entity);
-                    }
-                    if (state is SearchGetEntityError) {
-                      log('error in getting data ${state.message}');
-                    }
-                  },
-                  builder: (context, state) {
-                    if (state is SearchInitial) {
-                      return buildInitialState(context);
-                    } else if (state is SearchLoading) {
-                      return buildLoadingState();
-                    } else if (state is SearchEmpty) {
-                      return buildEmptyState(state, context);
-                    } else if (state is SearchError) {
-                      return buildErrorState(state, context, () {
-                        _performSearch();
-                      });
-                    }
-                    return SuccessStateWidget(
-                      searchResults: context.read<SearchCubit>().searchResults,
-                      query: context.read<SearchCubit>().searchQuery,
-                    );
-                  },
-                ),
-                if (_showSuggestions)
-                  Positioned(
-                    top: 10,
-                    left: 0,
-                    right: 0,
-                    child: SuggestionsWidget(
-                      onTap: () => _performSearch(),
-                    ),
-                  ),
-              ],
-            ),
-          ),
+          // CONTENT AREA
+          SearchContentArea(
+              showSuggestionsWidget: _showSuggestionsWidget,
+              performSearch: _performSearch),
         ],
       ),
     );

@@ -13,7 +13,7 @@ class AllTours extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-        title: S.of(context).AllTours,
+        title: S.of(context).tours,
         leading: CustomAppBarIconButton(),
       ),
       body: GridListView(

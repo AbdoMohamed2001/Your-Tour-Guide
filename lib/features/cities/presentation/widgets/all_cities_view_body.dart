@@ -4,16 +4,16 @@ import 'package:your_tour_guide/features/cities/presentation/widgets/all_cities_
 
 import '../cubit/city_cubit/city_cubit.dart';
 
-class AllCitiesViewBody extends StatefulWidget {
-  const AllCitiesViewBody({
+class CitiesViewBody extends StatefulWidget {
+  const CitiesViewBody({
     super.key,
   });
 
   @override
-  State<AllCitiesViewBody> createState() => _AllCitiesViewBodyState();
+  State<CitiesViewBody> createState() => _CitiesViewBodyState();
 }
 
-class _AllCitiesViewBodyState extends State<AllCitiesViewBody> {
+class _CitiesViewBodyState extends State<CitiesViewBody> {
   @override
   void initState() {
     super.initState();

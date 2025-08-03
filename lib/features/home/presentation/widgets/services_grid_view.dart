@@ -14,11 +14,12 @@ class ServicesGridView extends StatelessWidget {
       physics: BouncingScrollPhysics(),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
-        mainAxisSpacing: 10,
         crossAxisSpacing: 15,
+        mainAxisSpacing: 10,
+        childAspectRatio: 1.6 / 1.5,
       ),
       itemBuilder: (_, index) => ServicesGridViewItem(index: index),
-      itemCount: BuildFeaturesGridView.listOfServicesContainerEntity.length,
+      itemCount: listOfServicesContainerEntity.length,
     );
   }
 }

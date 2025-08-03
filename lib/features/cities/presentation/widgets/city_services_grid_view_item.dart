@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:your_tour_guide/core/utils/text_styles.dart';
 
 import '../../../../constants.dart';
-import '../../../../core/cubits/home/home_cubit.dart';
 import '../../../../core/utils/functions/is_arabic.dart';
 import '../../../../core/utils/functions/navigate_to_services_screen.dart';
 import '../../../../core/utils/widgets/default_cached_network_image.dart';
@@ -43,9 +42,6 @@ class CityServicesGridViewItem extends StatelessWidget {
                     left: isArabic() ? null : 15,
                     child: BorderedText(
                       strokeWidth: 3,
-                      strokeColor: HomeCubit.get(context).isDark!
-                          ? Colors.black
-                          : Colors.white,
                       child: Text(
                         isArabic()
                             ? cityServicesEntity.nameArabic

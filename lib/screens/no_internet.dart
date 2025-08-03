@@ -1,5 +1,5 @@
 import 'package:your_tour_guide/generated/l10n.dart';
-import 'package:your_tour_guide/features/nav_bar/presentation/views/main_view.dart';
+import 'package:your_tour_guide/features/home/presentation/views/main_view.dart';
 import 'package:your_tour_guide/core/utils/widgets/none_app_bar.dart';
 import 'package:flutter/material.dart';
 

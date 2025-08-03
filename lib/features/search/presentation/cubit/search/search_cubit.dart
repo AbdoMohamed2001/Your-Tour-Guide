@@ -37,6 +37,7 @@ class SearchCubit extends Cubit<SearchState> {
 //------------------------------------------------------------------
   List<SearchResultEntity> searchResults = [];
   String searchQuery = '';
+  Timer? _debounceTimer;
   Future<void> search(
     SearchParamsEntity searchParamsEntity,
   ) async {
@@ -62,5 +63,17 @@ class SearchCubit extends Cubit<SearchState> {
         }
       },
     );
+  }
+
+  void clearSearch() {
+    _debounceTimer?.cancel();
+    searchQuery = '';
+    emit(SearchInitial());
+  }
+
+  @override
+  Future<void> close() {
+    _debounceTimer?.cancel();
+    return super.close();
   }
 }

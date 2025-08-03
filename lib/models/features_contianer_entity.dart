@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:your_tour_guide/features/places/presentation/views/all_best_places_view.dart';
+import 'package:your_tour_guide/features/places/presentation/views/best_places_view.dart';
 import 'package:your_tour_guide/generated/assets.dart';
 
 import '../features/home/presentation/views/features/all_tours.dart';
-import '../features/home/presentation/views/features/events_view.dart';
+import '../features/events/presentation/views/events_view.dart';
 import '../generated/l10n.dart';
-import '../features/cities/presentation/views/all_cities_view.dart';
+import '../features/cities/presentation/views/cities_view.dart';
 
 class FeaturesContainerEntity {
   final String name;
@@ -30,19 +30,19 @@ List<FeaturesContainerEntity> getFeaturesList(BuildContext context) {
     FeaturesContainerEntity(
       name: S.of(context).bestPlaces,
       containerColor: Color(0xff19141b),
-      pushedPage: AllBestPlacesView(),
+      pushedPage: BestPlacesView(),
       icon: Assets.iconsBestPlace,
       collectionName: 'places',
       appBarTitle: S.of(context).AllBestPlaces,
     ),
     //AllCities
     FeaturesContainerEntity(
-      name: S.of(context).AllCities,
+      name: S.of(context).cities,
       containerColor: Color(0xff613208),
-      pushedPage: AllCitiesView(),
+      pushedPage: CitiesView(),
       icon: Assets.iconsAllCities,
       collectionName: 'cities',
-      appBarTitle: S.of(context).AllCities,
+      appBarTitle: S.of(context).cities,
     ),
     //Tours
     FeaturesContainerEntity(
@@ -51,7 +51,7 @@ List<FeaturesContainerEntity> getFeaturesList(BuildContext context) {
       pushedPage: AllTours(),
       icon: Assets.iconsTour,
       collectionName: 'Tours',
-      appBarTitle: S.of(context).AllTours,
+      appBarTitle: S.of(context).tours,
     ),
     //UpcomingEvent
     FeaturesContainerEntity(

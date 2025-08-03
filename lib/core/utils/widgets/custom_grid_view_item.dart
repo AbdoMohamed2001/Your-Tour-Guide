@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 import '../../../constants.dart' show kHorizontalPadding;
-import '../../cubits/home/home_cubit.dart';
 import '../functions/is_arabic.dart';
 
 class CustomGridViewItem extends StatelessWidget {
@@ -45,9 +44,6 @@ class CustomGridViewItem extends StatelessWidget {
                     left: isArabic() ? null : 5,
                     child: BorderedText(
                       strokeWidth: 3,
-                      strokeColor: HomeCubit.get(context).isDark!
-                          ? Colors.black
-                          : Colors.white,
                       child: Text(
                         name,
                         style: TextStyle(
@@ -64,9 +60,6 @@ class CustomGridViewItem extends StatelessWidget {
                     left: isArabic() ? null : 8,
                     child: BorderedText(
                       strokeWidth: 3,
-                      strokeColor: HomeCubit.get(context).isDark!
-                          ? Colors.black
-                          : Colors.white,
                       child: Text(
                         cityName,
                         style: TextStyle(

@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:your_tour_guide/core/utils/widgets/local_hero/local_hero_body.dart';
 import 'package:your_tour_guide/features/places/domian/entities/place_entity.dart';
 
 import '../../cubit/place_cubit/place_cubit.dart';
-import '../places_list_view.dart';
 
-class AllBestPlacesViewListViewBuilder extends StatelessWidget {
-  const AllBestPlacesViewListViewBuilder({
+class BestPlacesViewListViewBuilder extends StatelessWidget {
+  const BestPlacesViewListViewBuilder({
     super.key,
+    required this.tabController,
   });
+
+  final TabController tabController;
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<PlaceCubit, PlaceState>(
@@ -20,7 +24,10 @@ class AllBestPlacesViewListViewBuilder extends StatelessWidget {
         } else if (state is PlacesGetFailure) {
           return const Center(child: Text('Failed to load featured places'));
         } else {
-          return PlacesListView(list: bestPlaces);
+          return LocalHeroBody(
+            tabController: tabController,
+            entities: bestPlaces,
+          );
         }
       },
     );

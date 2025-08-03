@@ -7,8 +7,6 @@ import 'package:your_tour_guide/generated/l10n.dart';
 import 'package:your_tour_guide/features/hotels/presentation/views/room_view.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../core/cubits/home/home_cubit.dart';
-
 class RoomListItem extends StatelessWidget {
   const RoomListItem({
     super.key,
@@ -22,7 +20,6 @@ class RoomListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
-    var homeCubit = HomeCubit.get(context);
     return GestureDetector(
       onTap: () {
         Navigator.push(context, MaterialPageRoute(builder: (_) {
@@ -33,7 +30,6 @@ class RoomListItem extends StatelessWidget {
         width: 270,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(10)),
-          color: homeCubit.isDark! ? Colors.black54 : Color(0xfff1f1f1),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

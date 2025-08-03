@@ -20,14 +20,8 @@ import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await CacheData.cacheInit();
-  await Prefs.init();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
-  Bloc.observer = SimpleBlocObserver();
+  await _initializeServices();
 
-  setupGetIt();
   runApp(
     DevicePreview(
       // enabled: !kReleaseMode,
@@ -46,9 +40,7 @@ class MyApp extends StatelessWidget {
     SystemChrome.setSystemUIOverlayStyle(
         SystemUiOverlayStyle(statusBarColor: Colors.transparent));
     return BlocProvider(
-      create: (context) => HomeCubit(getIt.get<PlacesRepo>())
-        ..getSavedTheme()
-        ..getSavedLanguage(),
+      create: (context) => HomeCubit(getIt.get<PlacesRepo>())..initializeApp(),
       child: StreamProvider<InternetConnectionStatus>(
         initialData: InternetConnectionStatus.connected,
         create: (_) {
@@ -56,8 +48,9 @@ class MyApp extends StatelessWidget {
         },
         child: BlocBuilder<HomeCubit, HomeState>(
           builder: (context, state) {
+            final homeCubit = context.read<HomeCubit>();
             return MaterialApp(
-              locale: HomeCubit.get(context).locale,
+              locale: homeCubit.currentLocale,
               builder: DevicePreview.appBuilder,
               localizationsDelegates: [
                 S.delegate,
@@ -70,22 +63,12 @@ class MyApp extends StatelessWidget {
                 Locale('en'),
                 Locale("ar"),
               ],
-              localeResolutionCallback: (currentLocal, supportedLocales) {
-                for (var locale in supportedLocales) {
-                  if (currentLocal != null &&
-                      currentLocal.languageCode == locale.languageCode) {
-                    return currentLocal;
-                  }
-                }
-                return supportedLocales.first;
-              },
+              localeResolutionCallback: _localeResolutionCallback,
               debugShowCheckedModeBanner: false,
               title: 'Your Tour Guide',
               theme: ThemeClass.lightTheme,
               darkTheme: ThemeClass.darkTheme,
-              themeMode: HomeCubit.get(context).isDark!
-                  ? ThemeMode.dark
-                  : ThemeMode.light,
+              themeMode: homeCubit.currentThemeMode,
               home: SplashView(),
             );
           },
@@ -94,3 +77,32 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+//-----------------------------------------------------------------------------
+//HELP METHODS
+//-----------------------------------------------------------------------------
+
+Future<void> _initializeServices() async {
+  await CacheData.cacheInit();
+  await Prefs.init();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  Bloc.observer = SimpleBlocObserver();
+  setupGetIt();
+}
+
+//-----------------------------------------------------------------------------
+Locale? _localeResolutionCallback(
+  Locale? currentLocale,
+  Iterable<Locale> supportedLocales,
+) {
+  if (currentLocale != null) {
+    for (var locale in supportedLocales) {
+      if (currentLocale.languageCode == locale.languageCode) {
+        return currentLocale;
+      }
+    }
+  }
+  return supportedLocales.first;
+}
+//-----------------------------------------------------------------------------

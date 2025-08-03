@@ -1,7 +1,7 @@
 import 'package:your_tour_guide/core/utils/functions/show_snack_bar.dart';
 import 'package:your_tour_guide/core/utils/functions/show_toast.dart';
 import 'package:your_tour_guide/core/utils/widgets/custom_app_bar.dart';
-import 'package:your_tour_guide/features/nav_bar/presentation/views/main_view.dart';
+import 'package:your_tour_guide/features/home/presentation/views/main_view.dart';
 import 'package:your_tour_guide/features/auth/presentation/widgets/login_view/login_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

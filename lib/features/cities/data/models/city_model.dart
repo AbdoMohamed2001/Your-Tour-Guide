@@ -5,6 +5,7 @@ class CityModel {
   final String imageUrl;
   final String name;
   final String nameArabic;
+  final String docId;
   final List<CityServicesModel> services;
 
   CityModel({
@@ -12,6 +13,7 @@ class CityModel {
     required this.name,
     required this.nameArabic,
     required this.services,
+    required this.docId,
   });
 
   factory CityModel.fromJson(doc) {
@@ -19,6 +21,7 @@ class CityModel {
       name: doc['name'],
       nameArabic: doc['nameArabic'],
       imageUrl: doc['imageUrl'],
+      docId: doc['docId'],
       services: (doc['services'] as List<dynamic>)
           .map((item) => CityServicesModel.fromJson(item))
           .toList(),
@@ -31,6 +34,7 @@ class CityModel {
       name: name,
       nameArabic: nameArabic,
       services: services.map((service) => service.toEntity()).toList(),
+      docId: docId,
     );
   }
 }

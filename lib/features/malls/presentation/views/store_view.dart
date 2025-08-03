@@ -7,7 +7,6 @@ import 'package:your_tour_guide/core/utils/widgets/none_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../../../../core/cubits/home/home_cubit.dart';
 import '../../domain/entities/mall_entity.dart';
 
 class StoreScreen extends StatelessWidget {
@@ -44,9 +43,6 @@ class StoreScreen extends StatelessWidget {
                       isArabic()
                           ? FontAwesomeIcons.chevronRight
                           : FontAwesomeIcons.chevronLeft,
-                      color: HomeCubit.get(context).isDark!
-                          ? Colors.white
-                          : Colors.black,
                       size: 40,
                     ),
                   ),

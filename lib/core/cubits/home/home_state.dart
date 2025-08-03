@@ -7,21 +7,18 @@ class HomeInitial extends HomeState {}
 
 class HomeChangeIndexState extends HomeState {}
 
-class HomeChangeCollectionName extends HomeState {}
-
-class HomeUpdateUi extends HomeState {}
-
 class HomeChangeTheme extends HomeState {}
 
-class HomeFacebookSignOut extends HomeState {}
+class ChangeLocaleLoading extends HomeState {}
 
-class HomeEmailSignOut extends HomeState {}
-
-class HomeGoogleSignOut extends HomeState {}
-
-class ChangeLocaleState extends HomeState {
+class ChangeLocaleSuccess extends HomeState {
   final Locale locale;
-  ChangeLocaleState({required this.locale});
+  ChangeLocaleSuccess({required this.locale});
+}
+
+class ChangeLocaleFailure extends HomeState {
+  final String message;
+  ChangeLocaleFailure({required this.message});
 }
 
 class HomeGetFeaturedPlacesSuccess extends HomeState {

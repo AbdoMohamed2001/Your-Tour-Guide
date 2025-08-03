@@ -20,7 +20,7 @@ class FavouriteModel {
     required this.rate,
   });
 
-  factory FavouriteModel.fromJson(Map<String, dynamic> json) {
+  factory FavouriteModel.fromJson(json) {
     return FavouriteModel(
       docId: json['docId'],
       name: json['name'],

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 Icon getCollectionIcon(String collection) {
   switch (collection) {
+    case 'cities':
+      return const Icon(Icons.location_city_outlined);
     case 'restaurants':
       return const Icon(Icons.restaurant_menu_outlined);
     case 'places':

@@ -77,6 +77,64 @@ class FireStoreServices extends DatabaseServices {
 
 //-------------------------------------------------------------
   @override
+  Stream<dynamic> getStreamData({
+    required String path,
+    String? recordId,
+    Map<String, dynamic>? query,
+    String? subPath,
+    String? subRecordId,
+    dynamic whereFieldValue,
+  }) {
+    // Stream data from a single document
+    if (recordId != null && subPath == null) {
+      return firestore
+          .collection(path)
+          .doc(recordId)
+          .snapshots()
+          .map((docSnapshot) => docSnapshot.data());
+    } else {
+      // Stream data from sub collection
+      if (subPath != null) {
+        var data = firestore.collection(path).doc(recordId).collection(subPath);
+        return data.snapshots();
+        // return data.snapshots().map((querySnapshot) =>
+        //     querySnapshot.docs.map((doc) => doc.data()).toList());
+      } else {
+        // Stream data from collection
+        Query<Map<String, dynamic>> data = firestore.collection(path);
+
+        // Apply query parameters
+        if (query != null) {
+          if (query['orderBy'] != null) {
+            var orderByField = query['orderBy'];
+            var descending = query['descending'] ?? false;
+            data = data.orderBy(orderByField, descending: descending);
+          }
+          if (query['limit'] != null) {
+            var limit = query['limit'];
+            data = data.limit(limit);
+          }
+          if (query['startAfter'] != null) {
+            var startAfter = query['startAfter'];
+            data = data.startAfter(startAfter);
+          }
+          if (query['endBefore'] != null) {
+            var endBefore = query['endBefore'];
+            data = data.endBefore(endBefore);
+          }
+          if (query['where'] != null && whereFieldValue != null) {
+            data = data.where(query['where'], isEqualTo: whereFieldValue);
+          }
+        }
+
+        return data.snapshots().map((querySnapshot) =>
+            querySnapshot.docs.map((doc) => doc.data()).toList());
+      }
+    }
+  }
+//-------------------------------------------------------------
+
+  @override
   Future<void> updateData({
     required String path,
     required String recordId,

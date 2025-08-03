@@ -1,8 +1,6 @@
 import 'package:your_tour_guide/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-
-import '../../cubits/home/home_cubit.dart';
 import '../functions/is_arabic.dart';
 
 class ContactWidget extends StatelessWidget {
@@ -16,8 +14,6 @@ class ContactWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      color:
-          HomeCubit.get(context).isDark! ? Color(0xfffffff) : Color(0xfff1f1f1),
       height: 50,
       child: ListView(
         shrinkWrap: true,

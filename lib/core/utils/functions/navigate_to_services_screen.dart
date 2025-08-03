@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:your_tour_guide/features/cafes/presentation/views/all_cafes_views.dart';
-import 'package:your_tour_guide/features/churchs/presentation/views/all_churches_view.dart';
-import 'package:your_tour_guide/features/cinemas/presentation/views/all_cinemas_view.dart';
-import 'package:your_tour_guide/features/hotels/presentation/views/all_hotels_view.dart';
-import 'package:your_tour_guide/features/malls/presentation/views/all_malls_view.dart';
-import 'package:your_tour_guide/features/mosques/presentation/views/all_mosques_view.dart';
-import 'package:your_tour_guide/features/nav_bar/presentation/views/home_view.dart';
-import 'package:your_tour_guide/features/restaurants/presentation/views/all_rests_views.dart';
+import 'package:your_tour_guide/features/cafes/presentation/views/cafes_views.dart';
+import 'package:your_tour_guide/features/churchs/presentation/views/churches_view.dart';
+import 'package:your_tour_guide/features/cinemas/presentation/views/cinemas_view.dart';
+import 'package:your_tour_guide/features/hotels/presentation/views/hotels_view.dart';
+import 'package:your_tour_guide/features/malls/presentation/views/malls_view.dart';
+import 'package:your_tour_guide/features/mosques/presentation/views/mosques_view.dart';
+import 'package:your_tour_guide/features/home/presentation/views/home_view.dart';
+import 'package:your_tour_guide/features/places/presentation/views/places_view.dart';
+import 'package:your_tour_guide/features/restaurants/presentation/views/restaurants_views.dart';
 
 void navigateToServiceScreen(String collectionRef, BuildContext context) {
   switch (collectionRef) {
@@ -14,49 +15,49 @@ void navigateToServiceScreen(String collectionRef, BuildContext context) {
       Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (_) => HomeView(),
+            builder: (_) => PlacesView(),
           ));
     case 'hotels':
       Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (_) => AllHotelsView(cityName: ''),
+            builder: (_) => HotelsView(),
           ));
     case 'restaurants':
       Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (_) => AllRestsView(cityName: ''),
+            builder: (_) => RestaurantsView(),
           ));
     case 'cafes':
       Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (_) => AllCafesView(cityName: ''),
+            builder: (_) => CafesView(),
           ));
     case 'malls':
       Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (_) => AllMallsView(cityName: ''),
+            builder: (_) => MallsView(),
           ));
     case 'cinemas':
       Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (_) => AllCinemasView(cityName: ''),
+            builder: (_) => CinemasView(),
           ));
     case 'mosques':
       Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (_) => AllMosquesView(cityName: ''),
+            builder: (_) => MosquesView(),
           ));
     case 'churchs':
       Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (_) => AllChurchesView(cityName: ''),
+            builder: (_) => ChurchesView(),
           ));
     case 'tourGuides':
       Navigator.push(

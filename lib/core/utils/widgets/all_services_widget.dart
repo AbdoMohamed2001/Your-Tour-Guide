@@ -53,7 +53,7 @@ class AllFeaturesGridView extends StatelessWidget {
                       left: isArabic() ? null : 12,
                       child: BorderedText(
                         strokeWidth: 4,
-                        strokeColor: HomeCubit.get(context).isDark!
+                        strokeColor: HomeCubit.get(context).isDarkMode
                             ? Colors.black
                             : Colors.white,
                         child: Text(
@@ -73,7 +73,7 @@ class AllFeaturesGridView extends StatelessWidget {
                       left: isArabic() ? null : 360,
                       child: BorderedText(
                         strokeWidth: 4,
-                        strokeColor: HomeCubit.get(context).isDark!
+                        strokeColor: HomeCubit.get(context).isDarkMode!
                             ? Colors.black
                             : Colors.white,
                         child: Text(

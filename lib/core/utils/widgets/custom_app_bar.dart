@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:your_tour_guide/core/utils/text_styles.dart';
 
 import '../functions/is_arabic.dart';
 
@@ -33,10 +34,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                   ? Center(
                       child: Text(
                         title,
-                        style: TextStyle(
-                          fontSize: 20,
-                          color: Theme.of(context).primaryColorDark,
-                        ),
+                        style: TextStyles.regular18,
                       ),
                     )
                   : Center(
@@ -61,26 +59,21 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 }
 
 class CustomAppBarIconButton extends StatelessWidget {
-  const CustomAppBarIconButton({Key? key}) : super(key: key);
-
+  const CustomAppBarIconButton({Key? key, this.onPressed}) : super(key: key);
+  final void Function()? onPressed;
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      onPressed: () {
-        Navigator.pop(context);
-      },
+      onPressed: onPressed ??
+          () {
+            Navigator.pop(context);
+          },
       icon: isArabic()
           ? RotatedBox(
               quarterTurns: 2,
-              child: Icon(
-                Icons.arrow_back_ios_new_outlined,
-                color: Theme.of(context).primaryColorDark,
-              ),
+              child: Icon(Icons.arrow_back_ios_new_outlined),
             )
-          : Icon(
-              Icons.arrow_back_ios_new_outlined,
-              color: Theme.of(context).primaryColorDark,
-            ),
+          : Icon(Icons.arrow_back_ios_new_outlined),
     );
   }
 }

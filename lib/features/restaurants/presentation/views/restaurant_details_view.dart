@@ -3,10 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:your_tour_guide/features/restaurants/domain/entities/restaurant_entity.dart';
 import 'package:your_tour_guide/features/restaurants/presentation/cubit/restaurant_cubit.dart';
-import 'package:your_tour_guide/features/restaurants/presentation/widgets/rest_details_view/rest_details_view_body.dart';
 
 import '../../../../core/services/get_it_services_locator.dart';
 import '../../data/repos/restaurant_repo.dart';
+import '../widgets/resturant_details_view/restaurant_details_view_body.dart';
 
 class RestaurantDetailsView extends StatelessWidget {
   RestaurantDetailsView({
@@ -21,7 +21,7 @@ class RestaurantDetailsView extends StatelessWidget {
     return Scaffold(
       body: BlocProvider(
         create: (context) => RestaurantCubit(getIt<RestaurantRepo>()),
-        child: RestDetailsViewBody(restEntity: restEntity),
+        child: RestaurantDetailsViewBody(restEntity: restEntity),
       ),
     );
   }

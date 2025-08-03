@@ -3,8 +3,12 @@ import 'package:your_tour_guide/core/services/database_services.dart';
 import 'package:your_tour_guide/core/utils/backend_endpoints.dart';
 import 'package:your_tour_guide/features/cafes/data/models/cafe_model.dart';
 import 'package:your_tour_guide/features/churchs/data/models/church_model.dart';
+import 'package:your_tour_guide/features/events/data/models/event_model.dart';
 import 'package:your_tour_guide/features/malls/data/models/mall_model.dart';
+import 'package:your_tour_guide/features/mosques/data/models/mosque_model.dart';
+import 'package:your_tour_guide/features/tours/data/models/tour_model.dart';
 import '../../../cinemas/data/models/cinema_model.dart';
+import '../../../cities/data/models/city_model.dart';
 import '../../../hotels/data/models/hotel_model.dart';
 import '../../../places/data/models/place_model.dart';
 import '../../../restaurants/data/models/restaurant_model.dart';
@@ -45,20 +49,28 @@ class SearchRemoteDataSourceImpl implements SearchRemoteDataSource {
     Map<String, dynamic> result,
   ) {
     switch (search.collection) {
-      case 'places':
-        return PlaceModel.fromJson(result).toEntity();
       case 'cafes':
         return CafeModel.fromJson(result).toEntity();
       case 'churchs':
         return ChurchModel.fromJson(result).toEntity();
       case 'cinemas':
         return CinemaModel.fromJson(result).toEntity();
+      case 'cities':
+        return CityModel.fromJson(result).toEntity();
+      case 'Events':
+        return EventModel.fromJson(result).toEntity();
       case 'hotels':
         return HotelModel.fromJson(result).toEntity();
       case 'malls':
         return MallModel.fromJson(result).toEntity();
+      case 'mosques':
+        return MosqueModel.fromJson(result).toEntity();
+      case 'places':
+        return PlaceModel.fromJson(result).toEntity();
       case 'restaurants':
         return RestaurantModel.fromJson(result).toEntity();
+      case 'tours':
+        return TourModel.fromJson(result).toEntity();
       default:
         throw UnsupportedError('Unsupported collection: ${search.collection}');
     }

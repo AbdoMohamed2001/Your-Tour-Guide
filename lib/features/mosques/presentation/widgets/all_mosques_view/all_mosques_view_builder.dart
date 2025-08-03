@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:your_tour_guide/core/utils/widgets/custom-grid-view/grid_list_view.dart';
 import 'package:your_tour_guide/features/mosques/domain/entities/mosque_entity.dart';
 import 'package:your_tour_guide/features/mosques/presentation/cubit/mosque_cubit.dart';
 
-class AllMosquesViewBuilder extends StatelessWidget {
-  const AllMosquesViewBuilder({super.key});
+import '../../../../../core/utils/widgets/local_hero/local_hero_body.dart';
 
+class MosquesViewBuilder extends StatelessWidget {
+  const MosquesViewBuilder({super.key, required this.tabController});
+  final TabController tabController;
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<MosqueCubit, MosqueState>(
@@ -18,7 +19,8 @@ class AllMosquesViewBuilder extends StatelessWidget {
         } else if (state is MosquesGetFailure) {
           return const Center(child: Text('Failed to load Mosques'));
         } else {
-          return GridListView(list: allMosques);
+          return LocalHeroBody(
+              tabController: tabController, entities: allMosques);
         }
       },
     );

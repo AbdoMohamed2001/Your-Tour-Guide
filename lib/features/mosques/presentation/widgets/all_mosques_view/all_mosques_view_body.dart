@@ -4,14 +4,14 @@ import 'package:your_tour_guide/features/mosques/presentation/cubit/mosque_cubit
 
 import 'all_mosques_view_builder.dart';
 
-class AllMosquesViewBody extends StatefulWidget {
-  const AllMosquesViewBody({super.key});
-
+class MosquesViewBody extends StatefulWidget {
+  const MosquesViewBody({super.key, required this.tabController});
+  final TabController tabController;
   @override
-  State<AllMosquesViewBody> createState() => _AllMosquesViewBodyState();
+  State<MosquesViewBody> createState() => _MosquesViewBodyState();
 }
 
-class _AllMosquesViewBodyState extends State<AllMosquesViewBody> {
+class _MosquesViewBodyState extends State<MosquesViewBody> {
   @override
   void initState() {
     super.initState();
@@ -20,6 +20,6 @@ class _AllMosquesViewBodyState extends State<AllMosquesViewBody> {
 
   @override
   Widget build(BuildContext context) {
-    return AllMosquesViewBuilder();
+    return MosquesViewBuilder(tabController: widget.tabController);
   }
 }

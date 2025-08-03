@@ -15,6 +15,7 @@ class FavouriteRepoImpl implements FavouriteRepo {
   final FavouriteLocalDataSource local;
 
   FavouriteRepoImpl(this.remote, this.local);
+
   @override
   Future<Either<Failure, void>> toggleFavourite(FavouriteModel model) async {
     final isFav = local.isFavourite(model.docId);
@@ -35,8 +36,10 @@ class FavouriteRepoImpl implements FavouriteRepo {
 //-------------------------------------------------------------------------------
   @override
   List<String> getLocalFavourites() => local.getFavourites();
+
   @override
   bool isFavourite(String id) => local.isFavourite(id);
+
 //-------------------------------------------------------------------------------
   @override
   Future<Either<Failure, List<FavouriteEntity>>> getFavourites() async {
@@ -51,6 +54,8 @@ class FavouriteRepoImpl implements FavouriteRepo {
   }
 
 //-------------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------------
   @override
   Future<Either<Failure, dynamic>> getEntity(FavouriteEntity favEntity) async {
     try {
@@ -63,4 +68,6 @@ class FavouriteRepoImpl implements FavouriteRepo {
               'There is an error while trying to convert to entity in search repo impl'));
     }
   }
+
+//-------------------------------------------------------------------------------
 }

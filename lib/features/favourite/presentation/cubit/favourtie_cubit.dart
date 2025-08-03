@@ -39,6 +39,7 @@ class FavouriteCubit extends Cubit<FavouriteState> {
   }
 
   List<FavouriteEntity> favs = [];
+
   Future<void> getFavourites() async {
     emit(FavouritesGetLoading());
     final result = await favouriteRepo.getFavourites();

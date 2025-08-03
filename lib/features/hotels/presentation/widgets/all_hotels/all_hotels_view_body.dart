@@ -3,14 +3,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:your_tour_guide/features/hotels/presentation/cubit/hotel_cubit.dart';
 import 'package:your_tour_guide/features/hotels/presentation/widgets/all_hotels/all_hotels_view_builder.dart';
 
-class AllHotelsViewBody extends StatefulWidget {
-  const AllHotelsViewBody({super.key});
-
+class HotelsViewBody extends StatefulWidget {
+  const HotelsViewBody({super.key, required this.tabController});
+  final TabController tabController;
   @override
-  State<AllHotelsViewBody> createState() => _AllHotelsViewBodyState();
+  State<HotelsViewBody> createState() => _HotelsViewBodyState();
 }
 
-class _AllHotelsViewBodyState extends State<AllHotelsViewBody> {
+class _HotelsViewBodyState extends State<HotelsViewBody> {
   @override
   void initState() {
     super.initState();
@@ -19,6 +19,6 @@ class _AllHotelsViewBodyState extends State<AllHotelsViewBody> {
 
   @override
   Widget build(BuildContext context) {
-    return AllHotelsViewBuilder();
+    return HotelsViewBuilder(tabController: widget.tabController);
   }
 }

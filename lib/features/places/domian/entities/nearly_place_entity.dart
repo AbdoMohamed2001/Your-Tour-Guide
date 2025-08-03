@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:your_tour_guide/features/nav_bar/presentation/views/home_view.dart';
-
+import 'package:your_tour_guide/features/cafes/presentation/views/cafes_views.dart';
+import 'package:your_tour_guide/features/cinemas/presentation/views/cinemas_view.dart';
+import 'package:your_tour_guide/features/restaurants/presentation/views/restaurants_views.dart';
 import '../../../../generated/l10n.dart';
-import '../../../hotels/presentation/views/all_hotels_view.dart';
+import '../../../hotels/presentation/views/hotels_view.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class NearlyPlaceEntity {
@@ -28,7 +29,7 @@ List<NearlyPlaceEntity> nearlyList = [
     iconName: FontAwesomeIcons.hotel,
     iconColor: Color(0xff613207),
     containerName: S.current.Hotels,
-    pushedPage: AllHotelsView(cityName: ''),
+    pushedPage: HotelsView(),
   ),
   //Restaurants
   NearlyPlaceEntity(
@@ -36,7 +37,7 @@ List<NearlyPlaceEntity> nearlyList = [
     iconName: FontAwesomeIcons.utensils,
     iconColor: Colors.black,
     containerName: S.current.Restaurants,
-    pushedPage: HomeView(),
+    pushedPage: RestaurantsView(),
   ),
   //Cafes
   NearlyPlaceEntity(
@@ -44,7 +45,7 @@ List<NearlyPlaceEntity> nearlyList = [
     iconName: FontAwesomeIcons.mugHot,
     iconColor: Colors.black,
     containerName: S.current.Cafes,
-    pushedPage: HomeView(),
+    pushedPage: CafesView(),
   ),
   // //Cinemas
   NearlyPlaceEntity(
@@ -52,6 +53,6 @@ List<NearlyPlaceEntity> nearlyList = [
     iconName: FontAwesomeIcons.film,
     iconColor: Colors.black,
     containerName: S.current.Cinemas,
-    pushedPage: HomeView(),
+    pushedPage: CinemasView(),
   ),
 ];

@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:your_tour_guide/features/cafes/presentation/views/cafe_details_view.dart';
 import 'package:your_tour_guide/features/churchs/presentation/views/church_details_view.dart';
 import 'package:your_tour_guide/features/cinemas/presentation/views/cinema_details_view.dart';
+import 'package:your_tour_guide/features/cities/presentation/views/city_view.dart';
 import 'package:your_tour_guide/features/events/presentation/views/event_details_view.dart';
 import 'package:your_tour_guide/features/hotels/presentation/views/hotel_details_view.dart';
 import 'package:your_tour_guide/features/malls/presentation/views/mall_details_view.dart';
 import 'package:your_tour_guide/features/mosques/presentation/views/moqsue_details_view.dart';
-import 'package:your_tour_guide/features/nav_bar/presentation/views/home_view.dart';
+import 'package:your_tour_guide/features/home/presentation/views/home_view.dart';
 import 'package:your_tour_guide/features/places/presentation/views/place_details_view.dart';
 import 'package:your_tour_guide/features/restaurants/presentation/views/restaurant_details_view.dart';
 import 'package:your_tour_guide/features/tours/presentation/views/tour_details_view.dart';
@@ -14,6 +15,12 @@ import 'package:your_tour_guide/features/tours/presentation/views/tour_details_v
 void navigateToServiceDetailsScreen(
     String collectionRef, BuildContext context, dynamic entity) {
   switch (collectionRef) {
+    case 'cities':
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (_) => CityView(cityEntity: entity),
+          ));
     case 'places':
       Navigator.push(
           context,

@@ -3,8 +3,6 @@ import 'package:your_tour_guide/core/utils/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../../core/cubits/home/home_cubit.dart';
-
 class FeaturesGridViewItem extends StatelessWidget {
   final Color boxDecorationColor;
   final String text;
@@ -26,11 +24,7 @@ class FeaturesGridViewItem extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           // color: Colors.white,
-          border: Border.all(
-            color:
-                HomeCubit.get(context).isDark! ? Colors.grey : Colors.black26,
-            width: 0.9,
-          ),
+          border: Border.all(width: 0.9),
           color: boxDecorationColor,
           borderRadius: BorderRadius.all(Radius.circular(kBorderRadius8)),
         ),

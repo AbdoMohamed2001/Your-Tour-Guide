@@ -2,7 +2,6 @@ import 'package:bordered_text/bordered_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
-import '../../cubits/home/home_cubit.dart';
 import '../functions/is_arabic.dart';
 import '../text_styles.dart';
 
@@ -28,8 +27,6 @@ class DefaultGridImage extends StatelessWidget {
             left: isArabic() ? null : 5,
             child: BorderedText(
               strokeWidth: 3,
-              strokeColor:
-                  HomeCubit.get(context).isDark! ? Colors.black : Colors.white,
               child: Text(
                 isArabic() ? entity.nameArabic : entity.name,
                 style: TextStyles.bold14,
@@ -44,8 +41,6 @@ class DefaultGridImage extends StatelessWidget {
             left: isArabic() ? null : 8,
             child: BorderedText(
               strokeWidth: 3,
-              strokeColor:
-                  HomeCubit.get(context).isDark! ? Colors.black : Colors.white,
               child: Text(
                 isArabic() ? entity.cityNameArabic : entity.cityName,
                 style: TextStyles.bold14,

@@ -24,6 +24,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
   @override
   void initState() {
     super.initState();
+
     context.read<HomeCubit>().getFeaturedPlaces();
   }
 
@@ -41,6 +42,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
               ExploreMore(),
               kSizedBox,
               //-----------------------------------------------------------------
+              //Search Bar
               GestureDetector(
                 onTap: () {
                   context.read<HomeCubit>().changeIndex(1);

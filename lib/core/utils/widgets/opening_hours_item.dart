@@ -26,7 +26,7 @@ class OpeningHoursWidget extends StatelessWidget {
         Stack(
           children: [
             Image.asset(
-              HomeCubit.get(context).isDark!
+              HomeCubit.get(context).isDarkMode
                   ? isArabic()
                       ? Assets.imagesOpenDarkArabic
                       : Assets.imagesOpenDarkEnglish

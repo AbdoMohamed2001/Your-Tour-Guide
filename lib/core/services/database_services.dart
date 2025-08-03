@@ -32,7 +32,14 @@ abstract class DatabaseServices {
     String? subRecordId,
     dynamic whereFieldValue,
   });
-
+  Stream<dynamic> getStreamData({
+    required String path,
+    String? recordId,
+    Map<String, dynamic>? query,
+    String? subPath,
+    String? subRecordId,
+    dynamic whereFieldValue,
+  });
   Future<void> updateData({
     required String path,
     required String recordId,

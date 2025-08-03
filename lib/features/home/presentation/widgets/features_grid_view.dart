@@ -17,7 +17,7 @@ class FeaturesGridView extends StatelessWidget {
         crossAxisCount: 2,
         crossAxisSpacing: 15,
         mainAxisSpacing: 10,
-        childAspectRatio: 0.65 / .40,
+        childAspectRatio: 2 / 1.05,
       ),
       itemBuilder: (context, index) {
         return FeaturesGridViewItem(

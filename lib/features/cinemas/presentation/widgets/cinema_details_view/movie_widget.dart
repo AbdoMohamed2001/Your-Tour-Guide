@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:your_tour_guide/features/cinemas/presentation/views/movie_view.dart';
 
-import '../../../../../core/cubits/home/home_cubit.dart';
 import '../../../../../core/utils/functions/is_arabic.dart';
 import '../../../domain/entities/cinema_entity.dart';
 
@@ -28,8 +27,6 @@ class MovieWidget extends StatelessWidget {
       },
       child: Container(
         width: 170,
-        color:
-            HomeCubit.get(context).isDark! ? Colors.black54 : Color(0xffDBD3D8),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,

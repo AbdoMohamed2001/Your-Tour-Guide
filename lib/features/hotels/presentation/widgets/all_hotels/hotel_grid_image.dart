@@ -3,7 +3,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
-import '../../../../../core/cubits/home/home_cubit.dart';
 import '../../../../../core/utils/functions/is_arabic.dart';
 import '../../../../../core/utils/text_styles.dart';
 import '../../../domain/entities/hotel_entity.dart';
@@ -36,8 +35,6 @@ class HotelGridImage extends StatelessWidget {
             left: isArabic() ? null : 5,
             child: BorderedText(
               strokeWidth: 3,
-              strokeColor:
-                  HomeCubit.get(context).isDark! ? Colors.black : Colors.white,
               child: Text(
                 isArabic() ? hotelEntity.nameArabic : hotelEntity.name,
                 style: TextStyles.bold14,
@@ -52,8 +49,6 @@ class HotelGridImage extends StatelessWidget {
             left: isArabic() ? null : 8,
             child: BorderedText(
               strokeWidth: 3,
-              strokeColor:
-                  HomeCubit.get(context).isDark! ? Colors.black : Colors.white,
               child: Text(
                 isArabic() ? hotelEntity.cityNameArabic : hotelEntity.cityName,
                 style: TextStyles.bold14,

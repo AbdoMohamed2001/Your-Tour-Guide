@@ -6,8 +6,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:maps_launcher/maps_launcher.dart';
 import 'package:your_tour_guide/generated/assets.dart';
 
-import '../../cubits/home/home_cubit.dart';
-
 class LocationWidget extends StatelessWidget {
   const LocationWidget({
     super.key,
@@ -59,9 +57,7 @@ class LocationWidget extends StatelessWidget {
                 },
                 child: Container(
                   child: Image.asset(
-                    HomeCubit.get(context).isDark!
-                        ? Assets.imagesGoogleMapsDark
-                        : Assets.imagesGooglemaps,
+                    Assets.imagesGooglemaps,
                     width: screenWidth * 0.120,
                     height: 50,
                   ),

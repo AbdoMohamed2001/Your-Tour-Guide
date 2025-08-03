@@ -27,6 +27,9 @@ class CacheData {
   }
 
   //--------------------------------------------------------------
+  static Future<void> cacheLanguage(String code) async {
+    await sharedPreferences.setString(_cachedCode, code);
+  }
 
   static const String _cachedCode = "cachedCode";
   static String getCachedLanguage() {
@@ -38,12 +41,12 @@ class CacheData {
     }
   }
 
-  static Future<void> cacheLanguage(String code) async {
-    await sharedPreferences.setString(_cachedCode, code);
-  }
-
   //--------------------------------------------------------------
   static const String _cachedTheme = "cachedTheme";
+  static Future<void> cacheTheme(bool isDark) async {
+    await sharedPreferences.setBool(_cachedTheme, isDark);
+  }
+
   static bool getCachedTheme() {
     final isDark = sharedPreferences.getBool(_cachedTheme);
     if (isDark != null) {
@@ -54,8 +57,5 @@ class CacheData {
     }
   }
 
-  static Future<void> cacheTheme(bool isDark) async {
-    await sharedPreferences.setBool(_cachedTheme, isDark);
-  }
 //--------------------------------------------------------------
 }

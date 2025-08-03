@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:your_tour_guide/features/auth/presentation/widgets/register_view/register_view_body.dart';
 
 import '../../../../../core/utils/functions/show_snack_bar.dart';
-import '../../../../nav_bar/presentation/views/main_view.dart';
+import '../../../../home/presentation/views/main_view.dart';
 import '../../cubits/auth_cubit/auth_cubit.dart';
 
 class RegisterViewConsumer extends StatelessWidget {

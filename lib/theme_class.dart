@@ -6,20 +6,25 @@ import 'package:your_tour_guide/core/utils/app_colors.dart';
 class ThemeClass {
   static ThemeData lightTheme = ThemeData(
     useMaterial3: true,
+    primarySwatch: Colors.orange,
+    primaryColorDark: Colors.black,
+    primaryColor: Colors.white,
+    canvasColor: Colors.white70,
+    cardColor: Color(0xFFF2F2F7),
+    scaffoldBackgroundColor: Color(0xffFCFCFC),
     colorScheme: ColorScheme.fromSeed(
       seedColor: AppColors.primaryColor,
       brightness: Brightness.light,
     ),
-    scaffoldBackgroundColor: Color(0xffFCFCFC),
     appBarTheme: AppBarTheme(
       backgroundColor: Color(0xffFCFCFC),
       systemOverlayStyle: SystemUiOverlayStyle(
-        statusBarColor: Colors.white,
+        statusBarColor: Colors.transparent,
         statusBarIconBrightness: Brightness.dark,
       ),
     ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
-      backgroundColor: Colors.white,
+      backgroundColor: Color(0xffFCFCFC),
     ),
     listTileTheme: const ListTileThemeData(
       textColor: Colors.black,
@@ -32,32 +37,29 @@ class ThemeClass {
       ),
       horizontalTitleGap: 12,
     ),
-    textTheme: GoogleFonts.cairoTextTheme().apply(
-      bodyColor: Colors.black,
-      displayColor: Colors.black,
-    ),
     inputDecorationTheme: InputDecorationTheme(
       filled: true,
       fillColor: Color(0xFFF7F7F7),
       errorMaxLines: 2,
       hintStyle: TextStyle(color: Colors.grey[600]),
       labelStyle: TextStyle(color: Colors.black87),
-      suffixIconColor: AppColors.primaryColor,
-      prefixIconColor: AppColors.primaryColor,
       contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
         borderSide:
             BorderSide(color: AppColors.primaryColor.withValues(alpha: 153)),
       ),
+      disabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(12),
+        borderSide: BorderSide(color: AppColors.primaryColor.withOpacity(0.6)),
+      ),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
-        borderSide:
-            BorderSide(color: AppColors.primaryColor.withValues(alpha: 153)),
+        borderSide: BorderSide(color: AppColors.primaryColor.withOpacity(0.6)),
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
-        borderSide: BorderSide(color: AppColors.primaryColor, width: 2),
+        borderSide: BorderSide(color: AppColors.primaryColor.withOpacity(0.6)),
       ),
       errorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
@@ -73,31 +75,33 @@ class ThemeClass {
         ),
       ),
     ),
-    progressIndicatorTheme: ProgressIndicatorThemeData(color: Colors.orange),
-    primarySwatch: Colors.orange,
-    primaryColorDark: Colors.black,
-    primaryColor: Colors.white,
-    canvasColor: Colors.white70,
-    cardColor: Color(0xFFF7F7F7),
+    progressIndicatorTheme:
+        ProgressIndicatorThemeData(color: AppColors.primaryColor),
+    textTheme: GoogleFonts.cairoTextTheme().apply(
+      bodyColor: Colors.black,
+      displayColor: Colors.black,
+    ),
   );
+
 //---------------------------------------------------------------------------------
   static ThemeData darkTheme = ThemeData(
     useMaterial3: true,
+    primarySwatch: Colors.orange,
+    primaryColorDark: Colors.white,
+    primaryColor: Colors.black,
+    canvasColor: Colors.white10,
+    cardColor: Colors.grey[850],
+    scaffoldBackgroundColor: Color(0xff121212),
     colorScheme: ColorScheme.fromSeed(
       seedColor: AppColors.primaryColor,
       brightness: Brightness.dark,
     ),
-    scaffoldBackgroundColor: Color(0xff121212),
     appBarTheme: AppBarTheme(
       backgroundColor: Color(0xff121212),
       systemOverlayStyle: SystemUiOverlayStyle(
-        statusBarColor: Color(0xff121212),
+        statusBarColor: Colors.transparent,
         statusBarIconBrightness: Brightness.light,
       ),
-    ),
-    textTheme: GoogleFonts.cairoTextTheme().apply(
-      bodyColor: Colors.white,
-      displayColor: Colors.white,
     ),
     inputDecorationTheme: InputDecorationTheme(
       filled: true,
@@ -111,15 +115,17 @@ class ThemeClass {
       suffixIconColor: AppColors.primaryColor,
       prefixIconColor: AppColors.primaryColor,
       contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+      disabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(12),
+        borderSide: BorderSide(color: AppColors.primaryColor.withOpacity(0.4)),
+      ),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
-        borderSide:
-            BorderSide(color: AppColors.primaryColor.withValues(alpha: 153)),
+        borderSide: BorderSide(color: AppColors.primaryColor.withOpacity(0.4)),
       ),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
-        borderSide:
-            BorderSide(color: AppColors.primaryColor.withValues(alpha: 153)),
+        borderSide: BorderSide(color: AppColors.primaryColor.withOpacity(0.4)),
       ),
       focusedBorder: OutlineInputBorder(
         borderSide: BorderSide(color: AppColors.primaryColor, width: 2),
@@ -147,14 +153,14 @@ class ThemeClass {
       ),
       horizontalTitleGap: 12,
     ),
-    progressIndicatorTheme: ProgressIndicatorThemeData(color: Colors.orange),
-    primarySwatch: Colors.orange,
-    primaryColorDark: Colors.white,
-    primaryColor: Colors.black,
-    canvasColor: Colors.white10,
-    cardColor: Colors.grey[850],
+    progressIndicatorTheme:
+        ProgressIndicatorThemeData(color: AppColors.primaryColor),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       backgroundColor: Color(0xff121212),
+    ),
+    textTheme: GoogleFonts.cairoTextTheme().apply(
+      bodyColor: Colors.white,
+      displayColor: Colors.white,
     ),
   );
 }

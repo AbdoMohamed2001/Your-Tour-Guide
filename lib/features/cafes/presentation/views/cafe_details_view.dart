@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:your_tour_guide/features/cafes/data/repos/cafe_repo.dart';
 import 'package:your_tour_guide/features/cafes/domain/entities/cafe_entity.dart';
 import 'package:your_tour_guide/features/cafes/presentation/cubit/cafe_cubit.dart';
-import 'package:your_tour_guide/features/cafes/presentation/widgets/rest_details_view/cafe_details_view_body.dart';
 
 import '../../../../core/services/get_it_services_locator.dart';
+import '../widgets/cafe_details_view/cafe_details_view_body.dart';
 
 class CafeDetailsView extends StatelessWidget {
   CafeDetailsView({
