@@ -86,7 +86,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
         ),
         //-----------------------------------------------------------------
         //FEATURED PLACES LISTVIEW
-        const SliverPadding(
+        SliverPadding(
           padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
           sliver: const FeaturedPlacesListViewBuilder(),
         ),

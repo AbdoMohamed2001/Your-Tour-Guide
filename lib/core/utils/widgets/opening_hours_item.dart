@@ -2,7 +2,7 @@ import 'package:your_tour_guide/generated/assets.dart';
 import 'package:your_tour_guide/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
-import '../../cubits/home/home_cubit.dart';
+import '../../cubits/theme/theme_cubit.dart';
 import '../../services/get_it_services_locator.dart';
 import '../functions/is_arabic.dart';
 import '../theme/text_styles.dart';
@@ -24,7 +24,7 @@ class OpeningHoursWidget extends StatelessWidget {
         Stack(
           children: [
             Image.asset(
-              getIt<HomeCubit>().isDarkMode
+              getIt<ThemeCubit>().isDarkMode
                   ? isArabic()
                       ? Assets.imagesOpenDarkArabic
                       : Assets.imagesOpenDarkEnglish

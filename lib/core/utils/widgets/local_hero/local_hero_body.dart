@@ -2,12 +2,12 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:local_hero_transform/local_hero_transform.dart';
-import 'package:your_tour_guide/core/cubits/home/home_cubit.dart';
 import 'package:your_tour_guide/core/utils/functions/is_arabic.dart';
 import 'package:your_tour_guide/core/utils/functions/navigate_to_services_details_screen.dart';
 import 'package:your_tour_guide/core/utils/theme/text_styles.dart';
 
 import '../../../../features/favourite/presentation/cubit/favourtie_cubit.dart';
+import '../../../cubits/theme/theme_cubit.dart';
 import '../../../services/get_it_services_locator.dart';
 import '../../theme/app_colors.dart';
 
@@ -60,7 +60,7 @@ class LocalHeroBody extends StatelessWidget {
 ItemsModel buildDefaultItemModel(BuildContext context, dynamic entity) {
   return ItemsModel(
     cardStyleMode: CardStyleMode(
-      isDarkMode: getIt<HomeCubit>().isDarkMode,
+      isDarkMode: getIt<ThemeCubit>().isDarkMode,
       isLoading: false,
       cardColor: Theme.of(context).cardColor,
     ),
@@ -89,7 +89,7 @@ ItemsModel buildDefaultItemModel(BuildContext context, dynamic entity) {
 ItemsModel buildEventItemModel(BuildContext context, dynamic entity) {
   return ItemsModel(
     cardStyleMode: CardStyleMode(
-      isDarkMode: context.read<HomeCubit>().isDarkMode,
+      isDarkMode: context.read<ThemeCubit>().isDarkMode,
       isLoading: false,
       cardColor: Theme.of(context).cardColor,
     ),
@@ -116,7 +116,7 @@ ItemsModel buildEventItemModel(BuildContext context, dynamic entity) {
 ItemsModel buildTourItemModel(BuildContext context, dynamic entity) {
   return ItemsModel(
     cardStyleMode: CardStyleMode(
-      isDarkMode: context.read<HomeCubit>().isDarkMode,
+      isDarkMode: context.read<ThemeCubit>().isDarkMode,
       isLoading: false,
       cardColor: Theme.of(context).cardColor,
     ),

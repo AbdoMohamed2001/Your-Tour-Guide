@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'package:your_tour_guide/core/cubits/locale_cubit/locale_cubit.dart';
+import 'package:your_tour_guide/core/cubits/theme/theme_cubit.dart';
 import 'package:your_tour_guide/core/services/firebase_storage_services.dart';
 import 'package:your_tour_guide/core/services/storage_services.dart';
 import 'package:your_tour_guide/features/auth/data/datasources/remote/auth_remote_datasource.dart';
@@ -192,6 +194,12 @@ void _registerCubits() {
   // Register HomeCubit LAST, after all its dependencies (especially PlacesRepo) are registered
   getIt.registerLazySingleton<HomeCubit>(
     () => HomeCubit(getIt<PlacesRepo>()),
+  );
+  getIt.registerLazySingleton<ThemeCubit>(
+    () => ThemeCubit(),
+  );
+  getIt.registerLazySingleton<LocaleCubit>(
+    () => LocaleCubit(),
   );
 
   // Add other Cubits/Blocs here as needed

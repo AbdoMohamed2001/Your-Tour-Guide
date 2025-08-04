@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:local_hero_transform/local_hero_transform.dart';
-import 'package:your_tour_guide/core/cubits/home/home_cubit.dart';
 import 'package:your_tour_guide/core/utils/theme/text_styles.dart';
 
+import '../../../cubits/theme/theme_cubit.dart';
 import '../../theme/app_colors.dart';
 import '../../functions/navigate_to_services_details_screen.dart';
 
@@ -26,7 +26,7 @@ class LocalHeroView extends StatelessWidget {
           style: TextStyles.bold16,
         ),
         cardStyleMode: CardStyleMode(
-          isDarkMode: context.read<HomeCubit>().isDarkMode,
+          isDarkMode: context.read<ThemeCubit>().isDarkMode,
           cardColor: Theme.of(context).cardColor,
         ),
         subTitleIcon: const Icon(

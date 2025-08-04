@@ -16,9 +16,9 @@ class FavouriteWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      top: 30,
-      right: isArabic() ? null : 10,
-      left: isArabic() ? 10 : null,
+      top: 50,
+      right: isArabic() ? null : 16,
+      left: isArabic() ? 16 : null,
       child: BlocConsumer<FavouriteCubit, FavouriteState>(
         listener: (context, state) {
           if (state is FavouriteToggleFailure) {
@@ -36,8 +36,8 @@ class FavouriteWidget extends StatelessWidget {
             isLoading = true;
             // You could maintain previous favorite state during loading
           }
-          return IconButton(
-            onPressed: isLoading
+          return InkWell(
+            onTap: isLoading
                 ? null
                 : () {
                     final model = FavouriteModel(
@@ -52,10 +52,20 @@ class FavouriteWidget extends StatelessWidget {
                     );
                     context.read<FavouriteCubit>().toggle(model);
                   },
-            icon: Icon(
-              Icons.favorite,
-              color: isFav ? Colors.red : Colors.white,
-              size: 40,
+            child: CircleAvatar(
+              radius: 20,
+              backgroundColor: Theme.of(context).cardColor,
+              child: isFav
+                  ? Icon(
+                      Icons.favorite_rounded,
+                      color: Colors.red,
+                      size: 25,
+                    )
+                  : Icon(
+                      Icons.favorite_border_rounded,
+                      color: Theme.of(context).primaryColorDark,
+                      size: 25,
+                    ),
             ),
           );
         },

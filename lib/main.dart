@@ -1,7 +1,7 @@
 import 'package:flutter/services.dart';
-import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'package:your_tour_guide/core/cubits/home/home_cubit.dart';
 import 'package:your_tour_guide/core/utils/app_locale.dart';
-import 'package:your_tour_guide/core/services/cacheHelper.dart';
+import 'package:your_tour_guide/features/splash/presentation/views/splash_view.dart';
 import 'package:your_tour_guide/generated/l10n.dart';
 import 'package:your_tour_guide/core/utils/functions/simple_bloc_observer.dart';
 import 'package:your_tour_guide/core/utils/theme/theme_class.dart';
@@ -10,13 +10,11 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:provider/provider.dart';
-import 'core/cubits/home/home_cubit.dart';
-import 'core/services/firebase_auth_services.dart';
+import 'core/cubits/locale_cubit/locale_cubit.dart';
+import 'core/cubits/theme/theme_cubit.dart';
 import 'core/services/get_it_services_locator.dart';
 import 'core/services/shared_prefs_services.dart';
-import 'features/home/presentation/views/main_view.dart';
-import 'features/splash/presentation/views/welcome_view.dart';
+
 import 'firebase_options.dart';
 
 void main() async {
@@ -37,74 +35,16 @@ void main() async {
     //   },
     // ),
   );
-  WidgetsBinding.instance.addPostFrameCallback((_) {
-    _initializeNonCriticalServices();
-  });
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider<HomeCubit>.value(
-          value: getIt<HomeCubit>(),
-        ),
-      ],
-      child: StreamProvider<InternetConnectionStatus>(
-        initialData: InternetConnectionStatus.connected,
-        create: (_) {
-          return InternetConnectionChecker.instance.onStatusChange;
-        },
-        child: BlocBuilder<HomeCubit, HomeState>(
-          builder: (context, state) {
-            return MaterialApp(
-              builder: DevicePreview.appBuilder,
-
-              debugShowCheckedModeBanner: false,
-              // App configuration
-              title: 'Your Tour Guide',
-              locale: getIt<HomeCubit>().currentLocale,
-              // Theme configuration
-              theme: ThemeClass.lightTheme,
-              darkTheme: ThemeClass.darkTheme,
-              themeMode: getIt<HomeCubit>().currentThemeMode,
-              // Localization configuration
-              localizationsDelegates: [
-                S.delegate,
-                AppLocalizations.delegate,
-                GlobalMaterialLocalizations.delegate,
-                GlobalWidgetsLocalizations.delegate,
-                GlobalCupertinoLocalizations.delegate,
-              ],
-              supportedLocales: [
-                Locale('en'),
-                Locale("ar"),
-              ],
-              localeResolutionCallback: _localeResolutionCallback,
-              home: _buildHome(),
-            );
-          },
-        ),
-      ),
-    );
-  }
-}
-
-//-----------------------------------------------------------------------------
-_buildHome() {
-  // Cache the auth check result to avoid repeated calls
-  final isLoggedIn = FirebaseAuthService().isLoggedIn();
-  return isLoggedIn ? const MainView() : const WelcomeView();
+  // Defer heavy work until after first frame
+  // WidgetsBinding.instance.addPostFrameCallback((_) {
+  //   _initializeNonCriticalServices();
+  // });
 }
 
 //-----------------------------------------------------------------------------
 Future<void> _initializeCriticalServices() async {
   try {
     // Initialize only critical services that block app startup
-    await CacheData.cacheInit();
     await Prefs.init();
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
@@ -118,18 +58,69 @@ Future<void> _initializeCriticalServices() async {
   }
 }
 
-Future<void> _initializeNonCriticalServices() async {
-  try {
-    // Initialize HomeCubit data after UI is ready
-    await getIt<HomeCubit>().initializeApp();
+// Future<void> _initializeNonCriticalServices() async {
+//   try {
+//     // Initialize HomeCubit data after UI is ready
+//     await getIt<LocaleCubit>().getSavedLanguage();
+//     await getIt<ThemeCubit>().getSavedTheme();
+//
+//     // Add other non-critical initializations here
+//     // e.g., analytics, crashlytics, etc.
+//   } catch (e) {
+//     debugPrint('Non-critical service initialization failed: $e');
+//     // Non-critical failures shouldn't crash the app
+//   }
+// }
+//-----------------------------------------------------------------------------
 
-    // Add other non-critical initializations here
-    // e.g., analytics, crashlytics, etc.
-  } catch (e) {
-    debugPrint('Non-critical service initialization failed: $e');
-    // Non-critical failures shouldn't crash the app
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (_) => getIt<HomeCubit>()),
+        BlocProvider(create: (_) => getIt<ThemeCubit>()..getSavedTheme),
+        BlocProvider(create: (_) => getIt<LocaleCubit>()..getSavedLanguage()),
+      ],
+      child: BlocBuilder<ThemeCubit, ThemeState>(
+        builder: (context, state) {
+          return BlocBuilder<LocaleCubit, LocaleState>(
+              builder: (context, state) {
+            return MaterialApp(
+              builder: DevicePreview.appBuilder,
+
+              debugShowCheckedModeBanner: false,
+              // App configuration
+              title: 'Your Tour Guide',
+              locale: getIt<LocaleCubit>().currentLocale,
+              // Theme configuration
+              theme: ThemeClass.lightTheme,
+              darkTheme: ThemeClass.darkTheme,
+              themeMode: getIt<ThemeCubit>().currentThemeMode,
+              // Localization configuration
+              localizationsDelegates: [
+                S.delegate,
+                AppLocalizations.delegate,
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+              supportedLocales: [
+                Locale('en'),
+                Locale("ar"),
+              ],
+              localeResolutionCallback: _localeResolutionCallback,
+              home: SplashView(),
+            );
+          });
+        },
+      ),
+    );
   }
 }
+
 //-----------------------------------------------------------------------------
 //HELP METHODS
 //-----------------------------------------------------------------------------

@@ -1,39 +1,16 @@
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:your_tour_guide/core/services/shared_prefs_services.dart';
 
-class CacheData {
-  static late SharedPreferences sharedPreferences;
-  static cacheInit() async {
-    sharedPreferences = await SharedPreferences.getInstance();
-  }
-
-  static const likedKey = 'liked_key';
-  static late bool liked = false;
-
-  static Future<bool> setData(
-      {required String key, required dynamic value}) async {
-    if (value is bool) {
-      await sharedPreferences.setBool(key, value);
-      return true;
-    }
-    if (value is String) {
-      await sharedPreferences.setString(key, value);
-      return true;
-    }
-    return false;
-  }
-
-  static dynamic getData({required String key}) {
-    return sharedPreferences.get(key);
-  }
-
+class CacheHelper {
+  //--------------------------------------------------------------
+  // LOCALIZATION
   //--------------------------------------------------------------
   static Future<void> cacheLanguage(String code) async {
-    await sharedPreferences.setString(_cachedCode, code);
+    await Prefs.setString(_cachedCode, code);
   }
 
   static const String _cachedCode = "cachedCode";
   static String getCachedLanguage() {
-    final code = sharedPreferences.getString(_cachedCode);
+    final code = Prefs.getString(_cachedCode);
     if (code != null) {
       return code;
     } else {
@@ -42,20 +19,19 @@ class CacheData {
   }
 
   //--------------------------------------------------------------
+  // THEME
+  //--------------------------------------------------------------
   static const String _cachedTheme = "cachedTheme";
   static Future<void> cacheTheme(bool isDark) async {
-    await sharedPreferences.setBool(_cachedTheme, isDark);
+    await Prefs.setBool(_cachedTheme, isDark);
   }
 
   static bool getCachedTheme() {
-    final isDark = sharedPreferences.getBool(_cachedTheme);
-    if (isDark != null) {
-      return isDark;
+    final cachedTheme = Prefs.getBool(_cachedTheme);
+    if (cachedTheme == true) {
+      return cachedTheme;
     } else {
-      print('null in isDark value and default value will be false');
       return false;
     }
   }
-
-//--------------------------------------------------------------
 }

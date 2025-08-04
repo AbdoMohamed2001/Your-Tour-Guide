@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:your_tour_guide/core/cubits/locale_cubit/locale_cubit.dart';
+import 'package:your_tour_guide/core/cubits/theme/theme_cubit.dart';
 import 'package:your_tour_guide/core/services/get_it_services_locator.dart';
 import 'package:your_tour_guide/core/utils/theme/app_colors.dart';
 import 'package:your_tour_guide/generated/l10n.dart';
-import '../../../../core/cubits/home/home_cubit.dart';
 import '../../../../core/utils/theme/text_styles.dart';
 
 class ExploreMore extends StatelessWidget {
@@ -23,9 +24,9 @@ class ExploreMore extends StatelessWidget {
               children: [
                 //Change Theme icon
                 IconButton(
-                  onPressed: () => getIt<HomeCubit>().toggleTheme(),
+                  onPressed: () => getIt<ThemeCubit>().toggleTheme(),
                   icon: Icon(
-                    getIt<HomeCubit>().isDarkMode
+                    getIt<ThemeCubit>().isDarkMode
                         ? Icons.light_mode
                         : Icons.dark_mode,
                   ),
@@ -33,10 +34,10 @@ class ExploreMore extends StatelessWidget {
                 const SizedBox(width: 8),
                 SimplePopupMenu(
                   onSelected: (langCode) {
-                    getIt<HomeCubit>().changeLanguage(langCode);
+                    getIt<LocaleCubit>().changeLanguage(langCode);
                   },
                   currentLanguageCode:
-                      getIt<HomeCubit>().currentLocale.languageCode,
+                      getIt<LocaleCubit>().currentLocale.languageCode,
                 )
               ],
             ),
