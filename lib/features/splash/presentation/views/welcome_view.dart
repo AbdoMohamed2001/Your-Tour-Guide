@@ -6,8 +6,6 @@ import 'package:flutter/services.dart';
 import '../../../../generated/assets.dart';
 
 class WelcomeView extends StatelessWidget {
-  static String id = 'welcomeView';
-
   const WelcomeView({
     Key? key,
   }) : super(key: key);

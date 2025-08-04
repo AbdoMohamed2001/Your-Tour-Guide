@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:your_tour_guide/core/services/get_it_services_locator.dart';
 import 'package:your_tour_guide/core/utils/theme/app_colors.dart';
 import 'package:your_tour_guide/generated/l10n.dart';
 import '../../../../core/cubits/home/home_cubit.dart';
@@ -12,8 +12,6 @@ class ExploreMore extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final homeCubit = context.read<HomeCubit>();
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -25,20 +23,20 @@ class ExploreMore extends StatelessWidget {
               children: [
                 //Change Theme icon
                 IconButton(
-                  onPressed: () => homeCubit.toggleTheme(),
+                  onPressed: () => getIt<HomeCubit>().toggleTheme(),
                   icon: Icon(
-                    homeCubit.isDarkMode ? Icons.light_mode : Icons.dark_mode,
+                    getIt<HomeCubit>().isDarkMode
+                        ? Icons.light_mode
+                        : Icons.dark_mode,
                   ),
-                  tooltip: homeCubit.isDarkMode
-                      ? 'Switch to Light Mode'
-                      : 'Switch to Dark Mode',
                 ),
-                SizedBox(width: 8),
+                const SizedBox(width: 8),
                 SimplePopupMenu(
                   onSelected: (langCode) {
-                    homeCubit.changeLanguage(langCode);
+                    getIt<HomeCubit>().changeLanguage(langCode);
                   },
-                  currentLanguageCode: homeCubit.currentLocale.languageCode,
+                  currentLanguageCode:
+                      getIt<HomeCubit>().currentLocale.languageCode,
                 )
               ],
             ),

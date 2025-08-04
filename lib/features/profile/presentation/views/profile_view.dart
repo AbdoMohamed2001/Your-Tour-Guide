@@ -10,7 +10,6 @@ import '../../../../core/utils/widgets/custom_app_bar.dart';
 import '../../../../generated/l10n.dart';
 
 class ProfileView extends StatelessWidget {
-  static String id = '  ProfileView';
 //
   @override
   Widget build(BuildContext context) {
@@ -19,7 +18,7 @@ class ProfileView extends StatelessWidget {
         title: S.of(context).myAccount,
         leading: CustomAppBarIconButton(
           onPressed: () {
-            HomeCubit.get(context).changeIndex(0);
+            getIt<HomeCubit>().changeIndex(0);
           },
         ),
       ),

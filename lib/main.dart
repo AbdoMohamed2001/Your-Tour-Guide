@@ -1,35 +1,45 @@
+import 'package:flutter/services.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:your_tour_guide/core/utils/app_locale.dart';
-import 'package:your_tour_guide/features/places/data/repos/places_repo.dart';
 import 'package:your_tour_guide/core/services/cacheHelper.dart';
-import 'package:your_tour_guide/features/splash/presentation/views/splash_view.dart';
 import 'package:your_tour_guide/generated/l10n.dart';
 import 'package:your_tour_guide/core/utils/functions/simple_bloc_observer.dart';
 import 'package:your_tour_guide/core/utils/theme/theme_class.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'core/cubits/home/home_cubit.dart';
+import 'core/services/firebase_auth_services.dart';
 import 'core/services/get_it_services_locator.dart';
 import 'core/services/shared_prefs_services.dart';
+import 'features/home/presentation/views/main_view.dart';
+import 'features/splash/presentation/views/welcome_view.dart';
 import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await _initializeServices();
+  // Set preferred orientations early for better performance
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
+  await _initializeCriticalServices();
 
   runApp(
-    DevicePreview(
-      // enabled: !kReleaseMode,
-      builder: (BuildContext context) {
-        return MyApp();
-      },
-    ),
+    MyApp(),
+    // DevicePreview(
+    //   // enabled: !kReleaseMode,
+    //   builder: (BuildContext context) {
+    //     return MyApp();
+    //   },
+    // ),
   );
+  WidgetsBinding.instance.addPostFrameCallback((_) {
+    _initializeNonCriticalServices();
+  });
 }
 
 class MyApp extends StatelessWidget {
@@ -37,10 +47,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(statusBarColor: Colors.transparent));
-    return BlocProvider(
-      create: (context) => HomeCubit(getIt.get<PlacesRepo>())..initializeApp(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<HomeCubit>.value(
+          value: getIt<HomeCubit>(),
+        ),
+      ],
       child: StreamProvider<InternetConnectionStatus>(
         initialData: InternetConnectionStatus.connected,
         create: (_) {
@@ -48,10 +60,18 @@ class MyApp extends StatelessWidget {
         },
         child: BlocBuilder<HomeCubit, HomeState>(
           builder: (context, state) {
-            final homeCubit = context.read<HomeCubit>();
             return MaterialApp(
-              locale: homeCubit.currentLocale,
               builder: DevicePreview.appBuilder,
+
+              debugShowCheckedModeBanner: false,
+              // App configuration
+              title: 'Your Tour Guide',
+              locale: getIt<HomeCubit>().currentLocale,
+              // Theme configuration
+              theme: ThemeClass.lightTheme,
+              darkTheme: ThemeClass.darkTheme,
+              themeMode: getIt<HomeCubit>().currentThemeMode,
+              // Localization configuration
               localizationsDelegates: [
                 S.delegate,
                 AppLocalizations.delegate,
@@ -64,12 +84,7 @@ class MyApp extends StatelessWidget {
                 Locale("ar"),
               ],
               localeResolutionCallback: _localeResolutionCallback,
-              debugShowCheckedModeBanner: false,
-              title: 'Your Tour Guide',
-              theme: ThemeClass.lightTheme,
-              darkTheme: ThemeClass.darkTheme,
-              themeMode: homeCubit.currentThemeMode,
-              home: SplashView(),
+              home: _buildHome(),
             );
           },
         ),
@@ -77,19 +92,47 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+//-----------------------------------------------------------------------------
+_buildHome() {
+  // Cache the auth check result to avoid repeated calls
+  final isLoggedIn = FirebaseAuthService().isLoggedIn();
+  return isLoggedIn ? const MainView() : const WelcomeView();
+}
+
+//-----------------------------------------------------------------------------
+Future<void> _initializeCriticalServices() async {
+  try {
+    // Initialize only critical services that block app startup
+    await CacheData.cacheInit();
+    await Prefs.init();
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+    setupGetIt();
+    Bloc.observer = SimpleBlocObserver();
+  } catch (e) {
+    // Handle initialization errors gracefully
+    debugPrint('Critical service initialization failed: $e');
+    // You might want to show an error screen or retry mechanism
+  }
+}
+
+Future<void> _initializeNonCriticalServices() async {
+  try {
+    // Initialize HomeCubit data after UI is ready
+    await getIt<HomeCubit>().initializeApp();
+
+    // Add other non-critical initializations here
+    // e.g., analytics, crashlytics, etc.
+  } catch (e) {
+    debugPrint('Non-critical service initialization failed: $e');
+    // Non-critical failures shouldn't crash the app
+  }
+}
 //-----------------------------------------------------------------------------
 //HELP METHODS
 //-----------------------------------------------------------------------------
-
-Future<void> _initializeServices() async {
-  await CacheData.cacheInit();
-  await Prefs.init();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
-  Bloc.observer = SimpleBlocObserver();
-  setupGetIt();
-}
 
 //-----------------------------------------------------------------------------
 Locale? _localeResolutionCallback(

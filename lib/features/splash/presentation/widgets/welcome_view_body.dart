@@ -18,7 +18,7 @@ class WelcomeViewBody extends StatelessWidget {
           child: Column(
             children: [
               const Image(
-                image: AssetImage(Assets.imagesApplogo),
+                image: AssetImage(Assets.imagesAppLogoNew),
                 width: 190,
                 height: 210,
                 fit: BoxFit.fill,

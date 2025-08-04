@@ -18,7 +18,7 @@ class FeaturedPlacesListView extends StatelessWidget {
         itemBuilder: (context, index) => FeaturedPlaceItem(
           placeEntity: places[index],
         ),
-        separatorBuilder: (context, index) => SizedBox(width: 15),
+        separatorBuilder: (context, index) => const SizedBox(width: 15),
         itemCount: 5,
       ),
     );

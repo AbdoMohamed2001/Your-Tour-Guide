@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:your_tour_guide/core/services/get_it_services_locator.dart';
 
 import '../../../../core/cubits/home/home_cubit.dart';
 import '../cubit/profile_cubit.dart';
@@ -41,7 +42,7 @@ class GeneralList extends StatelessWidget {
           text: generalList(context)[1].text,
           containsArrow: true,
           onTap: () {
-            context.read<HomeCubit>().changeIndex(2);
+            getIt<HomeCubit>().changeIndex(2);
           },
         ),
         SizedBox(height: deviceHeight * 0.02),

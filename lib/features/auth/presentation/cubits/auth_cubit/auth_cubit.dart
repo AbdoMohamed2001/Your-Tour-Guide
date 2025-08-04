@@ -1,11 +1,8 @@
 import 'package:your_tour_guide/core/utils/functions/pick_image.dart';
 import 'package:your_tour_guide/features/auth/data/models/user_create_req_model.dart';
 import 'package:your_tour_guide/features/auth/data/models/user_login_req_model.dart';
-import 'package:your_tour_guide/features/auth/domain/usecases/is_logged_use_case.dart';
-import 'package:your_tour_guide/features/auth/domain/usecases/login_usecase.dart';
-import 'package:your_tour_guide/features/auth/domain/usecases/login_with_facebook_usecase.dart';
-import 'package:your_tour_guide/features/auth/domain/usecases/login_with_google_usecase.dart';
-import 'package:your_tour_guide/features/auth/domain/usecases/register_use_case.dart';
+import 'package:your_tour_guide/features/auth/domain/usecases/auth_usecase.dart';
+
 import 'package:flutter/services.dart';
 import 'dart:async';
 import 'package:flutter/foundation.dart';
@@ -15,17 +12,11 @@ import 'package:image_picker/image_picker.dart';
 part 'auth_state.dart';
 
 class AuthCubit extends Cubit<AuthState> {
-  AuthCubit(this.loginUseCase, this.loginWithFacebookUseCase,
-      this.loginWithGoogleUseCase, this.registerUseCase, this.isLoggedUseCase)
-      : super(AuthInitial());
+  AuthCubit(this.authUseCase) : super(AuthInitial());
 
   static AuthCubit get(context) => BlocProvider.of(context); // عشان اخد object
+  final AuthUseCase authUseCase;
 
-  final LoginUseCase loginUseCase;
-  final LoginWithFacebookUseCase loginWithFacebookUseCase;
-  final LoginWithGoogleUseCase loginWithGoogleUseCase;
-  final RegisterUseCase registerUseCase;
-  final IsLoggedUseCase isLoggedUseCase;
   Uint8List? image;
   late ByteData imageData;
 //--------------------------------------------------------
@@ -33,7 +24,7 @@ class AuthCubit extends Cubit<AuthState> {
     required UserLoginReqModel userLoginInfo,
   }) async {
     emit(AuthLoading());
-    var result = await loginUseCase(params: userLoginInfo);
+    var result = await authUseCase.loginUseCase(params: userLoginInfo);
     result.fold(
       (fail) {
         emit(AuthFailure(errMessage: fail.message));
@@ -49,7 +40,7 @@ class AuthCubit extends Cubit<AuthState> {
     required UserCreateReqModel user,
   }) async {
     emit(AuthLoading());
-    var result = await registerUseCase(params: user);
+    var result = await authUseCase.registerUseCase(params: user);
     result.fold(
       (fail) {
         emit(AuthFailure(errMessage: fail.message));
@@ -63,7 +54,7 @@ class AuthCubit extends Cubit<AuthState> {
 //--------------------------------------------------------
   Future<void> loginWithGoogle() async {
     emit(AuthLoading());
-    var result = await loginWithGoogleUseCase.call();
+    var result = await authUseCase.loginWithGoogleUseCase.call();
     result.fold(
       (fail) {
         emit(AuthFailure(errMessage: fail.toString()));
@@ -77,7 +68,7 @@ class AuthCubit extends Cubit<AuthState> {
 //--------------------------------------------------------
   Future<void> loginWithFacebook() async {
     emit(AuthLoading());
-    var result = await loginWithFacebookUseCase.call();
+    var result = await authUseCase.loginWithFacebookUseCase.call();
     result.fold(
       (fail) {
         emit(AuthFailure(errMessage: fail.toString()));

@@ -23,10 +23,9 @@ class FeaturesGridViewItem extends StatelessWidget {
       onTap: onPressed,
       child: Container(
         decoration: BoxDecoration(
-          // color: Colors.white,
           border: Border.all(width: 0.9),
           color: boxDecorationColor,
-          borderRadius: BorderRadius.all(Radius.circular(kBorderRadius8)),
+          borderRadius: const BorderRadius.all(Radius.circular(kBorderRadius8)),
         ),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),

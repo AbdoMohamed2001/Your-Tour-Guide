@@ -8,6 +8,7 @@ import 'package:your_tour_guide/core/utils/functions/navigate_to_services_detail
 import 'package:your_tour_guide/core/utils/theme/text_styles.dart';
 
 import '../../../../features/favourite/presentation/cubit/favourtie_cubit.dart';
+import '../../../services/get_it_services_locator.dart';
 import '../../theme/app_colors.dart';
 
 class LocalHeroBody extends StatelessWidget {
@@ -59,7 +60,7 @@ class LocalHeroBody extends StatelessWidget {
 ItemsModel buildDefaultItemModel(BuildContext context, dynamic entity) {
   return ItemsModel(
     cardStyleMode: CardStyleMode(
-      isDarkMode: context.read<HomeCubit>().isDarkMode,
+      isDarkMode: getIt<HomeCubit>().isDarkMode,
       isLoading: false,
       cardColor: Theme.of(context).cardColor,
     ),

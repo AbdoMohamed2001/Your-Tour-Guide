@@ -1,9 +1,9 @@
 import 'package:your_tour_guide/generated/assets.dart';
 import 'package:your_tour_guide/generated/l10n.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import '../../cubits/home/home_cubit.dart';
+import '../../services/get_it_services_locator.dart';
 import '../functions/is_arabic.dart';
 import '../theme/text_styles.dart';
 
@@ -12,12 +12,10 @@ class OpeningHoursWidget extends StatelessWidget {
     super.key,
     required this.openFrom,
     required this.openTo,
-    this.place,
   });
 
   final String openFrom;
   final String openTo;
-  final QueryDocumentSnapshot<Object?>? place;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +24,7 @@ class OpeningHoursWidget extends StatelessWidget {
         Stack(
           children: [
             Image.asset(
-              HomeCubit.get(context).isDarkMode
+              getIt<HomeCubit>().isDarkMode
                   ? isArabic()
                       ? Assets.imagesOpenDarkArabic
                       : Assets.imagesOpenDarkEnglish

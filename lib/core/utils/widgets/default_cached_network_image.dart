@@ -21,25 +21,21 @@ class DefaultCachedNetworkImage extends StatelessWidget {
       fit: BoxFit.cover,
       placeholder: (context, url) => Center(
         child: Container(
-          color: Color(0xffFFCD1),
+          color: const Color(0xffFFCD1),
           width: double.infinity,
           // height: imageHeight,
-          child: Center(
-            child: CircularProgressIndicator(
-              color: Colors.orange,
-            ),
+          child: const Center(
+            child: CircularProgressIndicator(),
           ),
         ),
       ),
       errorWidget: (context, url, error) => Center(
         child: Container(
-          color: Color(0xffFFCD1),
+          color: const Color(0xffFFCD1),
           width: double.infinity,
           height: imageHeight,
-          child: Center(
-            child: CircularProgressIndicator(
-              color: Colors.orange,
-            ),
+          child: const Center(
+            child: CircularProgressIndicator(),
           ),
         ),
       ),

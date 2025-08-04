@@ -26,24 +26,18 @@ class Assets {
   static const String iconsHeart = 'assets/icons/heart.svg';
   static const String iconsHotel = 'assets/icons/hotel.svg';
   static const String iconsInfoCircle = 'assets/icons/info-circle.svg';
-  static const String iconsLogo = 'assets/icons/logo.png';
   static const String iconsMagicpen = 'assets/icons/magicpen.svg';
   static const String iconsMosque = 'assets/icons/mosque.svg';
   static const String iconsNoResult2 = 'assets/icons/no-result2.png';
   static const String iconsNotification = 'assets/icons/notification.svg';
   static const String iconsPlusIcon = 'assets/icons/plus-icon.svg';
-  static const String iconsPyramids02 = 'assets/icons/pyramids-02.eps';
   static const String iconsSearchIcon = 'assets/icons/search-icon.svg';
   static const String iconsServices = 'assets/icons/services.svg';
   static const String iconsSettingIcon = 'assets/icons/setting-icon.svg';
   static const String iconsTour = 'assets/icons/tour.svg';
   static const String images1 = 'assets/images/1.jpg';
-  static const String imagesAppLogoBlack = 'assets/images/appLogoBlack.png';
-  static const String imagesAppLogoDarkMode =
-      'assets/images/appLogoDarkMode.png';
-  static const String imagesAppLogoFinal = 'assets/images/appLogoFinal.png';
-  static const String imagesAppLogoLightMode =
-      'assets/images/appLogoLightMode.png';
+  static const String imagesAppLogoAndroid12 =
+      'assets/images/app_logo_android12.png';
   static const String imagesAppLogoNew = 'assets/images/app_logo_new.png';
   static const String imagesApplogo = 'assets/images/applogo.png';
   static const String imagesBooking = 'assets/images/booking.png';
@@ -52,20 +46,12 @@ class Assets {
   static const String imagesEditProfile = 'assets/images/edit_profile.png';
   static const String imagesEditProfileDark =
       'assets/images/editProfileDark.png';
-  static const String imagesFacebooklogo = 'assets/images/facebooklogo.png';
   static const String imagesGoogleMapsDark = 'assets/images/googleMapsDark.png';
   static const String imagesGoogleMapsLight =
       'assets/images/googleMapsLight.png';
-  static const String imagesGooglelogo = 'assets/images/googlelogo.png';
   static const String imagesGooglemaps = 'assets/images/googlemaps.png';
   static const String imagesHome = 'assets/images/home.jpg';
-  static const String imagesLogo = 'assets/images/logo.png';
-  static const String imagesLogoBlack = 'assets/images/logoBlack.png';
-  static const String imagesLogoNew = 'assets/images/logoNew.png';
-  static const String imagesLogoooo = 'assets/images/logoooo.png';
   static const String imagesNilesun = 'assets/images/nilesun.png';
-  static const String imagesOpen = 'assets/images/open.png';
-  static const String imagesOpenDark = 'assets/images/openDark.png';
   static const String imagesOpenDarkArabic = 'assets/images/openDarkArabic.png';
   static const String imagesOpenDarkEnglish =
       'assets/images/openDarkEnglish.png';
@@ -81,10 +67,6 @@ class Assets {
   static const String imagesWelcome2 = 'assets/images/welcome2.jpg';
   static const String langAr = 'assets/lang/ar.json';
   static const String langEn = 'assets/lang/en.json';
-  static const String oldAppLogoDarkTheme =
-      'assets/images/old/app_logo_dark_theme.png';
-  static const String oldApplelogo = 'assets/images/old/applelogo.png';
-  static const String oldCalendarImage = 'assets/images/old/calendarImage.jpg';
   static const String outlinedCategoriesOutlined =
       'assets/icons/outlined/categories-outlined.svg';
   static const String outlinedHomeOutlined =

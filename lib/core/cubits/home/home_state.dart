@@ -9,6 +9,9 @@ class HomeChangeIndexState extends HomeState {}
 
 class HomeChangeTheme extends HomeState {}
 
+//----------------------------------------------------------
+//LOCALIZATION
+//----------------------------------------------------------
 class ChangeLocaleLoading extends HomeState {}
 
 class ChangeLocaleSuccess extends HomeState {
@@ -21,6 +24,9 @@ class ChangeLocaleFailure extends HomeState {
   ChangeLocaleFailure({required this.message});
 }
 
+//----------------------------------------------------------
+//PLACES
+//----------------------------------------------------------
 class HomeGetFeaturedPlacesSuccess extends HomeState {
   final List<PlaceEntity> places;
   HomeGetFeaturedPlacesSuccess({required this.places});

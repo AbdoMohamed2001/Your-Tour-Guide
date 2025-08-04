@@ -9,21 +9,10 @@ class FeaturesGridView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-      shrinkWrap: true,
-      padding: const EdgeInsets.all(1),
-      physics: NeverScrollableScrollPhysics(),
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        crossAxisSpacing: 15,
-        mainAxisSpacing: 10,
-        childAspectRatio: 2 / 1.05,
-      ),
+    return SliverGrid.builder(
+      itemCount: getFeaturesList(context).length,
       itemBuilder: (context, index) {
         return FeaturesGridViewItem(
-          fileName: getFeaturesList(context)[index].icon,
-          boxDecorationColor: getFeaturesList(context)[index].containerColor,
-          text: getFeaturesList(context)[index].name,
           onPressed: () {
             Navigator.push(
               context,
@@ -34,9 +23,35 @@ class FeaturesGridView extends StatelessWidget {
               ),
             );
           },
+          boxDecorationColor: getFeaturesList(context)[index].containerColor,
+          text: getFeaturesList(context)[index].name,
+          fileName: getFeaturesList(context)[index].icon,
         );
       },
-      itemCount: getFeaturesList(context).length,
+      // delegate: SliverChildBuilderDelegate(
+      //   (context, index) => FeaturesGridViewItem(
+      //     onPressed: () {
+      //       Navigator.push(
+      //         context,
+      //         MaterialPageRoute(
+      //           builder: (context) {
+      //             return getFeaturesList(context)[index].pushedPage;
+      //           },
+      //         ),
+      //       );
+      //     },
+      //     boxDecorationColor: getFeaturesList(context)[index].containerColor,
+      //     text: getFeaturesList(context)[index].name,
+      //     fileName: getFeaturesList(context)[index].icon,
+      //   ),
+      //   childCount: getFeaturesList(context).length,
+      // ),
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        childAspectRatio: 2 / 1.05,
+        mainAxisSpacing: 10,
+        crossAxisSpacing: 15,
+      ),
     );
   }
 }

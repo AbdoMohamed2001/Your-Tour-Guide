@@ -4,6 +4,8 @@ import 'package:your_tour_guide/core/utils/constants.dart';
 import 'package:your_tour_guide/core/cubits/home/home_cubit.dart';
 import 'package:your_tour_guide/core/utils/theme/text_styles.dart';
 
+import '../../../services/get_it_services_locator.dart';
+
 class LocalHeroAppBar extends StatefulWidget implements PreferredSizeWidget {
   const LocalHeroAppBar({super.key, required this.tabController, this.title});
 
@@ -14,7 +16,6 @@ class LocalHeroAppBar extends StatefulWidget implements PreferredSizeWidget {
   State<LocalHeroAppBar> createState() => _LocalHeroAppBarState();
 
   @override
-  // TODO: implement preferredSize
   Size get preferredSize => Size(double.maxFinite, 50);
 }
 
@@ -49,7 +50,7 @@ class _LocalHeroAppBarState extends State<LocalHeroAppBar> {
         },
         shape: RoundedRectangleBorder(
           side: BorderSide(
-            color: context.read<HomeCubit>().isDarkMode
+            color: getIt<HomeCubit>().isDarkMode
                 ? Color(0xFF333333)
                 : Color(0xFFE0E0E0),
           ),

@@ -1,4 +1,5 @@
 import 'package:your_tour_guide/core/utils/functions/show_toast.dart';
+import 'package:your_tour_guide/core/utils/theme/app_colors.dart';
 import 'package:your_tour_guide/core/utils/widgets/no_internet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -9,29 +10,25 @@ import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../core/cubits/home/home_cubit.dart';
+import '../../../../core/services/get_it_services_locator.dart';
 
 class MainView extends StatelessWidget {
-  static final String id = 'homeScreen';
-
   const MainView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(statusBarColor: Colors.transparent));
     DateTime timeBackPressed = DateTime.now();
     return BlocBuilder<HomeCubit, HomeState>(
       builder: (context, state) {
-        var homeCubit = HomeCubit.get(context);
         return Provider.of<InternetConnectionStatus>(context) ==
                 InternetConnectionStatus.disconnected
             ? InternetNotAvailable()
             : PopScope(
-                canPop: homeCubit.currentIndex == 0,
+                canPop: getIt<HomeCubit>().currentIndex == 0,
                 onPopInvoked: (didPop) async {
-                  if (didPop) return; // System pop already handled
+                  if (didPop) return;
 
-                  if (homeCubit.currentIndex == 0) {
+                  if (getIt<HomeCubit>().currentIndex == 0) {
                     final difference =
                         DateTime.now().difference(timeBackPressed);
                     final isExitWarning = difference >= Duration(seconds: 2);
@@ -44,7 +41,7 @@ class MainView extends StatelessWidget {
                       SystemNavigator.pop(); // Actually exit the app
                     }
                   } else {
-                    homeCubit.changeIndex(0);
+                    getIt<HomeCubit>().changeIndex(0);
                   }
                 },
                 child: Scaffold(
@@ -52,15 +49,16 @@ class MainView extends StatelessWidget {
                     backgroundColor: Theme.of(context)
                         .bottomNavigationBarTheme
                         .backgroundColor,
-                    icons: homeCubit.iconList,
-                    activeIndex: homeCubit.currentIndex,
-                    activeColor: Colors.orange,
+                    icons: getIt<HomeCubit>().iconList,
+                    activeIndex: getIt<HomeCubit>().currentIndex,
+                    activeColor: AppColors.primaryColor,
                     gapWidth: 0,
                     onTap: (index) {
-                      homeCubit.changeIndex(index);
+                      getIt<HomeCubit>().changeIndex(index);
                     },
                   ),
-                  body: homeCubit.pages[homeCubit.currentIndex],
+                  body:
+                      getIt<HomeCubit>().pages[getIt<HomeCubit>().currentIndex],
                 ),
               );
       },

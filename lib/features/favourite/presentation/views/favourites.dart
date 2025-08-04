@@ -19,7 +19,7 @@ class FavouritesView extends StatelessWidget {
         title: S.of(context).Favourite,
         leading: CustomAppBarIconButton(
           onPressed: () {
-            HomeCubit.get(context).changeIndex(0);
+            getIt<HomeCubit>().changeIndex(0);
           },
         ),
       ),

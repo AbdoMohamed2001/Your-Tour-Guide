@@ -22,7 +22,7 @@ class SearchView extends StatelessWidget {
         title: S.of(context).search,
         leading: CustomAppBarIconButton(
           onPressed: () {
-            HomeCubit.get(context).changeIndex(0);
+            getIt<HomeCubit>().changeIndex(0);
           },
         ),
       ),

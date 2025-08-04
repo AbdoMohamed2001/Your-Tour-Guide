@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 const kSizedBox = SizedBox(height: 16);
+const kSliverSizedBox = SliverToBoxAdapter(child: SizedBox(height: 16));
 const kSizedBox20 = SizedBox(height: 20);
 const kSmallSizedBox = SizedBox(height: 4);
 const kDivider = Divider(

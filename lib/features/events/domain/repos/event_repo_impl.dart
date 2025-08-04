@@ -6,7 +6,7 @@ import 'package:your_tour_guide/features/events/domain/entities/event_entity.dar
 
 import '../../../../core/errors/failure.dart';
 
-import '../../domain/repos/event_repo.dart';
+import '../../data/repos/event_repo.dart';
 
 class EventRepoImpl extends EventRepo {
   final EventRemoteDataSource eventRemoteDataSource;

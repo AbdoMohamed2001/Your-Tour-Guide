@@ -18,8 +18,6 @@ class FeaturedPlaceItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
-    double screenHeight = MediaQuery.of(context).size.height;
     final arabicNumber = ArabicNumbers();
     return Row(
       children: [
@@ -32,19 +30,18 @@ class FeaturedPlaceItem extends StatelessWidget {
             }));
           },
           child: Container(
-            width: screenWidth * 0.45,
-            height: screenHeight * 0.47,
+            width: MediaQuery.of(context).size.width * 0.45,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(kBorderRadius8),
               color: Theme.of(context).cardColor,
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.1),
-                  blurRadius: 8,
-                  offset: const Offset(0, 4),
-                  blurStyle: BlurStyle.inner,
-                ),
-              ],
+              // boxShadow: [
+              //   BoxShadow(
+              //     // color: Colors.black.withOpacity(0.1),
+              //     blurRadius: 8,
+              //     offset: const Offset(0, 4),
+              //     blurStyle: BlurStyle.inner,
+              //   ),
+              // ],
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -52,7 +49,8 @@ class FeaturedPlaceItem extends StatelessWidget {
                 //image
                 //---------------------------------------------------------------------
                 ClipRRect(
-                  borderRadius: BorderRadius.vertical(top: Radius.circular(12)),
+                  borderRadius:
+                      const BorderRadius.vertical(top: Radius.circular(12)),
                   child: DefaultCachedNetworkImage(
                     imageUrl: placeEntity.imageUrl,
                     imageHeight: 100,
@@ -70,37 +68,38 @@ class FeaturedPlaceItem extends StatelessWidget {
                         isArabic() ? placeEntity.nameArabic : placeEntity.name,
                         style: TextStyles.bold16,
                       ),
-                      SizedBox(height: 5),
+                      const SizedBox(height: 5),
                       Row(
                         children: [
                           RatingBar(
-                              ignoreGestures: true,
-                              itemSize: 16,
-                              initialRating: placeEntity.rate.toDouble(),
-                              allowHalfRating: true,
-                              ratingWidget: RatingWidget(
-                                full: Icon(
-                                  Icons.star,
-                                  color: Colors.orange,
-                                ),
-                                half: Icon(
-                                  Icons.star_half,
-                                  color: Colors.orange,
-                                ),
-                                empty: Icon(
-                                  Icons.star_border_outlined,
-                                  color: Colors.orange,
-                                ),
+                            ignoreGestures: true,
+                            itemSize: 16,
+                            initialRating: placeEntity.rate.toDouble(),
+                            allowHalfRating: true,
+                            ratingWidget: RatingWidget(
+                              full: const Icon(
+                                Icons.star,
+                                color: Colors.amber,
                               ),
-                              onRatingUpdate: (rating) {}),
-                          SizedBox(width: 5),
+                              half: const Icon(
+                                Icons.star_half,
+                                color: Colors.amber,
+                              ),
+                              empty: const Icon(
+                                Icons.star_border_outlined,
+                                color: Colors.grey,
+                              ),
+                            ),
+                            onRatingUpdate: (rating) {},
+                          ),
+                          const SizedBox(width: 5),
                           isArabic()
                               ? Text(
                                   '(${arabicNumber.convert(placeEntity.rate.toString())})')
                               : Text('(${placeEntity.rate.toString()})'),
                         ],
                       ),
-                      SizedBox(height: 5)
+                      const SizedBox(height: 5),
                     ],
                   ),
                 ),

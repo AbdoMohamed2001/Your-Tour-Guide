@@ -2,8 +2,6 @@ import 'package:your_tour_guide/features/home/presentation/widgets/home_view_bod
 import 'package:flutter/material.dart';
 
 class HomeView extends StatelessWidget {
-  static String id = 'HomeView';
-
   HomeView({
     Key? key,
   }) : super(key: key);

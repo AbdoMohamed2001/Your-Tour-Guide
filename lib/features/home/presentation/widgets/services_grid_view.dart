@@ -9,17 +9,19 @@ class ServicesGridView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-      shrinkWrap: true,
-      physics: BouncingScrollPhysics(),
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        crossAxisSpacing: 15,
-        mainAxisSpacing: 10,
-        childAspectRatio: 1.6 / 1.5,
+    return SliverGrid(
+      delegate: SliverChildBuilderDelegate(
+        (context, index) => ServicesGridViewItem(
+            key: ValueKey('item_$index'), // Unique key per item
+            index: index),
+        childCount: listOfServicesContainerEntity.length,
       ),
-      itemBuilder: (_, index) => ServicesGridViewItem(index: index),
-      itemCount: listOfServicesContainerEntity.length,
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        childAspectRatio: 1.6 / 1.5,
+        mainAxisSpacing: 10,
+        crossAxisSpacing: 15,
+      ),
     );
   }
 }

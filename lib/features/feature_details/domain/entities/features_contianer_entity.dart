@@ -29,8 +29,8 @@ List<FeaturesContainerEntity> getFeaturesList(BuildContext context) {
     //BestPlaces
     FeaturesContainerEntity(
       name: S.of(context).bestPlaces,
-      containerColor: Color(0xff19141b),
-      pushedPage: BestPlacesView(),
+      containerColor: const Color(0xff19141b),
+      pushedPage: const BestPlacesView(),
       icon: Assets.iconsBestPlace,
       collectionName: 'places',
       appBarTitle: S.of(context).AllBestPlaces,
@@ -38,8 +38,8 @@ List<FeaturesContainerEntity> getFeaturesList(BuildContext context) {
     //AllCities
     FeaturesContainerEntity(
       name: S.of(context).cities,
-      containerColor: Color(0xff613208),
-      pushedPage: CitiesView(),
+      containerColor: const Color(0xff613208),
+      pushedPage: const CitiesView(),
       icon: Assets.iconsAllCities,
       collectionName: 'cities',
       appBarTitle: S.of(context).cities,
@@ -47,8 +47,8 @@ List<FeaturesContainerEntity> getFeaturesList(BuildContext context) {
     //Tours
     FeaturesContainerEntity(
       name: S.of(context).ToursAndTrips,
-      containerColor: Color(0xff00478F),
-      pushedPage: AllTours(),
+      containerColor: const Color(0xff00478F),
+      pushedPage: const AllTours(),
       icon: Assets.iconsTour,
       collectionName: 'Tours',
       appBarTitle: S.of(context).tours,
@@ -57,7 +57,7 @@ List<FeaturesContainerEntity> getFeaturesList(BuildContext context) {
     FeaturesContainerEntity(
       // name: 'UpcomingEvents',
       name: S.of(context).UpcomingEvents,
-      containerColor: Color(0xffd89d27),
+      containerColor: const Color(0xffd89d27),
       pushedPage: EventsView(),
       icon: Assets.iconsEvent,
       collectionName: 'Events',
