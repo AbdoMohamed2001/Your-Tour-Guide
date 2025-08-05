@@ -109,6 +109,7 @@
   "AddedToFavourite"       : "اضاف للمفضله",
   "FailedToAddToFavourite" : "فشل في الاضافه",
   "RemovedFromFavourite"   : "مسح من المفضله",
+  "noFavouritesYet"        : "لا يوجد مفضلة بعد",
 
   "FullMenu"               :"قائمة الطعام",
   "services"               : "الخدمات",

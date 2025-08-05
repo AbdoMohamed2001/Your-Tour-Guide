@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 Icon getCollectionIcon(String collection) {
   switch (collection) {
     case 'cities':
-      return const Icon(Icons.location_city_outlined);
+      return const Icon(Icons.location_city_outlined, color: Colors.black);
     case 'restaurants':
       return const Icon(Icons.restaurant_menu_outlined);
     case 'places':
-      return const Icon(Icons.place_outlined);
+      return const Icon(Icons.place_outlined, color: Colors.black);
     case 'hotels':
       return const Icon(Icons.hotel_class_outlined);
     case 'cafes':
@@ -25,6 +25,6 @@ Icon getCollectionIcon(String collection) {
     case 'tours':
       return const Icon(Icons.tour_outlined);
     default:
-      return const Icon(Icons.location_on_outlined);
+      return const Icon(Icons.location_on_outlined, color: Colors.black);
   }
 }

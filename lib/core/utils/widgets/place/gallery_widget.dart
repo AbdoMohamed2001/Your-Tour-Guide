@@ -1,6 +1,6 @@
 import 'package:your_tour_guide/core/utils/theme/text_styles.dart';
 import 'package:your_tour_guide/generated/l10n.dart';
-import 'package:your_tour_guide/core/utils/widgets/photo_view_page.dart';
+import 'package:your_tour_guide/core/utils/widgets/full_screen_image_view.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
@@ -40,8 +40,8 @@ class GalleryWidget extends StatelessWidget {
                   onTap: () => Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (_) =>
-                          PhotoViewPage(photos: entity.images, index: index),
+                      builder: (_) => FullScreenImageView(
+                          photos: entity.images, index: index),
                     ),
                   ),
                   child: Hero(

@@ -1,3 +1,4 @@
+import 'package:your_tour_guide/core/utils/widgets/none_app_bar.dart';
 import 'package:your_tour_guide/features/home/presentation/widgets/home_view_body.dart';
 import 'package:flutter/material.dart';
 
@@ -9,6 +10,7 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: NoneAppBar(),
       body: HomeViewBody(),
     );
   }

@@ -18,14 +18,17 @@ class HomeCubit extends Cubit<HomeState> {
   // FEATURED PLACES
   //-----------------------------------------------------------------------------
   List<PlaceEntity> featuredPlaces = [];
-  getFeaturedPlaces() async {
+  bool isPlacesLoaded = false;
+  void getFeaturedPlaces() async {
     emit(HomeGetFeaturedPlacesLoading());
+
     var result = await placeRepo.getFeaturedPlaces();
     result.fold(
       (failure) {
         emit(HomeGetFeaturedPlacesFailure(message: failure.message));
       },
       (places) {
+        isPlacesLoaded = true;
         featuredPlaces = places;
         emit(HomeGetFeaturedPlacesSuccess(places: places));
       },

@@ -113,6 +113,7 @@
   "AddedToFavourite"        : "Added To Favourite",
   "RemovedFromFavourite"    : "Removed From Favourite",
   "FailedToAddToFavourite"  : "Failed to add to favourite",
+  "noFavouritesYet"         : "There is no favourites yet",
 
   "FullMenu"                :"Full Menu",
   "services"                : "Services",

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../generated/assets.dart';
+import '../../../../../generated/l10n.dart';
+
 class SearchEmptyWidget extends StatelessWidget {
   const SearchEmptyWidget({super.key});
 
@@ -9,25 +12,18 @@ class SearchEmptyWidget extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(
-            Icons.search_off,
-            size: 64,
-            color: Theme.of(context).disabledColor,
+          Image.asset(
+            Assets.imagesSearchNoResult,
+            height: 240,
           ),
           const SizedBox(height: 16),
           Text(
-            'No results found',
+            S.of(context).NoResultsReturned,
             style: Theme.of(context).textTheme.titleLarge?.copyWith(
                   color: Theme.of(context).disabledColor,
                 ),
           ),
           const SizedBox(height: 8),
-          Text(
-            'Try searching for something else',
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: Theme.of(context).disabledColor,
-                ),
-          ),
         ],
       ),
     );

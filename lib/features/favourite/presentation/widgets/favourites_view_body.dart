@@ -8,6 +8,7 @@ import 'package:your_tour_guide/core/utils/widgets/custom-grid-view/grid_list_vi
 import 'package:your_tour_guide/features/favourite/data/models/favourite_model.dart';
 import 'package:your_tour_guide/features/favourite/presentation/cubit/favourtie_cubit.dart';
 
+import '../../../../generated/l10n.dart';
 import '../../domain/entities/favourite_entity.dart';
 
 class FavouritesViewBody extends StatefulWidget {
@@ -30,10 +31,10 @@ class _FavouritesViewBodyState extends State<FavouritesViewBody> {
       stream: favStream,
       builder: (context, snapshot) {
         if (snapshot.hasError) {
-          return Text('Something went wrong');
+          return Text(S.of(context).someThingWrong);
         }
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Text("Loading");
+          return Center(child: CircularProgressIndicator());
         } else {
           List<FavouriteModel> favModels = snapshot.data!.docs
               .map((doc) => FavouriteModel.fromJson(doc))
@@ -43,7 +44,7 @@ class _FavouritesViewBodyState extends State<FavouritesViewBody> {
           if (favEntities.isEmpty) {
             return Center(
               child: Text(
-                'No Favourites yet',
+                S.of(context).noFavouritesYet,
                 style: TextStyles.bold18,
               ),
             );

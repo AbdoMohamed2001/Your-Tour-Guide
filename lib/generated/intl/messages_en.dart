@@ -156,6 +156,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "noDataEdited": MessageLookupByLibrary.simpleMessage(
       "No data has been modified",
     ),
+    "noFavouritesYet": MessageLookupByLibrary.simpleMessage(
+      "There is no favourites yet",
+    ),
     "noInternet": MessageLookupByLibrary.simpleMessage(
       "Your Device is offline. Your Tour Guide App requires internet connection to start",
     ),

@@ -40,7 +40,9 @@ class SearchResultItem extends StatelessWidget {
               const SizedBox(height: 4),
             ],
           ),
-          trailing: const Icon(Icons.arrow_forward_ios, color: Colors.black),
+          trailing: const Icon(
+            Icons.arrow_forward_ios,
+          ),
         ),
       ),
     );

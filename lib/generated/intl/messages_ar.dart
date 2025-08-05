@@ -161,6 +161,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "noDataEdited": MessageLookupByLibrary.simpleMessage(
       "لم يتم تعديل اي بيانات",
     ),
+    "noFavouritesYet": MessageLookupByLibrary.simpleMessage(
+      "لا يوجد مفضلة بعد",
+    ),
     "noInternet": MessageLookupByLibrary.simpleMessage(
       "جهازك غير متصل بالإنترنت. يتطلب تطبيق Your Tour Guide اتصالاً بالإنترنت للبدء",
     ),

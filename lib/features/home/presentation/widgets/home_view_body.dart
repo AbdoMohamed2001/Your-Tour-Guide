@@ -25,7 +25,9 @@ class _HomeViewBodyState extends State<HomeViewBody> {
   void initState() {
     super.initState();
 
-    getIt<HomeCubit>().getFeaturedPlaces();
+    if (getIt<HomeCubit>().isPlacesLoaded == false) {
+      getIt<HomeCubit>().getFeaturedPlaces();
+    }
   }
 
   @override
@@ -39,7 +41,6 @@ class _HomeViewBodyState extends State<HomeViewBody> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 //---------------------------------------------------------
-                const SizedBox(height: 20),
                 //Explore
                 const ExploreMore(),
                 kSizedBox,

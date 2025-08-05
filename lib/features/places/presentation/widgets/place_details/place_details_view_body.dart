@@ -24,7 +24,6 @@ class PlaceDetailsViewBody extends StatelessWidget {
   const PlaceDetailsViewBody({super.key, required this.placeEntity});
 
   final PlaceEntity placeEntity;
-  static final String id = 'place_details';
   @override
   Widget build(BuildContext context) {
     CollectionReference tour = FirebaseFirestore.instance.collection('tours');
@@ -113,7 +112,7 @@ class PlaceDetailsViewBody extends StatelessWidget {
                         ? HeadText(text: S.of(context).toursToPlace)
                         : Container(),
                     placeEntity.includeTour == true
-                        ? SizedBox(height: 5)
+                        ? const SizedBox(height: 5)
                         : Container(),
 
                     placeEntity.includeTour == true

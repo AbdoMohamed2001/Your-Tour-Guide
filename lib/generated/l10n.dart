@@ -747,6 +747,16 @@ class S {
     );
   }
 
+  /// `There is no favourites yet`
+  String get noFavouritesYet {
+    return Intl.message(
+      'There is no favourites yet',
+      name: 'noFavouritesYet',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Full Menu`
   String get FullMenu {
     return Intl.message('Full Menu', name: 'FullMenu', desc: '', args: []);

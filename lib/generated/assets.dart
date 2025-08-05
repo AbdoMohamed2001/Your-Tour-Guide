@@ -2,7 +2,6 @@
 class Assets {
   Assets._();
 
-  static const String assetsImagesApplogo = 'assets/images/applogo.psd';
   static const String assetsImagesEditProfileDark =
       'assets/images/edit_profile_dark.png';
   static const String boldCategoriesBold =
@@ -28,14 +27,12 @@ class Assets {
   static const String iconsInfoCircle = 'assets/icons/info-circle.svg';
   static const String iconsMagicpen = 'assets/icons/magicpen.svg';
   static const String iconsMosque = 'assets/icons/mosque.svg';
-  static const String iconsNoResult2 = 'assets/icons/no-result2.png';
   static const String iconsNotification = 'assets/icons/notification.svg';
   static const String iconsPlusIcon = 'assets/icons/plus-icon.svg';
   static const String iconsSearchIcon = 'assets/icons/search-icon.svg';
   static const String iconsServices = 'assets/icons/services.svg';
   static const String iconsSettingIcon = 'assets/icons/setting-icon.svg';
   static const String iconsTour = 'assets/icons/tour.svg';
-  static const String images1 = 'assets/images/1.jpg';
   static const String imagesAppLogoAndroid12 =
       'assets/images/app_logo_android12.png';
   static const String imagesAppLogoNew = 'assets/images/app_logo_new.png';
@@ -51,7 +48,6 @@ class Assets {
       'assets/images/googleMapsLight.png';
   static const String imagesGooglemaps = 'assets/images/googlemaps.png';
   static const String imagesHome = 'assets/images/home.jpg';
-  static const String imagesNilesun = 'assets/images/nilesun.png';
   static const String imagesOpenDarkArabic = 'assets/images/openDarkArabic.png';
   static const String imagesOpenDarkEnglish =
       'assets/images/openDarkEnglish.png';
@@ -59,10 +55,11 @@ class Assets {
       'assets/images/openLightArabic.png';
   static const String imagesOpenLightEnglish =
       'assets/images/openLightEnglish.png';
+  static const String imagesSearch = 'assets/images/search.png';
+  static const String imagesSearchNoResult =
+      'assets/images/search_no_result.png';
   static const String imagesTickets = 'assets/images/tickets.png';
   static const String imagesUser = 'assets/images/user.png';
-  static const String imagesWallpaper = 'assets/images/wallpaper.jpg';
-  static const String imagesWallpaper2 = 'assets/images/wallpaper2.jpg';
   static const String imagesWelcome = 'assets/images/welcome.jpg';
   static const String imagesWelcome2 = 'assets/images/welcome2.jpg';
   static const String langAr = 'assets/lang/ar.json';
