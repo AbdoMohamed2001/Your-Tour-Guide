@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:your_tour_guide/core/utils/theme/text_styles.dart';
 
-import '../functions/is_arabic.dart';
-
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({
     Key? key,
@@ -14,6 +12,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final Widget? leading;
   final Widget? titleWidget;
+
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
@@ -24,22 +23,19 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     ));
     return SafeArea(
         child: Padding(
-      padding: const EdgeInsets.symmetric(
-        vertical: 25 / 2.5,
-      ),
+      padding: const EdgeInsets.symmetric(vertical: 25 / 2.5),
       child: Stack(
         children: [
           Positioned(
-              child: titleWidget == null
-                  ? Center(
-                      child: Text(
-                        title,
-                        style: TextStyles.regular18,
-                      ),
-                    )
-                  : Center(
-                      child: titleWidget,
-                    )),
+            child: titleWidget == null
+                ? Center(
+                    child: Text(
+                      title,
+                      style: TextStyles.regular18,
+                    ),
+                  )
+                : Center(child: titleWidget),
+          ),
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -61,6 +57,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 class CustomAppBarIconButton extends StatelessWidget {
   const CustomAppBarIconButton({Key? key, this.onPressed}) : super(key: key);
   final void Function()? onPressed;
+
   @override
   Widget build(BuildContext context) {
     return IconButton(
@@ -68,12 +65,7 @@ class CustomAppBarIconButton extends StatelessWidget {
           () {
             Navigator.pop(context);
           },
-      icon: isArabic()
-          ? RotatedBox(
-              quarterTurns: 2,
-              child: Icon(Icons.arrow_back_ios_new_outlined),
-            )
-          : Icon(Icons.arrow_back_ios_new_outlined),
+      icon: Icon(Icons.arrow_back_ios_new_outlined),
     );
   }
 }

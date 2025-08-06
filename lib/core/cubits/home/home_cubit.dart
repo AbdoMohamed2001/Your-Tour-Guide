@@ -1,10 +1,10 @@
 import 'package:your_tour_guide/features/places/data/repos/places_repo.dart';
-import 'package:your_tour_guide/features/places/domian/entities/place_entity.dart';
 import 'package:your_tour_guide/features/home/presentation/views/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../../features/favourite/presentation/views/favourites.dart';
+import '../../../features/places/domain/entities/place_entity.dart';
 import '../../../features/profile/presentation/views/profile_view.dart';
 import '../../../features/search/presentation/views/search_view.dart';
 

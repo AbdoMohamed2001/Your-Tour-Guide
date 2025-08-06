@@ -92,14 +92,14 @@ class MyApp extends StatelessWidget {
               builder: DevicePreview.appBuilder,
 
               debugShowCheckedModeBanner: false,
-              // App configuration
+              // APP configuration
               title: 'Your Tour Guide',
               locale: getIt<LocaleCubit>().currentLocale,
-              // Theme configuration
+              // THEME configuration
               theme: ThemeClass.lightTheme,
               darkTheme: ThemeClass.darkTheme,
               themeMode: getIt<ThemeCubit>().currentThemeMode,
-              // Localization configuration
+              // LOCALIZATION configuration
               localizationsDelegates: [
                 S.delegate,
                 AppLocalizations.delegate,

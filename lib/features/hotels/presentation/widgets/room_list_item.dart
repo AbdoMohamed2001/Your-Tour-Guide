@@ -1,140 +1,129 @@
 import 'package:your_tour_guide/core/utils/constants.dart';
 import 'package:your_tour_guide/core/utils/functions/is_arabic.dart';
+import 'package:your_tour_guide/core/utils/theme/app_colors.dart';
 import 'package:your_tour_guide/core/utils/theme/text_styles.dart';
 import 'package:your_tour_guide/core/utils/widgets/default_cached_network_image.dart';
-import 'package:your_tour_guide/features/hotels/domain/entities/hotel_entity.dart';
+import 'package:your_tour_guide/features/hotels/domain/entities/hotel_room_entity.dart';
 import 'package:your_tour_guide/generated/l10n.dart';
-import 'package:your_tour_guide/features/hotels/presentation/views/room_view.dart';
 import 'package:flutter/material.dart';
 
 class RoomListItem extends StatelessWidget {
   const RoomListItem({
     super.key,
-    required this.hotelEntity,
-    required this.index,
+    required this.room,
   });
 
-  final HotelEntity hotelEntity;
-  final int index;
+  final HotelRoomEntity room;
 
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
-    return GestureDetector(
-      onTap: () {
-        Navigator.push(context, MaterialPageRoute(builder: (_) {
-          return RoomScreen(hotelEntity: hotelEntity, index: index);
-        }));
-      },
-      child: Container(
-        width: 270,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(10)),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Column(
+    return Container(
+      width: 240,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(10)),
+        color: Theme.of(context).cardColor,
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          DefaultCachedNetworkImage(
+            imageUrl: isArabic() ? room.imageUrl : room.imageUrl,
+            imageHeight: height * 0.145,
+          ),
+          kSizedBox,
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 8),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                //image
-                DefaultCachedNetworkImage(
-                  imageUrl: isArabic()
-                      ? hotelEntity.roomsArabic[index].imageUrl
-                      : hotelEntity.rooms[index].imageUrl,
-                  imageHeight: height * 0.145,
+                //name
+                Center(
+                  child: Text(
+                    room.name,
+                    style: TextStyles.bold14,
+                    overflow: TextOverflow.ellipsis,
+                  ),
                 ),
-                kSizedBox,
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 8),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
+                SizedBox(height: 6),
+                //---------------------------------------
+                //contains
+                Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      //name
                       Text(
-                        hotelEntity.rooms[index].name,
+                        S.of(context).contains,
                         style: TextStyles.bold14,
                       ),
-                      SizedBox(height: 6),
-                      //---------------------------------------
-                      //contains
-                      Row(
-                        children: [
-                          Text(
-                            S.of(context).contains,
-                            style: TextStyles.bold14,
-                          ),
-                          SizedBox(width: 5),
-                          containsPeople(
-                              noOfPeople:
-                                  hotelEntity.roomsArabic[index].noOfPeople),
-                        ],
-                      ),
-                      //---------------------------------------
-                      //bed
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          //Bed Text
-                          Text(S.of(context).bed, style: TextStyles.bold14),
-                          isArabic()
-                              ? Text(hotelEntity.roomsArabic[index].bed
-                                  .replaceAll('_b', '\n'))
-                              : Text(
-                                  hotelEntity.rooms[index].bed
-                                      .replaceAll('_b', '\n'),
-                                  style: TextStyles.bold14,
-                                ),
-
-                          SizedBox(width: 5),
-                          hotelEntity.roomsArabic[index].bed
-                                  .toString()
-                                  .contains('_b')
-                              ? Column(
-                                  children: [
-                                    SizedBox(height: 6),
-                                    Icon(Icons.bed),
-                                    SizedBox(height: 8),
-                                    Icon(Icons.king_bed)
-                                  ],
-                                )
-                              : hotelEntity.roomsArabic[index].bed
-                                      .toString()
-                                      .contains('2')
-                                  ? Column(
-                                      children: [
-                                        SizedBox(height: 6),
-                                        Row(
-                                          children: [
-                                            Icon(Icons.bed),
-                                            Icon(Icons.bed),
-                                          ],
-                                        ),
-                                      ],
-                                    )
-                                  : Column(
-                                      children: [
-                                        SizedBox(height: 6),
-                                        Icon(Icons.bed),
-                                      ],
-                                    )
-                          // Icon(Icons.bed),
-                        ],
-                      ),
+                      SizedBox(width: 5),
+                      containsPeople(noOfPeople: room.noOfPeople),
                     ],
                   ),
                 ),
+                //---------------------------------------
+                //bed
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    //Bed Text
+                    Text(S.of(context).bed, style: TextStyles.bold14),
+                    Text(
+                      room.bed.replaceAll('_b', '\n'),
+                      style: TextStyles.bold14,
+                    ),
+                    SizedBox(width: 5),
+                    room.bed.toString().contains('_b')
+                        ? Column(
+                            children: [
+                              SizedBox(height: 6),
+                              Icon(Icons.bed),
+                              SizedBox(height: 8),
+                              Icon(Icons.king_bed)
+                            ],
+                          )
+                        : room.bed.toString().contains('2')
+                            ? Column(
+                                children: [
+                                  SizedBox(height: 6),
+                                  Row(
+                                    children: [
+                                      Icon(Icons.bed),
+                                      Icon(Icons.bed),
+                                    ],
+                                  ),
+                                ],
+                              )
+                            : Column(
+                                children: [
+                                  SizedBox(height: 6),
+                                  Icon(Icons.bed),
+                                ],
+                              )
+                    // Icon(Icons.bed),
+                  ],
+                ),
+                SizedBox(height: 25),
+                //AVG PRICE
               ],
             ),
-            //avg Price
-            Text(
-              isArabic()
-                  ? "${hotelEntity.roomsArabic[index].averagePrice} لليلة الواحدة "
-                  : "${hotelEntity.rooms[index].averagePrice} for 1 night",
-              style: TextStyles.bold14.copyWith(color: Colors.orange),
-            )
-          ],
-        ),
+          ),
+          Spacer(),
+          Container(
+            color: AppColors.primaryColor.withAlpha(180),
+            width: double.infinity,
+            height: 30,
+            child: Center(
+              child: Text(
+                isArabic()
+                    ? "${room.averagePrice} لليلة الواحدة "
+                    : "${room.averagePrice} for 1 night",
+                style: TextStyles.bold14.copyWith(color: Colors.black),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

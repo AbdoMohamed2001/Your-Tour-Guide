@@ -19,7 +19,7 @@ class ThemeCubit extends Cubit<ThemeState> {
   Future<void> getSavedTheme() async {
     try {
       _isDarkMode = CacheHelper.getCachedTheme();
-      emit(ChangeThemeSuccess(themeMode: currentThemeMode));
+      emit(ChangeThemeSuccess());
     } catch (e) {
       log('Error loading saved theme: ${e.toString()}');
       _isDarkMode = false;
@@ -32,7 +32,7 @@ class ThemeCubit extends Cubit<ThemeState> {
     try {
       _isDarkMode = !_isDarkMode;
       await CacheHelper.cacheTheme(_isDarkMode);
-      emit(ChangeThemeSuccess(themeMode: currentThemeMode));
+      emit(ChangeThemeSuccess());
     } catch (e) {
       log('Error toggling theme: ${e.toString()}');
       // Revert the change if caching fails

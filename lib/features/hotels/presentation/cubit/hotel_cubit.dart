@@ -6,7 +6,6 @@ import 'package:your_tour_guide/features/hotels/domain/entities/hotel_entity.dar
 part 'hotel_state.dart';
 
 class HotelCubit extends Cubit<HotelState> {
-  static HotelCubit get(context) => BlocProvider.of(context);
   HotelCubit(this.hotelsRepo) : super(HotelInitial());
   final HotelsRepo hotelsRepo;
   List<HotelEntity> allHotels = [];
@@ -14,7 +13,7 @@ class HotelCubit extends Cubit<HotelState> {
   void getHotels({String? cityName}) async {
     emit(HotelsGetLoading());
 
-    var result = await hotelsRepo.getHotels();
+    var result = await hotelsRepo.getHotels(cityName: cityName);
     result.fold(
       (fail) {
         emit(HotelsGetFailure(message: fail.message));

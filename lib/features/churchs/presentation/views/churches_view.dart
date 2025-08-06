@@ -11,7 +11,9 @@ import '../widgets/churches_view/churches_view_body.dart';
 class ChurchesView extends StatefulWidget {
   ChurchesView({
     Key? key,
+    this.cityName,
   }) : super(key: key);
+  final String? cityName;
 
   @override
   State<ChurchesView> createState() => _ChurchesViewState();
@@ -55,7 +57,10 @@ class _ChurchesViewState extends State<ChurchesView>
       ),
       body: BlocProvider(
         create: (context) => ChurchCubit(getIt<ChurchRepo>()),
-        child: ChurchesViewBody(tabController: _tabController),
+        child: ChurchesViewBody(
+          tabController: _tabController,
+          cityName: widget.cityName,
+        ),
       ),
     );
   }

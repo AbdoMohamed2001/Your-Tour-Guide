@@ -16,12 +16,15 @@ class RoomListView extends StatelessWidget {
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
     return SizedBox(
-      height: height * 0.37,
+      height: height * 0.38,
       child: ListView.separated(
         shrinkWrap: true,
         scrollDirection: Axis.horizontal,
-        itemBuilder: (_, index) =>
-            RoomListItem(hotelEntity: hotelEntity, index: index),
+        itemBuilder: (_, index) => RoomListItem(
+          room: isArabic()
+              ? hotelEntity.roomsArabic[index]
+              : hotelEntity.rooms[index],
+        ),
         separatorBuilder: (_, index) => SizedBox(width: 4),
         itemCount: isArabic()
             ? hotelEntity.roomsArabic.length

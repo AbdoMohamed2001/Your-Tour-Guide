@@ -41,7 +41,6 @@ class MallDetailsViewBody extends StatelessWidget {
             children: [
               //image
               DefaultServiceDetailsImage(
-                cubitDataKeyCurrentContext: GlobalKey(),
                 entity: mallEntity,
               ),
               Column(

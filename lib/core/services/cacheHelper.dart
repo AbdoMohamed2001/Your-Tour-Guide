@@ -28,10 +28,6 @@ class CacheHelper {
 
   static bool getCachedTheme() {
     final cachedTheme = Prefs.getBool(_cachedTheme);
-    if (cachedTheme == true) {
-      return cachedTheme;
-    } else {
-      return false;
-    }
+    return cachedTheme;
   }
 }

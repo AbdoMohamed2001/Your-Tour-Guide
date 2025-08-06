@@ -29,7 +29,6 @@ class CafeDetailsViewBody extends StatelessWidget {
             children: [
               //image
               DefaultServiceDetailsImage(
-                cubitDataKeyCurrentContext: GlobalKey(),
                 entity: cafeEntity,
               ),
               Column(

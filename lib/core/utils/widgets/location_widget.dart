@@ -31,14 +31,11 @@ class LocationWidget extends StatelessWidget {
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 3.0),
-                  child: Icon(
-                    FontAwesomeIcons.mapMarkedAlt,
-                    size: 24,
-                  ),
+                const Icon(
+                  FontAwesomeIcons.mapMarkedAlt,
+                  size: 22,
                 ),
-                SizedBox(width: 10),
+                SizedBox(width: screenWidth * 0.04),
                 Container(
                   width: screenWidth * 0.7,
                   child: Text(
@@ -49,18 +46,16 @@ class LocationWidget extends StatelessWidget {
               ],
             ),
             //google map
-            Padding(
-              padding: const EdgeInsets.only(bottom: 8.0),
-              child: GestureDetector(
-                onTap: () {
-                  MapsLauncher.launchQuery(address);
-                },
-                child: Container(
-                  child: Image.asset(
-                    Assets.imagesGooglemaps,
-                    width: screenWidth * 0.120,
-                    height: 50,
-                  ),
+            GestureDetector(
+              onTap: () {
+                MapsLauncher.launchQuery(address);
+              },
+              child: Container(
+                padding: EdgeInsets.only(bottom: 5),
+                child: Image.asset(
+                  Assets.imagesGooglemaps,
+                  width: screenWidth * 0.1,
+                  height: 35,
                 ),
               ),
             ),
@@ -70,12 +65,12 @@ class LocationWidget extends StatelessWidget {
         //-----------------------------
         //rate bar
         RateWidget(rate: rate, starIconIncluded: true),
-        SizedBox(height: 25),
+        const SizedBox(height: 25),
         //-----------------------------
-        Divider(
+        const Divider(
           height: 0.5,
           thickness: 1,
-          color: Colors.grey[300],
+          color: Color(0xffcccccc),
         ),
       ],
     );

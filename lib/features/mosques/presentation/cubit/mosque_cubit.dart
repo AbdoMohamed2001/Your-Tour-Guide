@@ -15,7 +15,7 @@ class MosqueCubit extends Cubit<MosqueState> {
   void getMosques({String? cityName}) async {
     emit(MosquesGetLoading());
 
-    var result = await mosqueRepo.getMosques();
+    var result = await mosqueRepo.getMosques(cityName: cityName);
     result.fold(
       (fail) {
         emit(MosquesGetFailure(fail.message));

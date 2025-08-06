@@ -28,9 +28,7 @@ class EventDetailsViewBody extends StatelessWidget {
             children: [
               //image
               DefaultServiceDetailsImage(
-                cubitDataKeyCurrentContext: GlobalKey(),
                 entity: eventEntity,
-                isNotEvent: false,
               ),
               kSizedBox,
               //-------------------------------------------------

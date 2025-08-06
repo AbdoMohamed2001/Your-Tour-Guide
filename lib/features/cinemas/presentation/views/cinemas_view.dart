@@ -11,7 +11,9 @@ import '../widgets/cinemas_view/cinemas_view_body.dart';
 class CinemasView extends StatefulWidget {
   CinemasView({
     Key? key,
+    this.cityName,
   }) : super(key: key);
+  final String? cityName;
 
   @override
   State<CinemasView> createState() => _CinemasViewState();
@@ -55,7 +57,10 @@ class _CinemasViewState extends State<CinemasView>
       ),
       body: BlocProvider(
         create: (context) => CinemaCubit(getIt<CinemaRepo>()),
-        child: CinemasViewBody(tabController: _tabController),
+        child: CinemasViewBody(
+          tabController: _tabController,
+          cityName: widget.cityName,
+        ),
       ),
     );
   }

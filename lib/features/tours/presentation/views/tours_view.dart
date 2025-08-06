@@ -9,8 +9,9 @@ import '../../../../core/utils/widgets/custom_app_bar.dart';
 import '../../../../generated/l10n.dart';
 
 class ToursView extends StatelessWidget {
-  const ToursView({super.key, required this.tourType});
-  final String tourType;
+  const ToursView({super.key, this.tourType, this.placeDocId});
+  final String? tourType;
+  final String? placeDocId;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,6 +23,7 @@ class ToursView extends StatelessWidget {
         create: (context) => TourCubit(getIt<GetToursUseCase>()),
         child: ToursViewBody(
           tourType: tourType,
+          placeDocId: placeDocId,
         ),
       ),
     );

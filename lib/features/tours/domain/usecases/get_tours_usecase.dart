@@ -8,7 +8,8 @@ class GetToursUseCase {
 
   GetToursUseCase(this.tourRepo);
 
-  Future<Either<Failure, List<TourEntity>>> call({String? tourType}) async {
-    return await tourRepo.getTours(tourType: tourType);
+  Future<Either<Failure, List<TourEntity>>> call(
+      {String? tourType, String? placeDocID}) async {
+    return await tourRepo.getTours(tourType: tourType, placeDocID: placeDocID);
   }
 }

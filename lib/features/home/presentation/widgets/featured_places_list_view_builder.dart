@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:your_tour_guide/features/places/domian/entities/place_entity.dart';
+import 'package:your_tour_guide/features/places/domain/entities/place_entity.dart';
 import 'package:your_tour_guide/features/home/presentation/widgets/featured_places_list_view.dart';
 
 import '../../../../core/cubits/home/home_cubit.dart';

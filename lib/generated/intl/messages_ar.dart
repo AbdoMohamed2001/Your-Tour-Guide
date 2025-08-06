@@ -111,7 +111,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "about": MessageLookupByLibrary.simpleMessage("نظرة عامة"),
     "arabic": MessageLookupByLibrary.simpleMessage("العربية"),
     "avgPrice": MessageLookupByLibrary.simpleMessage("متوسط السعر :"),
-    "bed": MessageLookupByLibrary.simpleMessage("السرير :"),
+    "bed": MessageLookupByLibrary.simpleMessage("السرير: "),
     "bestPlaces": MessageLookupByLibrary.simpleMessage("افضل \n الاماكن"),
     "cast": MessageLookupByLibrary.simpleMessage("طاقم العمل"),
     "changePassword": MessageLookupByLibrary.simpleMessage("تغيير كلمة المرور"),
@@ -128,6 +128,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "كلمة المرور الحالي",
     ),
     "dayTour": MessageLookupByLibrary.simpleMessage("رحلات يوم واحد"),
+    "dontHaveAnAccount": MessageLookupByLibrary.simpleMessage(
+      "ليس لديك حساب؟ ",
+    ),
     "egyptiansTrip": MessageLookupByLibrary.simpleMessage("رحلات للمصريين"),
     "endDate": MessageLookupByLibrary.simpleMessage("نهاية الرحله"),
     "english": MessageLookupByLibrary.simpleMessage("الأنجليزية"),
@@ -137,6 +140,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "general": MessageLookupByLibrary.simpleMessage("عام"),
     "genre": MessageLookupByLibrary.simpleMessage("التصنيف"),
     "help": MessageLookupByLibrary.simpleMessage("المساعدة"),
+    "inclusions": MessageLookupByLibrary.simpleMessage("مشتملات الرحلة"),
     "incorrectCurrentPassword": MessageLookupByLibrary.simpleMessage(
       "كلمة المرور الحاليه غير صحيحه",
     ),
@@ -167,6 +171,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "noInternet": MessageLookupByLibrary.simpleMessage(
       "جهازك غير متصل بالإنترنت. يتطلب تطبيق Your Tour Guide اتصالاً بالإنترنت للبدء",
     ),
+    "noOfFloors": MessageLookupByLibrary.simpleMessage("عدد الطوابق: "),
+    "noOfRooms": MessageLookupByLibrary.simpleMessage("عدد الغرف: "),
     "notifications": MessageLookupByLibrary.simpleMessage("الاشعارات"),
     "openingHours": MessageLookupByLibrary.simpleMessage("مواعيد \n العمل"),
     "passwordNotMatched": MessageLookupByLibrary.simpleMessage(

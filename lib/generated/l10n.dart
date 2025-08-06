@@ -185,6 +185,16 @@ class S {
     );
   }
 
+  /// `Don't have an account? `
+  String get dontHaveAnAccount {
+    return Intl.message(
+      'Don\'t have an account? ',
+      name: 'dontHaveAnAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Already have account`
   String get AlreadyHaveAccount {
     return Intl.message(
@@ -810,6 +820,26 @@ class S {
   /// `Bed`
   String get bed {
     return Intl.message('Bed', name: 'bed', desc: '', args: []);
+  }
+
+  /// `Number of floors: `
+  String get noOfFloors {
+    return Intl.message(
+      'Number of floors: ',
+      name: 'noOfFloors',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Number of Rooms: `
+  String get noOfRooms {
+    return Intl.message(
+      'Number of Rooms: ',
+      name: 'noOfRooms',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Films`

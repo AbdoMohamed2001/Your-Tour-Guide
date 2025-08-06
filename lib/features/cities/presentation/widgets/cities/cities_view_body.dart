@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:your_tour_guide/features/cities/presentation/widgets/all_cities_list_view_builder.dart';
+import 'package:your_tour_guide/features/cities/presentation/widgets/cities/cities_view_builder.dart';
 
-import '../cubit/city_cubit/city_cubit.dart';
+import '../../cubit/city_cubit/city_cubit.dart';
 
 class CitiesViewBody extends StatefulWidget {
   const CitiesViewBody({
@@ -22,6 +22,6 @@ class _CitiesViewBodyState extends State<CitiesViewBody> {
 
   @override
   Widget build(BuildContext context) {
-    return AllCitiesListViewBuilder();
+    return CitiesViewBuilder();
   }
 }

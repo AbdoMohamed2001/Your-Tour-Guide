@@ -15,6 +15,7 @@ class RateWidget extends StatelessWidget {
   final bool? starIconIncluded;
 
   Widget build(BuildContext context) {
+    var screenWidth = MediaQuery.of(context).size.width;
     return Row(
       children: [
         starIconIncluded == true
@@ -23,12 +24,9 @@ class RateWidget extends StatelessWidget {
                 size: 24,
               )
             : Container(),
-        starIconIncluded == true ? SizedBox(width: 10) : Container(),
-        Text(
-          '($rate)',
-          style: TextStyles.bold18,
-        ),
-        SizedBox(width: 5),
+        starIconIncluded == true
+            ? SizedBox(width: screenWidth * 0.04)
+            : Container(),
         RatingBar(
             ignoreGestures: true,
             itemSize: 24,
@@ -51,6 +49,11 @@ class RateWidget extends StatelessWidget {
               ),
             ),
             onRatingUpdate: (rating) {}),
+        SizedBox(width: 5),
+        Text(
+          '($rate)',
+          style: TextStyles.bold18,
+        ),
       ],
     );
   }

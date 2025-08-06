@@ -11,7 +11,9 @@ import '../widgets/all_mosques_view/all_mosques_view_body.dart';
 class MosquesView extends StatefulWidget {
   MosquesView({
     Key? key,
+    this.cityName,
   }) : super(key: key);
+  final String? cityName;
 
   @override
   State<MosquesView> createState() => _MosquesViewState();
@@ -55,7 +57,10 @@ class _MosquesViewState extends State<MosquesView>
       ),
       body: BlocProvider(
         create: (context) => MosqueCubit(getIt<MosqueRepo>()),
-        child: MosquesViewBody(tabController: _tabController),
+        child: MosquesViewBody(
+          tabController: _tabController,
+          cityName: widget.cityName,
+        ),
       ),
     );
   }

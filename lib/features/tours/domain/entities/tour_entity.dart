@@ -32,7 +32,11 @@ class TourEntity {
   final String tourAvailabilityArabic;
   final String email;
   final String booking;
+  final String placeDocId;
   final String collectionRef;
+  final String cityName;
+  final String cityNameArabic;
+  final num rate;
 
   TourEntity({
     required this.description,
@@ -68,6 +72,10 @@ class TourEntity {
     required this.tourAvailabilityArabic,
     required this.email,
     required this.booking,
+    required this.placeDocId,
     this.collectionRef = 'tours',
+    this.cityName = ' ',
+    this.cityNameArabic = ' ',
+    this.rate = 4.5,
   });
 }

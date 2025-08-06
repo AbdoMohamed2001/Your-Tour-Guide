@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:your_tour_guide/features/hotels/presentation/cubit/hotel_cubit.dart';
-import 'package:your_tour_guide/generated/assets.dart';
 import '../../../../../core/utils/constants.dart';
 import '../../../../../core/utils/functions/is_arabic.dart';
 import '../../../../../core/utils/widgets/contact_widget.dart';
@@ -33,15 +31,13 @@ class HotelDetailsViewBody extends StatelessWidget {
           child: Column(
             children: [
               //image
-              DefaultServiceDetailsImage(
-                cubitDataKeyCurrentContext: GlobalKey(),
-                entity: hotelEntity,
-              ),
+              DefaultServiceDetailsImage(entity: hotelEntity),
               Column(
                 children: [
                   //-------------------------------------------------------------------------
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: kHorizontalPadding),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -76,29 +72,29 @@ class HotelDetailsViewBody extends StatelessWidget {
                         kSizedBox,
                         HotelFeaturesListView(hotelEntity: hotelEntity),
                         // booking
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            GestureDetector(
-                              onTap: () async {
-                                //change later
-                                var url = Uri.parse(hotelEntity.mapUrl);
-                                if (await canLaunchUrl(
-                                  url,
-                                )) {
-                                  await launchUrl(url);
-                                }
-                                ;
-                              },
-                              child: Container(
-                                width: 120,
-                                height: 60,
-                                color: Theme.of(context).primaryColorDark,
-                                child: Image.asset(Assets.imagesBooking),
-                              ),
-                            ),
-                          ],
-                        ),
+                        // Row(
+                        //   mainAxisAlignment: MainAxisAlignment.center,
+                        //   children: [
+                        //     GestureDetector(
+                        //       onTap: () async {
+                        //         //change later
+                        //         var url = Uri.parse(hotelEntity.mapUrl);
+                        //         if (await canLaunchUrl(
+                        //           url,
+                        //         )) {
+                        //           await launchUrl(url);
+                        //         }
+                        //         ;
+                        //       },
+                        //       child: Container(
+                        //         width: 120,
+                        //         height: 60,
+                        //         color: Theme.of(context).primaryColorDark,
+                        //         child: Image.asset(Assets.imagesBooking),
+                        //       ),
+                        //     ),
+                        //   ],
+                        // ),
                         kSizedBox,
                         //-------------------------------------------------------------------------
                         //Rooms
@@ -106,7 +102,7 @@ class HotelDetailsViewBody extends StatelessWidget {
                         kSizedBox,
                         hotelEntity.roomsArabic.length == 0 &&
                                 hotelEntity.rooms.length == 0
-                            ? Container(width: 0, height: 0)
+                            ? const SizedBox()
                             : RoomListView(hotelEntity: hotelEntity),
                         kSizedBox,
                         //-------------------------------------------------------------------------
@@ -119,7 +115,7 @@ class HotelDetailsViewBody extends StatelessWidget {
                         //-------------------------------------------------------------------------
                         //Gallery
                         GalleryWidget(entity: hotelEntity),
-                        kSizedBox,
+                        SizedBox(height: 30),
                       ],
                     ),
                   ),

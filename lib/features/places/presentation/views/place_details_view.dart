@@ -1,5 +1,5 @@
 import 'package:your_tour_guide/features/places/data/repos/places_repo.dart';
-import 'package:your_tour_guide/features/places/domian/entities/place_entity.dart';
+import 'package:your_tour_guide/features/places/domain/entities/place_entity.dart';
 import 'package:your_tour_guide/features/places/presentation/widgets/place_details/place_details_view_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

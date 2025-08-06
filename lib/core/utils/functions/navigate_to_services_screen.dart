@@ -9,55 +9,56 @@ import 'package:your_tour_guide/features/home/presentation/views/home_view.dart'
 import 'package:your_tour_guide/features/places/presentation/views/places_view.dart';
 import 'package:your_tour_guide/features/restaurants/presentation/views/restaurants_views.dart';
 
-void navigateToServiceScreen(String collectionRef, BuildContext context) {
+void navigateToServiceScreen(String collectionRef, BuildContext context,
+    {String? cityName}) {
   switch (collectionRef) {
     case 'places':
       Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (_) => PlacesView(),
+            builder: (_) => PlacesView(cityName: cityName),
           ));
     case 'hotels':
       Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (_) => HotelsView(),
+            builder: (_) => HotelsView(cityName: cityName),
           ));
     case 'restaurants':
       Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (_) => RestaurantsView(),
+            builder: (_) => RestaurantsView(cityName: cityName),
           ));
     case 'cafes':
       Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (_) => CafesView(),
+            builder: (_) => CafesView(cityName: cityName),
           ));
     case 'malls':
       Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (_) => MallsView(),
+            builder: (_) => MallsView(cityName: cityName),
           ));
     case 'cinemas':
       Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (_) => CinemasView(),
+            builder: (_) => CinemasView(cityName: cityName),
           ));
     case 'mosques':
       Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (_) => MosquesView(),
+            builder: (_) => MosquesView(cityName: cityName),
           ));
     case 'churchs':
       Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (_) => ChurchesView(),
+            builder: (_) => ChurchesView(cityName: cityName),
           ));
     case 'tourGuides':
       Navigator.push(

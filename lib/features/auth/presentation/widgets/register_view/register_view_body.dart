@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import 'package:your_tour_guide/core/utils/constants.dart';
 import 'package:your_tour_guide/features/auth/data/models/user_create_req_model.dart';
+import 'package:your_tour_guide/features/auth/presentation/views/login_view.dart';
 import 'package:your_tour_guide/features/auth/presentation/widgets/social_buttons.dart';
 import '../../../../../core/utils/theme/text_styles.dart';
 import '../../../../../core/utils/widgets/combined_text.dart';
@@ -21,14 +22,24 @@ class RegisterViewBody extends StatefulWidget {
 }
 
 final GlobalKey<FormState> formKey = GlobalKey();
-final TextEditingController emailController = TextEditingController();
-final TextEditingController nameController = TextEditingController();
-final TextEditingController passController = TextEditingController();
-final TextEditingController confirmPassController = TextEditingController();
+late TextEditingController emailController;
+late TextEditingController nameController;
+
+late TextEditingController passController;
+
+late TextEditingController confirmPassController;
 bool isPassObscure = true;
 
 class _RegisterViewBodyState extends State<RegisterViewBody> {
   @override
+  void initState() {
+    super.initState();
+    emailController = TextEditingController();
+    nameController = TextEditingController();
+    passController = TextEditingController();
+    confirmPassController = TextEditingController();
+  }
+
   void dispose() {
     super.dispose();
     emailController.dispose();
@@ -75,6 +86,12 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                       labelText: S.of(context).UserName,
                       prefixIcon: const Icon(Icons.person_outlined),
                       textInputType: TextInputType.text,
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return S.of(context).EnterCorrectUserName;
+                        }
+                        return null;
+                      },
                     ),
                     kSizedBox,
                     //Email
@@ -149,7 +166,11 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                   firstText: S.of(context).AlreadyHaveAccount,
                   secondText: S.of(context).SignIn.toUpperCase(),
                   onTap: () {
-                    Navigator.pop(context);
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => LoginView(),
+                        ));
                   },
                 ),
               ],

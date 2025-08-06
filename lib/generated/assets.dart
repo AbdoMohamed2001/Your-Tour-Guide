@@ -43,9 +43,6 @@ class Assets {
   static const String imagesEditProfile = 'assets/images/edit_profile.png';
   static const String imagesEditProfileDark =
       'assets/images/editProfileDark.png';
-  static const String imagesGoogleMapsDark = 'assets/images/googleMapsDark.png';
-  static const String imagesGoogleMapsLight =
-      'assets/images/googleMapsLight.png';
   static const String imagesGooglemaps = 'assets/images/googlemaps.png';
   static const String imagesHome = 'assets/images/home.jpg';
   static const String imagesOpenDarkArabic = 'assets/images/openDarkArabic.png';

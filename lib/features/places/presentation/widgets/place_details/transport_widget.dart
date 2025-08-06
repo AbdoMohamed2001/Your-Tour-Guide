@@ -4,7 +4,7 @@ import '../../../../../core/utils/constants.dart';
 import '../../../../../core/utils/functions/is_arabic.dart';
 import '../../../../../core/utils/widgets/head_text.dart';
 import '../../../../../generated/l10n.dart';
-import '../../../domian/entities/place_entity.dart';
+import 'package:your_tour_guide/features/places/domain/entities/place_entity.dart';
 
 class TransportWidget extends StatelessWidget {
   const TransportWidget({

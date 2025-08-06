@@ -4,6 +4,5 @@ import 'package:your_tour_guide/features/hotels/domain/entities/hotel_entity.dar
 import '../../../../core/errors/failure.dart';
 
 abstract class HotelsRepo {
-  /// getAllHotels
   Future<Either<Failure, List<HotelEntity>>> getHotels({String? cityName});
 }

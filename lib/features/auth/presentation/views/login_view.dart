@@ -21,7 +21,9 @@ class LoginView extends StatelessWidget {
     return BlocProvider(
       create: (context) => AuthCubit(getIt<AuthUseCase>()),
       child: Scaffold(
-        appBar: CustomAppBar(),
+        appBar: CustomAppBar(
+          leading: CustomAppBarIconButton(),
+        ),
         body: BlocConsumer<AuthCubit, AuthState>(
           listener: (context, state) {
             if (state is AuthSuccess) {

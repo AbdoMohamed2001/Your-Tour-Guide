@@ -12,7 +12,6 @@ class HotelDetailsView extends StatelessWidget {
     Key? key,
     required this.hotelEntity,
   }) : super(key: key);
-  static final String id = 'HotelDetailsView';
   final HotelEntity hotelEntity;
 
   @override

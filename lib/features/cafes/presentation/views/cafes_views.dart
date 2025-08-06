@@ -11,7 +11,9 @@ import '../widgets/cafes_views/cafes_view_body.dart';
 class CafesView extends StatefulWidget {
   CafesView({
     Key? key,
+    this.cityName,
   }) : super(key: key);
+  final String? cityName;
 
   @override
   State<CafesView> createState() => _CafesViewState();
@@ -55,7 +57,10 @@ class _CafesViewState extends State<CafesView>
       ),
       body: BlocProvider(
         create: (context) => CafeCubit(getIt<CafeRepo>()),
-        child: CafesViewBody(tabController: _tabController),
+        child: CafesViewBody(
+          tabController: _tabController,
+          cityName: widget.cityName,
+        ),
       ),
     );
   }

@@ -13,16 +13,13 @@ class TourDetailsView extends StatelessWidget {
   }) : super(key: key);
 
   final TourEntity tourEntity;
-  static final String id = 'TourDetailsView';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocProvider(
         create: (context) => TourCubit(getIt<GetToursUseCase>()),
-        child: TourDetailsViewBody(
-          tourEntity: tourEntity,
-        ),
+        child: TourDetailsViewBody(tourEntity: tourEntity),
       ),
     );
   }

@@ -3,13 +3,12 @@ import 'dart:developer';
 import 'package:dartz/dartz.dart';
 import 'package:your_tour_guide/features/places/data/models/place_model.dart';
 
-import 'package:your_tour_guide/features/places/domian/entities/place_entity.dart';
-
 import 'package:your_tour_guide/core/errors/failure.dart';
 import 'package:your_tour_guide/core/services/database_services.dart';
 
 import '../../data/repos/places_repo.dart';
 import '../../../../core/utils/backend_endpoints.dart';
+import '../entities/place_entity.dart';
 
 class PlacesRepoImpl implements PlacesRepo {
   final DatabaseServices databaseServices;

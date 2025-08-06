@@ -15,7 +15,7 @@ class CafeCubit extends Cubit<CafeState> {
   void getCafes({String? cityName}) async {
     emit(CafesGetLoading());
 
-    var result = await cafeRepo.getCafes();
+    var result = await cafeRepo.getCafes(cityName: cityName);
     result.fold(
       (fail) {
         emit(CafesGetFailure(fail.message));

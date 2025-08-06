@@ -29,7 +29,6 @@ class ChurchDetailsViewBody extends StatelessWidget {
             children: [
               //image
               DefaultServiceDetailsImage(
-                cubitDataKeyCurrentContext: GlobalKey(),
                 entity: churchEntity,
               ),
               Column(

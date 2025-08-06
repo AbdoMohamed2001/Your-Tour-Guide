@@ -29,7 +29,6 @@ class MosqueDetailsViewBody extends StatelessWidget {
             children: [
               //image
               DefaultServiceDetailsImage(
-                cubitDataKeyCurrentContext: GlobalKey(),
                 entity: mosqueEntity,
               ),
               Column(

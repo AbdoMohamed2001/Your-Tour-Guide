@@ -19,8 +19,8 @@ class NearlyPlaceItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
-        Navigator.push(context, MaterialPageRoute(builder: (_){
+      onTap: () {
+        Navigator.push(context, MaterialPageRoute(builder: (_) {
           return pushedPage;
         }));
       },
@@ -35,9 +35,7 @@ class NearlyPlaceItem extends StatelessWidget {
           height: 35,
           decoration: BoxDecoration(
             color: containerColor,
-            borderRadius: BorderRadius.all(
-              Radius.circular(8),
-            ),
+            borderRadius: BorderRadius.all(Radius.circular(8)),
           ),
           child: Padding(
             padding: const EdgeInsets.only(right: 6.0),
@@ -51,25 +49,19 @@ class NearlyPlaceItem extends StatelessWidget {
                     height: 35,
                     decoration: const BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(8),
-                      ),
+                      borderRadius: BorderRadius.all(Radius.circular(8)),
                     ),
                     child: Center(
                         child: Icon(
-                          iconName,
-                          color: iconColor,
-                        )),
+                      iconName,
+                      color: iconColor,
+                    )),
                   ),
                 ),
-                SizedBox(
-                  width: 15,
-                ),
+                SizedBox(width: 15),
                 Text(
                   containerName,
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
+                  style: TextStyle(color: Colors.white),
                 ),
               ],
             ),

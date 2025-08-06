@@ -12,7 +12,7 @@ class FeatureGridContainer extends StatelessWidget {
       decoration: BoxDecoration(
         border: Border.all(color: Colors.orangeAccent),
       ),
-      width: 32,
+      width: double.infinity,
       height: screenHeight * 0.05,
       child: Icon(icon, size: 30),
     );

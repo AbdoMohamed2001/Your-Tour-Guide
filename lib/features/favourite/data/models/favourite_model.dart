@@ -25,11 +25,11 @@ class FavouriteModel {
       docId: json['docId'],
       name: json['name'],
       nameArabic: json['nameArabic'],
-      cityName: json['cityName'],
-      cityNameArabic: json['cityNameArabic'],
+      cityName: json['cityName'] ?? '',
+      cityNameArabic: json['cityNameArabic'] ?? '',
       imageUrl: json['imageUrl'],
       collectionName: json['collectionName'],
-      rate: json['rate'],
+      rate: json['rate'] ?? '',
     );
   }
 

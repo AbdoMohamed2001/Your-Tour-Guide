@@ -33,13 +33,11 @@ class TourDetailsViewBody extends StatelessWidget {
             children: [
               //Image
               DefaultServiceDetailsImage(
-                isNotEvent: false,
                 fontSize: tourEntity.nameArabic.length >= 25 ||
                         tourEntity.name.length >= 25
                     ? 19
                     : 24,
                 entity: tourEntity,
-                cubitDataKeyCurrentContext: null,
               ),
               kSizedBox,
               //-------------------------------------------------------------------

@@ -11,7 +11,9 @@ import '../widgets/restaurants_views/restaurants_view_body.dart';
 class RestaurantsView extends StatefulWidget {
   RestaurantsView({
     Key? key,
+    this.cityName,
   }) : super(key: key);
+  final String? cityName;
 
   @override
   State<RestaurantsView> createState() => _RestaurantsViewState();
@@ -55,7 +57,10 @@ class _RestaurantsViewState extends State<RestaurantsView>
       ),
       body: BlocProvider(
         create: (context) => RestaurantCubit(getIt<RestaurantRepo>()),
-        child: RestaurantsViewBody(tabController: _tabController),
+        child: RestaurantsViewBody(
+          tabController: _tabController,
+          cityName: widget.cityName,
+        ),
       ),
     );
   }

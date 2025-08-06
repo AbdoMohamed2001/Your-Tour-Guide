@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:your_tour_guide/features/places/presentation/cubit/place_cubit/place_cubit.dart';
-import '../../domain/entities/city_entity.dart';
-import '../cubit/city_cubit/city_cubit.dart';
+import '../../../domain/entities/city_entity.dart';
+import '../../cubit/city_cubit/city_cubit.dart';
 import 'cities_list_view.dart';
 
-class AllCitiesListViewBuilder extends StatelessWidget {
-  const AllCitiesListViewBuilder({
+class CitiesViewBuilder extends StatelessWidget {
+  const CitiesViewBuilder({
     super.key,
   });
   @override

@@ -5,8 +5,9 @@ import '../../cubit/mall_cubit.dart';
 import 'all_malls_view_builder.dart';
 
 class MallsViewBody extends StatefulWidget {
-  const MallsViewBody({super.key, required this.tabController});
+  const MallsViewBody({super.key, required this.tabController, this.cityName});
   final TabController tabController;
+  final String? cityName;
   @override
   State<MallsViewBody> createState() => _MallsViewBodyState();
 }
@@ -15,7 +16,7 @@ class _MallsViewBodyState extends State<MallsViewBody> {
   @override
   void initState() {
     super.initState();
-    context.read<MallCubit>().getMalls();
+    context.read<MallCubit>().getMalls(cityName: widget.cityName);
   }
 
   @override

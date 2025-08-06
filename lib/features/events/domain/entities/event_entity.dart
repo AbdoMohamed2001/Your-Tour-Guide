@@ -5,11 +5,12 @@ class EventEntity {
   final String email;
   final String endDate;
   final String eventLink;
+  final String imageUrl;
   final List exclusions;
   final List exclusionsArabic;
-  final String imageUrl;
   final List inclusions;
   final List inclusionsArabic;
+  final List images;
   final String location;
   final String locationArabic;
   final String name;
@@ -19,6 +20,9 @@ class EventEntity {
   final String startDate;
   final String website;
   final String collectionRef;
+  final String cityName;
+  final String cityNameArabic;
+  final num rate;
 
   EventEntity({
     required this.about,
@@ -40,6 +44,10 @@ class EventEntity {
     required this.phone,
     required this.startDate,
     required this.website,
+    required this.images,
     this.collectionRef = 'Events',
+    this.cityName = '',
+    this.cityNameArabic = '',
+    this.rate = 4.5,
   });
 }

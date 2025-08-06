@@ -29,7 +29,6 @@ class RestaurantDetailsViewBody extends StatelessWidget {
             children: [
               //image
               DefaultServiceDetailsImage(
-                cubitDataKeyCurrentContext: GlobalKey(),
                 entity: restEntity,
               ),
               Column(

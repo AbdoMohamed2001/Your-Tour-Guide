@@ -22,6 +22,7 @@
   "EnterCorrectEmail"               : "Enter correct email",
   "UserName"                        : "User name",
   "EnterCorrectUserName"            : "Enter correct user name",
+  "dontHaveAnAccount"               :"Don't have an account? ",
   "AlreadyHaveAccount"              : "Already have account",
   "myAccount"                       : "My Account",
   "Password"                        : "Password",
@@ -125,6 +126,8 @@
   "stars"                   : "Stars",
   "rate"                    : "Rate",
   "bed"                     : "Bed",
+  "noOfFloors"             : "Number of floors: ",
+  "noOfRooms"              : "Number of Rooms: ",
 
   "films"                   : "Films",
   "genre"                   : "Movie Genre",

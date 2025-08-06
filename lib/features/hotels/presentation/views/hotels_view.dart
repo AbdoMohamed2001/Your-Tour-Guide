@@ -11,7 +11,9 @@ import '../../../places/presentation/views/places_view.dart';
 class HotelsView extends StatefulWidget {
   HotelsView({
     Key? key,
+    this.cityName,
   }) : super(key: key);
+  final String? cityName;
 
   @override
   State<HotelsView> createState() => _HotelsViewState();
@@ -55,7 +57,10 @@ class _HotelsViewState extends State<HotelsView>
       ),
       body: BlocProvider(
         create: (context) => HotelCubit(getIt<HotelsRepo>()),
-        child: HotelsViewBody(tabController: _tabController),
+        child: HotelsViewBody(
+          tabController: _tabController,
+          cityName: widget.cityName,
+        ),
       ),
     );
   }

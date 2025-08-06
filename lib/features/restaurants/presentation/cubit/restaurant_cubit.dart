@@ -14,7 +14,7 @@ class RestaurantCubit extends Cubit<RestaurantState> {
   void getRestaurants({String? cityName}) async {
     emit(RestaurantsGetLoading());
 
-    var result = await restaurantRepo.getRestaurants();
+    var result = await restaurantRepo.getRestaurants(cityName: cityName);
     result.fold(
       (fail) {
         emit(RestaurantsGetFailure(fail.message));

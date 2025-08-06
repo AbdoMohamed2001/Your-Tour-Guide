@@ -7,9 +7,11 @@ class PlacesViewBody extends StatefulWidget {
   const PlacesViewBody({
     super.key,
     required this.tabController,
+    this.cityName,
   });
 
   final TabController tabController;
+  final String? cityName;
 
   @override
   State<PlacesViewBody> createState() => _PlacesViewBodyState();
@@ -19,7 +21,7 @@ class _PlacesViewBodyState extends State<PlacesViewBody> {
   @override
   void initState() {
     super.initState();
-    context.read<PlaceCubit>().getPlaces();
+    context.read<PlaceCubit>().getPlaces(cityName: widget.cityName);
   }
 
   @override

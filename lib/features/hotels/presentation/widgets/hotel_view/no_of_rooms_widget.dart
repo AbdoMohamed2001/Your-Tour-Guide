@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../generated/l10n.dart';
 import '../../../domain/entities/hotel_entity.dart';
 
 class NoOfRoomsWidget extends StatelessWidget {
@@ -19,19 +20,15 @@ class NoOfRoomsWidget extends StatelessWidget {
             hotelEntity.noOfFloors == 0
                 ? Container()
                 : Text(
-                    'عدد الطوابق : ${hotelEntity.noOfFloors}',
+                    '${S.of(context).noOfFloors}${hotelEntity.noOfFloors}',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 16,
                     ),
                   ),
-            hotelEntity.noOfFloors == 0
-                ? Container()
-                : SizedBox(
-                    width: 8,
-                  ),
+            hotelEntity.noOfFloors == 0 ? Container() : SizedBox(width: 8),
             Text(
-              'عدد الغرف : ${hotelEntity.noOfRooms}',
+              '${S.of(context).noOfRooms}${hotelEntity.noOfRooms}',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 16,

@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/widgets/place/nearly_item.dart';
-import '../../../domian/entities/nearly_place_entity.dart';
+import '../../../domain/entities/nearly_place_entity.dart';
 
 class NearlyServicesListView extends StatelessWidget {
   const NearlyServicesListView({
     super.key,
+    this.cityName,
   });
-
+  final String? cityName;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -16,11 +17,12 @@ class NearlyServicesListView extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         shrinkWrap: true,
         itemBuilder: (context, index) => NearlyPlaceItem(
-          containerColor: nearlyList[index].containerColor,
-          iconName: nearlyList[index].iconName,
-          iconColor: nearlyList[index].iconColor,
-          containerName: nearlyList[index].containerName,
-          pushedPage: nearlyList[index].pushedPage,
+          containerColor: getNearlyList(context)[index].containerColor,
+          iconName: getNearlyList(context)[index].iconName,
+          iconColor: getNearlyList(context)[index].iconColor,
+          containerName: getNearlyList(context)[index].containerName,
+          pushedPage:
+              getNearlyList(context, cityName: cityName)[index].pushedPage,
         ),
         separatorBuilder: (context, index) => SizedBox(width: 10),
         itemCount: 4,

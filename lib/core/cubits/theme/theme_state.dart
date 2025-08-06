@@ -6,10 +6,7 @@ class ThemeInitial extends ThemeState {}
 
 class ChangeThemeLoading extends ThemeState {}
 
-class ChangeThemeSuccess extends ThemeState {
-  final ThemeMode themeMode;
-  ChangeThemeSuccess({required this.themeMode});
-}
+class ChangeThemeSuccess extends ThemeState {}
 
 class ChangeThemeFailure extends ThemeState {
   final String message;

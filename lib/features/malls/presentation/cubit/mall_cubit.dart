@@ -15,7 +15,7 @@ class MallCubit extends Cubit<MallState> {
   void getMalls({String? cityName}) async {
     emit(MallsGetLoading());
 
-    var result = await mallRepo.getMalls();
+    var result = await mallRepo.getMalls(cityName: cityName);
     result.fold(
       (fail) {
         emit(MallsGetFailure(fail.message));

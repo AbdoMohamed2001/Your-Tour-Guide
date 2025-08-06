@@ -34,6 +34,7 @@ class TourModel {
   final String tourAvailabilityArabic;
   final String email;
   final String booking;
+  final String placeDocId;
 
   TourModel({
     required this.description,
@@ -69,6 +70,7 @@ class TourModel {
     required this.tourAvailabilityArabic,
     required this.email,
     required this.booking,
+    required this.placeDocId,
   });
 
   factory TourModel.fromJson(doc) {
@@ -106,6 +108,7 @@ class TourModel {
       tripOrganizerLogo: doc['tripOrganizerLogo'],
       type: doc['type'],
       website: doc['website'],
+      placeDocId: doc['placeDocId'],
     );
   }
 
@@ -144,6 +147,7 @@ class TourModel {
       tourAvailabilityArabic: tourAvailabilityArabic,
       email: email,
       booking: booking,
+      placeDocId: placeDocId,
     );
   }
 }

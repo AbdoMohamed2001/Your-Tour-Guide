@@ -15,7 +15,7 @@ class ChurchCubit extends Cubit<ChurchState> {
   void getChurchs({String? cityName}) async {
     emit(ChurchsGetLoading());
 
-    var result = await churchRepo.getChurches();
+    var result = await churchRepo.getChurches(cityName: cityName);
     result.fold(
       (fail) {
         emit(ChurchsGetFailure(fail.message));

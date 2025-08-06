@@ -13,9 +13,11 @@ class TourRepoImpl extends TourRepo {
 
   TourRepoImpl(this.tourRemoteDataSource);
   @override
-  Future<Either<Failure, List<TourEntity>>> getTours({String? tourType}) async {
+  Future<Either<Failure, List<TourEntity>>> getTours(
+      {String? tourType, String? placeDocID}) async {
     try {
-      final result = await tourRemoteDataSource.getTours(type: tourType);
+      final result = await tourRemoteDataSource.getTours(
+          type: tourType, placeDocID: placeDocID);
       List<TourEntity> tours = result.map((model) => model.toEntity()).toList();
       return right(tours);
     } catch (e, stack) {

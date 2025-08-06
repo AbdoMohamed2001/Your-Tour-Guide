@@ -14,7 +14,9 @@ class RegisterView extends StatelessWidget {
     return BlocProvider(
       create: (context) => AuthCubit(getIt<AuthUseCase>()),
       child: Scaffold(
-        appBar: CustomAppBar(),
+        appBar: CustomAppBar(
+          leading: CustomAppBarIconButton(),
+        ),
         body: RegisterViewConsumer(),
       ),
     );

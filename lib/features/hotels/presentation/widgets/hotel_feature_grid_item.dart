@@ -23,9 +23,9 @@ class HotelFeatureGridItem extends StatelessWidget {
     final icon = getIconForFeature(feature);
 
     return Container(
-      height: screenHeight * 0.12,
+      width: 55,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           FeatureGridContainer(icon: icon),
           SizedBox(height: screenHeight * 0.005),
@@ -33,9 +33,9 @@ class HotelFeatureGridItem extends StatelessWidget {
             '$feature'.replaceAll('_b', '\n').toUpperCase(),
             textAlign: TextAlign.center,
             maxLines: 2,
+            overflow: TextOverflow.ellipsis,
             style: const TextStyle(fontSize: 8),
           ),
-          const Spacer(),
         ],
       ),
     );

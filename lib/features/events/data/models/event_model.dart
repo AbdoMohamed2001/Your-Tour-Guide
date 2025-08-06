@@ -7,11 +7,12 @@ class EventModel {
   final String email;
   final String endDate;
   final String eventLink;
+  final String imageUrl;
   final List exclusions;
   final List exclusionsArabic;
-  final String imageUrl;
   final List inclusions;
   final List inclusionsArabic;
+  final List images;
   final String location;
   final String locationArabic;
   final String name;
@@ -21,26 +22,28 @@ class EventModel {
   final String startDate;
   final String website;
 
-  EventModel(
-      {required this.about,
-      required this.aboutArabic,
-      required this.docId,
-      required this.email,
-      required this.endDate,
-      required this.eventLink,
-      required this.exclusions,
-      required this.exclusionsArabic,
-      required this.imageUrl,
-      required this.inclusions,
-      required this.inclusionsArabic,
-      required this.location,
-      required this.locationArabic,
-      required this.name,
-      required this.nameArabic,
-      required this.organizer,
-      required this.phone,
-      required this.startDate,
-      required this.website});
+  EventModel({
+    required this.about,
+    required this.aboutArabic,
+    required this.docId,
+    required this.email,
+    required this.endDate,
+    required this.eventLink,
+    required this.exclusions,
+    required this.exclusionsArabic,
+    required this.imageUrl,
+    required this.inclusions,
+    required this.inclusionsArabic,
+    required this.location,
+    required this.locationArabic,
+    required this.name,
+    required this.nameArabic,
+    required this.organizer,
+    required this.phone,
+    required this.startDate,
+    required this.website,
+    required this.images,
+  });
 
   factory EventModel.fromJson(dataMap) {
     return EventModel(
@@ -63,6 +66,7 @@ class EventModel {
       startDate: dataMap['startDate'],
       website: dataMap['website'],
       docId: dataMap['docId'],
+      images: dataMap['images'],
     );
   }
 
@@ -87,6 +91,7 @@ class EventModel {
       startDate: startDate,
       website: website,
       docId: docId,
+      images: images,
     );
   }
 }

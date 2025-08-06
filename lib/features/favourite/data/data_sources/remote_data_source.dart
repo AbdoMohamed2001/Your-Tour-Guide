@@ -1,8 +1,12 @@
 import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
+import 'package:your_tour_guide/features/cities/data/models/city_model.dart';
+import 'package:your_tour_guide/features/events/data/models/event_model.dart';
 import 'package:your_tour_guide/features/favourite/data/models/favourite_model.dart';
 import 'package:your_tour_guide/features/favourite/domain/entities/favourite_entity.dart';
+import 'package:your_tour_guide/features/mosques/data/models/mosque_model.dart';
+import 'package:your_tour_guide/features/tours/data/models/tour_model.dart';
 
 import '../../../../core/errors/failure.dart';
 import '../../../../core/services/database_services.dart';
@@ -89,8 +93,8 @@ class FavouriteRemoteDataSource {
     Map<String, dynamic> result,
   ) {
     switch (favEntity.collectionName) {
-      case 'places':
-        return PlaceModel.fromJson(result).toEntity();
+      case 'cities':
+        return CityModel.fromJson(result).toEntity();
       case 'cafes':
         return CafeModel.fromJson(result).toEntity();
       case 'churchs':
@@ -101,8 +105,16 @@ class FavouriteRemoteDataSource {
         return HotelModel.fromJson(result).toEntity();
       case 'malls':
         return MallModel.fromJson(result).toEntity();
+      case 'mosques':
+        return MosqueModel.fromJson(result).toEntity();
       case 'restaurants':
         return RestaurantModel.fromJson(result).toEntity();
+      case 'places':
+        return PlaceModel.fromJson(result).toEntity();
+      case 'tours':
+        return TourModel.fromJson(result).toEntity();
+      case 'Events':
+        return EventModel.fromJson(result).toEntity();
       default:
         throw UnsupportedError(
             'Unsupported collection: ${favEntity.collectionName}');

@@ -9,10 +9,11 @@ class TourCubit extends Cubit<TourState> {
   TourCubit(this.getToursUseCase) : super(TourInitial());
   final GetToursUseCase getToursUseCase;
   List<TourEntity> allTours = [];
-  void getTours({String? tourType}) async {
+  void getTours({String? tourType, String? placeDocID}) async {
     emit(TourLoading());
 
-    var result = await getToursUseCase.call(tourType: tourType);
+    var result =
+        await getToursUseCase.call(tourType: tourType, placeDocID: placeDocID);
     result.fold(
       (fail) {
         emit(TourFailure(fail.message));

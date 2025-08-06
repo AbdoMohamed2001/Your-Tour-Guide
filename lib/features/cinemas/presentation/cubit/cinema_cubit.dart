@@ -15,7 +15,7 @@ class CinemaCubit extends Cubit<CinemaState> {
   void getCinemas({String? cityName}) async {
     emit(CinemasGetLoading());
 
-    var result = await cinemaRepo.getCinemas();
+    var result = await cinemaRepo.getCinemas(cityName: cityName);
     result.fold(
       (fail) {
         emit(CinemasGetFailure(fail.message));

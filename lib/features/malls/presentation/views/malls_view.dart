@@ -11,7 +11,9 @@ import '../widgets/all_malls_view/all_malls_view_body.dart';
 class MallsView extends StatefulWidget {
   MallsView({
     Key? key,
+    this.cityName,
   }) : super(key: key);
+  final String? cityName;
 
   @override
   State<MallsView> createState() => _MallsViewState();
@@ -55,7 +57,10 @@ class _MallsViewState extends State<MallsView>
       ),
       body: BlocProvider(
         create: (context) => MallCubit(getIt<MallRepo>()),
-        child: MallsViewBody(tabController: _tabController),
+        child: MallsViewBody(
+          tabController: _tabController,
+          cityName: widget.cityName,
+        ),
       ),
     );
   }

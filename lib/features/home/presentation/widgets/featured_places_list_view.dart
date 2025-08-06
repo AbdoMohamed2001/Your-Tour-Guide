@@ -1,4 +1,4 @@
-import 'package:your_tour_guide/features/places/domian/entities/place_entity.dart';
+import 'package:your_tour_guide/features/places/domain/entities/place_entity.dart';
 import 'package:your_tour_guide/features/home/presentation/widgets/featured_place_item.dart';
 import 'package:flutter/material.dart';
 

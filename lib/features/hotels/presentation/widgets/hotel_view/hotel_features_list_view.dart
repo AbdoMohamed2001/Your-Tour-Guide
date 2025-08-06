@@ -16,7 +16,7 @@ class HotelFeaturesListView extends StatelessWidget {
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
     return SizedBox(
-      height: height * 0.1,
+      height: height * 0.084,
       child: ListView.separated(
         physics: BouncingScrollPhysics(),
         scrollDirection: Axis.horizontal,
@@ -25,7 +25,7 @@ class HotelFeaturesListView extends StatelessWidget {
               isArabic() ? hotelEntity.featuresArabic : hotelEntity.features,
           index: index,
         ),
-        separatorBuilder: (context, index) => SizedBox(width: 5),
+        separatorBuilder: (context, index) => SizedBox(width: 10),
         itemCount: hotelEntity.features.length,
       ),
     );

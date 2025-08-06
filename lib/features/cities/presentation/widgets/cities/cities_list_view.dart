@@ -21,9 +21,7 @@ class CitiesListView extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => CityView(
-                cityEntity: list[i],
-              ),
+              builder: (context) => CityView(cityEntity: list[i]),
             ),
           );
         },

@@ -4,8 +4,15 @@ import 'package:your_tour_guide/features/hotels/presentation/cubit/hotel_cubit.d
 import 'package:your_tour_guide/features/hotels/presentation/widgets/all_hotels/all_hotels_view_builder.dart';
 
 class HotelsViewBody extends StatefulWidget {
-  const HotelsViewBody({super.key, required this.tabController});
+  const HotelsViewBody({
+    super.key,
+    required this.tabController,
+    this.cityName,
+  });
+
   final TabController tabController;
+  final String? cityName;
+
   @override
   State<HotelsViewBody> createState() => _HotelsViewBodyState();
 }
@@ -14,7 +21,7 @@ class _HotelsViewBodyState extends State<HotelsViewBody> {
   @override
   void initState() {
     super.initState();
-    context.read<HotelCubit>().getHotels();
+    context.read<HotelCubit>().getHotels(cityName: widget.cityName);
   }
 
   @override

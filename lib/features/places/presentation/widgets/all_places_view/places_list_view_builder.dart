@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:your_tour_guide/core/utils/widgets/local_hero/local_hero_body.dart';
-import 'package:your_tour_guide/features/places/domian/entities/place_entity.dart';
+import 'package:your_tour_guide/features/places/domain/entities/place_entity.dart';
 
 import '../../cubit/place_cubit/place_cubit.dart';
 

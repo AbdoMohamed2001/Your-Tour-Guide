@@ -4,7 +4,7 @@ import 'package:your_tour_guide/features/tours/data/models/tour_model.dart';
 import '../../../../core/utils/backend_endpoints.dart';
 
 abstract class TourRemoteDataSource {
-  Future<List<TourModel>> getTours({String? type});
+  Future<List<TourModel>> getTours({String? type, String? placeDocID});
 }
 
 class TourRemoteDataSourceImpl implements TourRemoteDataSource {
@@ -13,16 +13,29 @@ class TourRemoteDataSourceImpl implements TourRemoteDataSource {
   TourRemoteDataSourceImpl({required this.databaseServices});
 
   @override
-  Future<List<TourModel>> getTours({String? type}) async {
-    List<Map<String, dynamic>> data = await databaseServices.getData(
-      path: BackEndEndPoints.toursCollection,
-      whereFieldValue: type,
-      query: {
-        'where': 'type',
-      },
-    );
-    List<TourModel> tourModels =
-        data.map((e) => TourModel.fromJson(e)).toList();
-    return tourModels;
+  Future<List<TourModel>> getTours({String? type, String? placeDocID}) async {
+    if (placeDocID != null) {
+      List<Map<String, dynamic>> data = await databaseServices.getData(
+        path: BackEndEndPoints.toursCollection,
+        whereFieldValue: placeDocID,
+        query: {
+          'where': 'placeDocId',
+        },
+      );
+      List<TourModel> tourModels =
+          data.map((e) => TourModel.fromJson(e)).toList();
+      return tourModels;
+    } else {
+      List<Map<String, dynamic>> data = await databaseServices.getData(
+        path: BackEndEndPoints.toursCollection,
+        whereFieldValue: type,
+        query: {
+          'where': 'type',
+        },
+      );
+      List<TourModel> tourModels =
+          data.map((e) => TourModel.fromJson(e)).toList();
+      return tourModels;
+    }
   }
 }

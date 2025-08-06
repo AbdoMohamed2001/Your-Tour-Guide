@@ -124,6 +124,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "contains": MessageLookupByLibrary.simpleMessage("Contains"),
     "currentPassword": MessageLookupByLibrary.simpleMessage("Current password"),
     "dayTour": MessageLookupByLibrary.simpleMessage("Day Tour"),
+    "dontHaveAnAccount": MessageLookupByLibrary.simpleMessage(
+      "Don\'t have an account? ",
+    ),
     "egyptiansTrip": MessageLookupByLibrary.simpleMessage("Egyptians Trip"),
     "endDate": MessageLookupByLibrary.simpleMessage("End Date"),
     "english": MessageLookupByLibrary.simpleMessage("English"),
@@ -162,6 +165,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "noInternet": MessageLookupByLibrary.simpleMessage(
       "Your Device is offline. Your Tour Guide App requires internet connection to start",
     ),
+    "noOfFloors": MessageLookupByLibrary.simpleMessage("Number of floors: "),
+    "noOfRooms": MessageLookupByLibrary.simpleMessage("Number of Rooms: "),
     "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
     "openingHours": MessageLookupByLibrary.simpleMessage("Opening \n Hours"),
     "passwordNotMatched": MessageLookupByLibrary.simpleMessage(

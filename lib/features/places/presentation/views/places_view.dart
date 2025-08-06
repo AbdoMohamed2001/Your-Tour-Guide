@@ -11,7 +11,8 @@ import '../widgets/all_places_view/places_view_body.dart';
 enum FavoriteShape { grid, list }
 
 class PlacesView extends StatefulWidget {
-  const PlacesView({Key? key}) : super(key: key);
+  const PlacesView({Key? key, this.cityName}) : super(key: key);
+  final String? cityName;
 
   @override
   State<PlacesView> createState() => _PlacesViewState();
@@ -57,6 +58,7 @@ class _PlacesViewState extends State<PlacesView>
         create: (context) => PlaceCubit(getIt<PlacesRepo>()),
         child: PlacesViewBody(
           tabController: _tabController,
+          cityName: widget.cityName,
         ),
       ),
     );

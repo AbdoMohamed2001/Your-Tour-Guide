@@ -18,7 +18,9 @@ class FullScreenImageView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(),
+      appBar: CustomAppBar(
+        leading: CustomAppBarIconButton(),
+      ),
       body: PhotoViewGallery.builder(
         backgroundDecoration: BoxDecoration(),
         scrollPhysics: ClampingScrollPhysics(),

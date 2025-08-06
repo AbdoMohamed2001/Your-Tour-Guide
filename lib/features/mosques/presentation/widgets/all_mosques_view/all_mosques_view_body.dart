@@ -5,8 +5,10 @@ import 'package:your_tour_guide/features/mosques/presentation/cubit/mosque_cubit
 import 'all_mosques_view_builder.dart';
 
 class MosquesViewBody extends StatefulWidget {
-  const MosquesViewBody({super.key, required this.tabController});
+  const MosquesViewBody(
+      {super.key, required this.tabController, this.cityName});
   final TabController tabController;
+  final String? cityName;
   @override
   State<MosquesViewBody> createState() => _MosquesViewBodyState();
 }
@@ -15,7 +17,7 @@ class _MosquesViewBodyState extends State<MosquesViewBody> {
   @override
   void initState() {
     super.initState();
-    context.read<MosqueCubit>().getMosques();
+    context.read<MosqueCubit>().getMosques(cityName: widget.cityName);
   }
 
   @override

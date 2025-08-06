@@ -1,4 +1,4 @@
-import '../../domian/entities/place_entity.dart';
+import 'package:your_tour_guide/features/places/domain/entities/place_entity.dart';
 
 class PlaceModel {
   final String address;

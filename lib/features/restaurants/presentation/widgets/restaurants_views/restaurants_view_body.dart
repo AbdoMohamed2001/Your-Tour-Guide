@@ -5,8 +5,11 @@ import 'package:your_tour_guide/features/restaurants/presentation/cubit/restaura
 import 'restaurants_view_builder.dart';
 
 class RestaurantsViewBody extends StatefulWidget {
-  const RestaurantsViewBody({super.key, required this.tabController});
+  const RestaurantsViewBody(
+      {super.key, required this.tabController, this.cityName});
   final TabController tabController;
+  final String? cityName;
+
   @override
   State<RestaurantsViewBody> createState() => _RestaurantsViewBodyState();
 }
@@ -15,7 +18,7 @@ class _RestaurantsViewBodyState extends State<RestaurantsViewBody> {
   @override
   void initState() {
     super.initState();
-    context.read<RestaurantCubit>().getRestaurants();
+    context.read<RestaurantCubit>().getRestaurants(cityName: widget.cityName);
   }
 
   @override

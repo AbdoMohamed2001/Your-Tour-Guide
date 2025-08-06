@@ -5,6 +5,7 @@ import 'package:your_tour_guide/core/utils/theme/text_styles.dart';
 import 'package:your_tour_guide/core/utils/widgets/combined_text.dart';
 import 'package:your_tour_guide/core/utils/widgets/custom_button.dart';
 import 'package:your_tour_guide/features/auth/data/models/user_login_req_model.dart';
+import 'package:your_tour_guide/features/auth/presentation/views/register_view.dart';
 import 'package:your_tour_guide/features/auth/presentation/widgets/or_widget.dart';
 import 'package:your_tour_guide/features/auth/presentation/widgets/social_buttons.dart';
 import 'package:your_tour_guide/generated/assets.dart';
@@ -116,7 +117,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                 //-------------------------------------------------------------------
                 //Login Button
                 CustomButton(
-                  text: S.of(context).Login,
+                  text: S.of(context).SignIn.toUpperCase(),
                   onTap: () {
                     if (formKey.currentState!.validate()) {
                       AuthCubitClass.loginUser(
@@ -139,7 +140,14 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                 SizedBox(height: screenHeight * 0.08),
                 //-------------------------------------------------------------------
                 CombinedText(
-                    firstText: "Don't have an account? ",
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => RegisterView(),
+                          ));
+                    },
+                    firstText: S.of(context).dontHaveAnAccount,
                     secondText: S.of(context).SIGNUP),
                 //-------------------------------------------------------------------
               ],

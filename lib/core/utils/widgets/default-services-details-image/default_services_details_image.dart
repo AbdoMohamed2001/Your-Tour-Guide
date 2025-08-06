@@ -14,13 +14,11 @@ import 'name_widget.dart';
 class DefaultServiceDetailsImage extends StatelessWidget {
   const DefaultServiceDetailsImage({
     super.key,
-    required this.cubitDataKeyCurrentContext,
     this.fontSize = 22,
     this.entity,
     this.isNotEvent = true,
   });
 
-  final cubitDataKeyCurrentContext;
   final double? fontSize;
   final dynamic entity;
   final bool isNotEvent;

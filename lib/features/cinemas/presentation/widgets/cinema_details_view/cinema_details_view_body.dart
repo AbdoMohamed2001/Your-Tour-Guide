@@ -29,7 +29,6 @@ class CinemaDetailsViewBody extends StatelessWidget {
             children: [
               //image
               DefaultServiceDetailsImage(
-                cubitDataKeyCurrentContext: GlobalKey(),
                 entity: cinemaEntity,
               ),
               Column(
