@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:your_tour_guide/core/utils/theme/text_styles.dart';
 import 'package:your_tour_guide/core/utils/widgets/tours/inclusions_widget.dart';
 import 'package:your_tour_guide/features/tours/presentation/cubit/tour_cubit.dart';
 import 'package:your_tour_guide/features/tours/presentation/widgets/tour_details_view/tour_details_widget.dart';
@@ -91,12 +90,14 @@ class TourDetailsViewBody extends StatelessWidget {
                     kSizedBox,
                     //-------------------------------------------------------------------
                     //Contact
-                    Text(S.of(context).Contact, style: TextStyles.bold18),
+                    HeadText(text: S.of(context).Contact),
                     kSizedBox,
                     ContactWidget(entity: tourEntity),
                     kSizedBox,
                     //-------------------------------------------------------------------
                     //Gallery
+                    HeadText(text: S.of(context).Gallery),
+                    kSizedBox,
                     GalleryWidget(entity: tourEntity),
                     //-------------------------------------------------------------------
                     //Booking

@@ -15,6 +15,7 @@ class CitiesView extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar(
         title: S.of(context).cities,
+        leading: CustomAppBarIconButton(),
       ),
       body: BlocProvider(
         create: (context) => CityCubit(getIt<CityRepo>()),

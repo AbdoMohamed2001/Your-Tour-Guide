@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:your_tour_guide/core/utils/widgets/custom_app_bar.dart';
 import 'package:your_tour_guide/core/utils/widgets/local_hero/local_hero_app_bar.dart';
 
 import '../../../../generated/l10n.dart';
@@ -53,6 +54,7 @@ class _PlacesViewState extends State<PlacesView>
       appBar: LocalHeroAppBar(
         tabController: _tabController,
         title: S.of(context).Places,
+        leading: CustomAppBarIconButton(),
       ),
       body: BlocProvider(
         create: (context) => PlaceCubit(getIt<PlacesRepo>()),

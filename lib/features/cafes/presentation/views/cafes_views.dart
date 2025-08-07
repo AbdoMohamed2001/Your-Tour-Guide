@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:your_tour_guide/core/utils/widgets/custom_app_bar.dart';
 import 'package:your_tour_guide/features/cafes/data/repos/cafe_repo.dart';
 import 'package:your_tour_guide/features/cafes/presentation/cubit/cafe_cubit.dart';
 import 'package:your_tour_guide/generated/l10n.dart';
@@ -54,6 +55,7 @@ class _CafesViewState extends State<CafesView>
       appBar: LocalHeroAppBar(
         tabController: _tabController,
         title: S.of(context).Cafes,
+        leading: CustomAppBarIconButton(),
       ),
       body: BlocProvider(
         create: (context) => CafeCubit(getIt<CafeRepo>()),

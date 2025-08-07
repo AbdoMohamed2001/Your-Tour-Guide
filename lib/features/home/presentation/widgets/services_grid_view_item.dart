@@ -39,6 +39,17 @@ class ServicesGridViewItem extends StatelessWidget {
               filter: ImageFilter.blur(sigmaX: 1.2, sigmaY: 1.2),
               child: Container(
                 alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                      color: Theme.of(context).brightness == Brightness.dark
+                          ? Colors.black.withOpacity(0.2) // Dark theme shadow
+                          : Colors.black.withOpacity(0.1), // Light theme shadow
+                      blurRadius: 8,
+                      offset: const Offset(0, 4),
+                    ),
+                  ],
+                ),
                 child: BorderedText(
                   strokeWidth: 2,
                   strokeColor: Colors.black,

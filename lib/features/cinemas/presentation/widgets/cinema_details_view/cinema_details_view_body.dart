@@ -82,16 +82,13 @@ class CinemaDetailsViewBody extends StatelessWidget {
                         kSizedBox,
                         //-------------------------------------------------------------------------
                         //Description and rate
-                        HeadText(
-                          text: S.of(context).Description,
-                        ),
+                        HeadText(text: S.of(context).Description),
                         kSizedBox,
-                        kSizedBox,
-                        //-------------------------------------------------------------------
-                        //-------------------------------------------------------------------------
                         //Images
                         //-------------------------------------------------------------------------
                         //Gallery
+                        HeadText(text: S.of(context).Gallery),
+                        kSizedBox,
                         GalleryWidget(entity: cinemaEntity),
                         kSizedBox,
                       ],

@@ -14,131 +14,121 @@ class ContactWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
+      decoration: BoxDecoration(color: Theme.of(context).cardColor),
       height: 50,
-      child: ListView(
-        shrinkWrap: true,
-        scrollDirection: Axis.horizontal,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10.0),
+          //WebSite
+          GestureDetector(
+            onTap: () async {
+              var url = Uri.parse(entity.website!);
+              if (await canLaunchUrl(url)) {
+                await launchUrl(url);
+              }
+            },
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                //WebSite
-                GestureDetector(
-                  onTap: () async {
-                    var url = Uri.parse(entity.website!);
-                    if (await canLaunchUrl(url)) {
-                      await launchUrl(url);
-                    }
-                  },
-                  child: Row(
-                    children: [
-                      Icon(Icons.laptop, size: 22),
-                      SizedBox(width: 5),
-                      Text(
-                        S.of(context).WebSite,
-                        style: TextStyle(
-                          decoration: TextDecoration.underline,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 3.0, left: 2),
-                        child: isArabic()
-                            ? null
-                            : Icon(
-                                Icons.north_east,
-                                size: 13,
-                              ),
-                      ),
-                    ],
-                  ),
-                ),
+                Icon(Icons.laptop, size: 22),
                 SizedBox(width: 5),
-                //------------------------------------
-                //Email
-                GestureDetector(
-                  onTap: () async {
-                    String? encodeQueryParameters(Map<String, String> params) {
-                      return params.entries
-                          .map((MapEntry<String, String> e) =>
-                              '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
-                          .join('&');
-                    }
-
-                    final Uri emailUrl = Uri(
-                      scheme: 'mailto',
-                      path: 'abdo.mohammed1778@gmail.com',
-                      query: encodeQueryParameters(<String, String>{
-                        'subject': 'Example Subject & Symbols are allowed!',
-                      }),
-                    );
-                    if (await canLaunchUrl(emailUrl)) {
-                      await launchUrl(emailUrl);
-                    }
-                  },
-                  child: Row(
-                    children: [
-                      Icon(
-                        Icons.email_outlined,
-                        size: 22,
-                      ),
-                      SizedBox(width: 5),
-                      Text(
-                        S.of(context).Email,
-                        style: TextStyle(
-                          decoration: TextDecoration.underline,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 3.0, left: 2),
-                        child: isArabic()
-                            ? null
-                            : Icon(
-                                Icons.north_east,
-                                size: 13,
-                              ),
-                      ),
-                    ],
+                Text(
+                  S.of(context).WebSite,
+                  style: TextStyle(
+                    decoration: TextDecoration.underline,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(
-                  width: 5,
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 3.0, left: 2),
+                  child: isArabic()
+                      ? null
+                      : Icon(
+                          Icons.north_east,
+                          size: 13,
+                        ),
                 ),
-                //------------------------------------
-                //Phone Number
-                // GestureDetector(
-                //   onTap: cubit.hasCallSupport == true
-                //       ? () => cubit.makePhoneCall(entity.phone.toString())
-                //       : null,
-                //   child: Row(
-                //     children: [
-                //       Icon(
-                //         Icons.phone,
-                //         size: 22,
-                //       ),
-                //       SizedBox(
-                //         width: 5,
-                //       ),
-                //       Text(
-                //         isArabic()
-                //             ? arabicNumber.convert(entity.phone.toString())
-                //             : entity.phone.toString(),
-                //         textDirection: TextDirection.ltr,
-                //         style: TextStyle(
-                //           decoration: TextDecoration.underline,
-                //           fontWeight: FontWeight.bold,
-                //         ),
-                //       ),
-                //     ],
-                //   ),
-                // ),
-                //------------------------------------
               ],
             ),
           ),
+          SizedBox(width: 15),
+          //------------------------------------
+          //Email
+          GestureDetector(
+            onTap: () async {
+              String? encodeQueryParameters(Map<String, String> params) {
+                return params.entries
+                    .map((MapEntry<String, String> e) =>
+                        '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
+                    .join('&');
+              }
+
+              final Uri emailUrl = Uri(
+                scheme: 'mailto',
+                path: 'abdo.mohammed1778@gmail.com',
+                query: encodeQueryParameters(<String, String>{
+                  'subject': 'Example Subject & Symbols are allowed!',
+                }),
+              );
+              if (await canLaunchUrl(emailUrl)) {
+                await launchUrl(emailUrl);
+              }
+            },
+            child: Row(
+              children: [
+                Icon(
+                  Icons.email_outlined,
+                  size: 22,
+                ),
+                SizedBox(width: 5),
+                Text(
+                  S.of(context).Email,
+                  style: TextStyle(
+                    decoration: TextDecoration.underline,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 3.0, left: 2),
+                  child: isArabic()
+                      ? null
+                      : Icon(
+                          Icons.north_east,
+                          size: 13,
+                        ),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(width: 5),
+          //------------------------------------
+          //Phone Number
+          // GestureDetector(
+          //   onTap: cubit.hasCallSupport == true
+          //       ? () => cubit.makePhoneCall(entity.phone.toString())
+          //       : null,
+          //   child: Row(
+          //     children: [
+          //       Icon(
+          //         Icons.phone,
+          //         size: 22,
+          //       ),
+          //       SizedBox(
+          //         width: 5,
+          //       ),
+          //       Text(
+          //         isArabic()
+          //             ? arabicNumber.convert(entity.phone.toString())
+          //             : entity.phone.toString(),
+          //         textDirection: TextDirection.ltr,
+          //         style: TextStyle(
+          //           decoration: TextDecoration.underline,
+          //           fontWeight: FontWeight.bold,
+          //         ),
+          //       ),
+          //     ],
+          //   ),
+          // ),
+          //------------------------------------
         ],
       ),
     );

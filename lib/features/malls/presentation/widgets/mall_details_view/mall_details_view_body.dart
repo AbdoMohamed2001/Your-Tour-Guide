@@ -40,14 +40,13 @@ class MallDetailsViewBody extends StatelessWidget {
           child: Column(
             children: [
               //image
-              DefaultServiceDetailsImage(
-                entity: mallEntity,
-              ),
+              DefaultServiceDetailsImage(entity: mallEntity),
               Column(
                 children: [
                   //-------------------------------------------------------------------------
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: kHorizontalPadding),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -75,9 +74,7 @@ class MallDetailsViewBody extends StatelessWidget {
                         kSizedBox,
                         //-------------------------------------------------------------------------
                         //Description and rate
-                        HeadText(
-                          text: S.of(context).Description,
-                        ),
+                        HeadText(text: S.of(context).Description),
                         kSizedBox,
                         ReadMoreWidget(
                           text: isArabic()
@@ -93,7 +90,7 @@ class MallDetailsViewBody extends StatelessWidget {
                           height: 170,
                           child: ListView.separated(
                             scrollDirection: Axis.horizontal,
-                            itemBuilder: (_, indexx) => GestureDetector(
+                            itemBuilder: (_, index) => GestureDetector(
                               onTap: () {
                                 // Navigator.push(
                                 //     context,
@@ -108,7 +105,7 @@ class MallDetailsViewBody extends StatelessWidget {
                                 child: Column(
                                   children: [
                                     Image.network(
-                                      listOfStores[indexx],
+                                      listOfStores[index],
                                       height: 170,
                                       width: 170,
                                       fit: BoxFit.cover,
@@ -117,9 +114,7 @@ class MallDetailsViewBody extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            separatorBuilder: (_, indexx) => SizedBox(
-                              width: 10,
-                            ),
+                            separatorBuilder: (_, index) => SizedBox(width: 10),
                             itemCount: listOfStores.length,
                           ),
                         ),
@@ -144,17 +139,15 @@ class MallDetailsViewBody extends StatelessWidget {
                                 ],
                               ),
                             ),
-                            separatorBuilder: (_, indexx) => SizedBox(
-                              width: 10,
-                            ),
+                            separatorBuilder: (_, index) => SizedBox(width: 10),
                             itemCount: listOfRestaurants.length,
                           ),
                         ),
 
                         //-------------------------------------------------------------------------
-                        //Images
-                        //-------------------------------------------------------------------------
                         //Gallery
+                        HeadText(text: S.of(context).Gallery),
+                        kSizedBox,
                         GalleryWidget(entity: mallEntity),
                         kSizedBox,
                       ],

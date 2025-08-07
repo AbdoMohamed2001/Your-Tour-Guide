@@ -36,9 +36,7 @@ class PlaceDetailsViewBody extends StatelessWidget {
         return SingleChildScrollView(
           child: Column(
             children: [
-              DefaultServiceDetailsImage(
-                entity: placeEntity,
-              ),
+              DefaultServiceDetailsImage(entity: placeEntity),
               Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
@@ -47,7 +45,7 @@ class PlaceDetailsViewBody extends StatelessWidget {
                   children: [
                     kSizedBox,
                     //-------------------------------------------------------------------
-                    //location and googleMaps
+                    //LOCATION
                     LocationWidget(
                       address: isArabic()
                           ? placeEntity.addressArabic
@@ -56,7 +54,7 @@ class PlaceDetailsViewBody extends StatelessWidget {
                       rate: placeEntity.rate,
                     ),
                     //-------------------------------------------------------------------
-                    //Opening hours
+                    //OPENING HOURS
                     kSizedBox,
                     OpeningHoursWidget(
                       openFrom: isArabic()
@@ -66,13 +64,19 @@ class PlaceDetailsViewBody extends StatelessWidget {
                           ? placeEntity.openingHoursArabic['to']
                           : placeEntity.openingHours['to'],
                     ),
-                    SizedBox(height: 20),
-                    //-------------------------------------------------------------------
-                    //tickets
-                    TicketsWidget(model: placeEntity),
                     kSizedBox,
                     //-------------------------------------------------------------------
-                    //Description and rate
+                    //TICKETS
+                    TicketsWidget(model: placeEntity),
+                    kSizedBox,
+                    const Divider(
+                      height: 0.5,
+                      thickness: 1,
+                      color: Color(0xffcccccc),
+                    ),
+                    kSizedBox,
+                    //-------------------------------------------------------------------
+                    //DESCRIPTION
                     HeadText(text: S.of(context).Description),
                     kSizedBox,
                     ReadMoreWidget(
@@ -81,28 +85,33 @@ class PlaceDetailsViewBody extends StatelessWidget {
                           : placeEntity.description,
                     ),
                     kSizedBox,
-                    Divider(
-                      height: 0.5,
-                      thickness: 1,
-                      color: Colors.grey[300],
-                    ),
-                    kSizedBox,
                     //-------------------------------------------------------------------
-                    //Metro
+                    //METRO
                     placeEntity.transport['metro'] == '' ||
                             placeEntity.transportArabic['metro'] == ''
                         ? Container(width: 0, height: 0)
                         : HowToGoWidget(placeEntity: placeEntity),
                     //-------------------------------------------------------------------
-                    //Transport
-                    kSizedBox,
+                    //TRANSPORT
+                    placeEntity.transport['transport'].length == 0 ||
+                            placeEntity.transportArabic['transport'].length == 0
+                        ? Container()
+                        : kSizedBox,
                     placeEntity.transport['transport'].length == 0 ||
                             placeEntity.transportArabic['transport'].length == 0
                         ? Container(width: 0, height: 0)
                         : TransportWidget(placeEntity: placeEntity),
                     //-------------------------------------------------------------------
                     //Gallery
+                    HeadText(text: S.of(context).Gallery),
+                    kSizedBox,
                     GalleryWidget(entity: placeEntity),
+                    kSizedBox,
+                    const Divider(
+                      height: 0.5,
+                      thickness: 1,
+                      color: Color(0xffcccccc),
+                    ),
                     kSizedBox,
                     //-------------------------------------------------------------------
                     //Nearly
@@ -120,9 +129,7 @@ class PlaceDetailsViewBody extends StatelessWidget {
                         ? BlocProvider(
                             create: (context) =>
                                 TourCubit(getIt<GetToursUseCase>()),
-                            child: ToursListView(
-                              placeDocId: placeEntity.docId,
-                            ),
+                            child: ToursListView(placeDocId: placeEntity.docId),
                           )
                         : Container(),
                     kSizedBox,

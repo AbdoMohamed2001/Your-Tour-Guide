@@ -11,9 +11,7 @@ class ServicesGridView extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverGrid(
       delegate: SliverChildBuilderDelegate(
-        (context, index) => ServicesGridViewItem(
-            key: ValueKey('item_$index'), // Unique key per item
-            index: index),
+        (context, index) => ServicesGridViewItem(index: index),
         childCount: listOfServicesContainerEntity.length,
       ),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

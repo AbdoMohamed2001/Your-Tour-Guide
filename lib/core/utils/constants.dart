@@ -5,10 +5,9 @@ const kSliverSizedBox = SliverToBoxAdapter(child: SizedBox(height: 16));
 const kSizedBox20 = SizedBox(height: 20);
 const kSmallSizedBox = SizedBox(height: 4);
 const kDivider = Divider(
-  endIndent: 35,
-  indent: 35,
-  height: 1,
+  height: 0.5,
   thickness: 1,
+  color: Color(0xffcccccc),
 );
 const double kHorizontalPadding = 16;
 const double kBorderRadius12 = 12;

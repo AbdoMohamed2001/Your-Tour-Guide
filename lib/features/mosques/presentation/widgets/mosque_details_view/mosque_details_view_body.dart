@@ -28,14 +28,13 @@ class MosqueDetailsViewBody extends StatelessWidget {
           child: Column(
             children: [
               //image
-              DefaultServiceDetailsImage(
-                entity: mosqueEntity,
-              ),
+              DefaultServiceDetailsImage(entity: mosqueEntity),
               Column(
                 children: [
                   //-------------------------------------------------------------------------
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: kHorizontalPadding),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -63,9 +62,7 @@ class MosqueDetailsViewBody extends StatelessWidget {
                         kSizedBox,
                         //-------------------------------------------------------------------------
                         //Description and rate
-                        HeadText(
-                          text: S.of(context).Description,
-                        ),
+                        HeadText(text: S.of(context).Description),
                         kSizedBox,
                         ReadMoreWidget(
                           text: isArabic()
@@ -76,6 +73,8 @@ class MosqueDetailsViewBody extends StatelessWidget {
 
                         //-------------------------------------------------------------------------
                         //Gallery
+                        HeadText(text: S.of(context).Gallery),
+                        kSizedBox,
                         GalleryWidget(entity: mosqueEntity),
                         kSizedBox,
                       ],

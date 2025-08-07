@@ -28,14 +28,13 @@ class ChurchDetailsViewBody extends StatelessWidget {
           child: Column(
             children: [
               //image
-              DefaultServiceDetailsImage(
-                entity: churchEntity,
-              ),
+              DefaultServiceDetailsImage(entity: churchEntity),
               Column(
                 children: [
                   //-------------------------------------------------------------------------
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: kHorizontalPadding),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -63,9 +62,7 @@ class ChurchDetailsViewBody extends StatelessWidget {
                         kSizedBox,
                         //-------------------------------------------------------------------------
                         //Description and rate
-                        HeadText(
-                          text: S.of(context).Description,
-                        ),
+                        HeadText(text: S.of(context).Description),
                         kSizedBox,
                         ReadMoreWidget(
                           text: isArabic()
@@ -76,6 +73,8 @@ class ChurchDetailsViewBody extends StatelessWidget {
 
                         //-------------------------------------------------------------------------
                         //Gallery
+                        HeadText(text: S.of(context).Gallery),
+                        kSizedBox,
                         GalleryWidget(entity: churchEntity),
                         kSizedBox,
                       ],

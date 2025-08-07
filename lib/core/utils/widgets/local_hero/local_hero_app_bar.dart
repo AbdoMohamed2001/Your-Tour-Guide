@@ -7,10 +7,12 @@ import 'package:your_tour_guide/core/utils/theme/text_styles.dart';
 import '../../../services/get_it_services_locator.dart';
 
 class LocalHeroAppBar extends StatefulWidget implements PreferredSizeWidget {
-  const LocalHeroAppBar({super.key, required this.tabController, this.title});
+  const LocalHeroAppBar(
+      {super.key, required this.tabController, this.title, this.leading});
 
   final TabController tabController;
   final String? title;
+  final Widget? leading;
 
   @override
   State<LocalHeroAppBar> createState() => _LocalHeroAppBarState();
@@ -27,7 +29,7 @@ class _LocalHeroAppBarState extends State<LocalHeroAppBar> {
     return AppBar(
       title: widget.title == null
           ? SizedBox()
-          : Text(widget.title!, style: TextStyles.bold18),
+          : Text(widget.title!, style: TextStyles.bold20),
       centerTitle: true,
       actions: [
         Padding(
@@ -35,6 +37,7 @@ class _LocalHeroAppBarState extends State<LocalHeroAppBar> {
           child: _buildViewToggleButton(context),
         ),
       ],
+      leading: widget.leading,
     );
   }
 

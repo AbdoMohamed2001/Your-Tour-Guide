@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:your_tour_guide/core/utils/widgets/combined_text.dart';
 import 'package:your_tour_guide/features/cafes/domain/entities/cafe_entity.dart';
 import 'package:your_tour_guide/features/cafes/presentation/cubit/cafe_cubit.dart';
 import '../../../../../core/utils/constants.dart';
@@ -28,54 +29,51 @@ class CafeDetailsViewBody extends StatelessWidget {
           child: Column(
             children: [
               //image
-              DefaultServiceDetailsImage(
-                entity: cafeEntity,
-              ),
-              Column(
-                children: [
-                  //-------------------------------------------------------------------------
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        kSizedBox,
-                        //-------------------------------------------------------------------------
-                        //Location and google map
-                        LocationWidget(
-                          address: isArabic()
-                              ? cafeEntity.addressArabic
-                              : cafeEntity.address,
-                          mapUrl: cafeEntity.mapUrl,
-                          rate: cafeEntity.rate,
-                        ),
-                        kSizedBox,
-                        //-------------------------------------------------------------------------
-                        //Opening hours
-                        OpeningHoursWidget(
-                          openFrom: isArabic()
-                              ? cafeEntity.openingHoursArabic['from']
-                              : cafeEntity.openingHours['from'],
-                          openTo: isArabic()
-                              ? cafeEntity.openingHoursArabic['to']
-                              : cafeEntity.openingHours['to'],
-                        ),
-                        kSizedBox,
-                        //-------------------------------------------------------------------------
-                        //contact
-                        HeadText(text: S.of(context).Contact),
-                        kSizedBox,
-                        // Contact website and phone number
-                        ContactWidget(entity: cafeEntity),
-                        kSizedBox,
-                        //-------------------------------------------------------------------------
-                        //Gallery
-                        GalleryWidget(entity: cafeEntity),
-                        kSizedBox,
-                      ],
+              DefaultServiceDetailsImage(entity: cafeEntity),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    kSizedBox,
+                    //-------------------------------------------------------------------------
+                    //Location and google map
+                    LocationWidget(
+                      address: isArabic()
+                          ? cafeEntity.addressArabic
+                          : cafeEntity.address,
+                      mapUrl: cafeEntity.mapUrl,
+                      rate: cafeEntity.rate,
                     ),
-                  ),
-                ],
+                    kSizedBox,
+                    //-------------------------------------------------------------------------
+                    //Opening hours
+                    OpeningHoursWidget(
+                      openFrom: isArabic()
+                          ? cafeEntity.openingHoursArabic['from']
+                          : cafeEntity.openingHours['from'],
+                      openTo: isArabic()
+                          ? cafeEntity.openingHoursArabic['to']
+                          : cafeEntity.openingHours['to'],
+                    ),
+                    kSizedBox,
+
+                    //-------------------------------------------------------------------------
+                    //contact
+                    HeadText(text: S.of(context).Contact),
+                    kSizedBox,
+                    // Contact website and phone number
+                    ContactWidget(entity: cafeEntity),
+                    kSizedBox,
+                    //-------------------------------------------------------------------------
+                    //Gallery
+                    HeadText(text: S.of(context).Gallery),
+                    kSizedBox,
+                    GalleryWidget(entity: cafeEntity),
+                    kSizedBox,
+                  ],
+                ),
               ),
             ],
           ),

@@ -13,7 +13,6 @@ class CafeDetailsView extends StatelessWidget {
     Key? key,
     required this.cafeEntity,
   }) : super(key: key);
-  static final String id = 'CafeDetailsView';
   final CafeEntity cafeEntity;
 
   @override

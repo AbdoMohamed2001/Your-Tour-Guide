@@ -20,6 +20,7 @@ class OpeningHoursWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Stack(
           children: [
@@ -35,7 +36,7 @@ class OpeningHoursWidget extends StatelessWidget {
               height: 90,
             ),
             Positioned(
-              top: isArabic() ? 20 : 20,
+              top: isArabic() ? 20 : 24,
               right: isArabic() ? 20 : 0,
               left: isArabic() ? 0 : 16,
               child: Text(
@@ -45,7 +46,7 @@ class OpeningHoursWidget extends StatelessWidget {
             ),
           ],
         ),
-        SizedBox(width: 20),
+        SizedBox(width: 35),
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

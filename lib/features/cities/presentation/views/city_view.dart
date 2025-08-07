@@ -16,6 +16,7 @@ class CityView extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar(
         title: isArabic() ? cityEntity.nameArabic : cityEntity.name,
+        leading: CustomAppBarIconButton(),
       ),
       body: CityViewBody(cityEntity: cityEntity),
     );

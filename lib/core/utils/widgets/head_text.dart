@@ -11,7 +11,7 @@ class HeadText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: TextStyles.bold18,
+      style: TextStyles.bold20,
     );
   }
 }

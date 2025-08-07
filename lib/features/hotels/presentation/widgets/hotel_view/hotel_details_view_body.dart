@@ -114,8 +114,10 @@ class HotelDetailsViewBody extends StatelessWidget {
                         kSizedBox,
                         //-------------------------------------------------------------------------
                         //Gallery
+                        HeadText(text: S.of(context).Gallery),
+                        kSizedBox,
                         GalleryWidget(entity: hotelEntity),
-                        SizedBox(height: 30),
+                        kSizedBox
                       ],
                     ),
                   ),

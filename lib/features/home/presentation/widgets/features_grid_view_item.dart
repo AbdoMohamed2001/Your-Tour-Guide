@@ -23,7 +23,6 @@ class FeaturesGridViewItem extends StatelessWidget {
       onTap: onPressed,
       child: Container(
         decoration: BoxDecoration(
-          border: Border.all(width: 0.9),
           color: boxDecorationColor,
           borderRadius: const BorderRadius.all(Radius.circular(kBorderRadius8)),
         ),
