@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:your_tour_guide/core/utils/widgets/combined_text.dart';
 import 'package:your_tour_guide/features/cafes/domain/entities/cafe_entity.dart';
 import 'package:your_tour_guide/features/cafes/presentation/cubit/cafe_cubit.dart';
 import '../../../../../core/utils/constants.dart';
