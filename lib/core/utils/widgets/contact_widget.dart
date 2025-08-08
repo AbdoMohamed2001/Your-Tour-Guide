@@ -20,37 +20,39 @@ class ContactWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           //WebSite
-          GestureDetector(
-            onTap: () async {
-              var url = Uri.parse(entity.website!);
-              if (await canLaunchUrl(url)) {
-                await launchUrl(url);
-              }
-            },
-            child: Row(
-              children: [
-                Icon(Icons.laptop, size: 22),
-                SizedBox(width: 5),
-                Text(
-                  S.of(context).WebSite,
-                  style: TextStyle(
-                    decoration: TextDecoration.underline,
-                    fontWeight: FontWeight.bold,
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15.0),
+            child: GestureDetector(
+              onTap: () async {
+                var url = Uri.parse(entity.website!);
+                if (await canLaunchUrl(url)) {
+                  await launchUrl(url);
+                }
+              },
+              child: Row(
+                children: [
+                  Icon(Icons.laptop, size: 22),
+                  SizedBox(width: 5),
+                  Text(
+                    S.of(context).WebSite,
+                    style: TextStyle(
+                      decoration: TextDecoration.underline,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 3.0, left: 2),
-                  child: isArabic()
-                      ? null
-                      : Icon(
-                          Icons.north_east,
-                          size: 13,
-                        ),
-                ),
-              ],
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 3.0, left: 2),
+                    child: isArabic()
+                        ? null
+                        : Icon(
+                            Icons.north_east,
+                            size: 13,
+                          ),
+                  ),
+                ],
+              ),
             ),
           ),
-          SizedBox(width: 15),
           //------------------------------------
           //Email
           GestureDetector(

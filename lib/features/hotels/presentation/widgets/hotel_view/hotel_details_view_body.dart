@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:your_tour_guide/core/utils/theme/text_styles.dart';
 import 'package:your_tour_guide/features/hotels/presentation/cubit/hotel_cubit.dart';
+import 'package:your_tour_guide/generated/assets.dart';
 import '../../../../../core/utils/constants.dart';
 import '../../../../../core/utils/functions/is_arabic.dart';
 import '../../../../../core/utils/widgets/contact_widget.dart';
@@ -32,96 +35,140 @@ class HotelDetailsViewBody extends StatelessWidget {
             children: [
               //image
               DefaultServiceDetailsImage(entity: hotelEntity),
-              Column(
-                children: [
-                  //-------------------------------------------------------------------------
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: kHorizontalPadding),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: kHorizontalPadding,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    kSizedBox,
+                    //-------------------------------------------------------------------------
+                    //Location and google map
+                    LocationWidget(
+                      address: isArabic()
+                          ? hotelEntity.addressArabic
+                          : hotelEntity.address,
+                      mapUrl: hotelEntity.mapUrl,
+                      rate: hotelEntity.rate,
+                    ),
+                    kSizedBox,
+                    //-------------------------------------------------------------------------
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        kSizedBox,
-                        //-------------------------------------------------------------------------
-                        //Location and google map
-                        LocationWidget(
-                          address: isArabic()
-                              ? hotelEntity.addressArabic
-                              : hotelEntity.address,
-                          mapUrl: hotelEntity.mapUrl,
-                          rate: hotelEntity.rate,
+                        //Hotel Icon
+                        Column(
+                          children: [
+                            Image.asset(
+                              Assets.imagesHotelStars,
+                              width: 80,
+                              height: 80,
+                              fit: BoxFit.cover,
+                            ),
+                            SizedBox(height: 8),
+                            Padding(
+                              padding: isArabic()
+                                  ? const EdgeInsets.only(left: 5)
+                                  : const EdgeInsets.only(right: 5),
+                              child: Text(
+                                S.of(context).stars,
+                                textAlign: TextAlign.center,
+                                style: TextStyles.bold18,
+                              ),
+                            ),
+                          ],
                         ),
-                        kSizedBox,
-                        //-------------------------------------------------------------------------
-                        //about
-                        HeadText(text: S.of(context).about),
-                        kSizedBox,
-                        ReadMoreWidget(
-                          text: isArabic()
-                              ? hotelEntity.aboutArabic
-                              : hotelEntity.about,
+                        SizedBox(width: 40),
+                        //Hotel Stars
+                        RatingBar(
+                          initialRating: hotelEntity.stars.toDouble(),
+                          ratingWidget: RatingWidget(
+                            full: Icon(
+                              Icons.star,
+                              color: Colors.orange,
+                            ),
+                            half: Icon(
+                              Icons.star_half,
+                              color: Colors.orange,
+                            ),
+                            empty: SizedBox(),
+                          ),
+                          onRatingUpdate: (rating) {},
                         ),
-                        kSizedBox,
-                        //-------------------------------------------------------------------------
-                        //noOfRooms
-                        NoOfRoomsWidget(hotelEntity: hotelEntity),
-                        kSizedBox,
-                        //-------------------------------------------------------------------------
-                        //Features
-                        HeadText(text: S.of(context).Features),
-                        kSizedBox,
-                        HotelFeaturesListView(hotelEntity: hotelEntity),
-                        // booking
-                        // Row(
-                        //   mainAxisAlignment: MainAxisAlignment.center,
-                        //   children: [
-                        //     GestureDetector(
-                        //       onTap: () async {
-                        //         //change later
-                        //         var url = Uri.parse(hotelEntity.mapUrl);
-                        //         if (await canLaunchUrl(
-                        //           url,
-                        //         )) {
-                        //           await launchUrl(url);
-                        //         }
-                        //         ;
-                        //       },
-                        //       child: Container(
-                        //         width: 120,
-                        //         height: 60,
-                        //         color: Theme.of(context).primaryColorDark,
-                        //         child: Image.asset(Assets.imagesBooking),
-                        //       ),
-                        //     ),
-                        //   ],
-                        // ),
-                        kSizedBox,
-                        //-------------------------------------------------------------------------
-                        //Rooms
-                        HeadText(text: S.of(context).rooms),
-                        kSizedBox,
-                        hotelEntity.roomsArabic.length == 0 &&
-                                hotelEntity.rooms.length == 0
-                            ? const SizedBox()
-                            : RoomListView(hotelEntity: hotelEntity),
-                        kSizedBox,
-                        //-------------------------------------------------------------------------
-                        //contact
-                        HeadText(text: S.of(context).Contact),
-                        kSizedBox,
-                        // Contact website and phone number
-                        ContactWidget(entity: hotelEntity),
-                        kSizedBox,
-                        //-------------------------------------------------------------------------
-                        //Gallery
-                        HeadText(text: S.of(context).Gallery),
-                        kSizedBox,
-                        GalleryWidget(entity: hotelEntity),
-                        kSizedBox
                       ],
                     ),
-                  ),
-                ],
+                    kSizedBox,
+                    //noOfRooms
+                    NoOfRoomsWidget(hotelEntity: hotelEntity),
+                    kSizedBox,
+                    kDivider,
+                    kSizedBox,
+                    //about
+                    HeadText(text: S.of(context).about),
+                    kSizedBox,
+                    ReadMoreWidget(
+                      text: isArabic()
+                          ? hotelEntity.aboutArabic
+                          : hotelEntity.about,
+                    ),
+                    kSizedBox,
+                    //-------------------------------------------------------------------------
+
+                    //-------------------------------------------------------------------------
+                    //Features
+                    HeadText(text: S.of(context).Features),
+                    kSizedBox,
+                    HotelFeaturesListView(hotelEntity: hotelEntity),
+                    // booking
+                    // Row(
+                    //   mainAxisAlignment: MainAxisAlignment.center,
+                    //   children: [
+                    //     GestureDetector(
+                    //       onTap: () async {
+                    //         //change later
+                    //         var url = Uri.parse(hotelEntity.mapUrl);
+                    //         if (await canLaunchUrl(
+                    //           url,
+                    //         )) {
+                    //           await launchUrl(url);
+                    //         }
+                    //         ;
+                    //       },
+                    //       child: Container(
+                    //         width: 120,
+                    //         height: 60,
+                    //         color: Theme.of(context).primaryColorDark,
+                    //         child: Image.asset(Assets.imagesBooking),
+                    //       ),
+                    //     ),
+                    //   ],
+                    // ),
+                    kSizedBox,
+                    //-------------------------------------------------------------------------
+                    //Rooms
+                    HeadText(text: S.of(context).rooms),
+                    kSizedBox,
+                    hotelEntity.roomsArabic.length == 0 &&
+                            hotelEntity.rooms.length == 0
+                        ? const SizedBox()
+                        : RoomListView(hotelEntity: hotelEntity),
+                    kSizedBox,
+                    //-------------------------------------------------------------------------
+                    //contact
+                    HeadText(text: S.of(context).Contact),
+                    kSizedBox,
+                    // Contact website and phone number
+                    ContactWidget(entity: hotelEntity),
+                    kSizedBox,
+                    //-------------------------------------------------------------------------
+                    //Gallery
+                    HeadText(text: S.of(context).Gallery),
+                    kSizedBox,
+                    GalleryWidget(entity: hotelEntity),
+                    kSizedBox
+                  ],
+                ),
               ),
             ],
           ),

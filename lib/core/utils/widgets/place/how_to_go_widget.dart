@@ -22,9 +22,7 @@ class HowToGoWidget extends StatelessWidget {
         HeadText(text: S.of(context).HowToGo),
         kSizedBox,
         HeadText(text: S.current.metro),
-        SizedBox(
-          height: 5,
-        ),
+        SizedBox(height: 5),
         Text(
           isArabic()
               ? placeEntity.transportArabic['metro']

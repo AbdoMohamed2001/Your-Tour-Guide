@@ -42,15 +42,6 @@ class ProfileViewBody extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // SizedBox(height: deviceHeight * 0.01),
-                    // AppBar(
-                    //   title: Text(
-                    //     S.of(context).myAccount,
-                    //     style: TextStyles.bold18,
-                    //   ),
-                    //   centerTitle: true,
-                    //   automaticallyImplyLeading: false,
-                    // ),
                     SizedBox(height: deviceHeight * 0.018),
                     //Profile Info
                     UserInfoWidget(),
@@ -63,18 +54,7 @@ class ProfileViewBody extends StatelessWidget {
                     SizedBox(height: deviceHeight * 0.021),
                     // Profile List
                     GeneralList(deviceHeight: deviceHeight),
-                    SizedBox(height: deviceHeight * 0.03),
-                    Divider(
-                      height: 1,
-                      color: Color(0xffF2F3F3),
-                    ),
-                    SizedBox(height: deviceHeight * 0.024),
-                    // Help
-                    // Text(
-                    //   S.of(context).help,
-                    //   style: TextStyles.regular14,
-                    // ),
-                    SizedBox(height: deviceHeight * 0.065),
+                    SizedBox(height: deviceHeight * 0.09),
                   ],
                 ),
               ),
@@ -91,7 +71,7 @@ class ProfileViewBody extends StatelessWidget {
                   ),
                   child: Center(
                     child: Text(
-                      S.of(context).SignOut,
+                      S.of(context).SignOut.toUpperCase(),
                       style: TextStyles.regular14,
                     ),
                   ),

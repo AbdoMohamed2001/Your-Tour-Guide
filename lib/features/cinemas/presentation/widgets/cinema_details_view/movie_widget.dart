@@ -1,93 +1,68 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:your_tour_guide/features/cinemas/domain/entities/movie_entity.dart';
 import 'package:your_tour_guide/features/cinemas/presentation/views/movie_view.dart';
-
-import '../../../../../core/utils/functions/is_arabic.dart';
-import '../../../domain/entities/cinema_entity.dart';
 
 class MovieWidget extends StatelessWidget {
   const MovieWidget({
     super.key,
-    required this.cinemaEntity,
-    required this.index,
+    required this.movie,
   });
 
-  final CinemaEntity cinemaEntity;
-  final int index;
+  final MovieEntity movie;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
         Navigator.push(context, MaterialPageRoute(builder: (_) {
-          return MovieView(
-            cinemaEntity: cinemaEntity,
-            index: index,
-          );
+          return MovieView(movie: movie);
         }));
       },
       child: Container(
         width: 170,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8),
+          color: Theme.of(context).cardColor,
+        ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Column(
-              children: [
-                Image.network(
-                  cinemaEntity.films[index]['imageUrl'],
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(8),
+                child: CachedNetworkImage(
+                  imageUrl: movie.imageUrl,
                   width: double.infinity,
-                  height: 190,
+                  height: 185,
                   fit: BoxFit.cover,
                 ),
-                SizedBox(
-                  height: 4,
-                ),
-                Text(
-                  isArabic()
-                      ? cinemaEntity.filmsArabic[index]['name']
-                          .replaceAll('_b', '\n')
-                      : cinemaEntity.films[index]['name']
-                          .replaceAll('_b', '\n'),
-                  textAlign: TextAlign.center,
-
-                  // 'Oppenheimer'
-                ),
-              ],
+              ),
             ),
-            Column(
-              children: [
-                SizedBox(
-                  height: 4,
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 6.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        isArabic()
-                            ? cinemaEntity.filmsArabic[index]['price']
-                            : cinemaEntity.films[index]['price'],
-                      ),
-                      Row(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(bottom: 6.0),
-                            child: Icon(
-                              Icons.star,
-                              color: Colors.orange,
-                            ),
-                          ),
-                          Text('${cinemaEntity.films[index]['rate']}/10'),
-                        ],
-                      ),
-                    ],
+            Text(
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+              movie.name.replaceAll('_b', '\n'),
+              textAlign: TextAlign.center,
+
+              // 'Oppenheimer'
+            ),
+            Spacer(),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.star,
+                    color: Colors.orange,
                   ),
-                ),
-                SizedBox(
-                  height: 4,
-                ),
-              ],
+                  SizedBox(width: 4),
+                  Text('${movie.rate}/10'),
+                ],
+              ),
             ),
           ],
         ),

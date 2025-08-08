@@ -20,6 +20,7 @@ class TransportWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         HeadText(text: S.of(context).transport),
+        kSizedBox,
         ListView.separated(
           padding: EdgeInsets.all(0),
           physics: NeverScrollableScrollPhysics(),
@@ -29,12 +30,11 @@ class TransportWidget extends StatelessWidget {
                 ? placeEntity.transportArabic['transport'][index]
                 : placeEntity.transport['transport'][index],
           ),
-          separatorBuilder: (_, index) => SizedBox(height: 2),
+          separatorBuilder: (_, index) => SizedBox(height: 16),
           itemCount: isArabic()
               ? placeEntity.transportArabic['transport'].length
               : placeEntity.transport['transport'].length,
         ),
-        kSizedBox,
       ],
     );
   }

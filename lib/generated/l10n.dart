@@ -592,6 +592,26 @@ class S {
     return Intl.message('Contact', name: 'Contact', desc: '', args: []);
   }
 
+  /// `Most famous shopping centers`
+  String get mostFamousShopping {
+    return Intl.message(
+      'Most famous shopping centers',
+      name: 'mostFamousShopping',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Most famous Restaurants`
+  String get mostFamousRestaurants {
+    return Intl.message(
+      'Most famous Restaurants',
+      name: 'mostFamousRestaurants',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Duration`
   String get Duration {
     return Intl.message('Duration', name: 'Duration', desc: '', args: []);
@@ -722,6 +742,16 @@ class S {
     );
   }
 
+  /// `Booking this tour`
+  String get bookingTour {
+    return Intl.message(
+      'Booking this tour',
+      name: 'bookingTour',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Favourite`
   String get Favourite {
     return Intl.message('Favourite', name: 'Favourite', desc: '', args: []);
@@ -770,6 +800,26 @@ class S {
   /// `Full Menu`
   String get FullMenu {
     return Intl.message('Full Menu', name: 'FullMenu', desc: '', args: []);
+  }
+
+  /// `See the full menu: `
+  String get seeFullMenu {
+    return Intl.message(
+      'See the full menu: ',
+      name: 'seeFullMenu',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Foods`
+  String get foods {
+    return Intl.message('Foods', name: 'foods', desc: '', args: []);
+  }
+
+  /// `Drinks`
+  String get drinks {
+    return Intl.message('Drinks', name: 'drinks', desc: '', args: []);
   }
 
   /// `Services`
@@ -845,6 +895,16 @@ class S {
   /// `Films`
   String get films {
     return Intl.message('Films', name: 'films', desc: '', args: []);
+  }
+
+  /// `Currently Showing`
+  String get currentlyShowing {
+    return Intl.message(
+      'Currently Showing',
+      name: 'currentlyShowing',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Movie Genre`

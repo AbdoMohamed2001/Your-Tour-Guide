@@ -2,6 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:your_tour_guide/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/services/get_it_services_locator.dart';
+import '../../../../core/utils/widgets/custom_app_bar.dart';
 import '../../../../core/utils/widgets/local_hero/local_hero_app_bar.dart';
 import '../../../places/presentation/views/places_view.dart';
 import '../../data/repos/church_repo.dart';
@@ -54,6 +55,7 @@ class _ChurchesViewState extends State<ChurchesView>
       appBar: LocalHeroAppBar(
         tabController: _tabController,
         title: S.of(context).Churches,
+        leading: CustomAppBarIconButton(),
       ),
       body: BlocProvider(
         create: (context) => ChurchCubit(getIt<ChurchRepo>()),

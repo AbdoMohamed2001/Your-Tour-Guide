@@ -4,6 +4,7 @@ import 'package:your_tour_guide/features/malls/presentation/cubit/mall_cubit.dar
 import 'package:your_tour_guide/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/services/get_it_services_locator.dart';
+import '../../../../core/utils/widgets/custom_app_bar.dart';
 import '../../../../core/utils/widgets/local_hero/local_hero_app_bar.dart';
 import '../../../places/presentation/views/places_view.dart';
 import '../widgets/all_malls_view/all_malls_view_body.dart';
@@ -54,6 +55,7 @@ class _MallsViewState extends State<MallsView>
       appBar: LocalHeroAppBar(
         tabController: _tabController,
         title: S.of(context).Malls,
+        leading: CustomAppBarIconButton(),
       ),
       body: BlocProvider(
         create: (context) => MallCubit(getIt<MallRepo>()),

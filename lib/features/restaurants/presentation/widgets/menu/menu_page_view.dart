@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:your_tour_guide/core/utils/functions/is_arabic.dart';
 import 'package:your_tour_guide/features/restaurants/domain/entities/drink_entity.dart';
 
 import '../../../domain/entities/food_entity.dart';
@@ -28,6 +29,26 @@ class MenuPageView extends StatelessWidget {
       ],
       ['Coffee', 'Soft drink', 'Juice'],
     ];
+    List<List<String>> foodTypesArabic = [
+      [
+        'الأطباق الرئيسية',
+        'طيور مشوية',
+        'مشاوي',
+        'شوربة',
+        'محاشي',
+      ],
+      ['Coffee', 'Soft drink', 'Juice'],
+    ];
+    List<List<String>> foodIds = [
+      [
+        'mainDishes',
+        'poultryGrills',
+        'grills',
+        'soup',
+        'mahashi',
+      ],
+      ['coffee', 'softDrink', 'juice'],
+    ];
     return PageView.builder(
       controller: pageController,
       onPageChanged: onPageChanged,
@@ -35,7 +56,8 @@ class MenuPageView extends StatelessWidget {
       //PAGES
       itemBuilder: (_, i) => MenuPage(
         menu: menu[i],
-        foodTypes: foodTypes[i],
+        foodTypes: isArabic() ? foodTypesArabic[i] : foodTypes[i],
+        foodIds: foodIds[i],
       ),
       itemCount: 2,
     );

@@ -30,4 +30,8 @@ class CacheHelper {
     final cachedTheme = Prefs.getBool(_cachedTheme);
     return cachedTheme;
   }
+
+  static Future<void> clearCachedTheme() async {
+    await Prefs.delete(_cachedTheme);
+  }
 }

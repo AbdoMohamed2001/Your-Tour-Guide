@@ -45,7 +45,9 @@ class Assets {
       'assets/images/editProfileDark.png';
   static const String imagesGooglemaps = 'assets/images/googlemaps.png';
   static const String imagesHome = 'assets/images/home.jpg';
+  static const String imagesHotelStars = 'assets/images/hotel_stars.png';
   static const String imagesMenu = 'assets/images/menu.png';
+  static const String imagesMovie = 'assets/images/movie.png';
   static const String imagesOpenDarkArabic = 'assets/images/openDarkArabic.png';
   static const String imagesOpenDarkEnglish =
       'assets/images/openDarkEnglish.png';

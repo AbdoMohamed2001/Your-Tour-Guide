@@ -8,7 +8,6 @@ import 'package:your_tour_guide/core/utils/theme/text_styles.dart';
 
 import '../../../../features/favourite/presentation/cubit/favourtie_cubit.dart';
 import '../../../cubits/theme/theme_cubit.dart';
-import '../../../services/get_it_services_locator.dart';
 import '../../theme/app_colors.dart';
 
 class LocalHeroBody extends StatelessWidget {
@@ -60,7 +59,7 @@ class LocalHeroBody extends StatelessWidget {
 ItemsModel buildDefaultItemModel(BuildContext context, dynamic entity) {
   return ItemsModel(
     cardStyleMode: CardStyleMode(
-      isDarkMode: getIt<ThemeCubit>().isDarkMode,
+      isDarkMode: context.read<ThemeCubit>().isDarkMode(context),
       isLoading: false,
       cardColor: Theme.of(context).cardColor,
     ),
@@ -89,7 +88,7 @@ ItemsModel buildDefaultItemModel(BuildContext context, dynamic entity) {
 ItemsModel buildEventItemModel(BuildContext context, dynamic entity) {
   return ItemsModel(
     cardStyleMode: CardStyleMode(
-      isDarkMode: context.read<ThemeCubit>().isDarkMode,
+      isDarkMode: context.read<ThemeCubit>().isDarkMode(context),
       isLoading: false,
       cardColor: Theme.of(context).cardColor,
     ),
@@ -116,7 +115,7 @@ ItemsModel buildEventItemModel(BuildContext context, dynamic entity) {
 ItemsModel buildTourItemModel(BuildContext context, dynamic entity) {
   return ItemsModel(
     cardStyleMode: CardStyleMode(
-      isDarkMode: context.read<ThemeCubit>().isDarkMode,
+      isDarkMode: context.read<ThemeCubit>().isDarkMode(context),
       isLoading: false,
       cardColor: Theme.of(context).cardColor,
     ),

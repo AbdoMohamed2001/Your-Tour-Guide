@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:your_tour_guide/core/utils/widgets/custom_app_bar.dart';
 import 'package:your_tour_guide/features/restaurants/data/repos/restaurant_repo.dart';
 import 'package:your_tour_guide/features/restaurants/presentation/cubit/restaurant_cubit.dart';
 import 'package:your_tour_guide/generated/l10n.dart';
@@ -54,6 +55,7 @@ class _RestaurantsViewState extends State<RestaurantsView>
       appBar: LocalHeroAppBar(
         tabController: _tabController,
         title: S.of(context).Restaurants,
+        leading: CustomAppBarIconButton(),
       ),
       body: BlocProvider(
         create: (context) => RestaurantCubit(getIt<RestaurantRepo>()),

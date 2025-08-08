@@ -20,6 +20,7 @@ class GeneralList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        //Personal Information
         GeneralItem(
           image: generalList(context)[0].icon,
           text: generalList(context)[0].text,
@@ -37,6 +38,7 @@ class GeneralList extends StatelessWidget {
           },
         ),
         SizedBox(height: deviceHeight * 0.02),
+        //Favourites
         GeneralItem(
           image: generalList(context)[1].icon,
           text: generalList(context)[1].text,
@@ -46,19 +48,18 @@ class GeneralList extends StatelessWidget {
           },
         ),
         SizedBox(height: deviceHeight * 0.02),
-        GeneralItem(
-          image: generalList(context)[2].icon,
-          text: generalList(context)[2].text,
-        ),
-        SizedBox(height: deviceHeight * 0.02),
+        //Language
         GeneralItem(
           image: generalList(context)[3].icon,
           text: generalList(context)[3].text,
+          isLanguage: true,
         ),
         SizedBox(height: deviceHeight * 0.02),
+        //Mode
         GeneralItem(
           image: generalList(context)[4].icon,
           text: generalList(context)[4].text,
+          isCustomSwitch: true,
         ),
       ],
     );

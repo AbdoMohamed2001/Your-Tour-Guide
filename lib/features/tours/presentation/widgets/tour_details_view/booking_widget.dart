@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../../../../generated/l10n.dart';
 import '../../../domain/entities/tour_entity.dart';
 
 class BookingWidget extends StatelessWidget {
@@ -36,10 +37,8 @@ class BookingWidget extends StatelessWidget {
           ),
           child: Center(
             child: Text(
-              'ارسل طلب لحجز لهذه الرحله ',
-              style: TextStyle(
-                color: Colors.black,
-              ),
+              S.of(context).bookingTour.toUpperCase(),
+              style: TextStyle(color: Colors.black),
             ),
           ),
         ),

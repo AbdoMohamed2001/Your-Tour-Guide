@@ -1,11 +1,13 @@
+import 'package:your_tour_guide/features/cinemas/domain/entities/movie_entity.dart';
+
 class CinemaEntity {
   final String address;
   final String addressArabic;
   final String cityName;
   final String cityNameArabic;
   final String docId;
-  final List films;
-  final List filmsArabic;
+  final List<MovieEntity> films;
+  final List<MovieEntity> filmsArabic;
   final String imageUrl;
   final List images;
   final String mapUrl;

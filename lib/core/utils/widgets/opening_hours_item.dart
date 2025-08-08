@@ -25,7 +25,7 @@ class OpeningHoursWidget extends StatelessWidget {
         Stack(
           children: [
             Image.asset(
-              getIt<ThemeCubit>().isDarkMode
+              getIt<ThemeCubit>().isDarkMode(context)
                   ? isArabic()
                       ? Assets.imagesOpenDarkArabic
                       : Assets.imagesOpenDarkEnglish
@@ -34,6 +34,7 @@ class OpeningHoursWidget extends StatelessWidget {
                       : Assets.imagesOpenLightEnglish,
               width: 90,
               height: 90,
+              fit: BoxFit.cover,
             ),
             Positioned(
               top: isArabic() ? 20 : 24,

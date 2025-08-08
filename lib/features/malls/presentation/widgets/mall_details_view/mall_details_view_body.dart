@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:your_tour_guide/features/malls/domain/entities/mall_entity.dart';
@@ -32,7 +33,7 @@ class MallDetailsViewBody extends StatelessWidget {
       'https://iconape.com/wp-content/png_logo_vector/la-brioche-doree.png',
       'https://upload.wikimedia.org/wikipedia/sco/thumb/b/bf/KFC_logo.svg/2048px-KFC_logo.svg.png',
       'https://assets.stickpng.com/images/5a1d30914ac6b00ff574e2a4.png',
-      'https://upload.wikimedia.org/wikipedia/sco/thumb/d/d2/Pizza_Hut_logo.svg/2177px-Pizza_Hut_logo.svg.png',
+      'https://i.pinimg.com/736x/ca/38/ca/ca38cabfc7f07d97a422859b91df07cd.jpg',
     ];
     return BlocBuilder<MallCubit, MallState>(
       builder: (context, state) {
@@ -41,119 +42,96 @@ class MallDetailsViewBody extends StatelessWidget {
             children: [
               //image
               DefaultServiceDetailsImage(entity: mallEntity),
-              Column(
-                children: [
-                  //-------------------------------------------------------------------------
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: kHorizontalPadding),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        kSizedBox,
-                        //-------------------------------------------------------------------------
-                        //Location and google map
-                        LocationWidget(
-                          address: isArabic()
-                              ? mallEntity.addressArabic
-                              : mallEntity.address,
-                          mapUrl: mallEntity.mapUrl,
-                          rate: mallEntity.rate,
-                        ),
-                        kSizedBox,
-                        //-------------------------------------------------------------------------
-                        //Opening hours
-                        OpeningHoursWidget(
-                          openFrom: isArabic()
-                              ? mallEntity.openingHoursArabic['from']
-                              : mallEntity.openingHours['from'],
-                          openTo: isArabic()
-                              ? mallEntity.openingHoursArabic['to']
-                              : mallEntity.openingHours['to'],
-                        ),
-                        kSizedBox,
-                        //-------------------------------------------------------------------------
-                        //Description and rate
-                        HeadText(text: S.of(context).Description),
-                        kSizedBox,
-                        ReadMoreWidget(
-                          text: isArabic()
-                              ? mallEntity.descriptionArabic
-                              : mallEntity.description,
-                        ),
-                        kSizedBox,
-                        //-------------------------------------------------------------------
-                        //Shopping Stores
-                        HeadText(text: 'اشهر مراكز التسوق في المول '),
-                        kSizedBox,
-                        SizedBox(
-                          height: 170,
-                          child: ListView.separated(
-                            scrollDirection: Axis.horizontal,
-                            itemBuilder: (_, index) => GestureDetector(
-                              onTap: () {
-                                // Navigator.push(
-                                //     context,
-                                //     MaterialPageRoute(
-                                //       builder: (_) => StoreScreen(
-                                //         mallModel: mallModel,
-                                //         index: indexx,
-                                //       ),
-                                //     ));
-                              },
-                              child: Container(
-                                child: Column(
-                                  children: [
-                                    Image.network(
-                                      listOfStores[index],
-                                      height: 170,
-                                      width: 170,
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            separatorBuilder: (_, index) => SizedBox(width: 10),
-                            itemCount: listOfStores.length,
-                          ),
-                        ),
-                        kSizedBox,
-                        //-------------------------------------------------------------------------
-                        //Restaurants
-                        HeadText(text: 'اشهر المطاعم في المول '),
-                        kSizedBox,
-                        SizedBox(
-                          height: 170,
-                          child: ListView.separated(
-                            scrollDirection: Axis.horizontal,
-                            itemBuilder: (_, indexx) => Container(
-                              child: Column(
-                                children: [
-                                  Image.network(
-                                    listOfRestaurants[indexx],
-                                    height: 170,
-                                    width: 170,
-                                    fit: BoxFit.cover,
-                                  ),
-                                ],
-                              ),
-                            ),
-                            separatorBuilder: (_, index) => SizedBox(width: 10),
-                            itemCount: listOfRestaurants.length,
-                          ),
-                        ),
-
-                        //-------------------------------------------------------------------------
-                        //Gallery
-                        HeadText(text: S.of(context).Gallery),
-                        kSizedBox,
-                        GalleryWidget(entity: mallEntity),
-                        kSizedBox,
-                      ],
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: kHorizontalPadding,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    kSizedBox,
+                    //-------------------------------------------------------------------------
+                    //Location and google map
+                    LocationWidget(
+                      address: isArabic()
+                          ? mallEntity.addressArabic
+                          : mallEntity.address,
+                      mapUrl: mallEntity.mapUrl,
+                      rate: mallEntity.rate,
                     ),
-                  ),
-                ],
+                    kSizedBox,
+                    //-------------------------------------------------------------------------
+                    //Opening hours
+                    OpeningHoursWidget(
+                      openFrom: isArabic()
+                          ? mallEntity.openingHoursArabic['from']
+                          : mallEntity.openingHours['from'],
+                      openTo: isArabic()
+                          ? mallEntity.openingHoursArabic['to']
+                          : mallEntity.openingHours['to'],
+                    ),
+                    kSizedBox,
+                    //-------------------------------------------------------------------------
+                    //Description and rate
+                    HeadText(text: S.of(context).Description),
+                    kSizedBox,
+                    ReadMoreWidget(
+                      text: isArabic()
+                          ? mallEntity.descriptionArabic
+                          : mallEntity.description,
+                    ),
+                    kSizedBox,
+                    kDivider,
+                    kSizedBox,
+                    //-------------------------------------------------------------------
+                    //Shopping Stores
+                    HeadText(text: S.of(context).mostFamousShopping),
+                    kSizedBox,
+                    Container(
+                      color: Theme.of(context).cardColor,
+                      height: 170,
+                      child: ListView.separated(
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (_, index) => CachedNetworkImage(
+                          imageUrl: listOfStores[index],
+                          height: 170,
+                          width: 150,
+                          fit: BoxFit.cover,
+                        ),
+                        separatorBuilder: (_, index) => SizedBox(width: 15),
+                        itemCount: listOfStores.length,
+                      ),
+                    ),
+                    kSizedBox,
+                    //-------------------------------------------------------------------------
+                    //Restaurants
+                    HeadText(text: S.of(context).mostFamousRestaurants),
+                    kSizedBox,
+                    Card(
+                      child: SizedBox(
+                        height: 170,
+                        child: ListView.separated(
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (_, index) => CachedNetworkImage(
+                            imageUrl: listOfRestaurants[index],
+                            height: 170,
+                            width: 150,
+                            fit: BoxFit.cover,
+                          ),
+                          separatorBuilder: (_, index) => SizedBox(width: 15),
+                          itemCount: listOfRestaurants.length,
+                        ),
+                      ),
+                    ),
+
+                    //-------------------------------------------------------------------------
+                    //Gallery
+                    HeadText(text: S.of(context).Gallery),
+                    kSizedBox,
+                    GalleryWidget(entity: mallEntity),
+                    kSizedBox,
+                  ],
+                ),
               ),
             ],
           ),

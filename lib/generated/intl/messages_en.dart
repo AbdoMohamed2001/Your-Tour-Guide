@@ -111,6 +111,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "avgPrice": MessageLookupByLibrary.simpleMessage("Average Price"),
     "bed": MessageLookupByLibrary.simpleMessage("Bed"),
     "bestPlaces": MessageLookupByLibrary.simpleMessage("Best \n Places"),
+    "bookingTour": MessageLookupByLibrary.simpleMessage("Booking this tour"),
     "cast": MessageLookupByLibrary.simpleMessage("Movie Cast"),
     "changePassword": MessageLookupByLibrary.simpleMessage("Change password"),
     "changesSaved": MessageLookupByLibrary.simpleMessage(
@@ -123,15 +124,20 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "contains": MessageLookupByLibrary.simpleMessage("Contains"),
     "currentPassword": MessageLookupByLibrary.simpleMessage("Current password"),
+    "currentlyShowing": MessageLookupByLibrary.simpleMessage(
+      "Currently Showing",
+    ),
     "dayTour": MessageLookupByLibrary.simpleMessage("Day Tour"),
     "dontHaveAnAccount": MessageLookupByLibrary.simpleMessage(
       "Don\'t have an account? ",
     ),
+    "drinks": MessageLookupByLibrary.simpleMessage("Drinks"),
     "egyptiansTrip": MessageLookupByLibrary.simpleMessage("Egyptians Trip"),
     "endDate": MessageLookupByLibrary.simpleMessage("End Date"),
     "english": MessageLookupByLibrary.simpleMessage("English"),
     "exclusions": MessageLookupByLibrary.simpleMessage("Exclusions"),
     "films": MessageLookupByLibrary.simpleMessage("Films"),
+    "foods": MessageLookupByLibrary.simpleMessage("Foods"),
     "founded": MessageLookupByLibrary.simpleMessage("Founded"),
     "general": MessageLookupByLibrary.simpleMessage("General"),
     "genre": MessageLookupByLibrary.simpleMessage("Movie Genre"),
@@ -149,6 +155,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "mode": MessageLookupByLibrary.simpleMessage("Mode"),
     "moreAboutEgypt": MessageLookupByLibrary.simpleMessage("More About Egypt"),
     "moreInformation": MessageLookupByLibrary.simpleMessage("More information"),
+    "mostFamousRestaurants": MessageLookupByLibrary.simpleMessage(
+      "Most famous Restaurants",
+    ),
+    "mostFamousShopping": MessageLookupByLibrary.simpleMessage(
+      "Most famous shopping centers",
+    ),
     "myAccount": MessageLookupByLibrary.simpleMessage("My Account"),
     "name": MessageLookupByLibrary.simpleMessage("Name"),
     "nearly": MessageLookupByLibrary.simpleMessage(
@@ -191,6 +203,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "searchResultsAbout": MessageLookupByLibrary.simpleMessage(
       "search results about",
     ),
+    "seeFullMenu": MessageLookupByLibrary.simpleMessage("See the full menu: "),
     "services": MessageLookupByLibrary.simpleMessage("Services"),
     "showLess": MessageLookupByLibrary.simpleMessage("Show less"),
     "showMore": MessageLookupByLibrary.simpleMessage("Show more"),

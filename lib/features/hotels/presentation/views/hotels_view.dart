@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:your_tour_guide/core/utils/widgets/custom_app_bar.dart';
 import 'package:your_tour_guide/features/hotels/data/repos/hotels_repo.dart';
 import 'package:your_tour_guide/features/hotels/presentation/cubit/hotel_cubit.dart';
 import 'package:your_tour_guide/features/hotels/presentation/widgets/all_hotels/all_hotels_view_body.dart';
@@ -54,6 +55,7 @@ class _HotelsViewState extends State<HotelsView>
       appBar: LocalHeroAppBar(
         tabController: _tabController,
         title: S.of(context).Hotels,
+        leading: CustomAppBarIconButton(),
       ),
       body: BlocProvider(
         create: (context) => HotelCubit(getIt<HotelsRepo>()),

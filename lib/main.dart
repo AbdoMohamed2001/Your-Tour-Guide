@@ -58,21 +58,6 @@ Future<void> _initializeCriticalServices() async {
   }
 }
 
-// Future<void> _initializeNonCriticalServices() async {
-//   try {
-//     // Initialize HomeCubit data after UI is ready
-//     await getIt<LocaleCubit>().getSavedLanguage();
-//     await getIt<ThemeCubit>().getSavedTheme();
-//
-//     // Add other non-critical initializations here
-//     // e.g., analytics, crashlytics, etc.
-//   } catch (e) {
-//     debugPrint('Non-critical service initialization failed: $e');
-//     // Non-critical failures shouldn't crash the app
-//   }
-// }
-//-----------------------------------------------------------------------------
-
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
@@ -81,7 +66,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (_) => getIt<HomeCubit>()),
-        BlocProvider(create: (_) => getIt<ThemeCubit>()..getSavedTheme),
+        BlocProvider(create: (_) => getIt<ThemeCubit>()..getSavedTheme()),
         BlocProvider(create: (_) => getIt<LocaleCubit>()..getSavedLanguage()),
       ],
       child: BlocBuilder<ThemeCubit, ThemeState>(

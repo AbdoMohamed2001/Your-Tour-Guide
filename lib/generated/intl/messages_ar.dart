@@ -113,6 +113,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "avgPrice": MessageLookupByLibrary.simpleMessage("متوسط السعر :"),
     "bed": MessageLookupByLibrary.simpleMessage("السرير: "),
     "bestPlaces": MessageLookupByLibrary.simpleMessage("افضل \n الاماكن"),
+    "bookingTour": MessageLookupByLibrary.simpleMessage(
+      "ارسل طلب لحجز لهذه الرحله",
+    ),
     "cast": MessageLookupByLibrary.simpleMessage("طاقم العمل"),
     "changePassword": MessageLookupByLibrary.simpleMessage("تغيير كلمة المرور"),
     "changesSaved": MessageLookupByLibrary.simpleMessage(
@@ -131,11 +134,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "dontHaveAnAccount": MessageLookupByLibrary.simpleMessage(
       "ليس لديك حساب؟ ",
     ),
+    "drinks": MessageLookupByLibrary.simpleMessage("المشروبات"),
     "egyptiansTrip": MessageLookupByLibrary.simpleMessage("رحلات للمصريين"),
     "endDate": MessageLookupByLibrary.simpleMessage("نهاية الرحله"),
     "english": MessageLookupByLibrary.simpleMessage("الأنجليزية"),
     "exclusions": MessageLookupByLibrary.simpleMessage("الاستثنائات"),
     "films": MessageLookupByLibrary.simpleMessage("الأفلام"),
+    "foods": MessageLookupByLibrary.simpleMessage("الطعام"),
     "founded": MessageLookupByLibrary.simpleMessage("وجد"),
     "general": MessageLookupByLibrary.simpleMessage("عام"),
     "genre": MessageLookupByLibrary.simpleMessage("التصنيف"),
@@ -154,6 +159,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "moreAboutEgypt": MessageLookupByLibrary.simpleMessage("المزيد عن مصر"),
     "moreInformation": MessageLookupByLibrary.simpleMessage(
       "مزيد من المعلومات",
+    ),
+    "mostFamousRestaurants": MessageLookupByLibrary.simpleMessage(
+      "أشهر المطاعم",
+    ),
+    "mostFamousShopping": MessageLookupByLibrary.simpleMessage(
+      "أشهر مراكز التسوق",
     ),
     "myAccount": MessageLookupByLibrary.simpleMessage("حسابي"),
     "name": MessageLookupByLibrary.simpleMessage("الأسم"),
@@ -191,6 +202,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "اختر ما تريد البحث عنه ",
     ),
     "searchResultsAbout": MessageLookupByLibrary.simpleMessage("نتائج بحث عن"),
+    "seeFullMenu": MessageLookupByLibrary.simpleMessage("قائمة الطعام كامله: "),
     "services": MessageLookupByLibrary.simpleMessage("الخدمات"),
     "showLess": MessageLookupByLibrary.simpleMessage("عرض اقل "),
     "showMore": MessageLookupByLibrary.simpleMessage("عرض المزيد"),

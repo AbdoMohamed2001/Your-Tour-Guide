@@ -105,6 +105,7 @@
   "tourLocation"          : "موقع الرحلة",
   "egyptiansTrip"         : "رحلات للمصريين",
   "nileCruise"            : "رحلات نيليه",
+  "bookingTour"           : "ارسل طلب لحجز لهذه الرحله",
 
   "Favourite"              : "المفضله",
   "AddedToFavourite"       : "اضاف للمفضله",
@@ -113,6 +114,9 @@
   "noFavouritesYet"        : "لا يوجد مفضلة بعد",
 
   "FullMenu"               :"قائمة الطعام",
+  "seeFullMenu"             :"قائمة الطعام كامله: ",
+  "foods"                   :"الطعام",
+  "drinks"                  :"المشروبات",
   "services"               : "الخدمات",
   "openingHours"           : "مواعيد \n العمل",
   "rooms"                  : "الغرف",
@@ -123,8 +127,11 @@
   "bed"                    : "السرير: ",
   "noOfFloors"             : "عدد الطوابق: ",
   "noOfRooms"              : "عدد الغرف: ",
+  "mostFamousShopping"      : "أشهر مراكز التسوق",
+  "mostFamousRestaurants"   : "أشهر المطاعم",
 
   "films"                  : "الأفلام",
+  "Currently Showing"      : "يعرض حاليًا",
   "genre"                  : "التصنيف",
   "length"                 : "المدة",
   "cast"                   : "طاقم العمل",

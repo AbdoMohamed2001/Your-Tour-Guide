@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:your_tour_guide/core/utils/functions/is_arabic.dart';
 
 import '../../../../../core/utils/theme/text_styles.dart';
 
@@ -8,28 +9,33 @@ class MenuItem extends StatelessWidget {
     super.key,
     required this.menu,
     required this.foodType,
+    required this.foodId,
   });
 
   final List<dynamic> menu;
   final String foodType;
+  final String foodId;
   @override
   Widget build(BuildContext context) {
-    var breakfastFoods = menu.where((item) => item.type == foodType).toList();
+    var foodList = menu.where((item) => item.id == foodId).toList();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          foodType,
-          style: TextStyles.bold18,
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 4.0),
+          child: Text(
+            foodType,
+            style: TextStyles.bold18,
+          ),
         ),
         SizedBox(height: 8),
         SizedBox(
           height: 140,
           child: ListView.separated(
             scrollDirection: Axis.horizontal,
-            itemBuilder: (_, i) => FoodContainer(food: breakfastFoods[i]),
+            itemBuilder: (_, i) => FoodContainer(food: foodList[i]),
             separatorBuilder: (_, i) => SizedBox(width: 5),
-            itemCount: breakfastFoods.length,
+            itemCount: foodList.length,
           ),
         ),
       ],
@@ -63,14 +69,16 @@ class FoodContainer extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Text(
+                      isArabic() ? food.nameArabic : food.name,
                       textAlign: TextAlign.center,
                       overflow: TextOverflow.ellipsis,
                       maxLines: 2,
-                      food.name,
                       style: TextStyles.semiBold18,
                     ),
                     Text(
-                      "${food.price.toString()} EGP",
+                      isArabic()
+                          ? "${food.price.toString()} جنيه"
+                          : "${food.price.toString()} EGP",
                       style: TextStyles.regular18,
                     ),
                   ],

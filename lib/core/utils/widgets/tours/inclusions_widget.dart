@@ -44,7 +44,7 @@ class InclusionsWidget extends StatelessWidget {
                 width: screenWidth * 0.75,
                 child: isInclusion
                     ? isArabic()
-                        ? Text(eventEntity.inclusions[i])
+                        ? Text(eventEntity.inclusionsArabic[i])
                         : Text(eventEntity.inclusions[i])
                     : isArabic()
                         ? Text(eventEntity.exclusionsArabic[i])

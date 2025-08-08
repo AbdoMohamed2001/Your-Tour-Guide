@@ -71,10 +71,10 @@ class RestaurantDetailsViewBody extends StatelessWidget {
                           width: 90,
                           height: 90,
                         ),
-                        SizedBox(width: 12),
+                        SizedBox(width: 50),
                         CombinedText(
-                          firstText: 'See the full menu: ',
-                          secondText: 'MENU',
+                          firstText: '',
+                          secondText: S.of(context).FullMenu,
                           onTap: () {
                             Navigator.push(
                               context,

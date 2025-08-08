@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:your_tour_guide/core/utils/widgets/custom_button.dart';
 import 'package:your_tour_guide/core/utils/widgets/tours/inclusions_widget.dart';
 import 'package:your_tour_guide/features/tours/presentation/cubit/tour_cubit.dart';
 import 'package:your_tour_guide/features/tours/presentation/widgets/tour_details_view/tour_details_widget.dart';
@@ -15,7 +17,6 @@ import '../../../../../core/utils/widgets/head_text.dart';
 import '../../../../../core/utils/widgets/place/gallery_widget.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../domain/entities/tour_entity.dart';
-import 'booking_widget.dart';
 
 class TourDetailsViewBody extends StatelessWidget {
   const TourDetailsViewBody({super.key, required this.tourEntity});
@@ -31,13 +32,7 @@ class TourDetailsViewBody extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               //Image
-              DefaultServiceDetailsImage(
-                fontSize: tourEntity.nameArabic.length >= 25 ||
-                        tourEntity.name.length >= 25
-                    ? 19
-                    : 24,
-                entity: tourEntity,
-              ),
+              DefaultServiceDetailsImage(entity: tourEntity),
               kSizedBox,
               //-------------------------------------------------------------------
               Padding(
@@ -50,15 +45,21 @@ class TourDetailsViewBody extends StatelessWidget {
                     //Tour Details
                     TourDetailsWidget(tourEntity: tourEntity),
                     kSizedBox,
+                    kDivider,
+                    kSizedBox,
                     //-------------------------------------------------------------------
                     //Tour location
                     TourLocationWidget(tourEntity: tourEntity),
+                    kSizedBox,
+                    kDivider,
                     kSizedBox,
                     //-------------------------------------------------------------------
                     //Tour Itinerary
                     HeadText(text: S.of(context).tourItinerary),
                     kSizedBox,
                     TourItineraryWidget(tourEntity: tourEntity),
+                    kSizedBox,
+                    kDivider,
                     kSizedBox,
                     //-------------------------------------------------------------------
                     //Description and rate
@@ -70,6 +71,8 @@ class TourDetailsViewBody extends StatelessWidget {
                           : tourEntity.description,
                     ),
                     kSizedBox,
+                    kDivider,
+                    kSizedBox,
                     //-------------------------------------------------------------------
                     //InclusionsWidget
                     HeadText(text: S.of(context).inclusions),
@@ -79,14 +82,18 @@ class TourDetailsViewBody extends StatelessWidget {
                     //-------------------------------------------------------------------
                     //exclusions
                     HeadText(text: S.of(context).exclusions),
-                    kSmallSizedBox,
+                    kSizedBox,
                     InclusionsWidget(
                       eventEntity: tourEntity,
                       isInclusion: false,
                     ),
                     kSizedBox,
+                    kDivider,
+                    kSizedBox,
                     //-------------------------------------------------------------------
                     TourOrganizerWidget(tourEntity: tourEntity),
+                    kSizedBox,
+                    kDivider,
                     kSizedBox,
                     //-------------------------------------------------------------------
                     //Contact
@@ -102,7 +109,17 @@ class TourDetailsViewBody extends StatelessWidget {
                     //-------------------------------------------------------------------
                     //Booking
                     kSizedBox,
-                    BookingWidget(tourEntity: tourEntity),
+                    CustomButton(
+                      onTap: () async {
+                        var url = Uri.parse(tourEntity.booking);
+                        if (await canLaunchUrl(url)) {
+                          await launchUrl(url);
+                        }
+                        ;
+                      },
+                      text: S.of(context).bookingTour.toUpperCase(),
+                    ),
+                    // BookingWidget(tourEntity: tourEntity),
                     kSizedBox,
                   ],
                 ),

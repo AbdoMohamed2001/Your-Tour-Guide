@@ -4,6 +4,7 @@ import 'package:your_tour_guide/features/cinemas/presentation/cubit/cinema_cubit
 import 'package:your_tour_guide/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/services/get_it_services_locator.dart';
+import '../../../../core/utils/widgets/custom_app_bar.dart';
 import '../../../../core/utils/widgets/local_hero/local_hero_app_bar.dart';
 import '../../../places/presentation/views/places_view.dart';
 import '../widgets/cinemas_view/cinemas_view_body.dart';
@@ -54,6 +55,7 @@ class _CinemasViewState extends State<CinemasView>
       appBar: LocalHeroAppBar(
         tabController: _tabController,
         title: S.of(context).Cinemas,
+        leading: CustomAppBarIconButton(),
       ),
       body: BlocProvider(
         create: (context) => CinemaCubit(getIt<CinemaRepo>()),

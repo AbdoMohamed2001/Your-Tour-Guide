@@ -90,6 +90,8 @@
   "Features"                : "Features",
   "WebSite"                 : "Website",
   "Contact"                 : "Contact",
+  "mostFamousShopping"      : "Most famous shopping centers",
+  "mostFamousRestaurants"   : "Most famous Restaurants",
 
   "Duration"                : "Duration",
   "Price"                   : "Price",
@@ -109,6 +111,7 @@
   "nileCruise"              : "Nile Cruise",
   "tourLocation"            : "Tour Location",
   "toursToPlace"            : "Tours to this place",
+  "bookingTour"             : "Booking this tour",
 
   "Favourite"               : "Favourite",
   "AddedToFavourite"        : "Added To Favourite",
@@ -117,6 +120,9 @@
   "noFavouritesYet"         : "There is no favourites yet",
 
   "FullMenu"                :"Full Menu",
+  "seeFullMenu"             :"See the full menu: ",
+  "foods"                   :"Foods",
+  "drinks"                  :"Drinks",
   "services"                : "Services",
   "openingHours"            : "Opening \n Hours",
   "rooms"                   : "Rooms",
@@ -130,6 +136,7 @@
   "noOfRooms"              : "Number of Rooms: ",
 
   "films"                   : "Films",
+  "currentlyShowing"        : "Currently Showing",
   "genre"                   : "Movie Genre",
   "length"                  : "Length",
   "cast"                    : "Movie Cast",

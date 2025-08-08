@@ -25,11 +25,11 @@ class TicketsWidget extends StatelessWidget {
               height: 80,
               child: Image.asset('assets/images/tickets.png'),
             ),
-            SizedBox(height: 4),
+            SizedBox(height: 6),
             Padding(
               padding: isArabic()
-                  ? const EdgeInsets.only(right: 20)
-                  : const EdgeInsets.only(left: 20),
+                  ? const EdgeInsets.only(left: 20)
+                  : const EdgeInsets.only(right: 20),
               child: Text(
                 S.of(context).Tickets,
                 textAlign: TextAlign.center,

@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:your_tour_guide/core/utils/widgets/custom_app_bar.dart';
 import 'package:your_tour_guide/features/mosques/data/repos/mosque_repo.dart';
 import 'package:your_tour_guide/features/mosques/presentation/cubit/mosque_cubit.dart';
 import 'package:your_tour_guide/generated/l10n.dart';
@@ -54,6 +55,7 @@ class _MosquesViewState extends State<MosquesView>
       appBar: LocalHeroAppBar(
         tabController: _tabController,
         title: S.of(context).Mosques,
+        leading: CustomAppBarIconButton(),
       ),
       body: BlocProvider(
         create: (context) => MosqueCubit(getIt<MosqueRepo>()),

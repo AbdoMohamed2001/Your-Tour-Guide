@@ -53,7 +53,8 @@ class UserInfoWidget extends StatelessWidget {
                         Assets.iconsEdit,
                         width: 18,
                         height: 18,
-                        color: Colors.black,
+                        colorFilter:
+                            ColorFilter.mode(Colors.black, BlendMode.srcIn),
                       ),
                       onTap: () {
                         _pickImage(context, ImageSource.gallery);

@@ -1,13 +1,11 @@
-import 'package:bordered_text/bordered_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:your_tour_guide/core/services/get_it_services_locator.dart';
 import 'package:your_tour_guide/core/utils/constants.dart';
 import 'package:your_tour_guide/core/utils/functions/is_arabic.dart';
-import 'package:your_tour_guide/core/utils/theme/text_styles.dart';
-import 'package:your_tour_guide/core/utils/widgets/default_cached_network_image.dart';
 import 'package:your_tour_guide/core/utils/widgets/location_widget.dart';
 import 'package:your_tour_guide/core/utils/widgets/opening_hours_item.dart';
+import 'package:your_tour_guide/features/places/presentation/widgets/place_details/tours_list_view.dart';
 import 'package:your_tour_guide/features/places/presentation/widgets/place_details/transport_widget.dart';
 import 'package:your_tour_guide/features/tours/domain/usecases/get_tours_usecase.dart';
 import 'package:your_tour_guide/features/tours/presentation/cubit/tour_cubit.dart';
@@ -20,7 +18,6 @@ import '../../../../../core/utils/widgets/place/gallery_widget.dart'
 import '../../../../../core/utils/widgets/place/how_to_go_widget.dart';
 import '../../../../../core/utils/widgets/tickets_widget.dart';
 import 'package:your_tour_guide/features/places/domain/entities/place_entity.dart';
-import '../../../../tours/domain/entities/tour_entity.dart';
 import '../../cubit/place_cubit/place_cubit.dart';
 import 'nearly_services_list_view.dart';
 
@@ -84,7 +81,6 @@ class PlaceDetailsViewBody extends StatelessWidget {
                           ? placeEntity.descriptionArabic
                           : placeEntity.description,
                     ),
-                    kSizedBox,
                     //-------------------------------------------------------------------
                     //METRO
                     placeEntity.transport['metro'] == '' ||
@@ -101,17 +97,16 @@ class PlaceDetailsViewBody extends StatelessWidget {
                             placeEntity.transportArabic['transport'].length == 0
                         ? Container(width: 0, height: 0)
                         : TransportWidget(placeEntity: placeEntity),
+                    kSizedBox,
+                    kDivider,
+                    kSizedBox,
                     //-------------------------------------------------------------------
                     //Gallery
                     HeadText(text: S.of(context).Gallery),
                     kSizedBox,
                     GalleryWidget(entity: placeEntity),
                     kSizedBox,
-                    const Divider(
-                      height: 0.5,
-                      thickness: 1,
-                      color: Color(0xffcccccc),
-                    ),
+                    kDivider,
                     kSizedBox,
                     //-------------------------------------------------------------------
                     //Nearly
@@ -142,66 +137,5 @@ class PlaceDetailsViewBody extends StatelessWidget {
         );
       },
     );
-  }
-}
-
-class ToursListView extends StatefulWidget {
-  const ToursListView({super.key, required this.placeDocId});
-
-  final String placeDocId;
-
-  @override
-  State<ToursListView> createState() => _ToursListViewState();
-}
-
-class _ToursListViewState extends State<ToursListView> {
-  @override
-  void initState() {
-    super.initState();
-    context.read<TourCubit>().getTours(placeDocID: widget.placeDocId);
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<TourCubit, TourState>(builder: (context, state) {
-      final cubit = context.read<TourCubit>();
-      final List<TourEntity> tours = cubit.allTours;
-      if (state is TourLoading) {
-        return const Center(child: CircularProgressIndicator());
-      } else if (state is TourFailure) {
-        return const Center(child: Text('Failed to load Tours'));
-      } else {
-        return SizedBox(
-          height: 160,
-          child: ListView.separated(
-            shrinkWrap: true,
-            itemCount: tours.length,
-            scrollDirection: Axis.horizontal,
-            itemBuilder: (context, index) => Stack(
-              alignment: Alignment.center,
-              children: [
-                DefaultCachedNetworkImage(
-                  imageUrl: tours[index].imageUrl,
-                  imageHeight: 150,
-                  imageWidth: 220,
-                ),
-                Positioned(
-                  bottom: 10,
-                  child: BorderedText(
-                    strokeColor: Colors.black,
-                    strokeWidth: 2,
-                    child: Text(
-                      tours[index].name,
-                      style: TextStyles.bold18.copyWith(color: Colors.white),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            separatorBuilder: (context, index) => const SizedBox(width: 15),
-          ),
-        );
-      }
-    });
   }
 }

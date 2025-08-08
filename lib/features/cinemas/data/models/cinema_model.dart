@@ -1,3 +1,4 @@
+import 'package:your_tour_guide/features/cinemas/data/models/movie_model.dart';
 import 'package:your_tour_guide/features/cinemas/domain/entities/cinema_entity.dart';
 
 class CinemaModel {
@@ -6,8 +7,8 @@ class CinemaModel {
   final String cityName;
   final String cityNameArabic;
   final String docId;
-  final List films;
-  final List filmsArabic;
+  final List<MovieModel> films;
+  final List<MovieModel> filmsArabic;
   final String imageUrl;
   final List images;
   final String mapUrl;
@@ -62,8 +63,12 @@ class CinemaModel {
       phone: doc['phone'],
       website: doc['website'],
       docId: doc['docId'],
-      films: doc['films'],
-      filmsArabic: doc['filmsArabic'],
+      films: (doc['films'] as List<dynamic>)
+          .map((item) => MovieModel.fromJson(item))
+          .toList(),
+      filmsArabic: (doc['filmsArabic'] as List<dynamic>)
+          .map((item) => MovieModel.fromJson(item))
+          .toList(),
     );
   }
 
@@ -74,8 +79,8 @@ class CinemaModel {
       cityName: cityName,
       cityNameArabic: cityNameArabic,
       docId: docId,
-      films: films,
-      filmsArabic: filmsArabic,
+      films: films.map((room) => room.toEntity()).toList(),
+      filmsArabic: filmsArabic.map((room) => room.toEntity()).toList(),
       imageUrl: imageUrl,
       images: images,
       mapUrl: mapUrl,

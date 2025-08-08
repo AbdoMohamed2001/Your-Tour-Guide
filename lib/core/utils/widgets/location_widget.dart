@@ -67,11 +67,7 @@ class LocationWidget extends StatelessWidget {
         RateWidget(rate: rate, starIconIncluded: true),
         const SizedBox(height: 25),
         //-----------------------------
-        const Divider(
-          height: 0.5,
-          thickness: 1,
-          color: Color(0xffcccccc),
-        ),
+        kDivider,
       ],
     );
   }

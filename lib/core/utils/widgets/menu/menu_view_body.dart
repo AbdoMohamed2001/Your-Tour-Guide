@@ -1,9 +1,8 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:your_tour_guide/core/utils/constants.dart';
 import '../../../../features/restaurants/presentation/widgets/menu/menu_page_view.dart';
 import '../../../../features/restaurants/presentation/widgets/menu/menu_types_item.dart';
+import '../../../../generated/l10n.dart';
 
 class MenuViewBody extends StatefulWidget {
   const MenuViewBody({super.key});
@@ -19,13 +18,11 @@ class _MenuViewBodyState extends State<MenuViewBody> {
   @override
   void initState() {
     super.initState();
-    // TODO: implement initState
     pageController = PageController();
   }
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     pageController.dispose();
   }
@@ -49,17 +46,8 @@ class _MenuViewBodyState extends State<MenuViewBody> {
                     duration: const Duration(milliseconds: 300),
                     curve: Curves.easeInOut,
                   );
-                  // setState(() {
-                  //   isSelected = !isSelected;
-                  // });
-                  // pageController.animateToPage(
-                  //   1,
-                  //   duration: const Duration(milliseconds: 600),
-                  //   curve: Curves.easeInOut,
-                  // );
-                  // log('this is selectedIndex ${pageController.page}');
                 },
-                type: 'Food',
+                type: S.of(context).foods,
                 isSelected: currentPageIndex == 0,
               ),
               MenuTypesItem(
@@ -72,17 +60,8 @@ class _MenuViewBodyState extends State<MenuViewBody> {
                     duration: const Duration(milliseconds: 300),
                     curve: Curves.easeInOut,
                   );
-                  // setState(() {
-                  //   isSelected = !isSelected;
-                  // });
-                  // log('this is selectedIndex ${pageController.page}');
-                  // pageController.animateToPage(
-                  //   0,
-                  //   duration: const Duration(milliseconds: 300),
-                  //   curve: Curves.easeInOut,
-                  // );
                 },
-                type: 'Drink',
+                type: S.of(context).drinks,
                 isSelected: currentPageIndex == 1,
               ),
             ],
@@ -97,7 +76,6 @@ class _MenuViewBodyState extends State<MenuViewBody> {
                 setState(() {
                   currentPageIndex = index;
                 });
-                log('Page changed to: $index');
               },
             ),
           ),

@@ -6,14 +6,22 @@ class MenuPage extends StatelessWidget {
     super.key,
     required this.menu,
     required this.foodTypes,
+    required this.foodIds,
   });
+
   final List<dynamic> menu;
   final List<String> foodTypes;
+  final List<String> foodIds;
+
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
       itemCount: foodTypes.length,
-      itemBuilder: (_, i) => MenuItem(menu: menu, foodType: foodTypes[i]),
+      itemBuilder: (_, i) => MenuItem(
+        menu: menu,
+        foodType: foodTypes[i],
+        foodId: foodIds[i],
+      ),
       separatorBuilder: (_, i) => SizedBox(height: 16),
     );
   }

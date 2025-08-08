@@ -26,7 +26,7 @@ class LocalHeroView extends StatelessWidget {
           style: TextStyles.bold16,
         ),
         cardStyleMode: CardStyleMode(
-          isDarkMode: context.read<ThemeCubit>().isDarkMode,
+          isDarkMode: context.read<ThemeCubit>().isDarkMode(context),
           cardColor: Theme.of(context).cardColor,
         ),
         subTitleIcon: const Icon(

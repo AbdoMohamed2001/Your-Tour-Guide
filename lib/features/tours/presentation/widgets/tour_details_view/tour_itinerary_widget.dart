@@ -17,14 +17,12 @@ class TourItineraryWidget extends StatelessWidget {
     return SizedBox(
       height: 80,
       child: ListView.separated(
-        padding: EdgeInsets.only(right: 0, left: 0),
         itemBuilder: (context, index) => TourItineraryItem(
           tourEntity: tourEntity,
           index: index,
         ),
         itemCount: tourEntity.tourItinerary.length,
         separatorBuilder: (_, index) => TourItinerarySeparator(),
-        shrinkWrap: true,
         scrollDirection: Axis.horizontal,
       ),
     );
